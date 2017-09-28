@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity,StyleSheet, Text, View,FlatList } from 'react-native';
 import run from '@cycle/rxjs-run'
+import StorybookUI from './storybook';
 
 import {
   Cycle,
@@ -85,7 +86,7 @@ run(main, {
   RN: makeReactNativeDriver()
 });
 
-export default CycleRoot
+module.exports = __DEV__ ? StorybookUI : CycleRoot;
 
 const styles = StyleSheet.create({
   container: {
