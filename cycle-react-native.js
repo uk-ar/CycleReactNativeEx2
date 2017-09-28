@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Rx from 'rxjs/Rx';
-import { View, Text } from 'react-native';
+import { TouchableOpacity, View, Text } from 'react-native';
+import {adapt} from '@cycle/run/lib/adapt';
 
 let handlers = {}
 
@@ -95,7 +96,8 @@ class CycleRoot extends React.Component {
 }
 
 Cycle = {
-  Text: withCycle(Text)
+  Text: withCycle(Text),
+  TouchableOpacity: withCycle(TouchableOpacity)
 }
 
 export {
