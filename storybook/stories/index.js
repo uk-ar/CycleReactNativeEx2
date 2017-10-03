@@ -73,6 +73,22 @@ storiesOf('BookList', module)
         ]}
     />
   ))
+  .add('with three', () => (
+    <BookList
+      data={[{
+          isbn:'9784834032147',
+          title:'guri & gura',
+          author:'author foo',
+          thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200'
+        },{
+          title: 'はじめてのABCえほん',
+          author: '仲田利津子/黒田昌代',
+          thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200',
+          isbn: '9784828867472',
+        }
+        ]}
+    />
+  ))
 
 storiesOf('Button', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
