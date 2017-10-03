@@ -24,6 +24,7 @@
     "test": "node node_modules/jest/bin/jest.js --watch",
     "test-ci": "node node_modules/jest/bin/jest.js",
     "storybook": "storybook start -p 7007"
+    "publish": "node node_modules/.bin/exp",
   },
   "jest": {
     "preset": "jest-expo"
