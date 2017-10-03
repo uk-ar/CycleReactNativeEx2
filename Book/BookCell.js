@@ -12,6 +12,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   TouchableNativeFeedback,
+  FlatList,
 } from 'react-native';
 
 import { itemsInfo, TouchableElement } from './common';
@@ -74,12 +75,15 @@ const icons = Object.keys(itemsInfo).reduce((acc,key)=> {
 },{});
 
 class Book extends React.PureComponent {
+  _onPress = () => {
+    this.props.onPress(this.props.isbn);
+  };
   render() {
-    const { thumbnail, title, author, onPress, style, icon, status} =
+    const { thumbnail, title, author, onPress, style, icon, status, isbn } =
       this.props
     return (
       <TouchableElement
-        onPress={onPress}
+        onPress={this._onPress}
         style={style}
       >
         <View
@@ -107,6 +111,31 @@ class Book extends React.PureComponent {
           </View>
         </View>
       </TouchableElement>
+    );
+  }
+}
+
+class BookList extends React.PureComponent {
+  _keyExtractor = (book, index) => book.isbn;
+  _renderItem = ({item,index}) => {
+    return (
+    <Book
+      isbn={item.isbn}
+      title={item.title}
+      author={item.author}
+      thumbnail={item.thumbnail}
+      icon={icons["liked"]}
+      status={libraryStatuses["rentable"]}
+    />
+  );}
+  render() {
+    return (
+      //        extraData={this.state}
+      <FlatList
+        data={this.props.data}
+        keyExtractor={this._keyExtractor}
+        renderItem={this._renderItem}
+      />
     );
   }
 }
@@ -146,4 +175,4 @@ const styles = StyleSheet.create({
   },
 })
 
-module.exports = { LibraryStatus, Book, icons, libraryStatuses };
+module.exports = { LibraryStatus, Book, icons, libraryStatuses,BookList };
