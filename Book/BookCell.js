@@ -29,7 +29,7 @@ class LibraryStatus extends React.PureComponent {
                         style={{ marginLeft: 5 }}
                       /> : null;
     return (
-      <View style={styles.row}>
+      <View style={styles.rowCenter}>
         <Text style={style}>
           {text}
         </Text>
@@ -46,7 +46,7 @@ const libraryStatuses = {
   noCollection: <LibraryStatus
                   text='蔵書なし' style={{ color: '#F44336' /*red*/}} />,
   Loading: <LibraryStatus
-             text='蔵書確認中' indicator={true} />,
+             text='蔵書確認中' loading={true} />,
 }
 
 function conv(libraryStatus){
@@ -130,8 +130,8 @@ class BookList extends React.PureComponent {
         author={item.author}
         thumbnail={item.thumbnail}
         reserveUrl={item.reserveUrl}
-        icon={icons["liked"]}
-        status={libraryStatuses["rentable"]}
+        icon={icons[item.bucket]}
+        status={libraryStatuses[item.status]}
       />
   );}
   render() {
