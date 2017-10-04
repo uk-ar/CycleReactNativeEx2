@@ -11,6 +11,7 @@ import { CenterLeftView, CenterView } from './CenterView';
 import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from '../../Book/BookCell';
 
 storiesOf('LibraryStatus', module)
+  .addDecorator(getStory => <CenterLeftView>{getStory()}</CenterLeftView>)
   .add('with text and color', () => (
     <LibraryStatus text="foo" style={{color:"red"}} />
   ))
@@ -19,6 +20,7 @@ storiesOf('LibraryStatus', module)
   ))
 
 storiesOf('Book', module)
+  .addDecorator(getStory => <CenterLeftView>{getStory()}</CenterLeftView>)
   .add('with thumbnail', () => (
     <Book
       onPress={action('clicked-bookcell')}
@@ -48,6 +50,7 @@ storiesOf('Book', module)
   ))
 
 storiesOf('BookList', module)
+  .addDecorator(getStory => <CenterLeftView>{getStory()}</CenterLeftView>)
   .add('with one', () => (
     <BookList
       data={[{
