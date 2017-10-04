@@ -40,6 +40,7 @@ exports[`Storyshots Book with full book 1`] = `
     <View
       style={
         Object {
+          "backgroundColor": "#fafafa",
           "flexDirection": "row",
         }
       }
@@ -164,6 +165,7 @@ exports[`Storyshots Book with short title 1`] = `
     <View
       style={
         Object {
+          "backgroundColor": "#fafafa",
           "flexDirection": "row",
         }
       }
@@ -328,6 +330,7 @@ exports[`Storyshots Book with thumbnail 1`] = `
     <View
       style={
         Object {
+          "backgroundColor": "#fafafa",
           "flexDirection": "row",
         }
       }
@@ -480,6 +483,7 @@ exports[`Storyshots BookList with one 1`] = `
           <View
             style={
               Object {
+                "backgroundColor": "#fafafa",
                 "flexDirection": "row",
               }
             }
@@ -642,7 +646,7 @@ exports[`Storyshots BookList with three 1`] = `
         Object {
           "author": "中川李枝子/山脇百合子（絵本作家）",
           "isbn": "9784834014655",
-          "reserveUrl": "https://library.city.fuchu.tokyo.jp/licsxp-opac/WOpacTifTilListToTifTilDetailAction.do?tilcod=1009710046217",
+          "reserveUrl": "https://www.amazon.co.jp/dp/4834014657",
           "thumbnail": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4655/9784834014655.jpg?_ex=200x200",
           "title": "ぐりとぐらの1ねんかん(単一蔵書)",
         },
@@ -711,6 +715,7 @@ exports[`Storyshots BookList with three 1`] = `
           <View
             style={
               Object {
+                "backgroundColor": "#fafafa",
                 "flexDirection": "row",
               }
             }
@@ -867,6 +872,7 @@ exports[`Storyshots BookList with three 1`] = `
           <View
             style={
               Object {
+                "backgroundColor": "#fafafa",
                 "flexDirection": "row",
               }
             }
@@ -1023,6 +1029,7 @@ exports[`Storyshots BookList with three 1`] = `
           <View
             style={
               Object {
+                "backgroundColor": "#fafafa",
                 "flexDirection": "row",
               }
             }
@@ -1179,6 +1186,7 @@ exports[`Storyshots BookList with three 1`] = `
           <View
             style={
               Object {
+                "backgroundColor": "#fafafa",
                 "flexDirection": "row",
               }
             }
@@ -1335,6 +1343,7 @@ exports[`Storyshots BookList with three 1`] = `
           <View
             style={
               Object {
+                "backgroundColor": "#fafafa",
                 "flexDirection": "row",
               }
             }
@@ -1546,6 +1555,7 @@ exports[`Storyshots BookList with two 1`] = `
           <View
             style={
               Object {
+                "backgroundColor": "#fafafa",
                 "flexDirection": "row",
               }
             }
@@ -1702,6 +1712,7 @@ exports[`Storyshots BookList with two 1`] = `
           <View
             style={
               Object {
+                "backgroundColor": "#fafafa",
                 "flexDirection": "row",
               }
             }
@@ -1826,6 +1837,140 @@ exports[`Storyshots BookList with two 1`] = `
       </View>
     </View>
   </RCTScrollView>
+</View>
+`;
+
+exports[`Storyshots Browser with full book 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  hasTVPreferredFocus={undefined}
+  hitSlop={undefined}
+  isTVSelectable={true}
+  nativeID={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+      },
+      undefined,
+    ]
+  }
+  testID={undefined}
+  tvParallaxProperties={undefined}
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#fafafa",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Image
+      resizeMode="contain"
+      source={
+        Object {
+          "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0825/9784834000825.jpg?_ex=200x200",
+        }
+      }
+      style={
+        Object {
+          "backgroundColor": "#dddddd",
+          "height": 64,
+          "margin": 10,
+          "width": 64,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "borderBottomWidth": 0.5,
+          "borderColor": "rgba(0, 0, 0, 0.1)",
+          "borderTopWidth": 0.5,
+          "flex": 1,
+          "marginRight": 10,
+          "padding": 5,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={false}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": undefined,
+                "fontSize": 20,
+              },
+              Object {
+                "color": "#ffc107",
+                "marginRight": 10,
+              },
+              Object {
+                "fontFamily": "ExponentFont-mock-awesome",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+            ]
+          }
+        >
+          
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          numberOfLines={2}
+          style={
+            Object {
+              "flex": 1,
+              "fontSize": 16,
+              "fontWeight": "500",
+            }
+          }
+        >
+          ぐりとぐら(複数蔵書)
+        </Text>
+      </View>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        numberOfLines={1}
+        style={
+          Object {
+            "color": "#9E9E9E",
+            "fontSize": 12,
+          }
+        }
+      >
+        中川李枝子/大村百合子
+      </Text>
+    </View>
+  </View>
 </View>
 `;
 
