@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text,View } from 'react-native';
+import { Animated,Text,View } from 'react-native';
 
 import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
@@ -133,3 +133,87 @@ storiesOf('Browser', module)
       icon={icons["done"]}
     />
   ))
+
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { index:0 }
+  }
+  render(){
+    return (
+      <View>
+        <Text onPress={()=>{
+            this.setState({index:this.state.index + 1})
+          }}>
+          pressMe
+        </Text>
+        {this.props.children(this.state.index)}
+      </View>
+    )
+  }
+}
+
+class FadeInView extends React.Component {
+  state = {
+    fadeAnim: new Animated.Value(0),  // Initial value for opacity: 0
+  }
+
+  render() {
+    let { i } = this.props
+    let { fadeAnim } = this.state;
+    Animated.timing(
+      this.state.fadeAnim,            // The animated value to drive
+      {
+        toValue: i,                   // Animate to opacity: 1 (opaque)
+        duration: 1000,              // Make it take a while
+      }
+    ).start();                        // Starts the animation
+
+    return (
+      <Animated.View
+        style={{
+          width: 250, height: 50, backgroundColor: 'powderblue',
+          opacity: fadeAnim,         // Bind opacity to animated value
+        }}
+      >
+        {this.props.children}
+      </Animated.View>
+    );
+  }
+}
+
+storiesOf('Closable', module)
+  .addDecorator(getStory => <CenterLeftView>{getStory(10)}</CenterLeftView>)
+  .add('open0', () => (
+    <Counter>
+      {(i)=>{
+         a = new Animated.Value(i)
+         return (
+         <View>
+           <Text>count {i%2}</Text>
+           <View style={[{
+               height:50,width:50,
+             },i%2==0?{backgroundColor:"red",opacity:1}:{backgroundColor:"yellow",opacity:0.5}]}
+           />
+         </View>
+       )}}
+    </Counter>
+  ))
+  .add('open', () => (
+    <Counter>
+      {(i)=>{
+         return (
+           <FadeInView i={i%2}/>
+         )
+       }}
+    </Counter>
+  ))
+/* .add('open', () => (
+ *   <Counter>
+ *     {(i)=>{
+ *        return(
+ *          <FadeInView i={i} />
+ *        )
+ *      }}
+ *   </Counter>
+ * ))*/

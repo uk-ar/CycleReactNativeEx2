@@ -1810,6 +1810,79 @@ exports[`Storyshots Browser with full book 1`] = `
 </View>
 `;
 
+exports[`Storyshots Closable open 1`] = `
+<View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    disabled={false}
+    ellipsizeMode="tail"
+    onPress={[Function]}
+  >
+    press me 
+    0
+  </Text>
+  <View
+    style={
+      Object {
+        "backgroundColor": "red",
+        "height": 50,
+        "width": 50,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`Storyshots Closable open0 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#F5FCFF",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      onPress={[Function]}
+    >
+      pressMe
+    </Text>
+    <View>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+      >
+        count 
+        0
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "height": 50,
+              "width": 50,
+            },
+            Object {
+              "backgroundColor": "red",
+              "opacity": 1,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
+
 exports[`Storyshots LibraryStatus with loading 1`] = `
 <View
   style={
