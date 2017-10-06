@@ -133,7 +133,10 @@ class BookList extends React.PureComponent {
         icon={icons[item.bucket]}
         status={libraryStatuses[item.status]}
       />
-  );}
+    );}
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       //        extraData={this.state}
