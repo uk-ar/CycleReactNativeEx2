@@ -154,65 +154,9 @@ class Counter extends React.Component {
   }
 }
 
-class FadeInView extends React.Component {
-  constructor(props) {
-    super(props);
-    this._animated = new Animated.Value(0);
-  }
-
-  render() {
-    let { i } = this.props
-    Animated.timing(
-      this._animated,{
-        toValue: i,                   // Animate to opacity: 1 (opaque)
-        duration: 250,              // Make it take a while
-      }
-    ).start();                        // Starts the animation
-    return (
-      <Animated.View
-        style={{
-          width: 250, backgroundColor: 'powderblue',
-          opacity: this._animated,
-          height: this._animated.interpolate({
-            inputRange:[0,1],
-            outputRange:[0,50],
-            extrapolate:'clamp'
-          }),
-        }}
-      >
-        {this.props.children}
-      </Animated.View>
-    );
-  }
-}
-
 storiesOf('Closeable', module)
   //.addDecorator(getStory => <CenterLeftView>{getStory(10)}</CenterLeftView>)
-  .add('open0', () => (
-    <Counter>
-      {(i)=>{
-         a = new Animated.Value(i)
-         return (
-         <View>
-           <Text>count {i%2}</Text>
-           <View style={[{
-               height:50,width:50,
-             },i%2==0?{backgroundColor:"red",opacity:1}:{backgroundColor:"yellow",opacity:0.5}]}
-           />
-         </View>
-       )}}
-    </Counter>
-  ))
-  .add('open', () => (
-    <Counter>
-      {(i)=>{
-         return (
-           <FadeInView i={i%2}/>
-         )
-       }}
-    </Counter>
-  ))
-  .add('close', () => (
+  .add('with open and close', () => (
     <Counter>
       {(i)=>{
          return (
@@ -226,9 +170,4 @@ storiesOf('Closeable', module)
          )
        }}
     </Counter>
-  ))
-  .add('close2', () => (
-    <View style={{
-      height:50, backgroundColor:"red", //flex:1
-    }}/>
   ))
