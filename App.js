@@ -86,8 +86,7 @@ run(main, {
   RN: makeReactNativeDriver()
 });
 
-//module.exports = __DEV__ ? StorybookUI : CycleRoot;
-module.exports = StorybookUI
+module.exports = __DEV__ && typeof __TEST__ == 'undefined' ? StorybookUI : CycleRoot;
 
 const styles = StyleSheet.create({
   container: {

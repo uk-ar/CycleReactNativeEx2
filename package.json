@@ -26,7 +26,10 @@
     "storybook": "storybook start -p 7007"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "globals": {
+      "__TEST__": true
+    }
   },
   "dependencies": {
     "@cycle/rxjs-run": "^7.1.0",
