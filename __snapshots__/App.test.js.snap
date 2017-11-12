@@ -489,154 +489,165 @@ exports[`Storyshots BookList with many 1`] = `
         style={null}
       >
         <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
-          accessible={true}
-          hasTVPreferredFocus={undefined}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          nativeID={undefined}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          collapsable={undefined}
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-              },
-              undefined,
-            ]
+            Object {
+              "height": 0,
+              "opacity": 0,
+              "overflow": "hidden",
+            }
           }
-          testID={undefined}
-          tvParallaxProperties={undefined}
         >
           <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "backgroundColor": "#fafafa",
-                "flexDirection": "row",
-              }
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                undefined,
+              ]
             }
+            testID={undefined}
+            tvParallaxProperties={undefined}
           >
-            <Image
-              resizeMode="contain"
-              source={
-                Object {
-                  "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
-                }
-              }
-              style={
-                Object {
-                  "backgroundColor": "#dddddd",
-                  "height": 64,
-                  "margin": 10,
-                  "width": 64,
-                }
-              }
-            />
             <View
               style={
                 Object {
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "rgba(0, 0, 0, 0.1)",
-                  "borderTopWidth": 0.5,
-                  "flex": 1,
-                  "marginRight": 10,
-                  "padding": 5,
+                  "backgroundColor": "#fafafa",
+                  "flexDirection": "row",
                 }
               }
             >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
+                  }
+                }
+                style={
+                  Object {
+                    "backgroundColor": "#dddddd",
+                    "height": 64,
+                    "margin": 10,
+                    "width": 64,
+                  }
+                }
+              />
               <View
                 style={
                   Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "borderBottomWidth": 0.5,
+                    "borderColor": "rgba(0, 0, 0, 0.1)",
+                    "borderTopWidth": 0.5,
+                    "flex": 1,
+                    "marginRight": 10,
+                    "padding": 5,
                   }
                 }
               >
-                <Text
-                  accessible={true}
-                  allowFontScaling={false}
-                  disabled={false}
-                  ellipsizeMode="tail"
+                <View
                   style={
-                    Array [
-                      Object {
-                        "color": undefined,
-                        "fontSize": 20,
-                      },
-                      Object {
-                        "color": "#03a9f4",
-                        "marginRight": 10,
-                      },
-                      Object {
-                        "fontFamily": "awesome",
-                        "fontStyle": "normal",
-                        "fontWeight": "normal",
-                      },
-                    ]
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
-                  
-                </Text>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={false}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "color": undefined,
+                          "fontSize": 20,
+                        },
+                        Object {
+                          "color": "#03a9f4",
+                          "marginRight": 10,
+                        },
+                        Object {
+                          "fontFamily": "awesome",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                      ]
+                    }
+                  >
+                    
+                  </Text>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    numberOfLines={2}
+                    style={
+                      Object {
+                        "flex": 1,
+                        "fontSize": 16,
+                        "fontWeight": "500",
+                      }
+                    }
+                  >
+                    guri & gura
+                  </Text>
+                </View>
                 <Text
                   accessible={true}
                   allowFontScaling={true}
                   disabled={false}
                   ellipsizeMode="tail"
-                  numberOfLines={2}
+                  numberOfLines={1}
                   style={
                     Object {
-                      "flex": 1,
-                      "fontSize": 16,
-                      "fontWeight": "500",
+                      "color": "#9E9E9E",
+                      "fontSize": 12,
                     }
                   }
                 >
-                  guri & gura
+                  author foo
                 </Text>
-              </View>
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-                numberOfLines={1}
-                style={
-                  Object {
-                    "color": "#9E9E9E",
-                    "fontSize": 12,
-                  }
-                }
-              >
-                author foo
-              </Text>
-              <View
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  }
-                }
-              >
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  disabled={false}
-                  ellipsizeMode="tail"
+                <View
                   style={
                     Object {
-                      "color": "#4CAF50",
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     }
                   }
                 >
-                  貸出可
-                </Text>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "color": "#4CAF50",
+                      }
+                    }
+                  >
+                    貸出可
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -647,154 +658,165 @@ exports[`Storyshots BookList with many 1`] = `
         style={null}
       >
         <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
-          accessible={true}
-          hasTVPreferredFocus={undefined}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          nativeID={undefined}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          collapsable={undefined}
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-              },
-              undefined,
-            ]
+            Object {
+              "height": 0,
+              "opacity": 0,
+              "overflow": "hidden",
+            }
           }
-          testID={undefined}
-          tvParallaxProperties={undefined}
         >
           <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "backgroundColor": "#fafafa",
-                "flexDirection": "row",
-              }
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                undefined,
+              ]
             }
+            testID={undefined}
+            tvParallaxProperties={undefined}
           >
-            <Image
-              resizeMode="contain"
-              source={
-                Object {
-                  "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200",
-                }
-              }
-              style={
-                Object {
-                  "backgroundColor": "#dddddd",
-                  "height": 64,
-                  "margin": 10,
-                  "width": 64,
-                }
-              }
-            />
             <View
               style={
                 Object {
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "rgba(0, 0, 0, 0.1)",
-                  "borderTopWidth": 0.5,
-                  "flex": 1,
-                  "marginRight": 10,
-                  "padding": 5,
+                  "backgroundColor": "#fafafa",
+                  "flexDirection": "row",
                 }
               }
             >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200",
+                  }
+                }
+                style={
+                  Object {
+                    "backgroundColor": "#dddddd",
+                    "height": 64,
+                    "margin": 10,
+                    "width": 64,
+                  }
+                }
+              />
               <View
                 style={
                   Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "borderBottomWidth": 0.5,
+                    "borderColor": "rgba(0, 0, 0, 0.1)",
+                    "borderTopWidth": 0.5,
+                    "flex": 1,
+                    "marginRight": 10,
+                    "padding": 5,
                   }
                 }
               >
-                <Text
-                  accessible={true}
-                  allowFontScaling={false}
-                  disabled={false}
-                  ellipsizeMode="tail"
+                <View
                   style={
-                    Array [
-                      Object {
-                        "color": undefined,
-                        "fontSize": 20,
-                      },
-                      Object {
-                        "color": "#ffc107",
-                        "marginRight": 10,
-                      },
-                      Object {
-                        "fontFamily": "awesome",
-                        "fontStyle": "normal",
-                        "fontWeight": "normal",
-                      },
-                    ]
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
-                  
-                </Text>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={false}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "color": undefined,
+                          "fontSize": 20,
+                        },
+                        Object {
+                          "color": "#ffc107",
+                          "marginRight": 10,
+                        },
+                        Object {
+                          "fontFamily": "awesome",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                      ]
+                    }
+                  >
+                    
+                  </Text>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    numberOfLines={2}
+                    style={
+                      Object {
+                        "flex": 1,
+                        "fontSize": 16,
+                        "fontWeight": "500",
+                      }
+                    }
+                  >
+                    はじめてのABCえほん
+                  </Text>
+                </View>
                 <Text
                   accessible={true}
                   allowFontScaling={true}
                   disabled={false}
                   ellipsizeMode="tail"
-                  numberOfLines={2}
+                  numberOfLines={1}
                   style={
                     Object {
-                      "flex": 1,
-                      "fontSize": 16,
-                      "fontWeight": "500",
+                      "color": "#9E9E9E",
+                      "fontSize": 12,
                     }
                   }
                 >
-                  はじめてのABCえほん
+                  仲田利津子/黒田昌代
                 </Text>
-              </View>
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-                numberOfLines={1}
-                style={
-                  Object {
-                    "color": "#9E9E9E",
-                    "fontSize": 12,
-                  }
-                }
-              >
-                仲田利津子/黒田昌代
-              </Text>
-              <View
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  }
-                }
-              >
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  disabled={false}
-                  ellipsizeMode="tail"
+                <View
                   style={
                     Object {
-                      "color": "#FFC107",
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     }
                   }
                 >
-                  貸出中
-                </Text>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "color": "#FFC107",
+                      }
+                    }
+                  >
+                    貸出中
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -805,154 +827,165 @@ exports[`Storyshots BookList with many 1`] = `
         style={null}
       >
         <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
-          accessible={true}
-          hasTVPreferredFocus={undefined}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          nativeID={undefined}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          collapsable={undefined}
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-              },
-              undefined,
-            ]
+            Object {
+              "height": 0,
+              "opacity": 0,
+              "overflow": "hidden",
+            }
           }
-          testID={undefined}
-          tvParallaxProperties={undefined}
         >
           <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "backgroundColor": "#fafafa",
-                "flexDirection": "row",
-              }
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                undefined,
+              ]
             }
+            testID={undefined}
+            tvParallaxProperties={undefined}
           >
-            <Image
-              resizeMode="contain"
-              source={
-                Object {
-                  "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0825/9784834000825.jpg?_ex=200x200",
-                }
-              }
-              style={
-                Object {
-                  "backgroundColor": "#dddddd",
-                  "height": 64,
-                  "margin": 10,
-                  "width": 64,
-                }
-              }
-            />
             <View
               style={
                 Object {
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "rgba(0, 0, 0, 0.1)",
-                  "borderTopWidth": 0.5,
-                  "flex": 1,
-                  "marginRight": 10,
-                  "padding": 5,
+                  "backgroundColor": "#fafafa",
+                  "flexDirection": "row",
                 }
               }
             >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0825/9784834000825.jpg?_ex=200x200",
+                  }
+                }
+                style={
+                  Object {
+                    "backgroundColor": "#dddddd",
+                    "height": 64,
+                    "margin": 10,
+                    "width": 64,
+                  }
+                }
+              />
               <View
                 style={
                   Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "borderBottomWidth": 0.5,
+                    "borderColor": "rgba(0, 0, 0, 0.1)",
+                    "borderTopWidth": 0.5,
+                    "flex": 1,
+                    "marginRight": 10,
+                    "padding": 5,
                   }
                 }
               >
-                <Text
-                  accessible={true}
-                  allowFontScaling={false}
-                  disabled={false}
-                  ellipsizeMode="tail"
+                <View
                   style={
-                    Array [
-                      Object {
-                        "color": undefined,
-                        "fontSize": 20,
-                      },
-                      Object {
-                        "color": "#4caf50",
-                        "marginRight": 10,
-                      },
-                      Object {
-                        "fontFamily": "awesome",
-                        "fontStyle": "normal",
-                        "fontWeight": "normal",
-                      },
-                    ]
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
-                  
-                </Text>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={false}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "color": undefined,
+                          "fontSize": 20,
+                        },
+                        Object {
+                          "color": "#4caf50",
+                          "marginRight": 10,
+                        },
+                        Object {
+                          "fontFamily": "awesome",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                      ]
+                    }
+                  >
+                    
+                  </Text>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    numberOfLines={2}
+                    style={
+                      Object {
+                        "flex": 1,
+                        "fontSize": 16,
+                        "fontWeight": "500",
+                      }
+                    }
+                  >
+                    ぐりとぐら(複数蔵書)
+                  </Text>
+                </View>
                 <Text
                   accessible={true}
                   allowFontScaling={true}
                   disabled={false}
                   ellipsizeMode="tail"
-                  numberOfLines={2}
+                  numberOfLines={1}
                   style={
                     Object {
-                      "flex": 1,
-                      "fontSize": 16,
-                      "fontWeight": "500",
+                      "color": "#9E9E9E",
+                      "fontSize": 12,
                     }
                   }
                 >
-                  ぐりとぐら(複数蔵書)
+                  中川李枝子/大村百合子
                 </Text>
-              </View>
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-                numberOfLines={1}
-                style={
-                  Object {
-                    "color": "#9E9E9E",
-                    "fontSize": 12,
-                  }
-                }
-              >
-                中川李枝子/大村百合子
-              </Text>
-              <View
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  }
-                }
-              >
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  disabled={false}
-                  ellipsizeMode="tail"
+                <View
                   style={
                     Object {
-                      "color": "#F44336",
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     }
                   }
                 >
-                  蔵書なし
-                </Text>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "color": "#F44336",
+                      }
+                    }
+                  >
+                    蔵書なし
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -963,161 +996,172 @@ exports[`Storyshots BookList with many 1`] = `
         style={null}
       >
         <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
-          accessible={true}
-          hasTVPreferredFocus={undefined}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          nativeID={undefined}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          collapsable={undefined}
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-              },
-              undefined,
-            ]
+            Object {
+              "height": 0,
+              "opacity": 0,
+              "overflow": "hidden",
+            }
           }
-          testID={undefined}
-          tvParallaxProperties={undefined}
         >
           <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "backgroundColor": "#fafafa",
-                "flexDirection": "row",
-              }
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                undefined,
+              ]
             }
+            testID={undefined}
+            tvParallaxProperties={undefined}
           >
-            <Image
-              resizeMode="contain"
-              source={
-                Object {
-                  "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4655/9784834014655.jpg?_ex=200x200",
-                }
-              }
-              style={
-                Object {
-                  "backgroundColor": "#dddddd",
-                  "height": 64,
-                  "margin": 10,
-                  "width": 64,
-                }
-              }
-            />
             <View
               style={
                 Object {
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "rgba(0, 0, 0, 0.1)",
-                  "borderTopWidth": 0.5,
-                  "flex": 1,
-                  "marginRight": 10,
-                  "padding": 5,
+                  "backgroundColor": "#fafafa",
+                  "flexDirection": "row",
                 }
               }
             >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4655/9784834014655.jpg?_ex=200x200",
+                  }
+                }
+                style={
+                  Object {
+                    "backgroundColor": "#dddddd",
+                    "height": 64,
+                    "margin": 10,
+                    "width": 64,
+                  }
+                }
+              />
               <View
                 style={
                   Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "borderBottomWidth": 0.5,
+                    "borderColor": "rgba(0, 0, 0, 0.1)",
+                    "borderTopWidth": 0.5,
+                    "flex": 1,
+                    "marginRight": 10,
+                    "padding": 5,
                   }
                 }
               >
-                <Text
-                  accessible={true}
-                  allowFontScaling={false}
-                  disabled={false}
-                  ellipsizeMode="tail"
+                <View
                   style={
-                    Array [
-                      Object {
-                        "color": undefined,
-                        "fontSize": 20,
-                      },
-                      Object {
-                        "color": undefined,
-                        "marginRight": 10,
-                      },
-                      Object {
-                        "fontFamily": "awesome",
-                        "fontStyle": "normal",
-                        "fontWeight": "normal",
-                      },
-                    ]
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
                   }
                 >
-                  
-                </Text>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={false}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "color": undefined,
+                          "fontSize": 20,
+                        },
+                        Object {
+                          "color": undefined,
+                          "marginRight": 10,
+                        },
+                        Object {
+                          "fontFamily": "awesome",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                      ]
+                    }
+                  >
+                    
+                  </Text>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    numberOfLines={2}
+                    style={
+                      Object {
+                        "flex": 1,
+                        "fontSize": 16,
+                        "fontWeight": "500",
+                      }
+                    }
+                  >
+                    ぐりとぐらの1ねんかん(単一蔵書)
+                  </Text>
+                </View>
                 <Text
                   accessible={true}
                   allowFontScaling={true}
                   disabled={false}
                   ellipsizeMode="tail"
-                  numberOfLines={2}
+                  numberOfLines={1}
                   style={
                     Object {
-                      "flex": 1,
-                      "fontSize": 16,
-                      "fontWeight": "500",
+                      "color": "#9E9E9E",
+                      "fontSize": 12,
                     }
                   }
                 >
-                  ぐりとぐらの1ねんかん(単一蔵書)
+                  中川李枝子/山脇百合子（絵本作家）
                 </Text>
-              </View>
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-                numberOfLines={1}
-                style={
-                  Object {
-                    "color": "#9E9E9E",
-                    "fontSize": 12,
-                  }
-                }
-              >
-                中川李枝子/山脇百合子（絵本作家）
-              </Text>
-              <View
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  }
-                }
-              >
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  disabled={false}
-                  ellipsizeMode="tail"
-                  style={undefined}
-                >
-                  蔵書確認中
-                </Text>
-                <ActivityIndicator
-                  animating={true}
-                  color="#999999"
-                  hidesWhenStopped={true}
-                  size="small"
+                <View
                   style={
                     Object {
-                      "marginLeft": 5,
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     }
                   }
-                />
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={undefined}
+                  >
+                    蔵書確認中
+                  </Text>
+                  <ActivityIndicator
+                    animating={true}
+                    color="#999999"
+                    hidesWhenStopped={true}
+                    size="small"
+                    style={
+                      Object {
+                        "marginLeft": 5,
+                      }
+                    }
+                  />
+                </View>
               </View>
             </View>
           </View>
@@ -1128,108 +1172,119 @@ exports[`Storyshots BookList with many 1`] = `
         style={null}
       >
         <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
-          accessible={true}
-          hasTVPreferredFocus={undefined}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          nativeID={undefined}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          collapsable={undefined}
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-              },
-              undefined,
-            ]
+            Object {
+              "height": 0,
+              "opacity": 0,
+              "overflow": "hidden",
+            }
           }
-          testID={undefined}
-          tvParallaxProperties={undefined}
         >
           <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "backgroundColor": "#fafafa",
-                "flexDirection": "row",
-              }
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                undefined,
+              ]
             }
+            testID={undefined}
+            tvParallaxProperties={undefined}
           >
-            <Image
-              resizeMode="contain"
-              source={
-                Object {
-                  "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200",
-                }
-              }
-              style={
-                Object {
-                  "backgroundColor": "#dddddd",
-                  "height": 64,
-                  "margin": 10,
-                  "width": 64,
-                }
-              }
-            />
             <View
               style={
                 Object {
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "rgba(0, 0, 0, 0.1)",
-                  "borderTopWidth": 0.5,
-                  "flex": 1,
-                  "marginRight": 10,
-                  "padding": 5,
+                  "backgroundColor": "#fafafa",
+                  "flexDirection": "row",
                 }
               }
             >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200",
+                  }
+                }
+                style={
+                  Object {
+                    "backgroundColor": "#dddddd",
+                    "height": 64,
+                    "margin": 10,
+                    "width": 64,
+                  }
+                }
+              />
               <View
                 style={
                   Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "borderBottomWidth": 0.5,
+                    "borderColor": "rgba(0, 0, 0, 0.1)",
+                    "borderTopWidth": 0.5,
+                    "flex": 1,
+                    "marginRight": 10,
+                    "padding": 5,
                   }
                 }
               >
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    numberOfLines={2}
+                    style={
+                      Object {
+                        "flex": 1,
+                        "fontSize": 16,
+                        "fontWeight": "500",
+                      }
+                    }
+                  >
+                    IA／UXプラクティス
+                  </Text>
+                </View>
                 <Text
                   accessible={true}
                   allowFontScaling={true}
                   disabled={false}
                   ellipsizeMode="tail"
-                  numberOfLines={2}
+                  numberOfLines={1}
                   style={
                     Object {
-                      "flex": 1,
-                      "fontSize": 16,
-                      "fontWeight": "500",
+                      "color": "#9E9E9E",
+                      "fontSize": 12,
                     }
                   }
                 >
-                  IA／UXプラクティス
+                  坂本貴史
                 </Text>
               </View>
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-                numberOfLines={1}
-                style={
-                  Object {
-                    "color": "#9E9E9E",
-                    "fontSize": 12,
-                  }
-                }
-              >
-                坂本貴史
-              </Text>
             </View>
           </View>
         </View>
@@ -1288,108 +1343,119 @@ exports[`Storyshots BookList with one 1`] = `
         style={null}
       >
         <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
-          accessible={true}
-          hasTVPreferredFocus={undefined}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          nativeID={undefined}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          collapsable={undefined}
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-              },
-              undefined,
-            ]
+            Object {
+              "height": 0,
+              "opacity": 0,
+              "overflow": "hidden",
+            }
           }
-          testID={undefined}
-          tvParallaxProperties={undefined}
         >
           <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "backgroundColor": "#fafafa",
-                "flexDirection": "row",
-              }
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                undefined,
+              ]
             }
+            testID={undefined}
+            tvParallaxProperties={undefined}
           >
-            <Image
-              resizeMode="contain"
-              source={
-                Object {
-                  "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
-                }
-              }
-              style={
-                Object {
-                  "backgroundColor": "#dddddd",
-                  "height": 64,
-                  "margin": 10,
-                  "width": 64,
-                }
-              }
-            />
             <View
               style={
                 Object {
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "rgba(0, 0, 0, 0.1)",
-                  "borderTopWidth": 0.5,
-                  "flex": 1,
-                  "marginRight": 10,
-                  "padding": 5,
+                  "backgroundColor": "#fafafa",
+                  "flexDirection": "row",
                 }
               }
             >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
+                  }
+                }
+                style={
+                  Object {
+                    "backgroundColor": "#dddddd",
+                    "height": 64,
+                    "margin": 10,
+                    "width": 64,
+                  }
+                }
+              />
               <View
                 style={
                   Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "borderBottomWidth": 0.5,
+                    "borderColor": "rgba(0, 0, 0, 0.1)",
+                    "borderTopWidth": 0.5,
+                    "flex": 1,
+                    "marginRight": 10,
+                    "padding": 5,
                   }
                 }
               >
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    numberOfLines={2}
+                    style={
+                      Object {
+                        "flex": 1,
+                        "fontSize": 16,
+                        "fontWeight": "500",
+                      }
+                    }
+                  >
+                    guri & gura
+                  </Text>
+                </View>
                 <Text
                   accessible={true}
                   allowFontScaling={true}
                   disabled={false}
                   ellipsizeMode="tail"
-                  numberOfLines={2}
+                  numberOfLines={1}
                   style={
                     Object {
-                      "flex": 1,
-                      "fontSize": 16,
-                      "fontWeight": "500",
+                      "color": "#9E9E9E",
+                      "fontSize": 12,
                     }
                   }
                 >
-                  guri & gura
+                  author foo
                 </Text>
               </View>
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-                numberOfLines={1}
-                style={
-                  Object {
-                    "color": "#9E9E9E",
-                    "fontSize": 12,
-                  }
-                }
-              >
-                author foo
-              </Text>
             </View>
           </View>
         </View>
@@ -1454,108 +1520,119 @@ exports[`Storyshots BookList with two 1`] = `
         style={null}
       >
         <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
-          accessible={true}
-          hasTVPreferredFocus={undefined}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          nativeID={undefined}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          collapsable={undefined}
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-              },
-              undefined,
-            ]
+            Object {
+              "height": 0,
+              "opacity": 0,
+              "overflow": "hidden",
+            }
           }
-          testID={undefined}
-          tvParallaxProperties={undefined}
         >
           <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "backgroundColor": "#fafafa",
-                "flexDirection": "row",
-              }
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                undefined,
+              ]
             }
+            testID={undefined}
+            tvParallaxProperties={undefined}
           >
-            <Image
-              resizeMode="contain"
-              source={
-                Object {
-                  "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
-                }
-              }
-              style={
-                Object {
-                  "backgroundColor": "#dddddd",
-                  "height": 64,
-                  "margin": 10,
-                  "width": 64,
-                }
-              }
-            />
             <View
               style={
                 Object {
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "rgba(0, 0, 0, 0.1)",
-                  "borderTopWidth": 0.5,
-                  "flex": 1,
-                  "marginRight": 10,
-                  "padding": 5,
+                  "backgroundColor": "#fafafa",
+                  "flexDirection": "row",
                 }
               }
             >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
+                  }
+                }
+                style={
+                  Object {
+                    "backgroundColor": "#dddddd",
+                    "height": 64,
+                    "margin": 10,
+                    "width": 64,
+                  }
+                }
+              />
               <View
                 style={
                   Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "borderBottomWidth": 0.5,
+                    "borderColor": "rgba(0, 0, 0, 0.1)",
+                    "borderTopWidth": 0.5,
+                    "flex": 1,
+                    "marginRight": 10,
+                    "padding": 5,
                   }
                 }
               >
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    numberOfLines={2}
+                    style={
+                      Object {
+                        "flex": 1,
+                        "fontSize": 16,
+                        "fontWeight": "500",
+                      }
+                    }
+                  >
+                    guri & gura
+                  </Text>
+                </View>
                 <Text
                   accessible={true}
                   allowFontScaling={true}
                   disabled={false}
                   ellipsizeMode="tail"
-                  numberOfLines={2}
+                  numberOfLines={1}
                   style={
                     Object {
-                      "flex": 1,
-                      "fontSize": 16,
-                      "fontWeight": "500",
+                      "color": "#9E9E9E",
+                      "fontSize": 12,
                     }
                   }
                 >
-                  guri & gura
+                  author foo
                 </Text>
               </View>
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-                numberOfLines={1}
-                style={
-                  Object {
-                    "color": "#9E9E9E",
-                    "fontSize": 12,
-                  }
-                }
-              >
-                author foo
-              </Text>
             </View>
           </View>
         </View>
@@ -1565,108 +1642,119 @@ exports[`Storyshots BookList with two 1`] = `
         style={null}
       >
         <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
-          accessible={true}
-          hasTVPreferredFocus={undefined}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          nativeID={undefined}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          collapsable={undefined}
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-              },
-              undefined,
-            ]
+            Object {
+              "height": 0,
+              "opacity": 0,
+              "overflow": "hidden",
+            }
           }
-          testID={undefined}
-          tvParallaxProperties={undefined}
         >
           <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "backgroundColor": "#fafafa",
-                "flexDirection": "row",
-              }
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                undefined,
+              ]
             }
+            testID={undefined}
+            tvParallaxProperties={undefined}
           >
-            <Image
-              resizeMode="contain"
-              source={
-                Object {
-                  "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200",
-                }
-              }
-              style={
-                Object {
-                  "backgroundColor": "#dddddd",
-                  "height": 64,
-                  "margin": 10,
-                  "width": 64,
-                }
-              }
-            />
             <View
               style={
                 Object {
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "rgba(0, 0, 0, 0.1)",
-                  "borderTopWidth": 0.5,
-                  "flex": 1,
-                  "marginRight": 10,
-                  "padding": 5,
+                  "backgroundColor": "#fafafa",
+                  "flexDirection": "row",
                 }
               }
             >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200",
+                  }
+                }
+                style={
+                  Object {
+                    "backgroundColor": "#dddddd",
+                    "height": 64,
+                    "margin": 10,
+                    "width": 64,
+                  }
+                }
+              />
               <View
                 style={
                   Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "borderBottomWidth": 0.5,
+                    "borderColor": "rgba(0, 0, 0, 0.1)",
+                    "borderTopWidth": 0.5,
+                    "flex": 1,
+                    "marginRight": 10,
+                    "padding": 5,
                   }
                 }
               >
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    numberOfLines={2}
+                    style={
+                      Object {
+                        "flex": 1,
+                        "fontSize": 16,
+                        "fontWeight": "500",
+                      }
+                    }
+                  >
+                    はじめてのABCえほん
+                  </Text>
+                </View>
                 <Text
                   accessible={true}
                   allowFontScaling={true}
                   disabled={false}
                   ellipsizeMode="tail"
-                  numberOfLines={2}
+                  numberOfLines={1}
                   style={
                     Object {
-                      "flex": 1,
-                      "fontSize": 16,
-                      "fontWeight": "500",
+                      "color": "#9E9E9E",
+                      "fontSize": 12,
                     }
                   }
                 >
-                  はじめてのABCえほん
+                  仲田利津子/黒田昌代
                 </Text>
               </View>
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                disabled={false}
-                ellipsizeMode="tail"
-                numberOfLines={1}
-                style={
-                  Object {
-                    "color": "#9E9E9E",
-                    "fontSize": 12,
-                  }
-                }
-              >
-                仲田利津子/黒田昌代
-              </Text>
             </View>
           </View>
         </View>
