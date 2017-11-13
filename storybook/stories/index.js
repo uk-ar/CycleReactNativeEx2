@@ -171,3 +171,42 @@ storiesOf('Closeable', module)
        }}
     </Counter>
   ))
+
+
+import { ButtonGroup } from 'react-native-elements';
+
+class Sort extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      selectedIndex: 2
+    }
+    this.updateIndex = this.updateIndex.bind(this)
+  }
+
+  updateIndex (selectedIndex) {
+    this.setState({selectedIndex})
+  }
+
+  render () {
+    //const buttons = ['新しい', '古い', 'タイトル','著者名']
+    const buttons = ['全て', '蔵書あり', '貸出可']
+    //const buttons = ['New', 'Old', 'Title','Author']
+    const { selectedIndex } = this.state
+
+    return (
+      <ButtonGroup
+      onPress={this.updateIndex}
+      selectedIndex={selectedIndex}
+      buttons={buttons}
+      containerStyle={{height: 30}}
+      />
+    )
+  }
+}
+
+storiesOf('Sort', module)
+//.addDecorator(getStory => <CenterLeftView>{getStory(10)}</CenterLeftView>)
+  .add('with 3 items', () => (
+    <Sort />
+  ))
