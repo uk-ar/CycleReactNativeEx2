@@ -175,7 +175,7 @@ storiesOf('Closeable', module)
 
 import { ButtonGroup } from 'react-native-elements';
 
-class Sort extends React.Component {
+class Filter extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -205,8 +205,63 @@ class Sort extends React.Component {
   }
 }
 
-storiesOf('Sort', module)
+storiesOf('Filter', module)
 //.addDecorator(getStory => <CenterLeftView>{getStory(10)}</CenterLeftView>)
+  .add('with 3 items no state', () => (
+    <ButtonGroup
+      selectedIndex={0}
+      buttons={['全て', '蔵書あり', '貸出可']}
+      containerStyle={{height: 30}}
+    />
+  ))
   .add('with 3 items', () => (
-    <Sort />
+    <Filter />
+  ))
+  .add('with open and close', () => (
+    <Counter>
+      {(i)=>{
+         r = ["rentable","onLoan","noCollection"]
+         return (
+           <BookList
+             rejects={[r[i % 3]]}
+             data={[{
+                 isbn:'9784834032147',
+                 title:'guri & gura',
+                 author:'author foo',
+                 thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200',
+                 bucket:"liked",
+                 status:"rentable",
+               },{
+                 isbn: '9784828867472',
+                 title: 'はじめてのABCえほん',
+                 author: '仲田利津子/黒田昌代',
+                 thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200',
+                 bucket:"done",
+                 status:"onLoan"
+               },{
+                 title: 'ぐりとぐら(複数蔵書)',
+                 author: '中川李枝子/大村百合子',
+                 thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0825/9784834000825.jpg?_ex=200x200',
+                 isbn: '9784834000825',
+                 bucket:"borrowed",
+                 reserveUrl: 'http://api.calil.jp/reserve?id=af299d780fe86cf8b116dfda4725dc0f',
+                 status:"noCollection"
+               },{
+                 title: 'ぐりとぐらの1ねんかん(単一蔵書)',
+                 author: '中川李枝子/山脇百合子（絵本作家）',
+                 isbn: '9784834014655',
+                 thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4655/9784834014655.jpg?_ex=200x200',
+                 reserveUrl: 'https://www.amazon.co.jp/dp/4834014657',
+                 bucket:"search",
+                 status:"Loading"
+               },{
+                 title: 'IA／UXプラクティス',
+                 author: '坂本貴史',
+                 isbn: '9784862463241',
+                 thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200',
+               }]}
+           />
+         )
+       }}
+    </Counter>
   ))
