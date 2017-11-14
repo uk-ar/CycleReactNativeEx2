@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity,StyleSheet, Text, View,FlatList } from 'react-native';
 import run from '@cycle/rxjs-run'
 import StorybookUI from './storybook';
+import Expo from 'expo'
 
 import {
   Cycle,
@@ -86,7 +87,8 @@ run(main, {
   RN: makeReactNativeDriver()
 });
 
-module.exports = __DEV__ && typeof __TEST__ == 'undefined' ? StorybookUI : CycleRoot;
+//module.exports = __DEV__ && typeof __TEST__ == 'undefined' ? StorybookUI : CycleRoot;
+module.exports = Expo.Constants.manifest.extra.enableStoryBook || typeof __TEST__ == 'undefined' ? StorybookUI : CycleRoot;
 
 const styles = StyleSheet.create({
   container: {
