@@ -88,7 +88,7 @@ run(main, {
 });
 
 //module.exports = __DEV__ && typeof __TEST__ == 'undefined' ? StorybookUI : CycleRoot;
-module.exports = Expo.Constants.manifest.extra.enableStoryBook || typeof __TEST__ == 'undefined' ? StorybookUI : CycleRoot;
+module.exports = Expo.Constants.manifest.extra.enableStoryBook || (__DEV__ && typeof __TEST__ == 'undefined') ? StorybookUI : CycleRoot;
 
 const styles = StyleSheet.create({
   container: {
