@@ -11,6 +11,7 @@ import materialColor from 'material-colors';
 import { CenterLeftView, CenterView } from './CenterView';
 import { CloseableView } from '../../CloseableView';
 import { CycleRoot } from '../../cycle-react-native';
+import { SearchScene } from '../../SearchScene';
 
 import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from '../../Book/BookCell';
 
@@ -284,7 +285,7 @@ storiesOf('SearchBar', module)
   ))
 
 storiesOf('SearchScene', module)
-  .add('with all', () => (
+  .add('with plane', () => (
     <View>
       <SearchBar
         containerStyle={{
@@ -316,4 +317,23 @@ storiesOf('SearchScene', module)
           }]}
       />
     </View>
+  ))
+  .add('with class', () => (
+    <SearchScene
+      onChangeText={action('text-change')}
+      onClearText={action('text-clear')}
+      onChangeFilter={action('filter-change')}
+      onPress={action('book-press')}
+      showLoadingIcon={true}
+      selectedIndex={1}
+      rejects={[]}
+      data={[{
+          isbn:'9784834032147',
+          title:'guri & gura',
+          author:'author foo',
+          thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200',
+          bucket:"liked",
+          status:"rentable",
+        }]}
+    />
   ))
