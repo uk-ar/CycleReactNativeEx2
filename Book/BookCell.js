@@ -127,7 +127,8 @@ class BookList extends React.PureComponent {
     return (
       <CloseableView closed={closed}>
         <Book
-          onPress={this._onPress}
+          onPress={(isbn,url)=>
+            this.props.onPress && this.props.onPress({item, index})}
           isbn={item.isbn}
           title={item.title}
           author={item.author}
