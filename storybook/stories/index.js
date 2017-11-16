@@ -9,11 +9,11 @@ import { ButtonGroup, SearchBar } from 'react-native-elements';
 import materialColor from 'material-colors';
 
 import { CenterLeftView, CenterView } from './CenterView';
-import { CloseableView } from '../../CloseableView';
+import { CloseableView } from '../../components/CloseableView';
 import { CycleRoot } from '../../cycle-react-native';
-import { SearchScene } from '../../SearchScene';
+import { SearchScene } from '../../components/SearchScene';
 
-import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from '../../Book/BookCell';
+import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from '../../components/Book/BookCell';
 
 storiesOf('LibraryStatus', module)
   .addDecorator(getStory => <CenterLeftView>{getStory()}</CenterLeftView>)
