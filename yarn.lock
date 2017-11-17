@@ -2,10 +2,6 @@
 # yarn lockfile v1
 
 
-"@cycle/base@^4.0.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@cycle/base/-/base-4.3.0.tgz#464d320e5dbe80b3e3821195200607cdcf47198b"
-
 "@cycle/http@^14.8.0":
   version "14.8.0"
   resolved "https://registry.yarnpkg.com/@cycle/http/-/http-14.8.0.tgz#f688e0390761a122e765ba8c5ba61357df6ff664"
@@ -21,20 +17,17 @@
   dependencies:
     xstream "10.x || 11.x"
 
-"@cycle/rx-adapter@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@cycle/rx-adapter/-/rx-adapter-3.1.0.tgz#ccb92a1971c78b948b1e1a9010e54890958a0d22"
-
-"@cycle/rxjs-adapter@^3.0.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@cycle/rxjs-adapter/-/rxjs-adapter-3.3.0.tgz#1b26d94b2154d44667690e334a13609c47a83ca6"
-
-"@cycle/rxjs-run@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@cycle/rxjs-run/-/rxjs-run-3.0.0.tgz#89c55559d24eae4f7b41dcacc775dc3c6f797e79"
+"@cycle/run@1.0.0-rc.9":
+  version "1.0.0-rc.9"
+  resolved "https://registry.yarnpkg.com/@cycle/run/-/run-1.0.0-rc.9.tgz#4309f6037c988a6dda1c4b59aac90449b0f14c45"
   dependencies:
-    "@cycle/base" "^4.0.0"
-    "@cycle/rxjs-adapter" "^3.0.0"
+    xstream "10.x"
+
+"@cycle/rxjs-run@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@cycle/rxjs-run/-/rxjs-run-4.0.0.tgz#1f6bb5454aef5e5c3130f2a9994e612c11460794"
+  dependencies:
+    "@cycle/run" "1.0.0-rc.9"
 
 "@expo/bunyan@1.8.10", "@expo/bunyan@^1.8.10":
   version "1.8.10"
@@ -7401,7 +7394,7 @@ rx@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
-rxjs@^5.0.0-beta.8:
+rxjs@^5.0.0:
   version "5.5.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.2.tgz#28d403f0071121967f18ad665563255d54236ac3"
   dependencies:
@@ -7976,7 +7969,7 @@ swap-case@^1.1.0:
     lower-case "^1.1.1"
     upper-case "^1.1.1"
 
-symbol-observable@^1.0.1, symbol-observable@^1.0.3, symbol-observable@^1.0.4:
+symbol-observable@^1.0.1, symbol-observable@^1.0.2, symbol-observable@^1.0.3, symbol-observable@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.0.4.tgz#29bf615d4aa7121bdd898b22d4b3f9bc4e2aa03d"
 
@@ -8843,6 +8836,12 @@ xstream@*, "xstream@10.x || 11.x", xstream@^11.0.0:
   resolved "https://registry.yarnpkg.com/xstream/-/xstream-11.0.0.tgz#2018c3c4e573f76b62b9cf96a17a46876ab120e0"
   dependencies:
     symbol-observable "^1.0.4"
+
+xstream@10.x:
+  version "10.9.0"
+  resolved "https://registry.yarnpkg.com/xstream/-/xstream-10.9.0.tgz#db7934cec2da01360d43abbbc879b84524397b55"
+  dependencies:
+    symbol-observable "^1.0.2"
 
 xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
   version "4.0.1"

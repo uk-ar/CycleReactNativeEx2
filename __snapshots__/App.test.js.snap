@@ -3733,7 +3733,7 @@ exports[`Storyshots Main cycle 1`] = `
     }
   >
     <TextInput
-      onChangeText={undefined}
+      onChangeText={[Function]}
       onClearText={undefined}
       placeholder="Type Here..."
       placeholderTextColor="#86939e"
