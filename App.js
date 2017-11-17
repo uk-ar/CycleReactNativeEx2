@@ -3,10 +3,12 @@ import { TouchableOpacity,StyleSheet, Text, View,FlatList } from 'react-native';
 import { makeHTTPDriver } from '@cycle/http';
 import StorybookUI from './storybook';
 import Expo from 'expo'
-import Rx from 'rx';
+import Rx from 'rxjs/Rx';
 import { SearchScene } from './components/SearchScene';
-import { run } from '@cycle/rx-run';
-import RxAdapter from '@cycle/rx-adapter';
+import { run } from '@cycle/rxjs-run';
+import RxJSAdapter from '@cycle/rxjs-adapter';
+//import RxAdapter from '@cycle/rx-adapter';
+
 //const intent = require('./intent');
 //const model = require('./model');
 //const view = require('./view');
@@ -49,7 +51,7 @@ function main({RN, HTTP}) {
                     .combineLatest(
                       s1$,
                       s2$,
-                      (a,b)=>a+b
+                      (a,b)=>[a,b]
                     )
                 .do(args => console.log('c1:', args))
                 //.subscribe()
@@ -83,7 +85,7 @@ function main({RN, HTTP}) {
 
 const RNDriver = makeReactNativeDriver('CycleReactNativeEx');
 run(main, {
-  RN: sink$ => RNDriver(sink$, RxAdapter),
+  RN: sink$ => RNDriver(sink$, RxJSAdapter),
   //HTTP: makeHTTPDriver()
 });
 
