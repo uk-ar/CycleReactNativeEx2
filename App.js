@@ -6,7 +6,6 @@ import Expo from 'expo'
 import Rx from 'rxjs/Rx';
 import { SearchScene } from './components/SearchScene';
 import { run } from '@cycle/rxjs-run';
-import RxJSAdapter from '@cycle/rxjs-adapter';
 //import RxAdapter from '@cycle/rx-adapter';
 
 //const intent = require('./intent');
@@ -83,9 +82,10 @@ function main({RN, HTTP}) {
   };
 }
 
-const RNDriver = makeReactNativeDriver('CycleReactNativeEx');
+//const RNDriver = makeReactNativeDriver('CycleReactNativeEx');
 run(main, {
-  RN: sink$ => RNDriver(sink$, RxJSAdapter),
+  RN: makeReactNativeDriver('CycleReactNativeEx'),
+  //sink$ => RNDriver(sink$, RxJSAdapter),
   //HTTP: makeHTTPDriver()
 });
 

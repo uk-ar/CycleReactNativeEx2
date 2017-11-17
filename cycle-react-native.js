@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Rx from 'rxjs/Rx';
 import { TouchableOpacity, View, Text } from 'react-native';
 //import {adapt} from '@cycle/run/lib/adapt';
+import RxJSAdapter from '@cycle/rxjs-adapter';
 
 let handlers = {}
 
@@ -68,7 +69,7 @@ function makeReactNativeDriver(){
     return handler;
   }
 
-  return function reactNativeDriver(vtree$){
+  function reactNativeDriver(vtree$){
     //console.log(vtree$)
     //sink$ = Rx.Observable.from(vtree$).shareReplay();
     sink$ = vtree$.shareReplay();
@@ -91,6 +92,8 @@ function makeReactNativeDriver(){
       }
     }
   }
+  reactNativeDriver.streamAdapter = RxJSAdapter;
+  return reactNativeDriver;
 }
 class CycleRoot extends React.Component {
   constructor(props) {
