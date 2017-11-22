@@ -124,6 +124,9 @@ class BookList extends React.PureComponent {
   }
   _renderItem = ({item,index}) => {
     closed = this.props.rejects && this.props.rejects.includes(item.status)
+    extraData = this.props.extraData
+    library = extraData && extraData[item.isbn] ? extraData[item.isbn] :
+              extraData ? { status:"Loading" } : {}
     return (
       <CloseableView closed={closed}>
         <Book
@@ -133,9 +136,9 @@ class BookList extends React.PureComponent {
           title={item.title}
           author={item.author}
           thumbnail={item.thumbnail}
-          reserveUrl={item.reserveUrl}
           icon={icons[item.bucket]}
-          status={libraryStatuses[item.status]}
+          reserveUrl={library.reserveUrl}
+          status={libraryStatuses[library.status]}
         />
       </CloseableView>
     );}
@@ -144,6 +147,7 @@ class BookList extends React.PureComponent {
       //        extraData={this.state}
       <FlatList
         data={this.props.data}
+        extraData={this.props.extraData}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
       />

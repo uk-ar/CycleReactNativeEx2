@@ -83,29 +83,10 @@ exports[`Storyshots Book with full book 1`] = `
         >
           <Text
             accessible={true}
-            allowFontScaling={false}
+            allowFontScaling={true}
             disabled={false}
             ellipsizeMode="tail"
-            style={
-              Array [
-                Object {
-                  "color": undefined,
-                  "fontSize": 20,
-                },
-                Object {
-                  "color": "#ffc107",
-                  "marginRight": 10,
-                },
-                Object {
-                  "fontFamily": "awesome",
-                  "fontStyle": "normal",
-                  "fontWeight": "normal",
-                },
-              ]
-            }
-          >
-            
-          </Text>
+          />
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -442,7 +423,6 @@ exports[`Storyshots BookList with many 1`] = `
           "author": "author foo",
           "bucket": "liked",
           "isbn": "9784834032147",
-          "status": "rentable",
           "thumbnail": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
           "title": "guri & gura",
         },
@@ -450,7 +430,6 @@ exports[`Storyshots BookList with many 1`] = `
           "author": "仲田利津子/黒田昌代",
           "bucket": "done",
           "isbn": "9784828867472",
-          "status": "onLoan",
           "thumbnail": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200",
           "title": "はじめてのABCえほん",
         },
@@ -459,7 +438,6 @@ exports[`Storyshots BookList with many 1`] = `
           "bucket": "borrowed",
           "isbn": "9784834000825",
           "reserveUrl": "http://api.calil.jp/reserve?id=af299d780fe86cf8b116dfda4725dc0f",
-          "status": "noCollection",
           "thumbnail": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0825/9784834000825.jpg?_ex=200x200",
           "title": "ぐりとぐら(複数蔵書)",
         },
@@ -468,7 +446,6 @@ exports[`Storyshots BookList with many 1`] = `
           "bucket": "search",
           "isbn": "9784834014655",
           "reserveUrl": "https://www.amazon.co.jp/dp/4834014657",
-          "status": "Loading",
           "thumbnail": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4655/9784834014655.jpg?_ex=200x200",
           "title": "ぐりとぐらの1ねんかん(単一蔵書)",
         },
@@ -481,6 +458,22 @@ exports[`Storyshots BookList with many 1`] = `
       ]
     }
     disableVirtualization={false}
+    extraData={
+      Object {
+        "9784828867472": Object {
+          "status": "onLoan",
+        },
+        "9784834000825": Object {
+          "status": "noCollection",
+        },
+        "9784834014655": Object {
+          "status": "Loading",
+        },
+        "9784834032147": Object {
+          "status": "rentable",
+        },
+      }
+    }
     getItem={[Function]}
     getItemCount={[Function]}
     horizontal={false}
@@ -1303,6 +1296,35 @@ exports[`Storyshots BookList with many 1`] = `
                 >
                   坂本貴史
                 </Text>
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={undefined}
+                  >
+                    蔵書確認中
+                  </Text>
+                  <ActivityIndicator
+                    animating={true}
+                    color="#999999"
+                    hidesWhenStopped={true}
+                    size="small"
+                    style={
+                      Object {
+                        "marginLeft": 5,
+                      }
+                    }
+                  />
+                </View>
               </View>
             </View>
           </View>
@@ -1335,6 +1357,7 @@ exports[`Storyshots BookList with one 1`] = `
       ]
     }
     disableVirtualization={false}
+    extraData={undefined}
     getItem={[Function]}
     getItemCount={[Function]}
     horizontal={false}
@@ -1512,6 +1535,7 @@ exports[`Storyshots BookList with two 1`] = `
       ]
     }
     disableVirtualization={false}
+    extraData={undefined}
     getItem={[Function]}
     getItemCount={[Function]}
     horizontal={false}
@@ -2601,6 +2625,22 @@ exports[`Storyshots Filter with open and close 1`] = `
       ]
     }
     disableVirtualization={false}
+    extraData={
+      Object {
+        "9784828867472": Object {
+          "status": "onLoan",
+        },
+        "9784834000825": Object {
+          "status": "noCollection",
+        },
+        "9784834014655": Object {
+          "status": "Loading",
+        },
+        "9784834032147": Object {
+          "status": "rentable",
+        },
+      }
+    }
     getItem={[Function]}
     getItemCount={[Function]}
     horizontal={false}
@@ -3423,6 +3463,35 @@ exports[`Storyshots Filter with open and close 1`] = `
                 >
                   坂本貴史
                 </Text>
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    disabled={false}
+                    ellipsizeMode="tail"
+                    style={undefined}
+                  >
+                    蔵書確認中
+                  </Text>
+                  <ActivityIndicator
+                    animating={true}
+                    color="#999999"
+                    hidesWhenStopped={true}
+                    size="small"
+                    style={
+                      Object {
+                        "marginLeft": 5,
+                      }
+                    }
+                  />
+                </View>
               </View>
             </View>
           </View>
@@ -3759,9 +3828,7 @@ exports[`Storyshots Main cycle 1`] = `
             "backgroundColor": "#eeeeee",
           },
           undefined,
-          Object {
-            "paddingRight": 30,
-          },
+          false,
         ]
       }
       underlineColorAndroid="transparent"
@@ -3798,24 +3865,6 @@ exports[`Storyshots Main cycle 1`] = `
     >
       
     </Text>
-    <ActivityIndicator
-      animating={true}
-      color="#86939e"
-      hidesWhenStopped={true}
-      size="small"
-      style={
-        Array [
-          Object {
-            "backgroundColor": "transparent",
-            "position": "absolute",
-            "right": 16,
-            "top": 13,
-          },
-          undefined,
-          undefined,
-        ]
-      }
-    />
   </View>
   <View
     style={
@@ -4106,19 +4155,9 @@ exports[`Storyshots Main cycle 1`] = `
     </View>
   </View>
   <RCTScrollView
-    data={
-      Array [
-        Object {
-          "author": "author foo",
-          "bucket": "liked",
-          "isbn": "9784834032147",
-          "status": "rentable",
-          "thumbnail": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
-          "title": "guri & gura",
-        },
-      ]
-    }
+    data={Array []}
     disableVirtualization={false}
+    extraData={Object {}}
     getItem={[Function]}
     getItemCount={[Function]}
     horizontal={false}
@@ -4140,177 +4179,7 @@ exports[`Storyshots Main cycle 1`] = `
     updateCellsBatchingPeriod={50}
     windowSize={21}
   >
-    <View>
-      <View
-        onLayout={[Function]}
-        style={null}
-      >
-        <View
-          collapsable={undefined}
-          style={
-            Object {
-              "height": 0,
-              "opacity": 0,
-              "overflow": "hidden",
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hasTVPreferredFocus={undefined}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            nativeID={undefined}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <View
-              style={
-                Object {
-                  "backgroundColor": "#fafafa",
-                  "flexDirection": "row",
-                }
-              }
-            >
-              <Image
-                resizeMode="contain"
-                source={
-                  Object {
-                    "uri": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
-                  }
-                }
-                style={
-                  Object {
-                    "backgroundColor": "#dddddd",
-                    "height": 64,
-                    "margin": 10,
-                    "width": 64,
-                  }
-                }
-              />
-              <View
-                style={
-                  Object {
-                    "borderBottomWidth": 0.5,
-                    "borderColor": "rgba(0, 0, 0, 0.1)",
-                    "borderTopWidth": 0.5,
-                    "flex": 1,
-                    "marginRight": 10,
-                    "padding": 5,
-                  }
-                }
-              >
-                <View
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    }
-                  }
-                >
-                  <Text
-                    accessible={true}
-                    allowFontScaling={false}
-                    disabled={false}
-                    ellipsizeMode="tail"
-                    style={
-                      Array [
-                        Object {
-                          "color": undefined,
-                          "fontSize": 20,
-                        },
-                        Object {
-                          "color": "#03a9f4",
-                          "marginRight": 10,
-                        },
-                        Object {
-                          "fontFamily": "awesome",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                      ]
-                    }
-                  >
-                    
-                  </Text>
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    disabled={false}
-                    ellipsizeMode="tail"
-                    numberOfLines={2}
-                    style={
-                      Object {
-                        "flex": 1,
-                        "fontSize": 16,
-                        "fontWeight": "500",
-                      }
-                    }
-                  >
-                    guri & gura
-                  </Text>
-                </View>
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  disabled={false}
-                  ellipsizeMode="tail"
-                  numberOfLines={1}
-                  style={
-                    Object {
-                      "color": "#9E9E9E",
-                      "fontSize": 12,
-                    }
-                  }
-                >
-                  author foo
-                </Text>
-                <View
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    }
-                  }
-                >
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    disabled={false}
-                    ellipsizeMode="tail"
-                    style={
-                      Object {
-                        "color": "#4CAF50",
-                      }
-                    }
-                  >
-                    貸出可
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-    </View>
+    <View />
   </RCTScrollView>
 </View>
 `;
@@ -4823,13 +4692,13 @@ exports[`Storyshots SearchScene with class 1`] = `
           "author": "author foo",
           "bucket": "liked",
           "isbn": "9784834032147",
-          "status": "rentable",
           "thumbnail": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
           "title": "guri & gura",
         },
       ]
     }
     disableVirtualization={false}
+    extraData={undefined}
     getItem={[Function]}
     getItemCount={[Function]}
     horizontal={false}
@@ -4994,28 +4863,6 @@ exports[`Storyshots SearchScene with class 1`] = `
                 >
                   author foo
                 </Text>
-                <View
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    }
-                  }
-                >
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    disabled={false}
-                    ellipsizeMode="tail"
-                    style={
-                      Object {
-                        "color": "#4CAF50",
-                      }
-                    }
-                  >
-                    貸出可
-                  </Text>
-                </View>
               </View>
             </View>
           </View>
@@ -5429,13 +5276,13 @@ exports[`Storyshots SearchScene with plane 1`] = `
           "author": "author foo",
           "bucket": "liked",
           "isbn": "9784834032147",
-          "status": "rentable",
           "thumbnail": "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
           "title": "guri & gura",
         },
       ]
     }
     disableVirtualization={false}
+    extraData={undefined}
     getItem={[Function]}
     getItemCount={[Function]}
     horizontal={false}
@@ -5600,28 +5447,6 @@ exports[`Storyshots SearchScene with plane 1`] = `
                 >
                   author foo
                 </Text>
-                <View
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    }
-                  }
-                >
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    disabled={false}
-                    ellipsizeMode="tail"
-                    style={
-                      Object {
-                        "color": "#4CAF50",
-                      }
-                    }
-                  >
-                    貸出可
-                  </Text>
-                </View>
               </View>
             </View>
           </View>

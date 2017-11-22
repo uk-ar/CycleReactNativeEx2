@@ -17,7 +17,6 @@ function intent(RN, HTTP) {
   const changeQuery$ = RN
     .select('search')
     .events('changeText')
-    .do((e)=>console.log(e))
     .share()
 
   const press$ = RN
@@ -34,13 +33,11 @@ function intent(RN, HTTP) {
                              'application/json; charset=utf-8' },
                   accept: 'Accept-Language:ja,en-US;q=0.8,en;q=0.6'
                 }))
-                .do((e)=>console.log(e))
                 .share()
 
   const searchedBooksResponse$ =
     HTTP.select('search')
         .switch()
-        .do((e)=>console.log(e))
         .map(res => res.body)
         .map(body =>
           body.Items
@@ -55,7 +52,6 @@ function intent(RN, HTTP) {
                 thumbnail: largeImageUrl,
               }))
         )
-        .do((e)=>console.log(e))
         .share();
 
   function createBooksStatusStream(books$, category) {
@@ -63,6 +59,7 @@ function intent(RN, HTTP) {
       books$
         .map(books => books.map(book => book.isbn))
         .filter(isbns => isbns.length > 0)
+        //.do((e)=>console.log(e))
         .map(q => ({
           category,
           url: CALIL_STATUS_API + encodeURI(q)
@@ -75,7 +72,6 @@ function intent(RN, HTTP) {
     //switchMap?
           .map(stream =>
             stream.map(res => res.body)
-                  .do((e)=>console.log("ret:",e))
             // ok to retry but not output stream
             // .flatMap(result => result.continue === 1 ?
             //                 [result, Observable.throw(error)] : [result])
@@ -89,58 +85,43 @@ function intent(RN, HTTP) {
                   .retryWhen(errors =>
                     errors.delay(2000)
                   )
+                  .map(result => result.books)
                   .distinctUntilChanged((i,j) =>
                     JSON.stringify(i)==JSON.stringify(j))
-                  .map(result => result.books))
+          )
           .switch()
-          .do((e)=>console.log("change:",e))
+    /* .do((e)=>console.log(Object.keys(e).map((isbn)=>
+     *   e[isbn][LIBRARY_ID].status)))*/
+          .map((bookStatuses)=>
+            Object.keys(bookStatuses)
+                  .reduce((acc,isbn)=>{
+                    let {libkey, reserveurl, status} =
+                      bookStatuses[isbn][LIBRARY_ID]
+                    libkey = libkey || {}
+                    //{xxxx.Tokyo_Fuchu.{libkey,reserveUrl,status}}
+                    if(status === "Running"){
+                      s="Loading"
+                    }else if(Object.keys(libkey).length === 0){
+                      s="noCollection"
+                    }else if(_.values(libkey)
+                              .some(i => i === '貸出可')){
+                      s="rentable"
+                    }else{
+                      s="onLoan"
+                    }
+                    acc[isbn]={
+                      reserveUrl: reserveurl,
+                      status: s
+                    }
+                    return acc
+                  },{})
+          )
+          .distinctUntilChanged((i,j) =>
+            JSON.stringify(i)==JSON.stringify(j))
           .shareReplay();
 
-    function mergeBooksStatus(books, booksStatus) {
-      return books.map((book) => {
-        let libraryStatus;
-        if ((booksStatus[book.isbn] !== undefined) && // not yet retrieve
-            // sub library exist?
-            (booksStatus[book.isbn][LIBRARY_ID].libkey !== undefined)) {
-          const bookStatus = booksStatus[book.isbn][LIBRARY_ID];
-          // TODO:support error case
-          // if bookStatus.status == "Error"
-          libraryStatus = {
-            status: bookStatus.libkey,
-            reserveUrl: bookStatus.reserveurl,
-            //Support multiple library
-            rentable: _.values(bookStatus.libkey)
-                       .some(i => i === '貸出可'),
-            exist: Object.keys(bookStatus.libkey)
-                         .length !== 0,
-          };
-        }
-        // TODO:support books from search result
-        // TODO:support books from saved result
-        // TODO:move to booksStatusResponse$
-        return ({
-          ...book,
-          libraryStatus,
-          //active: true,
-        });
-      }
-      );
-    }
-
-    const booksStatus$ =
-      Rx.Observable
-        .combineLatest(
-          books$,
-          booksStatusResponse$.startWith({}),
-          mergeBooksStatus,
-        )
-        .distinctUntilChanged((i,j) =>
-          JSON.stringify(i)==JSON.stringify(j))
-        .map(books =>
-          books.map(book => ({ ...book, key: `isbn-${book.isbn}` })))
-        .shareReplay();
     return ({
-      booksStatus$,
+      booksStatus$:booksStatusResponse$,
       requestStatus$ });
   }
 
@@ -154,10 +135,6 @@ function intent(RN, HTTP) {
                      .merge(requestSearchedBooks$,
                             requestSearchedBooksStatus$);
 
-  searchedBooksStatus$
-    .do((e)=>console.log("sb:",e))
-    .subscribe();
-
   const booksLoadingState$ =
     requestSearchedBooks$
       .map(_ => true)
@@ -166,6 +143,7 @@ function intent(RN, HTTP) {
       .shareReplay();
 
   return {
+    searchedBooksResponse$,
     searchedBooksStatus$,
     booksLoadingState$,
     request$,
@@ -175,10 +153,11 @@ function model(actions) {
   const state$ = Rx
     .Observable
     .combineLatest(
-      actions.searchedBooksStatus$,
+      actions.searchedBooksResponse$.startWith([]),
+      actions.searchedBooksStatus$.startWith({}),
       actions.booksLoadingState$.startWith(false),
-      (searchedBooks, booksLoadingState ) => ({
-        searchedBooks, booksLoadingState }));
+      (searchedBooks, searchedBooksStatus, booksLoadingState ) =>
+        ({ searchedBooks, searchedBooksStatus, booksLoadingState }));
   return state$;
 }
 module.exports = { intent, model }

@@ -147,20 +147,32 @@ storiesOf('BookList', module)
   ))
   .add('with many', () => (
     <BookList
+      extraData={{
+        9784834032147:{
+          status:"rentable"
+        },
+        9784828867472:{
+          status:"onLoan"
+        },
+        9784834000825:{
+          status:"noCollection"
+        },
+        9784834014655:{
+          status:"Loading"
+        }
+      }}
       data={[{
           isbn:'9784834032147',
           title:'guri & gura',
           author:'author foo',
           thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200',
           bucket:"liked",
-          status:"rentable",
         },{
           isbn: '9784828867472',
           title: 'はじめてのABCえほん',
           author: '仲田利津子/黒田昌代',
           thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200',
           bucket:"done",
-          status:"onLoan"
         },{
           title: 'ぐりとぐら(複数蔵書)',
           author: '中川李枝子/大村百合子',
@@ -168,7 +180,6 @@ storiesOf('BookList', module)
           isbn: '9784834000825',
           bucket:"borrowed",
           reserveUrl: 'http://api.calil.jp/reserve?id=af299d780fe86cf8b116dfda4725dc0f',
-          status:"noCollection"
         },{
           title: 'ぐりとぐらの1ねんかん(単一蔵書)',
           author: '中川李枝子/山脇百合子（絵本作家）',
@@ -176,7 +187,6 @@ storiesOf('BookList', module)
           thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4655/9784834014655.jpg?_ex=200x200',
           reserveUrl: 'https://www.amazon.co.jp/dp/4834014657',
           bucket:"search",
-          status:"Loading"
         },{
           title: 'IA／UXプラクティス',
           author: '坂本貴史',
@@ -290,6 +300,20 @@ storiesOf('Filter', module)
          r = ["rentable","onLoan","noCollection"]
          return (
            <BookList
+             extraData={{
+               9784834032147:{
+                 status:"rentable"
+               },
+               9784828867472:{
+                 status:"onLoan"
+               },
+               9784834000825:{
+                 status:"noCollection"
+               },
+               9784834014655:{
+                 status:"Loading"
+               }
+             }}
              rejects={[r[i % 3]]}
              data={[{
                  isbn:'9784834032147',
@@ -377,7 +401,6 @@ storiesOf('SearchScene', module)
             author:'author foo',
             thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200',
             bucket:"liked",
-            status:"rentable",
           }]}
       />
     </View>
@@ -398,7 +421,6 @@ storiesOf('SearchScene', module)
           author:'author foo',
           thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200',
           bucket:"liked",
-          status:"rentable",
         }]}
     />
   ))

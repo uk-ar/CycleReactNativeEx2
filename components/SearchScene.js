@@ -17,7 +17,7 @@ class SearchScene extends React.Component {
   }
   render () {
     let { onChangeText,onClearText,onChangeFilter,onPress,
-          showLoadingIcon,selectedIndex,rejects,data
+          showLoadingIcon,selectedIndex,rejects,data,extraData
     } = this.props
     return (
       <View>
@@ -42,6 +42,7 @@ class SearchScene extends React.Component {
           rejects={rejects}
           onPress={onPress}
           data={data}
+          extraData={extraData}
         />
       </View>
     )
