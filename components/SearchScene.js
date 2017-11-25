@@ -14,9 +14,10 @@ class SearchScene extends React.Component {
     onClearText:PropTypes.func,
     onChangeFilter:PropTypes.func,
     onPress:PropTypes.func,
+    onEndReached:PropTypes.func
   }
   render () {
-    let { onChangeText,onClearText,onChangeFilter,onPress,
+    let { onChangeText,onClearText,onChangeFilter,onPress,onEndReached,
           showLoadingIcon,selectedIndex,rejects,data,extraData
     } = this.props
     return (
@@ -41,6 +42,7 @@ class SearchScene extends React.Component {
         <BookList
           rejects={rejects}
           onPress={onPress}
+          onEndReached={onEndReached}
           data={data}
           extraData={extraData}
         />

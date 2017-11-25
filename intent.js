@@ -17,42 +17,100 @@ function intent(RN, HTTP) {
   const changeQuery$ = RN
     .select('search')
     .events('changeText')
+    .debounceTime(500)
+    .filter(query => query.length > 1)
+    .distinctUntilChanged()
     .share()
 
   const press$ = RN
     .select('search')
     .events('press')
 
+  const page$ =
+    changeQuery$.startWith("")
+                //.do(e=>console.log(e))
+      .switchMap((e)=>{
+        //.flatMap((e)=>{
+        console.log(e)
+        return RN.select('search')
+                 .events('endReached')
+                 .startWith(2)
+                 .map(()=>+1)
+        //.scan((acc,delta)=>acc+delta,1)
+                 .scan((page)=>page+1)
+          //.do((e)=>console.log(e))
+      }
+      )//
+  page$.subscribe()
+  //Rx.Observable
   const requestSearchedBooks$ =
-    changeQuery$.debounceTime(500)
-                .filter(query => query.length > 1)
-                .map(q => ({
-                  category: 'search',
-                  url: RAKUTEN_SEARCH_API + encodeURI(q),
-                  headers: { 'Content-Type':
-                             'application/json; charset=utf-8' },
-                  accept: 'Accept-Language:ja,en-US;q=0.8,en;q=0.6'
-                }))
-                .share()
+    page$
+      //.map((page)=>{
+      .combineLatest(changeQuery$,(page,query)=>{
+        console.log(query,page)
+        return {
+          category: 'search',
+          url: RAKUTEN_SEARCH_API + encodeURI(query) +
+               "&page=" + page,
+          headers: { 'Content-Type':
+                     'application/json; charset=utf-8' },
+          accept: 'Accept-Language:ja,en-US;q=0.8,en;q=0.6'
+        }
+      })
+      .do(e=>console.log(e))
+      .share()
+    /* changeQuery$//.startWith("")
+       //.do(e=>console.log(e))
+     *             .switchMap((query)=>{
+     *               return page$
+     *                 .map((page)=>{
+     *                   //.combineLatest(changeQuery$,(page,query)=>{
+     *                   console.log(query,page)
+     *                   return {
+     *                     category: 'search',
+     *                     url: RAKUTEN_SEARCH_API + encodeURI(query) +
+     *                          "&page=" + page,
+     *                     headers: { 'Content-Type':
+     *                                'application/json; charset=utf-8' },
+     *                     accept: 'Accept-Language:ja,en-US;q=0.8,en;q=0.6'
+     *                   }
+     *                 })
+     *             })
+     *             .do(e=>console.log(e))
+     *             .share()*/
+
+  function itemsToBook(items){
+    return items
+      .filter(book => book.isbn)
+    // reject non book
+      .filter(book =>
+        book.isbn.startsWith('978') || book.isbn.startsWith('979'))
+      .map(({ title, author, isbn, largeImageUrl }) => ({
+        title: title.replace(/^【バーゲン本】/, ''),
+        author,
+        isbn,
+        thumbnail: largeImageUrl,
+      }))
+  }
 
   const searchedBooksResponse$ =
-    HTTP.select('search')
-        .switch()
-        .map(res => res.body)
-        .map(body =>
-          body.Items
-              .filter(book => book.isbn)
-          // reject non book
-              .filter(book =>
-                book.isbn.startsWith('978') || book.isbn.startsWith('979'))
-              .map(({ title, author, isbn, largeImageUrl }) => ({
-                title: title.replace(/^【バーゲン本】/, ''),
-                author,
-                isbn,
-                thumbnail: largeImageUrl,
-              }))
-        )
-        .share();
+    changeQuery$.startWith("")
+                .do(e=>console.log(e))
+                .switchMap((e)=>{
+                  return HTTP
+                    .select('search')
+                    .mergeAll()
+                    .do(e=>console.log(e))
+                    .map(res => res.body)
+                    .map(body =>
+                      itemsToBook(body.Items))
+                    .do((e)=>console.log(e))
+                  //https://gitter.im/cyclejs/cyclejs/archives/2016/03/30
+                    .startWith([])
+                    .scan((currentBooks,newBooks) => (
+                      currentBooks.concat(newBooks)))
+                })
+                .share();
 
   function createBooksStatusStream(books$, category) {
     const requestStatus$ =
@@ -85,11 +143,9 @@ function intent(RN, HTTP) {
                   .retryWhen(errors =>
                     errors.delay(2000)
                   )
-                  .map(result => result.books)
-                  .distinctUntilChanged((i,j) =>
-                    JSON.stringify(i)==JSON.stringify(j))
           )
           .switch()
+          .map(result => result.books)
     /* .do((e)=>console.log(Object.keys(e).map((isbn)=>
      *   e[isbn][LIBRARY_ID].status)))*/
           .map((bookStatuses)=>
@@ -145,7 +201,7 @@ function intent(RN, HTTP) {
 function model(actions) {
   const searchedBooks$ =
     actions.searchedBooksResponse$
-           .merge(actions.requestSearchedBooks$.map(_=>[]))
+           //.merge(actions.requestSearchedBooks$.map(_=>[]))
            .distinctUntilChanged()
 
   const booksLoadingState$ =
