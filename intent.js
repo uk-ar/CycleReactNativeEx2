@@ -20,34 +20,37 @@ function intent(RN, HTTP) {
     .debounceTime(500)
     .filter(query => query.length > 1)
     .distinctUntilChanged()
+    //.do(e=>console.log(e))
     .share()
 
   const press$ = RN
     .select('search')
     .events('press')
 
+  const changeFilter$ = RN
+    .select('search')
+    .events('changeFilter')
+    //.do(e=>console.log(e))
+    //.subscribe()
+
   const page$ =
-    changeQuery$.startWith("")
-                //.do(e=>console.log(e))
-      .switchMap((e)=>{
-        //.flatMap((e)=>{
-        console.log(e)
+    changeQuery$
+      .startWith("")
+  // reset
+  // https://stackoverflow.com/questions/31434606/rxjs-make-counter-with-reset-stateless
+      .switchMap((query)=>{
+        //console.log(query)
         return RN.select('search')
                  .events('endReached')
-                 .startWith(2)
-                 .map(()=>+1)
-        //.scan((acc,delta)=>acc+delta,1)
+                 .startWith(1)
                  .scan((page)=>page+1)
-          //.do((e)=>console.log(e))
-      }
-      )//
-  page$.subscribe()
-  //Rx.Observable
+                 .map((page)=>({query,page}))
+      })
+
   const requestSearchedBooks$ =
     page$
-      //.map((page)=>{
-      .combineLatest(changeQuery$,(page,query)=>{
-        console.log(query,page)
+      .map(({query,page})=>{
+        //console.log(query,page)
         return {
           category: 'search',
           url: RAKUTEN_SEARCH_API + encodeURI(query) +
@@ -59,25 +62,6 @@ function intent(RN, HTTP) {
       })
       .do(e=>console.log(e))
       .share()
-    /* changeQuery$//.startWith("")
-       //.do(e=>console.log(e))
-     *             .switchMap((query)=>{
-     *               return page$
-     *                 .map((page)=>{
-     *                   //.combineLatest(changeQuery$,(page,query)=>{
-     *                   console.log(query,page)
-     *                   return {
-     *                     category: 'search',
-     *                     url: RAKUTEN_SEARCH_API + encodeURI(query) +
-     *                          "&page=" + page,
-     *                     headers: { 'Content-Type':
-     *                                'application/json; charset=utf-8' },
-     *                     accept: 'Accept-Language:ja,en-US;q=0.8,en;q=0.6'
-     *                   }
-     *                 })
-     *             })
-     *             .do(e=>console.log(e))
-     *             .share()*/
 
   function itemsToBook(items){
     return items
@@ -105,7 +89,8 @@ function intent(RN, HTTP) {
                     .map(body =>
                       itemsToBook(body.Items))
                     .do((e)=>console.log(e))
-                  //https://gitter.im/cyclejs/cyclejs/archives/2016/03/30
+                  // pagination
+                  // https://gitter.im/cyclejs/cyclejs/archives/2016/03/30
                     .startWith([])
                     .scan((currentBooks,newBooks) => (
                       currentBooks.concat(newBooks)))
@@ -195,6 +180,7 @@ function intent(RN, HTTP) {
     requestSearchedBooks$,
     searchedBooksResponse$,
     searchedBooksStatus$,
+    changeFilter$,
     request$,
   };
 }
@@ -217,8 +203,11 @@ function model(actions) {
       searchedBooks$.startWith([]),
       actions.searchedBooksStatus$.startWith({}),
       booksLoadingState$.startWith(false),
-      (searchedBooks, searchedBooksStatus, booksLoadingState ) =>
-        ({ searchedBooks, searchedBooksStatus, booksLoadingState }));
+      actions.changeFilter$.startWith(0),
+      (searchedBooks, searchedBooksStatus, booksLoadingState,
+       selectedIndex ) =>
+         ({ searchedBooks, searchedBooksStatus, booksLoadingState,
+            selectedIndex }));
   return state$;
 }
 module.exports = { intent, model }

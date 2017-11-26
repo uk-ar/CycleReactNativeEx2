@@ -149,7 +149,6 @@ class BookList extends React.PureComponent {
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
         onEndReached={this.props.onEndReached}
-        onEndReachedThreshold={0}
       />
     );
   }
