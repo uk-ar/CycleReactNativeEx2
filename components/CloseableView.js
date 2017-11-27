@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 
 
-class CloseableView extends React.Component {
+class CloseableViewAnim extends React.Component {
   constructor(props) {
     super(props);
     this._animated = new Animated.Value(0);
@@ -44,6 +44,22 @@ class CloseableView extends React.Component {
       >
         {this.props.children}
       </Animated.View>
+    );
+  }
+}
+
+class CloseableView extends React.Component {
+  render() {
+    let { closed, style } = this.props
+    return (
+      <View
+        style={[{
+            height: closed ? 1 : 83,
+            overflow:"hidden"
+          },style]}
+      >
+        {this.props.children}
+      </View>
     );
   }
 }

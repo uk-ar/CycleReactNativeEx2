@@ -25,9 +25,8 @@ function view(state$) {
       <SearchScene
         selector={"search"}
         showLoadingIcon={ booksLoadingState}
-        selectedIndex={selectedIndex}
-        rejects={[]}
-        extraData={searchedBooksStatus}
+        selectedIndex={ selectedIndex }
+        searchedBooksStatus={searchedBooksStatus}
         data={searchedBooks}
       />)
   });
