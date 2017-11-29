@@ -1,5 +1,7 @@
 import React from 'react';
-import { TouchableOpacity,StyleSheet, Text, View,FlatList } from 'react-native';
+import {
+  StatusBar,TouchableOpacity,StyleSheet, Text, View,FlatList
+} from 'react-native';
 import { makeHTTPDriver } from '@cycle/http';
 import StorybookUI from './storybook';
 import Expo from 'expo'
@@ -19,18 +21,25 @@ import {
 
 function view(state$) {
   return state$.map(({ searchedBooks, searchedBooksStatus,
-                       booksLoadingState, selectedIndex }) =>{
+                       booksLoadingState, selectedIndex }) => {
     //console.log({searchedBooks, searchedBooksStatus, booksLoadingState})
     return (
-      <SearchScene
-        selector={"search"}
-        showLoadingIcon={ booksLoadingState}
-        selectedIndex={ selectedIndex }
-        searchedBooksStatus={searchedBooksStatus}
-        data={searchedBooks}
-      />)
+      <View style={{paddingTop:Expo.Constants.statusBarHeight}}>
+        <SearchScene
+          selector={"search"}
+          showLoadingIcon={ booksLoadingState}
+          selectedIndex={ selectedIndex }
+          searchedBooksStatus={searchedBooksStatus}
+          data={searchedBooks}
+        />
+      </View>
+    )
   });
 }
+
+//TODO:set library
+//TODO:set expo release-channel
+//https://docs.expo.io/versions/latest/guides/release-channels.html
 
 function main({RN, HTTP}) {
   const actions = intent(RN, HTTP);
@@ -47,6 +56,14 @@ run(main, {
 });
 
 //module.exports = __DEV__ && typeof __TEST__ == 'undefined' ? StorybookUI : CycleRoot;
+
+//console.log(Expo.Constants)
+//test:not storybook:__DEV__
+//dev:storybook:
+//expo0:not storybook->testflight?
+//expo1:storybook
+//module.exports = CycleRoot
+//module.exports = StorybookUI
 module.exports = Expo.Constants.manifest.extra.enableStoryBook || (__DEV__ && typeof __TEST__ == 'undefined') ? StorybookUI : CycleRoot;
 
 const styles = StyleSheet.create({
