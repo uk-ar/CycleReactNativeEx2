@@ -412,6 +412,7 @@ storiesOf('SearchScene', module)
       onClearText={action('text-clear')}
       onChangeFilter={action('filter-change')}
       onPress={action('book-press')}
+      onPressSetting={action('book-press-setting')}
       showLoadingIcon={true}
       selectedIndex={1}
       rejects={[]}
