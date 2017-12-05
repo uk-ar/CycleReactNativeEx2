@@ -51,6 +51,47 @@ Stack = StackNavigator({
   Chat: {  screen: ChatScreen },
 });
 
+const AppNavigator = StackNavigator({
+  Home: {  screen: HomeScreen },
+  Chat: {  screen: ChatScreen },
+});
+const initialState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Home'));
+//redux
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {state: initialState};
+  }
+  render() {
+    console.log(this.props)
+
+    return (
+      <AppNavigator
+      navigation={addNavigationHelpers({
+        //callback when navigated
+        //{type:"Navigation/NAVIGATE",routeName:"Chat",params:{user:"Aya"}
+        //dispatch: (action)=>console.log(action),
+        //dispatch: this.props.dispatch,
+        dispatch: (action)=>{
+          const state = this.state.state
+          const nextState = AppNavigator
+            .router.getStateForAction(action, state);
+          console.log(nextState,state,action)
+          //{index:0,routes:Array(1)},{index:0,routes:Array(1)},{type:"@@redux/INIT"}
+          //{index:1,routes:Array(2)},{index:0,routes:Array(1)},{type:"Navigation/NAVIGATE",routeName:"Chat",params:{...}}
+          // Simply return the original `state` if `nextState` is null or undefined.
+          this.setState({state:nextState || state})
+        },
+        //state: this.props.nav,//{index:0,routes:Array(1)}
+        state: this.state.state,//{index:0,routes:Array(1)}
+        //state:
+      })}
+      screenProps={this.props.screenProps}
+      />
+    )
+  }
+}
+
 function main({RN}) {
   return {
     RN: RN.select('button').events('press')
