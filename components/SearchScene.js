@@ -30,18 +30,26 @@ class SearchScene extends React.Component {
     }//学習漫画
     return (
       <View>
-        <SearchBar
-          containerStyle={{
-            backgroundColor: materialColor.grey['50']
-          }}
-          inputStyle={{
-            backgroundColor: materialColor.grey['200']
-          }}
-          lightTheme
-          showLoadingIcon={showLoadingIcon}
-          onChangeText={onChangeText}
-          onClearText={onClearText}
-          placeholder='Type Here...' />
+        <View style={{flexDirection:"row"}}>
+          <SearchBar
+            containerStyle={{
+              backgroundColor: materialColor.grey['50'],
+              flex:1
+            }}
+            inputStyle={{
+              backgroundColor: materialColor.grey['200']
+            }}
+            lightTheme
+            showLoadingIcon={showLoadingIcon}
+            onChangeText={onChangeText}
+            onClearText={onClearText}
+            placeholder='Type Here...' />
+          <FAIcon
+            name={"gear"} size={20}
+            style={{alignSelf:"center",padding:10}}
+            onPress={onPressSetting}
+          />
+        </View>
         <ButtonGroup
           onPress={onChangeFilter}
           selectedIndex={selectedIndex}
