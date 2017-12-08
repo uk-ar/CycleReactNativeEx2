@@ -42,7 +42,6 @@ class SearchScene extends React.Component {
             lightTheme
             showLoadingIcon={showLoadingIcon}
             onChangeText={onChangeText}
-            onClearText={onClearText}
             placeholder='Type Here...' />
           <FAIcon
             name={"gear"} size={20}
