@@ -12,7 +12,7 @@ import { CenterLeftView, CenterView } from './CenterView';
 import { CloseableView } from '../../components/CloseableView';
 import { CycleRoot } from '../../cycle-react-native';
 import { itemsInfo, TouchableElement } from '../../components/Book/common';
-import { SearchScene } from '../../components/SearchScene';
+import { SearchScene,SearchHistory } from '../../components/SearchScene';
 
 import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from '../../components/Book/BookCell';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
@@ -375,6 +375,20 @@ storiesOf('SearchBar', module)
   ))
 
 storiesOf('SearchScene', module)
+  .add('with no items', () => (
+    <SearchScene
+      selector={"main"}
+      onChangeText={action('text-change')}
+      onClearText={action('text-clear')}
+      onChangeFilter={action('filter-change')}
+      onPress={action('book-press')}
+      onPressSetting={action('book-press-setting')}
+      showLoadingIcon={true}
+      selectedIndex={1}
+      rejects={[]}
+      data={null}
+    />
+  ))
   .add('with plane', () => (
     <View>
       <SearchBar
@@ -428,7 +442,6 @@ storiesOf('SearchScene', module)
     />
   ))
 
-
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
@@ -443,11 +456,11 @@ const styles = StyleSheet.create({
   },
   border:{
     flex:1,
-    marginRight:10,
+    //marginRight:10,
     padding:5,
     borderColor: 'rgba(0, 0, 0, 0.1)',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderTopWidth: StyleSheet.hairlineWidth
+    //borderTopWidth: StyleSheet.hairlineWidth
   },
   title: {//bookTitle
     fontSize: 16,
@@ -468,7 +481,7 @@ class Library extends React.PureComponent {
     onPress:emptyFunction
   }
   render() {
-    const { thumbnail, title, subtitle, onPress, style, icon, status, isbn,reserveUrl } =
+    const { title, subtitle, onPress, style } =
       this.props
     return (
       <TouchableElement
@@ -499,45 +512,50 @@ class Library extends React.PureComponent {
 }
 
 class LibraryList extends React.PureComponent {
-  _keyExtractor = (book, index) => book.isbn;
-  _onPress = async (isbn,url) =>{
-    //https://docs.expo.io/versions/latest/sdk/webbrowser.html
-    let result = await WebBrowser.openBrowserAsync(url);
-    this.setState({ result });
-  }
+  //_keyExtractor = (item, index) => book.isbn;
   _renderItem = ({item,index}) => {
-    //closed = this.props.rejects && this.props.rejects.includes(item.status)
-    extraData = this.props.extraData || {}
-    library = extraData && extraData[item.isbn] ? extraData[item.isbn] :
-              extraData ? { status:"Loading" } : {}
-    rejects = extraData.rejects || []
-    closed  = rejects.includes(library.status)
     return (
-      <CloseableView closed={closed}>
-        <Book
-          onPress={(isbn,url)=>
-            this.props.onPress && this.props.onPress({item, index})}
-          isbn={item.isbn}
-          title={item.title}
-          author={item.author}
-          thumbnail={item.thumbnail}
-          icon={icons[item.bucket]}
-          reserveUrl={library.reserveUrl}
-          status={libraryStatuses[library.status]}
-        />
-      </CloseableView>
+      <Library
+        onPress={(isbn,url)=>
+          // must be closure
+          this.props.onPress && this.props.onPress({item, index})
+        }
+        title={item.title}
+        subtitle={item.subtitle}
+      />
     );}
   render() {
     return (
-      //        extraData={this.state}
       <FlatList
         data={this.props.data}
-        extraData={this.props.extraData}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
-        onEndReached={this.props.onEndReached}
       />
     );
+  }
+}
+
+class LibrarySearchScene extends React.Component {
+  render() {
+    const {onChangeText,data} = this.props
+    return (
+      <View>
+        <SearchBar
+          containerStyle={{
+            backgroundColor: materialColor.grey['50'],
+            flex:1
+          }}
+          inputStyle={{
+            backgroundColor: materialColor.grey['200']
+          }}
+          lightTheme
+          onChangeText={onChangeText}
+          placeholder='Type Here...' />
+        <LibraryList
+          data={data}
+        />
+      </View>
+    )
   }
 }
 
@@ -546,5 +564,36 @@ storiesOf('Library', module)
     <Library
       title="foo"
       subtitle="bar"
+    />
+  ))
+
+storiesOf('LibraryList', module)
+  .add('with plane', () => (
+    <LibraryList
+      data={[
+        {title:"foo",subtitle:"bar"},
+        {title:"baz",subtitle:"bal"},
+      ]}
+    />
+  ))
+storiesOf('LibrarySearchScene', module)
+  .add('with plane', () => (
+    <LibrarySearchScene
+      data={[
+        {title:"foo",subtitle:"bar"},
+        {title:"baz",subtitle:"bal"},
+        {title:"aa",subtitle:"bb"},
+      ]}
+    />
+  ))
+
+storiesOf('SearchHistory', module)
+  .add('with plane', () => (
+    <SearchHistory
+      onPress={action('search-history-press')}
+      data={[
+        {query:"foo"},
+        {query:"bar"},
+      ]}
     />
   ))
