@@ -49,15 +49,10 @@ class SearchScreen extends React.Component {
   };
   render() {
     const { navigate } = this.props.navigation;
-    const { searchedBooks, searchedBooksStatus,
-            booksLoadingState, selectedIndex } = this.props.screenProps
-
     return(
       <SearchScene
         selector={"search"}
-        showLoadingIcon={ booksLoadingState}
-        selectedIndex={ selectedIndex }
-        searchedBooksStatus={searchedBooksStatus}
+        {...this.props.screenProps}
         onPressSetting={()=>navigate('Chat',{user:'Aya'})}
         onPress={async ({item,index})=>{
             const url = searchedBooksStatus[item.isbn].reserveUrl
@@ -66,7 +61,6 @@ class SearchScreen extends React.Component {
               console.log(result)
             }
           }}
-        data={searchedBooks}
       />
     )
   }
@@ -80,15 +74,10 @@ const Navigator = StackNavigator({
 });
 
 function view(state$) {
-  return state$.map(({ searchedBooks, searchedBooksStatus,
-                       booksLoadingState, selectedIndex }) =>
+  return state$.map((state) =>
   {
-    //console.log({searchedBooks, searchedBooksStatus, booksLoadingState})
-    console.log("v:",searchedBooks)
-    screenProps = {searchedBooks,searchedBooksStatus,
-                   booksLoadingState, selectedIndex}
     return(<Navigator
-             screenProps={screenProps}
+             screenProps={state}
            />)
   })
 }
