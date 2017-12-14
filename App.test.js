@@ -1,5 +1,9 @@
+
 import React from 'react';
-import App from './App';
+
+//https://github.com/react-community/react-navigation/pull/1320#issuecomment-309535212
+Date.now = jest.fn(() => 0);
+const App = require("./App").default;
 
 import renderer from 'react-test-renderer';
 import initStoryshots from '@storybook/addon-storyshots';
