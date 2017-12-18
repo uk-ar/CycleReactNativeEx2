@@ -91,18 +91,7 @@ function view(state$) {
 
 import {adapt} from '@cycle/run/lib/adapt';
 
-/* Rx
- *   .Observable
- *   .fromPromise(AsyncStorage.getItem('@MySuperStore:key'))
- *   .map(text=>JSON.parse(text))
- *   .do(e=>console.log("sa",e))*/
-
 function makeScrollDriver(key) {
-  //function makeScrollDriver(options) {
-  //const {element, duration}: {element: HTMLElement, duration: number} = options;
-  //const source$ = new Subject();
-  //source$.getItem
-  //AsyncStorage.getItem(key)
   function ScrollDriver(outgoing$) {
     Rx.Observable
       .from(outgoing$)
@@ -110,20 +99,12 @@ function makeScrollDriver(key) {
         AsyncStorage.setItem(key,
                              JSON.stringify(value)))
       .subscribe()
-    /* .subscribe(
-     *   //(key) => AsyncStorage.getItem(key)
-     *   (value) => {
-     *     AsyncStorage.setItem(key,value);
-     *     source$.next(AsyncStorage.getItem(key));
-     *   }
-       //(offsetTop) => window.scrollTo(0, offsetTop)
-     * );*/
+
     incoming$ = Rx.Observable
                   .fromPromise(AsyncStorage.getItem(key))
                   .map(e=>JSON.parse(e))
                   .merge(outgoing$);
 
-    //return Observable.from(outgoing$);
     return adapt(incoming$);
   }
 
@@ -133,8 +114,6 @@ function makeScrollDriver(key) {
 function main({RN, HTTP, AS}) {
   const actions = intent(RN, HTTP, AS);
   const state$ = model(actions);
-  /* AS.do(e=>console.log("e1",e))
-   *   .subscribe()*/
 
   return {
     RN: view(state$.startWith("")),//view(model(intent(sources.DOM)))
@@ -144,9 +123,9 @@ function main({RN, HTTP, AS}) {
 }
 
 run(main, {
-  RN: makeReactNativeDriver('CycleReactNativeEx'),
+  RN: makeReactNativeDriver(),
   HTTP: makeHTTPDriver(),
-  AS: makeScrollDriver('foo3')
+  AS: makeScrollDriver('CycleReactNativeEx')
 });
 
 //module.exports = __DEV__ && typeof __TEST__ == 'undefined' ? StorybookUI : CycleRoot;
