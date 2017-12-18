@@ -74,7 +74,6 @@ function makeReactNativeDriver(){
     //console.log(vtree$)
     sink$ = Rx.Observable.from(vtree$).shareReplay();
     //sink$ = vtree$.shareReplay();
-    console.log("make")
     sink$
       //.do(args => console.log('rn:', args))
       .subscribe()
