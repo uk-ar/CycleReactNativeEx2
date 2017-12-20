@@ -9,6 +9,7 @@ import Expo from 'expo'
 import Rx from 'rxjs/Rx';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import { SearchScene } from './components/SearchScene';
+import { LibrarySearchScene,PrefSearchScene } from './components/LibrarySearchScene';
 import { run } from '@cycle/rxjs-run';
 import { Constants, WebBrowser } from 'expo';
 
@@ -31,23 +32,50 @@ import {
   addNavigationHelpers,
 } from 'react-navigation';
 
-class ChatScreen extends React.Component {
+class LibrarySelectScreen extends React.Component {
+  static navigationOptions = ({navigation}) => ({
+    title: `Library Select`,
+  });
+  render() {
+    const { params } = this.props.navigation.state;
+    const selectedLibrary = this.props.screenProps.selectedLibrary;
+    console.log(selectedLibrary)
+    return (
+      <LibrarySearchScene
+        data={[
+          {systemname:"埼玉県上尾市",description:"たちばな分館ほか",
+           systemid:"Saitama_Ageo"},
+          {systemname:"埼玉県嵐山町",description:"嵐山町立図書館ほか",
+           systemid:"Saitama_Arashiyama"},
+          {systemname:"埼玉県朝霞市",description:"内間木公民館ほか",
+           systemid:"Saitama_Asaka"},
+        ]}
+      extraData={{selectedLibrary}}
+      selector="libraries"
+      />
+      //        onPress={e=>console.log(e)}
+    );
+  }
+}
+
+class PrefSelectScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: `Setting`,
   });
   render() {
     const { params } = this.props.navigation.state;
+    const { navigate } = this.props.navigation;
     return (
-      <View>
-        <Text>Hello world</Text>
-      </View>
+      <PrefSearchScene
+        onPress={e=>navigate("LibrarySelect",{pref:e})}
+      />
     );
   }
 }
 
 class SearchScreen extends React.Component {
   static navigationOptions = {
-    title: 'Search'
+    title: 'Book Search'
   };
   render() {
     const { navigate } = this.props.navigation;
@@ -72,15 +100,17 @@ class SearchScreen extends React.Component {
 // screenProps
 const Navigator = StackNavigator({
   Home: {  screen: SearchScreen },
-  Chat: {  screen: ChatScreen },
+  Chat: {  screen: PrefSelectScreen },
+  LibrarySelect: {  screen: LibrarySelectScreen },
 });
 
 function view(state$) {
   return state$.map((state) =>
   {
-    return(<Navigator
-             screenProps={state}
-           />)
+    return(
+      <Navigator
+        screenProps={state}
+      />)
   })
 }
 //TODO:search history
