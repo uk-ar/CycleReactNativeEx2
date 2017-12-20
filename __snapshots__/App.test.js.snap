@@ -3810,12 +3810,7 @@ exports[`Storyshots Library with plane 1`] = `
         allowFontScaling={true}
         ellipsizeMode="tail"
         numberOfLines={2}
-        style={
-          Object {
-            "fontSize": 16,
-            "fontWeight": "500",
-          }
-        }
+        style={undefined}
       >
         foo
       </Text>
@@ -3824,12 +3819,7 @@ exports[`Storyshots Library with plane 1`] = `
         allowFontScaling={true}
         ellipsizeMode="tail"
         numberOfLines={1}
-        style={
-          Object {
-            "color": "#9E9E9E",
-            "fontSize": 12,
-          }
-        }
+        style={undefined}
       >
         bar
       </Text>
@@ -3853,6 +3843,7 @@ exports[`Storyshots LibraryList with plane 1`] = `
     ]
   }
   disableVirtualization={false}
+  extraData={Object {}}
   getItem={[Function]}
   getItemCount={[Function]}
   horizontal={false}
@@ -3900,7 +3891,19 @@ exports[`Storyshots LibraryList with plane 1`] = `
             Object {
               "backgroundColor": "transparent",
             },
-            undefined,
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              },
+              undefined,
+              false,
+              false,
+            ],
           ]
         }
         testID={undefined}
@@ -3908,74 +3911,172 @@ exports[`Storyshots LibraryList with plane 1`] = `
       >
         <View
           style={
-            Object {
-              "backgroundColor": "#fafafa",
-              "flexDirection": "row",
-            }
+            Array [
+              Object {
+                "flexDirection": "row",
+                "marginLeft": 10,
+              },
+              undefined,
+            ]
           }
         >
-          <Text
-            accessible={true}
-            allowFontScaling={false}
-            ellipsizeMode="tail"
+          <View
+            disabled={false}
+            onLongPress={undefined}
+            onPress={undefined}
             style={
               Array [
                 Object {
-                  "color": undefined,
-                  "fontSize": 20,
+                  "alignItems": "center",
+                  "justifyContent": "center",
                 },
-                Object {
-                  "alignSelf": "center",
-                  "margin": 10,
-                },
-                Object {
-                  "fontFamily": "awesome",
-                  "fontStyle": "normal",
-                  "fontWeight": "normal",
-                },
+                undefined,
               ]
             }
+            underlayColor="white"
           >
-            
-          </Text>
+            <View>
+              <View
+                onPress={undefined}
+                style={
+                  Array [
+                    false,
+                    false,
+                    false,
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+                underlayColor="white"
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#bdc6cf",
+                        "fontSize": 24,
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                        Array [
+                          Object {
+                            "marginRight": 8,
+                          },
+                          undefined,
+                        ],
+                      ],
+                      Object {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </View>
+          </View>
           <View
             style={
               Object {
-                "borderBottomWidth": 0.5,
-                "borderColor": "rgba(0, 0, 0, 0.1)",
                 "flex": 1,
-                "padding": 5,
+                "justifyContent": "center",
               }
             }
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              numberOfLines={2}
-              style={
-                Object {
-                  "fontSize": 16,
-                  "fontWeight": "500",
-                }
-              }
+            <View
+              style={undefined}
             >
-              foo
-            </Text>
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              numberOfLines={1}
-              style={
-                Object {
-                  "color": "#9E9E9E",
-                  "fontSize": 12,
-                }
-              }
+              <View />
+            </View>
+            <View
+              style={undefined}
             >
-              bar
-            </Text>
+              <View />
+            </View>
+          </View>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "justifyContent": "center",
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <View
+              onPress={undefined}
+              style={
+                Array [
+                  false,
+                  false,
+                  false,
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                  },
+                  undefined,
+                ]
+              }
+              underlayColor="white"
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={false}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#2196f3",
+                      "fontSize": 28,
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      undefined,
+                    ],
+                    Object {
+                      "fontFamily": "Material Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -4005,7 +4106,19 @@ exports[`Storyshots LibraryList with plane 1`] = `
             Object {
               "backgroundColor": "transparent",
             },
-            undefined,
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              },
+              undefined,
+              false,
+              false,
+            ],
           ]
         }
         testID={undefined}
@@ -4013,74 +4126,172 @@ exports[`Storyshots LibraryList with plane 1`] = `
       >
         <View
           style={
-            Object {
-              "backgroundColor": "#fafafa",
-              "flexDirection": "row",
-            }
+            Array [
+              Object {
+                "flexDirection": "row",
+                "marginLeft": 10,
+              },
+              undefined,
+            ]
           }
         >
-          <Text
-            accessible={true}
-            allowFontScaling={false}
-            ellipsizeMode="tail"
+          <View
+            disabled={false}
+            onLongPress={undefined}
+            onPress={undefined}
             style={
               Array [
                 Object {
-                  "color": undefined,
-                  "fontSize": 20,
+                  "alignItems": "center",
+                  "justifyContent": "center",
                 },
-                Object {
-                  "alignSelf": "center",
-                  "margin": 10,
-                },
-                Object {
-                  "fontFamily": "awesome",
-                  "fontStyle": "normal",
-                  "fontWeight": "normal",
-                },
+                undefined,
               ]
             }
+            underlayColor="white"
           >
-            
-          </Text>
+            <View>
+              <View
+                onPress={undefined}
+                style={
+                  Array [
+                    false,
+                    false,
+                    false,
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+                underlayColor="white"
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#bdc6cf",
+                        "fontSize": 24,
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                        Array [
+                          Object {
+                            "marginRight": 8,
+                          },
+                          undefined,
+                        ],
+                      ],
+                      Object {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </View>
+          </View>
           <View
             style={
               Object {
-                "borderBottomWidth": 0.5,
-                "borderColor": "rgba(0, 0, 0, 0.1)",
                 "flex": 1,
-                "padding": 5,
+                "justifyContent": "center",
               }
             }
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              numberOfLines={2}
-              style={
-                Object {
-                  "fontSize": 16,
-                  "fontWeight": "500",
-                }
-              }
+            <View
+              style={undefined}
             >
-              baz
-            </Text>
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              numberOfLines={1}
-              style={
-                Object {
-                  "color": "#9E9E9E",
-                  "fontSize": 12,
-                }
-              }
+              <View />
+            </View>
+            <View
+              style={undefined}
             >
-              bal
-            </Text>
+              <View />
+            </View>
+          </View>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "justifyContent": "center",
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <View
+              onPress={undefined}
+              style={
+                Array [
+                  false,
+                  false,
+                  false,
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                  },
+                  undefined,
+                ]
+              }
+              underlayColor="white"
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={false}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#2196f3",
+                      "fontSize": 28,
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      undefined,
+                    ],
+                    Object {
+                      "fontFamily": "Material Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -4091,110 +4302,32 @@ exports[`Storyshots LibraryList with plane 1`] = `
 
 exports[`Storyshots LibrarySearchScene with plane 1`] = `
 <View>
-  <View
-    style={
-      Array [
-        Object {
-          "backgroundColor": "#393e42",
-          "borderBottomColor": "#000",
-          "borderBottomWidth": 1,
-          "borderTopColor": "#000",
-          "borderTopWidth": 1,
-        },
-        Object {
-          "backgroundColor": "#e1e8ee",
-          "borderBottomColor": "#e1e1e1",
-          "borderTopColor": "#e1e1e1",
-        },
-        Object {
-          "backgroundColor": "#fafafa",
-          "flex": 1,
-        },
-      ]
-    }
-  >
-    <TextInput
-      allowFontScaling={true}
-      onChangeText={undefined}
-      placeholder="Type Here..."
-      placeholderTextColor="#86939e"
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#303337",
-            "borderRadius": 3,
-            "color": "#86939e",
-            "fontSize": 17.5,
-            "height": 30,
-            "margin": 8,
-            "overflow": "hidden",
-            "paddingLeft": 26,
-            "paddingRight": 19,
-          },
-          Object {
-            "backgroundColor": "#bdc6cf",
-          },
-          false,
-          false,
-          Object {
-            "backgroundColor": "#eeeeee",
-          },
-          undefined,
-          false,
-        ]
-      }
-      underlineColorAndroid="transparent"
-    />
-    <Text
-      accessible={true}
-      allowFontScaling={false}
-      ellipsizeMode="tail"
-      style={
-        Array [
-          Object {
-            "color": "#86939e",
-            "fontSize": 16,
-          },
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "position": "absolute",
-              "top": 15.5,
-            },
-            Object {
-              "left": 16,
-            },
-            undefined,
-          ],
-          Object {
-            "fontFamily": "Material Icons",
-            "fontStyle": "normal",
-            "fontWeight": "normal",
-          },
-        ]
-      }
-    >
-      
-    </Text>
-  </View>
   <RCTScrollView
     data={
       Array [
         Object {
-          "subtitle": "bar",
-          "title": "foo",
+          "description": "たちばな分館ほか",
+          "systemid": "Saitama_Ageo",
+          "systemname": "埼玉県上尾市",
         },
         Object {
-          "subtitle": "bal",
-          "title": "baz",
+          "description": "嵐山町立図書館ほか",
+          "systemid": "Saitama_Arashiyama",
+          "systemname": "埼玉県嵐山町",
         },
         Object {
-          "subtitle": "bb",
-          "title": "aa",
+          "description": "内間木公民館ほか",
+          "systemid": "Saitama_Asaka",
+          "systemname": "埼玉県朝霞市",
         },
       ]
     }
     disableVirtualization={false}
+    extraData={
+      Object {
+        "selectedLibrary": "Saitama_Asaka",
+      }
+    }
     getItem={[Function]}
     getItemCount={[Function]}
     horizontal={false}
@@ -4242,7 +4375,19 @@ exports[`Storyshots LibrarySearchScene with plane 1`] = `
               Object {
                 "backgroundColor": "transparent",
               },
-              undefined,
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "#bbb",
+                  "borderBottomWidth": 1,
+                  "paddingBottom": 10,
+                  "paddingRight": 10,
+                  "paddingTop": 10,
+                },
+                undefined,
+                false,
+                false,
+              ],
             ]
           }
           testID={undefined}
@@ -4250,75 +4395,164 @@ exports[`Storyshots LibrarySearchScene with plane 1`] = `
         >
           <View
             style={
-              Object {
-                "backgroundColor": "#fafafa",
-                "flexDirection": "row",
-              }
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 10,
+                },
+                undefined,
+              ]
             }
           >
-            <Text
-              accessible={true}
-              allowFontScaling={false}
-              ellipsizeMode="tail"
+            <View
+              disabled={false}
+              onLongPress={undefined}
+              onPress={undefined}
               style={
                 Array [
                   Object {
-                    "color": undefined,
-                    "fontSize": 20,
+                    "alignItems": "center",
+                    "justifyContent": "center",
                   },
-                  Object {
-                    "alignSelf": "center",
-                    "margin": 10,
-                  },
-                  Object {
-                    "fontFamily": "awesome",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
+                  undefined,
                 ]
               }
+              underlayColor="white"
             >
-              
-            </Text>
+              <View>
+                <View
+                  onPress={undefined}
+                  style={
+                    Array [
+                      false,
+                      false,
+                      false,
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "justifyContent": "center",
+                      },
+                      undefined,
+                    ]
+                  }
+                  underlayColor="white"
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#bdc6cf",
+                          "fontSize": 24,
+                        },
+                        Array [
+                          Object {
+                            "backgroundColor": "transparent",
+                          },
+                          Array [
+                            Object {
+                              "marginRight": 8,
+                            },
+                            undefined,
+                          ],
+                        ],
+                        Object {
+                          "fontFamily": "Material Icons",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                      ]
+                    }
+                  >
+                    
+                  </Text>
+                </View>
+              </View>
+            </View>
             <View
               style={
                 Object {
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "rgba(0, 0, 0, 0.1)",
                   "flex": 1,
-                  "padding": 5,
+                  "justifyContent": "center",
                 }
               }
             >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                numberOfLines={2}
-                style={
-                  Object {
-                    "fontSize": 16,
-                    "fontWeight": "500",
-                  }
-                }
+              <View
+                style={undefined}
               >
-                foo
-              </Text>
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                numberOfLines={1}
-                style={
-                  Object {
-                    "color": "#9E9E9E",
-                    "fontSize": 12,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {},
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      Array [
+                        Object {
+                          "color": "#43484d",
+                          "fontSize": 17.5,
+                        },
+                        false,
+                        undefined,
+                        undefined,
+                      ],
+                    ]
                   }
-                }
+                >
+                  埼玉県上尾市
+                </Text>
+              </View>
+              <View
+                style={undefined}
               >
-                bar
-              </Text>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {},
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      Array [
+                        Object {
+                          "color": "#86939e",
+                          "fontSize": 15,
+                          "fontWeight": "600",
+                          "marginTop": 1,
+                        },
+                        false,
+                        undefined,
+                        undefined,
+                      ],
+                    ]
+                  }
+                >
+                  たちばな分館ほか
+                </Text>
+              </View>
             </View>
+            <View />
           </View>
         </View>
       </View>
@@ -4347,7 +4581,19 @@ exports[`Storyshots LibrarySearchScene with plane 1`] = `
               Object {
                 "backgroundColor": "transparent",
               },
-              undefined,
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "#bbb",
+                  "borderBottomWidth": 1,
+                  "paddingBottom": 10,
+                  "paddingRight": 10,
+                  "paddingTop": 10,
+                },
+                undefined,
+                false,
+                false,
+              ],
             ]
           }
           testID={undefined}
@@ -4355,75 +4601,164 @@ exports[`Storyshots LibrarySearchScene with plane 1`] = `
         >
           <View
             style={
-              Object {
-                "backgroundColor": "#fafafa",
-                "flexDirection": "row",
-              }
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 10,
+                },
+                undefined,
+              ]
             }
           >
-            <Text
-              accessible={true}
-              allowFontScaling={false}
-              ellipsizeMode="tail"
+            <View
+              disabled={false}
+              onLongPress={undefined}
+              onPress={undefined}
               style={
                 Array [
                   Object {
-                    "color": undefined,
-                    "fontSize": 20,
+                    "alignItems": "center",
+                    "justifyContent": "center",
                   },
-                  Object {
-                    "alignSelf": "center",
-                    "margin": 10,
-                  },
-                  Object {
-                    "fontFamily": "awesome",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
+                  undefined,
                 ]
               }
+              underlayColor="white"
             >
-              
-            </Text>
+              <View>
+                <View
+                  onPress={undefined}
+                  style={
+                    Array [
+                      false,
+                      false,
+                      false,
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "justifyContent": "center",
+                      },
+                      undefined,
+                    ]
+                  }
+                  underlayColor="white"
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#bdc6cf",
+                          "fontSize": 24,
+                        },
+                        Array [
+                          Object {
+                            "backgroundColor": "transparent",
+                          },
+                          Array [
+                            Object {
+                              "marginRight": 8,
+                            },
+                            undefined,
+                          ],
+                        ],
+                        Object {
+                          "fontFamily": "Material Icons",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                      ]
+                    }
+                  >
+                    
+                  </Text>
+                </View>
+              </View>
+            </View>
             <View
               style={
                 Object {
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "rgba(0, 0, 0, 0.1)",
                   "flex": 1,
-                  "padding": 5,
+                  "justifyContent": "center",
                 }
               }
             >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                numberOfLines={2}
-                style={
-                  Object {
-                    "fontSize": 16,
-                    "fontWeight": "500",
-                  }
-                }
+              <View
+                style={undefined}
               >
-                baz
-              </Text>
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                numberOfLines={1}
-                style={
-                  Object {
-                    "color": "#9E9E9E",
-                    "fontSize": 12,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {},
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      Array [
+                        Object {
+                          "color": "#43484d",
+                          "fontSize": 17.5,
+                        },
+                        false,
+                        undefined,
+                        undefined,
+                      ],
+                    ]
                   }
-                }
+                >
+                  埼玉県嵐山町
+                </Text>
+              </View>
+              <View
+                style={undefined}
               >
-                bal
-              </Text>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {},
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      Array [
+                        Object {
+                          "color": "#86939e",
+                          "fontSize": 15,
+                          "fontWeight": "600",
+                          "marginTop": 1,
+                        },
+                        false,
+                        undefined,
+                        undefined,
+                      ],
+                    ]
+                  }
+                >
+                  嵐山町立図書館ほか
+                </Text>
+              </View>
             </View>
+            <View />
           </View>
         </View>
       </View>
@@ -4452,7 +4787,19 @@ exports[`Storyshots LibrarySearchScene with plane 1`] = `
               Object {
                 "backgroundColor": "transparent",
               },
-              undefined,
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "#bbb",
+                  "borderBottomWidth": 1,
+                  "paddingBottom": 10,
+                  "paddingRight": 10,
+                  "paddingTop": 10,
+                },
+                undefined,
+                false,
+                false,
+              ],
             ]
           }
           testID={undefined}
@@ -4460,74 +4807,236 @@ exports[`Storyshots LibrarySearchScene with plane 1`] = `
         >
           <View
             style={
-              Object {
-                "backgroundColor": "#fafafa",
-                "flexDirection": "row",
-              }
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 10,
+                },
+                undefined,
+              ]
             }
           >
-            <Text
-              accessible={true}
-              allowFontScaling={false}
-              ellipsizeMode="tail"
+            <View
+              disabled={false}
+              onLongPress={undefined}
+              onPress={undefined}
               style={
                 Array [
                   Object {
-                    "color": undefined,
-                    "fontSize": 20,
+                    "alignItems": "center",
+                    "justifyContent": "center",
                   },
-                  Object {
-                    "alignSelf": "center",
-                    "margin": 10,
-                  },
-                  Object {
-                    "fontFamily": "awesome",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
+                  undefined,
                 ]
               }
+              underlayColor="white"
             >
-              
-            </Text>
+              <View>
+                <View
+                  onPress={undefined}
+                  style={
+                    Array [
+                      false,
+                      false,
+                      false,
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "justifyContent": "center",
+                      },
+                      undefined,
+                    ]
+                  }
+                  underlayColor="white"
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={false}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#bdc6cf",
+                          "fontSize": 24,
+                        },
+                        Array [
+                          Object {
+                            "backgroundColor": "transparent",
+                          },
+                          Array [
+                            Object {
+                              "marginRight": 8,
+                            },
+                            undefined,
+                          ],
+                        ],
+                        Object {
+                          "fontFamily": "Material Icons",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                      ]
+                    }
+                  >
+                    
+                  </Text>
+                </View>
+              </View>
+            </View>
             <View
               style={
                 Object {
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "rgba(0, 0, 0, 0.1)",
                   "flex": 1,
-                  "padding": 5,
+                  "justifyContent": "center",
                 }
               }
             >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                numberOfLines={2}
-                style={
-                  Object {
-                    "fontSize": 16,
-                    "fontWeight": "500",
-                  }
-                }
+              <View
+                style={undefined}
               >
-                aa
-              </Text>
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                numberOfLines={1}
-                style={
-                  Object {
-                    "color": "#9E9E9E",
-                    "fontSize": 12,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {},
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      Array [
+                        Object {
+                          "color": "#43484d",
+                          "fontSize": 17.5,
+                        },
+                        false,
+                        Object {
+                          "color": "#2196f3",
+                        },
+                        undefined,
+                      ],
+                    ]
                   }
-                }
+                >
+                  埼玉県朝霞市
+                </Text>
+              </View>
+              <View
+                style={undefined}
               >
-                bb
-              </Text>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {},
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      Array [
+                        Object {
+                          "color": "#86939e",
+                          "fontSize": 15,
+                          "fontWeight": "600",
+                          "marginTop": 1,
+                        },
+                        false,
+                        undefined,
+                        undefined,
+                      ],
+                    ]
+                  }
+                >
+                  内間木公民館ほか
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityComponentType={undefined}
+              accessibilityLabel={undefined}
+              accessibilityTraits={undefined}
+              accessible={true}
+              collapsable={undefined}
+              hasTVPreferredFocus={undefined}
+              hitSlop={undefined}
+              isTVSelectable={true}
+              nativeID={undefined}
+              onLayout={undefined}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "opacity": 1,
+                }
+              }
+              testID={undefined}
+              tvParallaxProperties={undefined}
+            >
+              <View
+                onPress={undefined}
+                style={
+                  Array [
+                    false,
+                    false,
+                    false,
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+                underlayColor="white"
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#2196f3",
+                        "fontSize": 28,
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                        undefined,
+                      ],
+                      Object {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
             </View>
           </View>
         </View>
@@ -5259,6 +5768,2637 @@ exports[`Storyshots Main cycle 1`] = `
     </View>
   </View>
 </View>
+`;
+
+exports[`Storyshots PrefSearchScene with plane 1`] = `
+<RCTScrollView
+  data={
+    Array [
+      Object {
+        "title": "北海道",
+      },
+      Object {
+        "title": "青森県",
+      },
+      Object {
+        "title": "岩手県",
+      },
+      Object {
+        "title": "宮城県",
+      },
+      Object {
+        "title": "秋田県",
+      },
+      Object {
+        "title": "山形県",
+      },
+      Object {
+        "title": "福島県",
+      },
+      Object {
+        "title": "茨城県",
+      },
+      Object {
+        "title": "栃木県",
+      },
+      Object {
+        "title": "群馬県",
+      },
+      Object {
+        "title": "埼玉県",
+      },
+      Object {
+        "title": "千葉県",
+      },
+      Object {
+        "title": "東京都",
+      },
+      Object {
+        "title": "神奈川県",
+      },
+      Object {
+        "title": "新潟県",
+      },
+      Object {
+        "title": "富山県",
+      },
+      Object {
+        "title": "石川県",
+      },
+      Object {
+        "title": "福井県",
+      },
+      Object {
+        "title": "山梨県",
+      },
+      Object {
+        "title": "長野県",
+      },
+      Object {
+        "title": "岐阜県",
+      },
+      Object {
+        "title": "静岡県",
+      },
+      Object {
+        "title": "愛知県",
+      },
+      Object {
+        "title": "三重県",
+      },
+      Object {
+        "title": "滋賀県",
+      },
+      Object {
+        "title": "京都府",
+      },
+      Object {
+        "title": "大阪府",
+      },
+      Object {
+        "title": "兵庫県",
+      },
+      Object {
+        "title": "奈良県",
+      },
+      Object {
+        "title": "和歌山県",
+      },
+      Object {
+        "title": "鳥取県",
+      },
+      Object {
+        "title": "島根県",
+      },
+      Object {
+        "title": "岡山県",
+      },
+      Object {
+        "title": "広島県",
+      },
+      Object {
+        "title": "山口県",
+      },
+      Object {
+        "title": "徳島県",
+      },
+      Object {
+        "title": "香川県",
+      },
+      Object {
+        "title": "愛媛県",
+      },
+      Object {
+        "title": "高知県",
+      },
+      Object {
+        "title": "福岡県",
+      },
+      Object {
+        "title": "佐賀県",
+      },
+      Object {
+        "title": "長崎県",
+      },
+      Object {
+        "title": "熊本県",
+      },
+      Object {
+        "title": "大分県",
+      },
+      Object {
+        "title": "宮崎県",
+      },
+      Object {
+        "title": "鹿児島県",
+      },
+      Object {
+        "title": "沖縄県",
+      },
+    ]
+  }
+  disableVirtualization={false}
+  getItem={[Function]}
+  getItemCount={[Function]}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  numColumns={1}
+  onContentSizeChange={[Function]}
+  onEndReachedThreshold={2}
+  onLayout={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  stickyHeaderIndices={Array []}
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={Array []}
+  windowSize={21}
+>
+  <View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              },
+              undefined,
+              false,
+              false,
+            ],
+          ]
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "marginLeft": 10,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            disabled={false}
+            onLongPress={undefined}
+            onPress={undefined}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                undefined,
+              ]
+            }
+            underlayColor="white"
+          >
+            <View>
+              <View
+                onPress={undefined}
+                style={
+                  Array [
+                    false,
+                    false,
+                    false,
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+                underlayColor="white"
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#bdc6cf",
+                        "fontSize": 24,
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                        Array [
+                          Object {
+                            "marginRight": 8,
+                          },
+                          undefined,
+                        ],
+                      ],
+                      Object {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <View
+              style={undefined}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {},
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    Array [
+                      Object {
+                        "color": "#43484d",
+                        "fontSize": 17.5,
+                      },
+                      false,
+                      undefined,
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                北海道
+              </Text>
+            </View>
+            <View
+              style={undefined}
+            >
+              <View />
+            </View>
+          </View>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "justifyContent": "center",
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <View
+              onPress={undefined}
+              style={
+                Array [
+                  false,
+                  false,
+                  false,
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                  },
+                  undefined,
+                ]
+              }
+              underlayColor="white"
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={false}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#bdc6cf",
+                      "fontSize": 28,
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      undefined,
+                    ],
+                    Object {
+                      "fontFamily": "Material Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              },
+              undefined,
+              false,
+              false,
+            ],
+          ]
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "marginLeft": 10,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            disabled={false}
+            onLongPress={undefined}
+            onPress={undefined}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                undefined,
+              ]
+            }
+            underlayColor="white"
+          >
+            <View>
+              <View
+                onPress={undefined}
+                style={
+                  Array [
+                    false,
+                    false,
+                    false,
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+                underlayColor="white"
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#bdc6cf",
+                        "fontSize": 24,
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                        Array [
+                          Object {
+                            "marginRight": 8,
+                          },
+                          undefined,
+                        ],
+                      ],
+                      Object {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <View
+              style={undefined}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {},
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    Array [
+                      Object {
+                        "color": "#43484d",
+                        "fontSize": 17.5,
+                      },
+                      false,
+                      undefined,
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                青森県
+              </Text>
+            </View>
+            <View
+              style={undefined}
+            >
+              <View />
+            </View>
+          </View>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "justifyContent": "center",
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <View
+              onPress={undefined}
+              style={
+                Array [
+                  false,
+                  false,
+                  false,
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                  },
+                  undefined,
+                ]
+              }
+              underlayColor="white"
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={false}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#bdc6cf",
+                      "fontSize": 28,
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      undefined,
+                    ],
+                    Object {
+                      "fontFamily": "Material Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              },
+              undefined,
+              false,
+              false,
+            ],
+          ]
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "marginLeft": 10,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            disabled={false}
+            onLongPress={undefined}
+            onPress={undefined}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                undefined,
+              ]
+            }
+            underlayColor="white"
+          >
+            <View>
+              <View
+                onPress={undefined}
+                style={
+                  Array [
+                    false,
+                    false,
+                    false,
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+                underlayColor="white"
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#bdc6cf",
+                        "fontSize": 24,
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                        Array [
+                          Object {
+                            "marginRight": 8,
+                          },
+                          undefined,
+                        ],
+                      ],
+                      Object {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <View
+              style={undefined}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {},
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    Array [
+                      Object {
+                        "color": "#43484d",
+                        "fontSize": 17.5,
+                      },
+                      false,
+                      undefined,
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                岩手県
+              </Text>
+            </View>
+            <View
+              style={undefined}
+            >
+              <View />
+            </View>
+          </View>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "justifyContent": "center",
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <View
+              onPress={undefined}
+              style={
+                Array [
+                  false,
+                  false,
+                  false,
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                  },
+                  undefined,
+                ]
+              }
+              underlayColor="white"
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={false}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#bdc6cf",
+                      "fontSize": 28,
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      undefined,
+                    ],
+                    Object {
+                      "fontFamily": "Material Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              },
+              undefined,
+              false,
+              false,
+            ],
+          ]
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "marginLeft": 10,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            disabled={false}
+            onLongPress={undefined}
+            onPress={undefined}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                undefined,
+              ]
+            }
+            underlayColor="white"
+          >
+            <View>
+              <View
+                onPress={undefined}
+                style={
+                  Array [
+                    false,
+                    false,
+                    false,
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+                underlayColor="white"
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#bdc6cf",
+                        "fontSize": 24,
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                        Array [
+                          Object {
+                            "marginRight": 8,
+                          },
+                          undefined,
+                        ],
+                      ],
+                      Object {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <View
+              style={undefined}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {},
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    Array [
+                      Object {
+                        "color": "#43484d",
+                        "fontSize": 17.5,
+                      },
+                      false,
+                      undefined,
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                宮城県
+              </Text>
+            </View>
+            <View
+              style={undefined}
+            >
+              <View />
+            </View>
+          </View>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "justifyContent": "center",
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <View
+              onPress={undefined}
+              style={
+                Array [
+                  false,
+                  false,
+                  false,
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                  },
+                  undefined,
+                ]
+              }
+              underlayColor="white"
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={false}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#bdc6cf",
+                      "fontSize": 28,
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      undefined,
+                    ],
+                    Object {
+                      "fontFamily": "Material Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              },
+              undefined,
+              false,
+              false,
+            ],
+          ]
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "marginLeft": 10,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            disabled={false}
+            onLongPress={undefined}
+            onPress={undefined}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                undefined,
+              ]
+            }
+            underlayColor="white"
+          >
+            <View>
+              <View
+                onPress={undefined}
+                style={
+                  Array [
+                    false,
+                    false,
+                    false,
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+                underlayColor="white"
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#bdc6cf",
+                        "fontSize": 24,
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                        Array [
+                          Object {
+                            "marginRight": 8,
+                          },
+                          undefined,
+                        ],
+                      ],
+                      Object {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <View
+              style={undefined}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {},
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    Array [
+                      Object {
+                        "color": "#43484d",
+                        "fontSize": 17.5,
+                      },
+                      false,
+                      undefined,
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                秋田県
+              </Text>
+            </View>
+            <View
+              style={undefined}
+            >
+              <View />
+            </View>
+          </View>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "justifyContent": "center",
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <View
+              onPress={undefined}
+              style={
+                Array [
+                  false,
+                  false,
+                  false,
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                  },
+                  undefined,
+                ]
+              }
+              underlayColor="white"
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={false}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#bdc6cf",
+                      "fontSize": 28,
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      undefined,
+                    ],
+                    Object {
+                      "fontFamily": "Material Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              },
+              undefined,
+              false,
+              false,
+            ],
+          ]
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "marginLeft": 10,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            disabled={false}
+            onLongPress={undefined}
+            onPress={undefined}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                undefined,
+              ]
+            }
+            underlayColor="white"
+          >
+            <View>
+              <View
+                onPress={undefined}
+                style={
+                  Array [
+                    false,
+                    false,
+                    false,
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+                underlayColor="white"
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#bdc6cf",
+                        "fontSize": 24,
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                        Array [
+                          Object {
+                            "marginRight": 8,
+                          },
+                          undefined,
+                        ],
+                      ],
+                      Object {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <View
+              style={undefined}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {},
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    Array [
+                      Object {
+                        "color": "#43484d",
+                        "fontSize": 17.5,
+                      },
+                      false,
+                      undefined,
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                山形県
+              </Text>
+            </View>
+            <View
+              style={undefined}
+            >
+              <View />
+            </View>
+          </View>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "justifyContent": "center",
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <View
+              onPress={undefined}
+              style={
+                Array [
+                  false,
+                  false,
+                  false,
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                  },
+                  undefined,
+                ]
+              }
+              underlayColor="white"
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={false}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#bdc6cf",
+                      "fontSize": 28,
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      undefined,
+                    ],
+                    Object {
+                      "fontFamily": "Material Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              },
+              undefined,
+              false,
+              false,
+            ],
+          ]
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "marginLeft": 10,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            disabled={false}
+            onLongPress={undefined}
+            onPress={undefined}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                undefined,
+              ]
+            }
+            underlayColor="white"
+          >
+            <View>
+              <View
+                onPress={undefined}
+                style={
+                  Array [
+                    false,
+                    false,
+                    false,
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+                underlayColor="white"
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#bdc6cf",
+                        "fontSize": 24,
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                        Array [
+                          Object {
+                            "marginRight": 8,
+                          },
+                          undefined,
+                        ],
+                      ],
+                      Object {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <View
+              style={undefined}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {},
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    Array [
+                      Object {
+                        "color": "#43484d",
+                        "fontSize": 17.5,
+                      },
+                      false,
+                      undefined,
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                福島県
+              </Text>
+            </View>
+            <View
+              style={undefined}
+            >
+              <View />
+            </View>
+          </View>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "justifyContent": "center",
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <View
+              onPress={undefined}
+              style={
+                Array [
+                  false,
+                  false,
+                  false,
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                  },
+                  undefined,
+                ]
+              }
+              underlayColor="white"
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={false}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#bdc6cf",
+                      "fontSize": 28,
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      undefined,
+                    ],
+                    Object {
+                      "fontFamily": "Material Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              },
+              undefined,
+              false,
+              false,
+            ],
+          ]
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "marginLeft": 10,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            disabled={false}
+            onLongPress={undefined}
+            onPress={undefined}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                undefined,
+              ]
+            }
+            underlayColor="white"
+          >
+            <View>
+              <View
+                onPress={undefined}
+                style={
+                  Array [
+                    false,
+                    false,
+                    false,
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+                underlayColor="white"
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#bdc6cf",
+                        "fontSize": 24,
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                        Array [
+                          Object {
+                            "marginRight": 8,
+                          },
+                          undefined,
+                        ],
+                      ],
+                      Object {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <View
+              style={undefined}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {},
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    Array [
+                      Object {
+                        "color": "#43484d",
+                        "fontSize": 17.5,
+                      },
+                      false,
+                      undefined,
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                茨城県
+              </Text>
+            </View>
+            <View
+              style={undefined}
+            >
+              <View />
+            </View>
+          </View>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "justifyContent": "center",
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <View
+              onPress={undefined}
+              style={
+                Array [
+                  false,
+                  false,
+                  false,
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                  },
+                  undefined,
+                ]
+              }
+              underlayColor="white"
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={false}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#bdc6cf",
+                      "fontSize": 28,
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      undefined,
+                    ],
+                    Object {
+                      "fontFamily": "Material Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              },
+              undefined,
+              false,
+              false,
+            ],
+          ]
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "marginLeft": 10,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            disabled={false}
+            onLongPress={undefined}
+            onPress={undefined}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                undefined,
+              ]
+            }
+            underlayColor="white"
+          >
+            <View>
+              <View
+                onPress={undefined}
+                style={
+                  Array [
+                    false,
+                    false,
+                    false,
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+                underlayColor="white"
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#bdc6cf",
+                        "fontSize": 24,
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                        Array [
+                          Object {
+                            "marginRight": 8,
+                          },
+                          undefined,
+                        ],
+                      ],
+                      Object {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <View
+              style={undefined}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {},
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    Array [
+                      Object {
+                        "color": "#43484d",
+                        "fontSize": 17.5,
+                      },
+                      false,
+                      undefined,
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                栃木県
+              </Text>
+            </View>
+            <View
+              style={undefined}
+            >
+              <View />
+            </View>
+          </View>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "justifyContent": "center",
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <View
+              onPress={undefined}
+              style={
+                Array [
+                  false,
+                  false,
+                  false,
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                  },
+                  undefined,
+                ]
+              }
+              underlayColor="white"
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={false}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#bdc6cf",
+                      "fontSize": 28,
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      undefined,
+                    ],
+                    Object {
+                      "fontFamily": "Material Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              },
+              undefined,
+              false,
+              false,
+            ],
+          ]
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "marginLeft": 10,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            disabled={false}
+            onLongPress={undefined}
+            onPress={undefined}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                undefined,
+              ]
+            }
+            underlayColor="white"
+          >
+            <View>
+              <View
+                onPress={undefined}
+                style={
+                  Array [
+                    false,
+                    false,
+                    false,
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+                underlayColor="white"
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={false}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#bdc6cf",
+                        "fontSize": 24,
+                      },
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                        Array [
+                          Object {
+                            "marginRight": 8,
+                          },
+                          undefined,
+                        ],
+                      ],
+                      Object {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "justifyContent": "center",
+              }
+            }
+          >
+            <View
+              style={undefined}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {},
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    Array [
+                      Object {
+                        "color": "#43484d",
+                        "fontSize": 17.5,
+                      },
+                      false,
+                      undefined,
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                群馬県
+              </Text>
+            </View>
+            <View
+              style={undefined}
+            >
+              <View />
+            </View>
+          </View>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "justifyContent": "center",
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <View
+              onPress={undefined}
+              style={
+                Array [
+                  false,
+                  false,
+                  false,
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                  },
+                  undefined,
+                ]
+              }
+              underlayColor="white"
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={false}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#bdc6cf",
+                      "fontSize": 28,
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      undefined,
+                    ],
+                    Object {
+                      "fontFamily": "Material Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "height": 0,
+        }
+      }
+    />
+  </View>
+</RCTScrollView>
 `;
 
 exports[`Storyshots SearchBar with loading 1`] = `
