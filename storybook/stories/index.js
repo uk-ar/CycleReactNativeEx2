@@ -510,13 +510,14 @@ storiesOf('LibrarySearchScene', module)
          systemid:"Saitama_Asaka"},
       ]}
       extraData={{selectedLibrary:"Saitama_Asaka"}}
+      onPress={action('onPress')}
     />
   ))
 
 storiesOf('PrefSearchScene', module)
                          .add('with plane', () => (
                            <PrefSearchScene
-                           onPress={action('onPress')}
+                             onPress={action('onPress')}
                            />
                          ))
 

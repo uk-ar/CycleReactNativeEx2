@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Rx from 'rxjs/Rx';
-import { TouchableOpacity, View, Text } from 'react-native';
+import { AsyncStorage,TouchableOpacity, View, Text } from 'react-native';
 //import {adapt} from '@cycle/run/lib/adapt';
 //import RxJSAdapter from '@cycle/rxjs-adapter';
 import {adapt} from '@cycle/run/lib/adapt';
@@ -116,9 +116,30 @@ Cycle = {
   TouchableOpacity: withCycle(TouchableOpacity)
 }
 
+function makeAsyncStorageDriver(key) {
+  function AsyncStorageDriver(outgoing$) {
+    Rx.Observable
+      .from(outgoing$)
+      .flatMap((value)=>
+        AsyncStorage.setItem(key,
+                             JSON.stringify(value)))
+      .subscribe()
+
+    incoming$ = Rx.Observable
+                  .fromPromise(AsyncStorage.getItem(key))
+                  .map(e=>JSON.parse(e))
+                  .merge(outgoing$);
+
+    return adapt(incoming$);
+  }
+
+  return AsyncStorageDriver;
+}
+
 export {
   Cycle,
   withCycle,
   makeReactNativeDriver,
   CycleRoot,
+  makeAsyncStorageDriver,
 }
