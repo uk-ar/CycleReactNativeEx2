@@ -10,13 +10,10 @@ let handlers = {}
 
 //https://facebook.github.io/react/docs/higher-order-components.html
 function withCycle(WrappedComponent) {
-  if(WrappedComponent.propTypes){
-    functionNames = Object.keys(WrappedComponent.propTypes)
-                          .filter((func)=>func.startsWith("on"))
-    //["onLayout","onPress"]
-  }else{
+  if(!WrappedComponent.propTypes){
     console.error("PropTypes is not set")
   }
+
   function findHandler(selector, evType) {
     if (!selector || !handlers[selector]){
       return null
@@ -33,11 +30,18 @@ function withCycle(WrappedComponent) {
       if(!selector) {
         console.error("The prop `selector` is not set")
       }
+
+      const functionNames =
+        Object.keys(WrappedComponent.propTypes)
+              .filter((func)=>func.startsWith("on"))
+      //["onLayout","onPress"]
+      //console.log(WrappedComponent,functionNames)
       this.injectedProp =
         functionNames.map(
           name => [name, findHandler(selector,name)])
                      .filter(([_, handler]) => !!handler)
                      .reduce((map, [name, handler]) => {
+                       //console.log(WrappedComponent,selector,name)
                        map[name] = this.props.payload === undefined ?
                                    handler :
                                    (...args) => handler(this.props.payload)
