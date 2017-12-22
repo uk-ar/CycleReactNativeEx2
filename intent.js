@@ -19,6 +19,7 @@ function intent(RN, HTTP, AS) {
     .select('pref')
     .events('press')
     .do(e=>console.log("pref",e))
+    .share()
 
   const screen$ = pref$
     .map(e=>["LibrarySelect"])
