@@ -65,9 +65,11 @@ class PrefSelectScreen extends React.Component {
   render() {
     const { params } = this.props.navigation.state;
     const { navigate } = this.props.navigation;
+    //const screen = this.props.screenProps.screen;
     return (
       <PrefSearchScene
         onPress={e=>navigate("LibrarySelect",{pref:e})}
+        selector="pref"
       />
     );
   }

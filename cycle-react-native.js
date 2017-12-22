@@ -36,6 +36,8 @@ function withCycle(WrappedComponent) {
               .filter((func)=>func.startsWith("on"))
       //["onLayout","onPress"]
       //console.log(WrappedComponent,functionNames)
+
+      //used in render
       this.injectedProp =
         functionNames.map(
           name => [name, findHandler(selector,name)])
@@ -60,7 +62,7 @@ function withCycle(WrappedComponent) {
   CycleComponent.displayName = `CycleComponent(${getDisplayName(WrappedComponent)})`;
   CycleComponent.propTypes = {
     selector: PropTypes.string.isRequired,
-    payload:  PropTypes.any
+    payload:  PropTypes.any//for ListItem onPress
   }
   return CycleComponent;
 }

@@ -15,6 +15,16 @@ import {
 
 function intent(RN, HTTP, AS) {
   // Actions
+  const pref$ = RN
+    .select('pref')
+    .events('press')
+    .do(e=>console.log("pref",e))
+
+  const screen$ = pref$
+    .map(e=>["LibrarySelect"])
+    .do(e=>console.log("screen",e))
+  //onPress={e=>navigate("LibrarySelect",{pref:e})}
+
   const library$ = RN
     .select('libraries')
     .events('press')
@@ -204,6 +214,8 @@ function intent(RN, HTTP, AS) {
                             requestSearchedBooksStatus$);
 
   return {
+    screen$,
+    pref$,
     library$,
     searchHistory$,
     requestSearchedBooks$,
@@ -230,6 +242,8 @@ function model(actions) {
   const state$ = Rx
     .Observable
     .combineLatest(
+      actions.pref$.startWith(""),
+      actions.screen$.startWith(["Home"]),
       actions.library$.startWith(""),
       actions.searchHistory$
              .map( searchHistory=>
@@ -238,9 +252,9 @@ function model(actions) {
       actions.searchedBooksStatus$.startWith({}),
       booksLoadingState$.startWith(false),
       actions.changeFilter$.startWith(0),
-      (selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
+      (pref,screen,selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
        selectedIndex ) =>
-         ({ selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
+         ({ pref,screen,selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
             selectedIndex }));
   return state$;
 }
