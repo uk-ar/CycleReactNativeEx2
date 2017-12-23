@@ -81,7 +81,7 @@ class LibraryList extends React.PureComponent {
   }
   _renderItem = ({item,index}) => {
     selected = (this.props.extraData.selectedLibrary == item.systemid)
-    console.log(this.props.extraData,item.systemid)
+    //console.log(this.props.extraData,item.systemid)
     //materialColor.grey['50'],//for TouchableElement
     selectedColor = materialColor.blue['500']
     return (
