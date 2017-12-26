@@ -2,7 +2,7 @@ import React from 'react';
 //GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest
 import {
   StatusBar,TouchableOpacity,StyleSheet, Text, View,FlatList,Button,
-  AsyncStorage,
+  AsyncStorage, Platform
 } from 'react-native';
 import { makeHTTPDriver } from '@cycle/http';
 import StorybookUI from './storybook';
@@ -12,7 +12,7 @@ import FAIcon from 'react-native-vector-icons/FontAwesome';
 import { SearchScene } from './components/SearchScene';
 import { LibrarySearchScene,PrefSearchScene } from './components/LibrarySearchScene';
 import { run } from '@cycle/rxjs-run';
-import { Constants, WebBrowser } from 'expo';
+import { Constants, WebBrowser,Location,Permissions } from 'expo';
 
 import { intent,model } from './intent';
 //const view = require('./view');
@@ -31,13 +31,19 @@ import {
   NavigationActions
 } from 'react-navigation';
 
-class LibraryLocationScreen extends React.Component {
-  static navigationOptions = ({navigation}) => ({
-    title: '現在地から図書館を探す',
-    //title: `Select library`,
-  });
+import PropTypes from 'prop-types';
+import emptyFunction from 'fbjs/lib/emptyFunction'
+
+@withCycle
+class LibraryLocation extends React.Component {
+  static propTypes = {
+    onLocation:PropTypes.func,
+  }
+  static defaultProps = {
+    onLocation:emptyFunction
+  }
   state = {
-    location: null,
+    //location: null,
     errorMessage: null,
   };
   componentWillMount() {
@@ -58,36 +64,56 @@ class LibraryLocationScreen extends React.Component {
     }
 
     let location = await Location.getCurrentPositionAsync({});
-    this.setState({ location });
+    //this.setState({ location });
+    this.props.onLocation(location);
   };
   render() {
     let text = 'Waiting..';
     if (this.state.errorMessage) {
       text = this.state.errorMessage;
-    } else if (this.state.location) {
-      text = JSON.stringify(this.state.location);
+    } else if (this.props.location) {
+      text = JSON.stringify(this.props.location);
     }
 
     return (
-      <View style={styles.container}>
-        <Text style={styles.paragraph}>{text}</Text>
+      <View style={styles.container} />
+    );
+  }
+}
+
+class LibraryLocationScreen extends React.Component {
+  static navigationOptions = ({navigation}) => ({
+    title: '現在地から図書館を探す',
+    headerRight: <Button
+    title="Done"
+    onPress={()=>
+      //navigation.navigate("Home")
+      navigation.dispatch(NavigationActions.reset({
+        index:0,
+        actions: [
+          NavigationActions.navigate({ routeName: 'Home'})
+        ]
+      }))
+    }/>
+  });
+
+  render() {
+    const { params } = this.props.navigation.state;
+    const { selectedLibrary , libraries } = this.props.screenProps;
+    console.log(selectedLibrary)
+    return (
+      <View>
+        <LibraryLocation
+          selector="location"
+        />
+        <LibrarySearchScene
+          data={libraries}
+          extraData={{selectedLibrary}}
+          selector="libraries"
+        />
       </View>
     );
   }
-  /* render() {
-   *   const { params } = this.props.navigation.state;
-   *   const { selectedLibrary , libraries } = this.props.screenProps;
-   *   console.log(selectedLibrary)
-   *   return (
-   *     <View>
-   *       <LibrarySearchScene
-   *         data={libraries}
-   *         extraData={{selectedLibrary}}
-   *         selector="libraries"
-   *       />
-   *     </View>
-   *   );
-   * }*/
 }
 
 class LibrarySelectScreen extends React.Component {
@@ -103,7 +129,7 @@ class LibrarySelectScreen extends React.Component {
                          NavigationActions.navigate({ routeName: 'Home'})
                        ]
                      }))
-                           }/>
+                   }/>
   });
   render() {
     const { params } = this.props.navigation.state;
@@ -159,7 +185,7 @@ class SelectLibraryScreen extends React.Component {
         <Button
           title="現在地から図書館を探す"
           onPress={()=>
-            navigate('LibraryLocationScreen')
+            navigate('LibraryLocation')
                   }
         />
         <Button
@@ -185,7 +211,7 @@ class SearchScreen extends React.Component {
         selector={"search"}
         {...this.props.screenProps}
         onPressSetting={()=>
-          navigate('SelectLibraryScreen')
+          navigate('SelectLibrary')
           //navigate('DrawerOpen')
                        }
         onPress={async ({item,index})=>{
@@ -205,7 +231,7 @@ class SearchScreen extends React.Component {
 //const Navigator = DrawerNavigator({
 const Navigator = StackNavigator({
   Home: {  screen: SearchScreen },
-  SelectLibraryScreen: {  screen: SelectLibraryScreen },
+  SelectLibrary: {  screen: SelectLibraryScreen },
   LibraryLocation: {  screen: LibraryLocationScreen },
   PrefSelect: {  screen: PrefSelectScreen },
   LibrarySelect: {  screen: LibrarySelectScreen },
