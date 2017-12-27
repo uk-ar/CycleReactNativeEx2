@@ -2,9 +2,14 @@
   "expo": {
     "sdkVersion": "24.0.0",
     "slug": "CycleReactNativeEx2",
-    "name": "CycleReactNativeEx2",
+    "name": "Biblio",
+    "version": "1.0.0",
+    "icon": "./assets/app-icon-l.png",
     "ios": {
       "bundleIdentifier": "com.ukar.biblio"
     },
+    "android": {
+      "package": "com.ukar.biblio"
+    }
   }
 }

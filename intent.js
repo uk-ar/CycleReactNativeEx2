@@ -57,6 +57,7 @@ function intent(RN, HTTP, AS) {
 
   const library$ = AS
     .first()
+    .map(e => e ? e : {library:""})
     .map(({library})=>library)
     .merge(
       RN
@@ -98,8 +99,9 @@ function intent(RN, HTTP, AS) {
 
   const searchHistory$ =
     AS.first()
+      .map(e => e ? e : {searchHistory:[]})
       .map(({searchHistory})=>searchHistory)
-      .map(e => e ? e : [])
+      //.map(e => e ? e : [])
       .merge(
         RN
           .select('search')
