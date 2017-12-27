@@ -89,16 +89,17 @@ const resetAction = NavigationActions.reset({
 })
 
 class LibraryLocationScreen extends React.Component {
-  static navigationOptions = ({navigation}) => ({
-    title: '現在地から図書館を探す',
-    headerRight: <Button
-    title="Done"
-    onPress={()=>
-      //navigation.navigate("Home")
-      navigation.dispatch(resetAction)
-    }/>
-  });
-
+  static navigationOptions = ({navigation, screenProps}) => {
+    return {
+        title: '現在地から図書館を探す',
+        headerRight: <Button
+                       title="Done"
+                       disabled={screenProps.selectedLibrary == "" ? true : false }
+                       onPress={()=>
+                         //navigation.navigate("Home")
+                         navigation.dispatch(resetAction)
+                               }/>
+    }};
   render() {
     const { params } = this.props.navigation.state;
     const { selectedLibrary , libraries } = this.props.screenProps;
@@ -119,15 +120,17 @@ class LibraryLocationScreen extends React.Component {
 }
 
 class LibraryListScreen extends React.Component {
-  static navigationOptions = ({navigation}) => ({
-    title: `Library Select`,
-    headerRight: <Button
-                   title="Done"
-                   onPress={()=>
-                     //navigation.navigate("Home")
-                     navigation.dispatch(resetAction)
-                   }/>
-  });
+  static navigationOptions = ({navigation,screenProps}) => {
+    return {
+      title: `Library Select`,
+      headerRight: <Button
+                     title="Done"
+                     disabled={screenProps.selectedLibrary == "" ? true : false }
+                     onPress={()=>
+                       //navigation.navigate("Home")
+                       navigation.dispatch(resetAction)
+                             }/>
+    }};
   render() {
     const { params } = this.props.navigation.state;
     const { selectedLibrary , libraries } = this.props.screenProps;
