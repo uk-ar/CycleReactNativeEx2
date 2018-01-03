@@ -76,7 +76,9 @@ class LibraryLocation extends React.Component {
     }
 
     return (
-      <View style={styles.container} />
+      <View>
+        <Text>{text}</Text>
+      </View>
     );
   }
 }
@@ -122,7 +124,7 @@ class LibraryLocationScreen extends React.Component {
 class LibraryListScreen extends React.Component {
   static navigationOptions = ({navigation,screenProps}) => {
     return {
-      title: `Library Select`,
+      title: `図書館を選択`,
       headerRight: <Button
                      title="Done"
                      disabled={screenProps.selectedLibrary == "" ? true : false }

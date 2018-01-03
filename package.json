@@ -9,7 +9,7 @@
     "@storybook/react-native": "^3.2.17",
     "babel-cli": "^6.26.0",
     "concurrently": "^3.5.0",
-    "exp": "^47.1.4",
+    "exp": "^47.3.10",
     "jest-expo": "^24.0.0",
     "react-dom": "16.0.0",
     "react-native-scripts": "1.7.0",
