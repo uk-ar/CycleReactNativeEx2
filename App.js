@@ -58,23 +58,43 @@ class LibraryLocation extends React.Component {
     /* }*/
   }
   _getLocationAsync = async () => {
+    const { locationServicesEnabled,gpsAvailable,networkAvailable,passiveAvailable } =
+      await Expo.Location.getProviderStatusAsync()
+    //console.log("st",{ locationServicesEnabled,gpsAvailable,networkAvailable,passiveAvailable })
+    if (!locationServicesEnabled) {
+      this.setState({
+        errorMessage: 'Location Service is not enabled',
+      });
+    }
     const { status } = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== 'granted') {
       this.setState({
         errorMessage: 'Permission to access location was denied',
       });
     }
-
-    const location = await Location.getCurrentPositionAsync({
-      enableHighAccuracy:true});
+    const location = await Location.getCurrentPositionAsync(
+      Platform.OS === 'android' ? {timeout:1000, enableHighAccuracy:gpsAvailable} : {}
+    )
+                                   .catch(()=> null);//{enableHighAccuracy:true}
+    if (!location){
+      this.setState({
+        errorMessage: 'Location request timed out',
+      })
+      return;
+    }
     this.props.onLocation(location);
-    this.setState({ location });
+    //this.setState({ location });
   };
   render() {
+    console.log("rend",this.props)
     let text = 'Waiting..';
     if (this.state.errorMessage) {
       text = this.state.errorMessage;
-    } else if (this.state.location) {
+    } else if (this.props.location && this.props.libraries.length === 0){
+      text = ""
+      //text = "近くに図書館がありません"
+      //TODO:FIX ME!!
+    } else if (this.props.location && this.props.libraries.length !== 0) {
       text = ""
       //text = JSON.stringify(this.state.location);
     }
@@ -108,11 +128,13 @@ class LibraryLocationScreen extends React.Component {
     }};
   render() {
     const { params } = this.props.navigation.state;
-    const { selectedLibrary, libraries } = this.props.screenProps;
-    console.log(selectedLibrary)
+    const { selectedLibrary, libraries, location } = this.props.screenProps;
+    console.log("st",selectedLibrary,libraries,location,(location && libraries.length === 0),
+                libraries.length)
     return (
       <View>
         <LibraryLocation
+          {...{location,libraries}}
           selector="location"
         />
         <LibrarySearchScene

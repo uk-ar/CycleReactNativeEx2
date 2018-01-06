@@ -301,6 +301,7 @@ function intent(RN, HTTP, AS) {
                      );
 
   return {
+    location$,
     storage$,
     libraries$,
     screen$,
@@ -331,6 +332,7 @@ function model(actions) {
   const state$ = Rx
     .Observable
     .combineLatest(
+      actions.location$.startWith(null),
       actions.libraries$.startWith([]),
       actions.pref$.startWith(""),
       actions.screen$.startWith(["Home"]),
@@ -342,9 +344,9 @@ function model(actions) {
       actions.searchedBooksStatus$.startWith({}),
       booksLoadingState$.startWith(false),
       actions.changeFilter$.startWith(0),
-      (libraries,pref,screen,selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
+      (location,libraries,pref,screen,selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
        selectedIndex ) =>
-         ({ libraries,pref,screen,selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
+         ({ location,libraries,pref,screen,selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
             selectedIndex }));
   return state$;
 }
