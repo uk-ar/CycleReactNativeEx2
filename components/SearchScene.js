@@ -4,11 +4,12 @@ import {
   FlatList,
   StyleSheet,
   Keyboard,
+  ActivityIndicator,
 } from 'react-native';
 import { ButtonGroup, SearchBar } from 'react-native-elements';
 import materialColor from 'material-colors';
-import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from './Book/BookCell';
-import { TouchableElement } from './Book/common';
+import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from './BookCell';
+import { TouchableElement } from './common';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import emptyFunction from 'fbjs/lib/emptyFunction'
 
@@ -72,6 +73,14 @@ class SearchHistory extends React.PureComponent {
         </View>
       </TouchableElement>
     );}
+  _renderHeader = () => {
+    return (
+      <View>
+        <Text style={{
+          margin:5,
+        }}>履歴</Text>
+      </View>)
+  }
   render() {
     return (
       <FlatList
@@ -79,6 +88,7 @@ class SearchHistory extends React.PureComponent {
         data={this.props.data}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
+        ListHeaderComponent={this._renderHeader}
       />
     );
   }
@@ -98,8 +108,11 @@ class SearchScene extends React.Component {
   static defaultProps = {
     onChangeText:emptyFunction
   }
-  state = {
-    text: null,
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: this.props.defaultText,
+    };
   }
   _onChangeText = (text) => {
     this.props.onChangeText(text)
@@ -114,7 +127,7 @@ class SearchScene extends React.Component {
     const { onChangeText,onClearText,onChangeFilter,onPress,onEndReached,
             onPressSetting,onSubmitEditing,
             booksLoadingState,searchedBooks,selectedIndex,
-            searchedBooksStatus,searchHistory,
+            searchedBooksStatus,searchHistory,defaultText,
     } = this.props
     rejects = [[],["noCollection"],["noCollection","onLoan"]]
     extraData = {

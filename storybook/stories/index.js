@@ -11,11 +11,11 @@ import materialColor from 'material-colors';
 import { CenterLeftView, CenterView } from './CenterView';
 import { CloseableView } from '../../components/CloseableView';
 import { CycleRoot } from '../../cycle-react-native';
-import { itemsInfo, TouchableElement } from '../../components/Book/common';
+import { itemsInfo, TouchableElement } from '../../components/common';
 import { SearchScene,SearchHistory } from '../../components/SearchScene';
 import { LibrarySearchScene, Library, LibraryList,PrefSearchScene } from '../../components/LibrarySearchScene';
 
-import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from '../../components/Book/BookCell';
+import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from '../../components/BookCell';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 
 storiesOf('LibraryStatus', module)
@@ -195,7 +195,23 @@ storiesOf('BookList', module)
           author: '坂本貴史',
           isbn: '9784862463241',
           thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200',
-        }]}
+        },{
+          title: 'IA／UXプラクティス',
+          author: '坂本貴史',
+          isbn: '9784862463242',
+          thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200',
+        },{
+          title: 'IA／UXプラクティス',
+          author: '坂本貴史',
+          isbn: '9784862463243',
+          thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200',
+        },{
+          title: 'IA／UXプラクティス',
+          author: '坂本貴史',
+          isbn: '9784862463244',
+          thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200',
+        }
+        ]}
     />
   ))
 
@@ -403,7 +419,6 @@ storiesOf('SearchScene', module)
             title:'guri & gura',
             author:'author foo',
             thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200',
-            bucket:"liked",
           }]}
       />
     </View>
@@ -436,15 +451,91 @@ storiesOf('SearchScene', module)
       onPress={action('book-press')}
       onPressSetting={action('book-press-setting')}
       showLoadingIcon={true}
-      selectedIndex={1}
-      rejects={[]}
-      data={[{
+      selectedIndex={0}
+      defaultText={"foo"}
+      searchedBooksStatus={{
+          9784834032147:{
+            status:"rentable"
+          },
+          9784828867472:{
+            status:"onLoan"
+          },
+          9784834000825:{
+            status:"noCollection"
+          },
+          9784834014655:{
+            status:"Loading"
+          }
+        }}
+      searchedBooks={[{
           isbn:'9784834032147',
           title:'guri & gura',
           author:'author foo',
           thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200',
           bucket:"liked",
         }]}
+    />
+  ))
+  .add('with many', () => (
+    <SearchScene
+      selector={"main"}
+      onChangeText={action('text-change')}
+      onClearText={action('text-clear')}
+      onChangeFilter={action('filter-change')}
+      onPress={action('book-press')}
+      onPressSetting={action('book-press-setting')}
+      showLoadingIcon={true}
+      selectedIndex={0}
+      rejects={[]}
+      defaultText={"foo"}
+      searchedBooks={[{
+          isbn:'9784834032147',
+          title:'guri & gura',
+          author:'author foo',
+          thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200',
+          bucket:"liked",
+        },{
+          isbn: '9784828867472',
+          title: 'はじめてのABCえほん',
+          author: '仲田利津子/黒田昌代',
+          thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200',
+          bucket:"done",
+        },{
+          title: 'ぐりとぐら(複数蔵書)',
+          author: '中川李枝子/大村百合子',
+          thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0825/9784834000825.jpg?_ex=200x200',
+          isbn: '9784834000825',
+          bucket:"borrowed",
+          reserveUrl: 'http://api.calil.jp/reserve?id=af299d780fe86cf8b116dfda4725dc0f',
+        },{
+          title: 'ぐりとぐらの1ねんかん(単一蔵書)',
+          author: '中川李枝子/山脇百合子（絵本作家）',
+          isbn: '9784834014655',
+          thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4655/9784834014655.jpg?_ex=200x200',
+          reserveUrl: 'https://www.amazon.co.jp/dp/4834014657',
+          bucket:"search",
+        },{
+          title: 'IA／UXプラクティス',
+          author: '坂本貴史',
+          isbn: '9784862463241',
+          thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200',
+        },{
+          title: 'IA／UXプラクティス',
+          author: '坂本貴史',
+          isbn: '9784862463242',
+          thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200',
+        },{
+          title: 'IA／UXプラクティス',
+          author: '坂本貴史',
+          isbn: '9784862463243',
+          thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200',
+        },{
+          title: 'IA／UXプラクティス',
+          author: '坂本貴史',
+          isbn: '9784862463244',
+          thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200',
+        }
+        ]}
     />
   ))
 
