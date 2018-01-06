@@ -15,7 +15,7 @@
       "buildNumber":"1"
     },
     "android": {
-      "package": "com.ukar.biblio",
+      "package": "com.ukar.biblio2",
       "permissions": ["ACCESS_COARSE_LOCATION","ACCESS_FINE_LOCATION"],
       "versionCode": 4
     }
