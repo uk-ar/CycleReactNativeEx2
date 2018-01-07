@@ -125,7 +125,7 @@ class SearchScene extends React.Component {
   }
   render () {
     const { onChangeText,onClearText,onChangeFilter,onPress,onEndReached,
-            onPressSetting,onSubmitEditing,
+            onPressSetting,onSubmitEditing,booksPagingState,
             booksLoadingState,searchedBooks,selectedIndex,
             searchedBooksStatus,searchHistory,defaultText,
     } = this.props
@@ -140,6 +140,7 @@ class SearchScene extends React.Component {
         onEndReached={onEndReached}
         data={searchedBooks}
         extraData={extraData}
+        booksPagingState={booksPagingState}
       />) : (
         <SearchHistory
           onPress={this._onPressHistory}
