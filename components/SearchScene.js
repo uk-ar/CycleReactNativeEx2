@@ -148,7 +148,7 @@ class SearchScene extends React.Component {
       )
     //Change TextInput value
     return (
-      <View>
+      <View style={{flex:1}}>
         <View style={{flexDirection:"row"}}>
           <SearchBar
             containerStyle={{
