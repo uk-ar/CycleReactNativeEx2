@@ -88,36 +88,42 @@ function intent(RN, HTTP, AS) {
          },{}))
     )
 
-  const changeQuery$ = RN
+  const changeText$ = RN
     .select('search')
     .events('changeText')
+    .shareReplay()
+
+  const submitText$ = RN
+    .select('search')
+    .events('submitEditing')
+    .withLatestFrom(changeText$)
+    .map(([submitEvent,lastQuery])=>lastQuery)
     .filter(query => query.length > 1)
-    .distinctUntilChanged()
-    .debounceTime(500)
-    .do(e=>console.log("e",e))
-    .share()
+    .do(e=>console.log("st",e))
+    .shareReplay()
+
+  const changeQuery$ = submitText$
+    .startWith('')
+    .switchMap(query=> changeText$.debounceTime(500))
+    .filter(query => query.length > 1)
+  //.distinctUntilChanged()
+    .do(q=>console.log("cq",q))
+    .shareReplay()
 
   const searchHistory$ =
     AS.first()
-      .map(e => e ? e : {searchHistory:[]})
+      .map(e => e ? e : {searchHistory: []} )
       .map(({searchHistory})=>searchHistory)
       //.map(e => e ? e : [])
-      .merge(
-        RN
-          .select('search')
-          .events('submitEditing')
-          .debounceTime(600)//for auto correct delay
-          .withLatestFrom(
-            changeQuery$
-          ).map(([first,second])=>[second])
-          .do(e=>console.log("su",e))
-      )
+      .merge(submitText$.map(query=>[query]))
       .startWith([])
+      .do(q=>console.log(q))
       .scan((searchHistory,query) => (
         query.concat(
           searchHistory
             .filter(e=> e !== query[0] )
         )))
+      .do(q=>console.log("sh",q))
       .shareReplay()
 
   const storage$ = Rx
@@ -157,8 +163,6 @@ function intent(RN, HTTP, AS) {
   const requestSearchedBooks$ =
     page$
       .skip(1)
-    /* changeQuery$
-     *   .map((query)=>({query,page:1}))*/
       .map(({query,page})=>{
         //console.log(query,page)
         return {
@@ -187,25 +191,29 @@ function intent(RN, HTTP, AS) {
   }
 
   const searchedBooksResponse$ =
-    changeQuery$.startWith("")
-                .switchMap((e)=>{
-                  return HTTP
-                    .select('search')
-                    .map(stream=>
-                      stream.retryWhen(errors=>errors.delay(1000)))
-                    .mergeAll()
-                    .do(e=>console.log(e))
-                    .map(res => res.body)
-                    .map(body =>
-                      itemsToBook(body.Items))
-                    .do((e)=>console.log(e))
-                })
+    HTTP
+      .select('search')
+      .map(stream=>
+        stream.retryWhen(errors=>errors.delay(1000)))
+      .mergeAll()
+      //.do(e=>console.log(e))
+      .map(res => res.body)
+      .map(body => itemsToBook(body.Items))
+      //.do((e)=>console.log(e))
+      .share()
+  //Do not replay in order to cancel in SearchBooks$
 
   const searchedBooks$ =
-    searchedBooksResponse$
-      .startWith([])
-      .scan((currentBooks,newBooks) => (
-        currentBooks.concat(newBooks)))
+    changeQuery$
+      .do((e)=>console.log("cq",e))
+      .startWith("")
+      .switchMap((e)=>{
+        return searchedBooksResponse$
+          .startWith([])
+          .scan((currentBooks,newBooks) => (
+            currentBooks.concat(newBooks)))
+      })
+      .distinctUntilChanged()
       .share()
 
   function createBooksStatusStream(books$, category) {
@@ -317,14 +325,15 @@ function intent(RN, HTTP, AS) {
     searchedBooksStatus$,
     changeFilter$,
     request$,
+    changeText$,
+    submitText$,
   };
 }
 
 function model(actions) {
   const searchedBooks$ =
     actions.searchedBooks$
-           //.merge(actions.requestSearchedBooks$.map(_=>[]))
-           .distinctUntilChanged()
+           .merge(actions.changeText$.map(_=>[]))
 
   const booksLoadingState$ =
     actions.changeQuery$
@@ -334,16 +343,18 @@ function model(actions) {
            .shareReplay();
 
   const booksPagingState$ =
-    actions.changeQuery$
-           .map(_ => true)
-           .merge(
-             actions
-               .searchedBooksResponse$
-               .do(e=>console.log("f",e))
-               .filter(books=>books.length === 0)
-               .do(e=>console.log(e))
-               .map(_ => false))
-           .do(e=>console.log(e))
+    Rx.Observable
+      .merge(actions.changeText$,
+             actions.submitText$)
+      .map(_ => true)
+      .merge(
+        actions
+          .searchedBooksResponse$
+          .do(e=>console.log("f",e.length))
+          .filter(books=>books.length === 0)
+          .do(e=>console.log(e))
+          .map(_ => false))
+      .do(e=>console.log(e))
 
   const state$ = Rx
     .Observable
