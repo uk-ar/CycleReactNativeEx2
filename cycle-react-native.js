@@ -129,15 +129,21 @@ function makeAsyncStorageDriver(key) {
   function AsyncStorageDriver(outgoing$) {
     Rx.Observable
       .from(outgoing$)
-      .flatMap((value)=>
-        AsyncStorage.setItem(key,
-                             JSON.stringify(value)))
+      .flatMap((value)=>{
+        //console.log("setItem",JSON.stringify(value))
+        return AsyncStorage.setItem(key,
+                                    JSON.stringify(value))
+      })
       .subscribe()
 
     incoming$ = Rx.Observable
                   .fromPromise(AsyncStorage.getItem(key))
-                  .map(e=>JSON.parse(e))
-                  .merge(outgoing$);
+                  .map(e=>{
+                    //console.log("get",e)
+                    return JSON.parse(e)
+                  })
+                  .merge(outgoing$)
+                  .shareReplay();
 
     return adapt(incoming$);
   }

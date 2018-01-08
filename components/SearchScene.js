@@ -117,6 +117,7 @@ class SearchScene extends React.Component {
   _onChangeText = (text) => {
     this.props.onChangeText(text)
     this.setState({text})
+    //TODO:clear searchedBooks
   }
   _onPressHistory = ({query}) => {
     this.props.onChangeText(query)
