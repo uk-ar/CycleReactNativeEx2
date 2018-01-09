@@ -192,7 +192,7 @@ function intent(RN, HTTP, AS) {
       .switch()
   //TODO:switch is for not to append result to other query. possible to drop response?
   //.mergeAll()
-  //.do(e=>console.log(e))
+      .do(e=>console.log(e))
       .map(res => res.body)
       .map(body => itemsToBook(body.Items))
   //.do((e)=>console.log(e))
