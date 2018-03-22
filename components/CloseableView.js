@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 import {
   ActivityIndicator,
@@ -12,9 +12,8 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   TouchableNativeFeedback,
-  FlatList,
-} from 'react-native';
-
+  FlatList
+} from "react-native";
 
 class CloseableViewAnim extends React.Component {
   constructor(props) {
@@ -23,24 +22,25 @@ class CloseableViewAnim extends React.Component {
   }
 
   render() {
-    let { closed, style } = this.props
-    Animated.timing(
-      this._animated,{
-        toValue: closed ? 0 : 1,
-        duration: 250,
-      }
-    ).start();
+    let { closed, style } = this.props;
+    Animated.timing(this._animated, {
+      toValue: closed ? 0 : 1,
+      duration: 250
+    }).start();
     return (
       <Animated.View
-        style={[{
+        style={[
+          {
             opacity: this._animated,
             height: this._animated.interpolate({
-              inputRange:[0,1],
-              outputRange:[0,83],
-              extrapolate:'clamp'
+              inputRange: [0, 1],
+              outputRange: [0, 83],
+              extrapolate: "clamp"
             }),
-            overflow:"hidden"
-          },style]}
+            overflow: "hidden"
+          },
+          style
+        ]}
       >
         {this.props.children}
       </Animated.View>
@@ -51,13 +51,16 @@ class CloseableViewAnim extends React.Component {
 class CloseableView extends React.Component {
   render() {
     //console.log("re close")
-    let { closed, style } = this.props
+    let { closed, style } = this.props;
     return (
       <View
-        style={[{
+        style={[
+          {
             height: closed ? 1 : 83,
-            overflow:"hidden"
-          },style]}
+            overflow: "hidden"
+          },
+          style
+        ]}
       >
         {this.props.children}
       </View>
