@@ -14,6 +14,7 @@
     "concurrently": "^3.5.0",
     "exp": "47.3.10",
     "jest-expo": "^25.0.0",
+    "prettier": "^1.11.1",
     "react-dom": "16.0.0",
     "react-native-scripts": "1.7.0",
     "react-test-renderer": "16.0.0"

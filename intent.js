@@ -2,13 +2,6 @@ import Rx from 'rxjs/Rx';
 import _ from 'lodash';
 
 import {
-  STORAGE_KEY,
-  RAKUTEN_SEARCH_API,
-  CALIL_STATUS_API,
-  //LIBRARY_ID,
-} from './constants';
-
-import {
   InteractionManager,
   AsyncStorage,
 } from 'react-native';
@@ -155,16 +148,26 @@ function intent(RN, HTTP, AS) {
       })
       .skip(1)
 
+//const RAKUTEN_SEARCH_API = 'https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404?';
+//'https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404?format=json&booksGenreId=001&applicationId=1088506385229803383&formatVersion=2&keyword=';
+//'https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706?format=json&keyword=%E3%81%B2%E3%81%BF%E3%81%A4%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA&applicationId=7efe699a2de87000308287110442da41'
   const requestSearchedBooks$ =
     page$
       .map(({query,page})=>{
-        //console.log(query,page)
         return {
-          category: 'search',
-          url: RAKUTEN_SEARCH_API + encodeURI(query) +
-               "&page=" + page,
-          headers: { 'Content-Type':
-                     'application/json; charset=utf-8' },
+            category: 'search',
+            url: 'https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404?',
+          //url: RAKUTEN_SEARCH_API
+          //url: 'https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706?',
+          query:{
+            format:"json",
+            applicationId:"1088506385229803383",
+            keyword:query,
+              outOfStockFlag: "1",
+              field:"0",
+            page
+          },
+          headers: { 'Content-Type': 'application/json; charset=utf-8' },
           accept: 'Accept-Language:ja,en-US;q=0.8,en;q=0.6'
         }
       })
@@ -187,15 +190,14 @@ function intent(RN, HTTP, AS) {
   const searchedBooksResponse$ =
     HTTP
       .select('search')
-      .map(stream=>
-        stream.retryWhen(errors=>errors.delay(1000)))
+      .map(stream => stream.retryWhen(errors=>errors.delay(1000)))
       .switch()
   //TODO:switch is for not to append result to other query. possible to drop response?
-  //.mergeAll()
-      .do(e=>console.log(e))
+      //.mergeAll()
       .map(res => res.body)
+      .do((e)=>console.log(e))
       .map(body => itemsToBook(body.Items))
-  //.do((e)=>console.log(e))
+      .do((e)=>console.log(e))
       .share()
   //Do not replay in order to cancel in SearchBooks$
 

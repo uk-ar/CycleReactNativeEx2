@@ -1,14 +1,5 @@
-const STORAGE_KEY = '@CycleReactNativeEx:inBox';
-// books search api cannot use query keyword
-const RAKUTEN_SEARCH_API =
-'https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404?format=json&booksGenreId=001&applicationId=1088506385229803383&formatVersion=2&keyword=';
-const RAKUTEN_ISBN_API =
-'https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522?format=json&applicationId=1088506385229803383&formatVersion=2&isbnjan=';
-
-const LIBRARY_ID = 'Tokyo_Fuchu';
+//const LIBRARY_ID = 'Tokyo_Fuchu';
 //const LIBRARY_ID = 'Tokyo_Inagi';
-
-const CALIL_STATUS_API = `http://api.calil.jp/check?callback=no&appkey=bc3d19b6abbd0af9a59d97fe8b22660f&systemid=${LIBRARY_ID}&format=json&isbn=`;
 
 const APPBAR_HEIGHT = Platform.OS === 'ios' ? 44 : 56;
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : 0;
@@ -129,10 +120,10 @@ module.exports = {
   //Touchable,
   //itemsInfo,
   STORAGE_KEY,
-  RAKUTEN_SEARCH_API,
-  RAKUTEN_ISBN_API,
-  LIBRARY_ID,
-  CALIL_STATUS_API,
+  //RAKUTEN_SEARCH_API,
+  //RAKUTEN_ISBN_API,
+  //LIBRARY_ID,
+  //CALIL_STATUS_API,
   MOCKED_MOVIES_DATA,
   //TouchableElement,
 };
