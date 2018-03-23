@@ -3,16 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "@storybook/addon-actions": "^3.3.3",
-    "@storybook/addon-links": "^3.3.3",
-    "@storybook/addon-storyshots": "^3.3.3",
-    "@storybook/addons": "^3.3.3",
-    "@storybook/react-native": "^3.3.3",
+    "@storybook/addon-actions": "^3.3.15",
+    "@storybook/addon-links": "^3.3.15",
+    "@storybook/addon-storyshots": "^3.3.15",
+    "@storybook/addons": "^3.3.15",
+    "@storybook/react-native": "^3.3.15",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-inline-environment-variables": "^0.2.0",
     "babel-plugin-transform-remove-console": "^6.8.5",
     "concurrently": "^3.5.0",
     "exp": "50.0.1",
+    "identity-obj-proxy": "^3.0.0",
     "jest-expo": "^25.0.0",
     "prettier": "^1.11.1",
     "react-dom": "16.0.0",
@@ -34,6 +35,9 @@
     "preset": "jest-expo",
     "globals": {
       "__TEST__": true
+    },
+    "moduleNameMapper": {
+      ".+\\.(png)$": "identity-obj-proxy"
     }
   },
   "dependencies": {

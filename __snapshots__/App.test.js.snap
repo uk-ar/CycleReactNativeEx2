@@ -26,19 +26,12 @@ exports[`Storyshots Book with full book 1`] = `
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
-    style={
-      Array [
-        Object {
-          "backgroundColor": "transparent",
-        },
-        undefined,
-      ]
-    }
+    style={null}
     testID={undefined}
     tvParallaxProperties={undefined}
   >
     <View
-      style={undefined}
+      style={null}
     >
       <Image
         resizeMode="contain"
@@ -143,19 +136,12 @@ exports[`Storyshots Book with short title 1`] = `
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
-    style={
-      Array [
-        Object {
-          "backgroundColor": "transparent",
-        },
-        undefined,
-      ]
-    }
+    style={null}
     testID={undefined}
     tvParallaxProperties={undefined}
   >
     <View
-      style={undefined}
+      style={null}
     >
       <Image
         resizeMode="contain"
@@ -195,28 +181,9 @@ exports[`Storyshots Book with short title 1`] = `
         >
           <Text
             accessible={true}
-            allowFontScaling={false}
+            allowFontScaling={true}
             ellipsizeMode="tail"
-            style={
-              Array [
-                Object {
-                  "color": undefined,
-                  "fontSize": 20,
-                },
-                Object {
-                  "color": "#03a9f4",
-                  "marginRight": 10,
-                },
-                Object {
-                  "fontFamily": "awesome",
-                  "fontStyle": "normal",
-                  "fontWeight": "normal",
-                },
-              ]
-            }
-          >
-            
-          </Text>
+          />
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -300,19 +267,12 @@ exports[`Storyshots Book with thumbnail 1`] = `
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
-    style={
-      Array [
-        Object {
-          "backgroundColor": "transparent",
-        },
-        undefined,
-      ]
-    }
+    style={null}
     testID={undefined}
     tvParallaxProperties={undefined}
   >
     <View
-      style={undefined}
+      style={null}
     >
       <Image
         resizeMode="contain"
@@ -523,14 +483,7 @@ exports[`Storyshots BookList with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -580,28 +533,9 @@ exports[`Storyshots BookList with many 1`] = `
                 >
                   <Text
                     accessible={true}
-                    allowFontScaling={false}
+                    allowFontScaling={true}
                     ellipsizeMode="tail"
-                    style={
-                      Array [
-                        Object {
-                          "color": undefined,
-                          "fontSize": 20,
-                        },
-                        Object {
-                          "color": "#03a9f4",
-                          "marginRight": 10,
-                        },
-                        Object {
-                          "fontFamily": "awesome",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                      ]
-                    }
-                  >
-                    
-                  </Text>
+                  />
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -689,14 +623,7 @@ exports[`Storyshots BookList with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -746,28 +673,9 @@ exports[`Storyshots BookList with many 1`] = `
                 >
                   <Text
                     accessible={true}
-                    allowFontScaling={false}
+                    allowFontScaling={true}
                     ellipsizeMode="tail"
-                    style={
-                      Array [
-                        Object {
-                          "color": undefined,
-                          "fontSize": 20,
-                        },
-                        Object {
-                          "color": "#ffc107",
-                          "marginRight": 10,
-                        },
-                        Object {
-                          "fontFamily": "awesome",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                      ]
-                    }
-                  >
-                    
-                  </Text>
+                  />
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -855,14 +763,7 @@ exports[`Storyshots BookList with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -912,28 +813,9 @@ exports[`Storyshots BookList with many 1`] = `
                 >
                   <Text
                     accessible={true}
-                    allowFontScaling={false}
+                    allowFontScaling={true}
                     ellipsizeMode="tail"
-                    style={
-                      Array [
-                        Object {
-                          "color": undefined,
-                          "fontSize": 20,
-                        },
-                        Object {
-                          "color": "#4caf50",
-                          "marginRight": 10,
-                        },
-                        Object {
-                          "fontFamily": "awesome",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                      ]
-                    }
-                  >
-                    
-                  </Text>
+                  />
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -1021,14 +903,7 @@ exports[`Storyshots BookList with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -1078,28 +953,9 @@ exports[`Storyshots BookList with many 1`] = `
                 >
                   <Text
                     accessible={true}
-                    allowFontScaling={false}
+                    allowFontScaling={true}
                     ellipsizeMode="tail"
-                    style={
-                      Array [
-                        Object {
-                          "color": undefined,
-                          "fontSize": 20,
-                        },
-                        Object {
-                          "color": undefined,
-                          "marginRight": 10,
-                        },
-                        Object {
-                          "fontFamily": "awesome",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                      ]
-                    }
-                  >
-                    
-                  </Text>
+                  />
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -1194,14 +1050,7 @@ exports[`Storyshots BookList with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -1343,14 +1192,7 @@ exports[`Storyshots BookList with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -1492,14 +1334,7 @@ exports[`Storyshots BookList with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -1641,14 +1476,7 @@ exports[`Storyshots BookList with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -1846,14 +1674,7 @@ exports[`Storyshots BookList with one 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -2057,14 +1878,7 @@ exports[`Storyshots BookList with two 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -2206,14 +2020,7 @@ exports[`Storyshots BookList with two 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -2350,19 +2157,12 @@ exports[`Storyshots Browser with full book 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  style={
-    Array [
-      Object {
-        "backgroundColor": "transparent",
-      },
-      undefined,
-    ]
-  }
+  style={null}
   testID={undefined}
   tvParallaxProperties={undefined}
 >
   <View
-    style={undefined}
+    style={null}
   >
     <Image
       resizeMode="contain"
@@ -2402,28 +2202,9 @@ exports[`Storyshots Browser with full book 1`] = `
       >
         <Text
           accessible={true}
-          allowFontScaling={false}
+          allowFontScaling={true}
           ellipsizeMode="tail"
-          style={
-            Array [
-              Object {
-                "color": undefined,
-                "fontSize": 20,
-              },
-              Object {
-                "color": "#ffc107",
-                "marginRight": 10,
-              },
-              Object {
-                "fontFamily": "awesome",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-            ]
-          }
-        >
-          
-        </Text>
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -2541,24 +2322,19 @@ exports[`Storyshots Filter with 3 items 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "transparent",
+          "flex": 1,
         },
-        Array [
-          Object {
-            "flex": 1,
-          },
-          Object {
-            "borderRightColor": "#bdc6cf",
-            "borderRightWidth": 0,
-          },
-          false,
-          false,
-          Object {
-            "borderBottomLeftRadius": 3,
-            "borderTopLeftRadius": 3,
-          },
-          false,
-        ],
+        Object {
+          "borderRightColor": "#bdc6cf",
+          "borderRightWidth": 0,
+        },
+        false,
+        false,
+        Object {
+          "borderBottomLeftRadius": 3,
+          "borderTopLeftRadius": 3,
+        },
+        false,
       ]
     }
     testID={undefined}
@@ -2628,24 +2404,19 @@ exports[`Storyshots Filter with 3 items 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "transparent",
+          "flex": 1,
         },
-        Array [
-          Object {
-            "flex": 1,
-          },
-          Object {
-            "borderRightColor": "#bdc6cf",
-            "borderRightWidth": 1,
-          },
-          Object {
-            "borderLeftColor": "#bdc6cf",
-            "borderLeftWidth": 1,
-          },
-          false,
-          false,
-          false,
-        ],
+        Object {
+          "borderRightColor": "#bdc6cf",
+          "borderRightWidth": 1,
+        },
+        Object {
+          "borderLeftColor": "#bdc6cf",
+          "borderLeftWidth": 1,
+        },
+        false,
+        false,
+        false,
       ]
     }
     testID={undefined}
@@ -2715,23 +2486,18 @@ exports[`Storyshots Filter with 3 items 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "transparent",
+          "flex": 1,
         },
-        Array [
-          Object {
-            "flex": 1,
-          },
-          false,
-          false,
-          Object {
-            "borderBottomRightRadius": 3,
-            "borderTopRightRadius": 3,
-          },
-          false,
-          Object {
-            "backgroundColor": "white",
-          },
-        ],
+        false,
+        false,
+        Object {
+          "borderBottomRightRadius": 3,
+          "borderTopRightRadius": 3,
+        },
+        false,
+        Object {
+          "backgroundColor": "white",
+        },
       ]
     }
     testID={undefined}
@@ -2829,26 +2595,21 @@ exports[`Storyshots Filter with 3 items no state 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "transparent",
+          "flex": 1,
         },
-        Array [
-          Object {
-            "flex": 1,
-          },
-          Object {
-            "borderRightColor": "#bdc6cf",
-            "borderRightWidth": 0,
-          },
-          false,
-          false,
-          Object {
-            "borderBottomLeftRadius": 3,
-            "borderTopLeftRadius": 3,
-          },
-          Object {
-            "backgroundColor": "white",
-          },
-        ],
+        Object {
+          "borderRightColor": "#bdc6cf",
+          "borderRightWidth": 0,
+        },
+        false,
+        false,
+        Object {
+          "borderBottomLeftRadius": 3,
+          "borderTopLeftRadius": 3,
+        },
+        Object {
+          "backgroundColor": "white",
+        },
       ]
     }
     testID={undefined}
@@ -2920,24 +2681,19 @@ exports[`Storyshots Filter with 3 items no state 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "transparent",
+          "flex": 1,
         },
-        Array [
-          Object {
-            "flex": 1,
-          },
-          Object {
-            "borderRightColor": "#bdc6cf",
-            "borderRightWidth": 1,
-          },
-          Object {
-            "borderLeftColor": "#bdc6cf",
-            "borderLeftWidth": 1,
-          },
-          false,
-          false,
-          false,
-        ],
+        Object {
+          "borderRightColor": "#bdc6cf",
+          "borderRightWidth": 1,
+        },
+        Object {
+          "borderLeftColor": "#bdc6cf",
+          "borderLeftWidth": 1,
+        },
+        false,
+        false,
+        false,
       ]
     }
     testID={undefined}
@@ -3007,21 +2763,16 @@ exports[`Storyshots Filter with 3 items no state 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "transparent",
+          "flex": 1,
         },
-        Array [
-          Object {
-            "flex": 1,
-          },
-          false,
-          false,
-          Object {
-            "borderBottomRightRadius": 3,
-            "borderTopRightRadius": 3,
-          },
-          false,
-          false,
-        ],
+        false,
+        false,
+        Object {
+          "borderBottomRightRadius": 3,
+          "borderTopRightRadius": 3,
+        },
+        false,
+        false,
       ]
     }
     testID={undefined}
@@ -3207,14 +2958,7 @@ exports[`Storyshots Filter with open and close 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -3264,28 +3008,9 @@ exports[`Storyshots Filter with open and close 1`] = `
                 >
                   <Text
                     accessible={true}
-                    allowFontScaling={false}
+                    allowFontScaling={true}
                     ellipsizeMode="tail"
-                    style={
-                      Array [
-                        Object {
-                          "color": undefined,
-                          "fontSize": 20,
-                        },
-                        Object {
-                          "color": "#03a9f4",
-                          "marginRight": 10,
-                        },
-                        Object {
-                          "fontFamily": "awesome",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                      ]
-                    }
-                  >
-                    
-                  </Text>
+                  />
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -3373,14 +3098,7 @@ exports[`Storyshots Filter with open and close 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -3430,28 +3148,9 @@ exports[`Storyshots Filter with open and close 1`] = `
                 >
                   <Text
                     accessible={true}
-                    allowFontScaling={false}
+                    allowFontScaling={true}
                     ellipsizeMode="tail"
-                    style={
-                      Array [
-                        Object {
-                          "color": undefined,
-                          "fontSize": 20,
-                        },
-                        Object {
-                          "color": "#ffc107",
-                          "marginRight": 10,
-                        },
-                        Object {
-                          "fontFamily": "awesome",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                      ]
-                    }
-                  >
-                    
-                  </Text>
+                  />
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -3539,14 +3238,7 @@ exports[`Storyshots Filter with open and close 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -3596,28 +3288,9 @@ exports[`Storyshots Filter with open and close 1`] = `
                 >
                   <Text
                     accessible={true}
-                    allowFontScaling={false}
+                    allowFontScaling={true}
                     ellipsizeMode="tail"
-                    style={
-                      Array [
-                        Object {
-                          "color": undefined,
-                          "fontSize": 20,
-                        },
-                        Object {
-                          "color": "#4caf50",
-                          "marginRight": 10,
-                        },
-                        Object {
-                          "fontFamily": "awesome",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                      ]
-                    }
-                  >
-                    
-                  </Text>
+                  />
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -3705,14 +3378,7 @@ exports[`Storyshots Filter with open and close 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -3762,28 +3428,9 @@ exports[`Storyshots Filter with open and close 1`] = `
                 >
                   <Text
                     accessible={true}
-                    allowFontScaling={false}
+                    allowFontScaling={true}
                     ellipsizeMode="tail"
-                    style={
-                      Array [
-                        Object {
-                          "color": undefined,
-                          "fontSize": 20,
-                        },
-                        Object {
-                          "color": undefined,
-                          "marginRight": 10,
-                        },
-                        Object {
-                          "fontFamily": "awesome",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                      ]
-                    }
-                  >
-                    
-                  </Text>
+                  />
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -3878,14 +3525,7 @@ exports[`Storyshots Filter with open and close 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -4217,14 +3857,7 @@ exports[`Storyshots Library with plane 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  style={
-    Array [
-      Object {
-        "backgroundColor": "transparent",
-      },
-      undefined,
-    ]
-  }
+  style={null}
   testID={undefined}
   tvParallaxProperties={undefined}
 >
@@ -4238,28 +3871,9 @@ exports[`Storyshots Library with plane 1`] = `
   >
     <Text
       accessible={true}
-      allowFontScaling={false}
+      allowFontScaling={true}
       ellipsizeMode="tail"
-      style={
-        Array [
-          Object {
-            "color": undefined,
-            "fontSize": 20,
-          },
-          Object {
-            "alignSelf": "center",
-            "margin": 10,
-          },
-          Object {
-            "fontFamily": "awesome",
-            "fontStyle": "normal",
-            "fontWeight": "normal",
-          },
-        ]
-      }
-    >
-      
-    </Text>
+    />
     <View
       style={
         Object {
@@ -4355,20 +3969,15 @@ exports[`Storyshots LibraryList with plane 1`] = `
           Array [
             Object {
               "backgroundColor": "transparent",
+              "borderBottomColor": "#bbb",
+              "borderBottomWidth": 1,
+              "paddingBottom": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
             },
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderBottomColor": "#bbb",
-                "borderBottomWidth": 1,
-                "paddingBottom": 10,
-                "paddingRight": 10,
-                "paddingTop": 10,
-              },
-              undefined,
-              false,
-              false,
-            ],
+            undefined,
+            false,
+            false,
           ]
         }
         testID={undefined}
@@ -4570,20 +4179,15 @@ exports[`Storyshots LibraryList with plane 1`] = `
           Array [
             Object {
               "backgroundColor": "transparent",
+              "borderBottomColor": "#bbb",
+              "borderBottomWidth": 1,
+              "paddingBottom": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
             },
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderBottomColor": "#bbb",
-                "borderBottomWidth": 1,
-                "paddingBottom": 10,
-                "paddingRight": 10,
-                "paddingTop": 10,
-              },
-              undefined,
-              false,
-              false,
-            ],
+            undefined,
+            false,
+            false,
           ]
         }
         testID={undefined}
@@ -4839,20 +4443,15 @@ exports[`Storyshots LibrarySearchScene with plane 1`] = `
             Array [
               Object {
                 "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
               },
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                  "borderBottomColor": "#bbb",
-                  "borderBottomWidth": 1,
-                  "paddingBottom": 10,
-                  "paddingRight": 10,
-                  "paddingTop": 10,
-                },
-                undefined,
-                false,
-                false,
-              ],
+              undefined,
+              false,
+              false,
             ]
           }
           testID={undefined}
@@ -5116,20 +4715,15 @@ exports[`Storyshots LibrarySearchScene with plane 1`] = `
             Array [
               Object {
                 "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
               },
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                  "borderBottomColor": "#bbb",
-                  "borderBottomWidth": 1,
-                  "paddingBottom": 10,
-                  "paddingRight": 10,
-                  "paddingTop": 10,
-                },
-                undefined,
-                false,
-                false,
-              ],
+              undefined,
+              false,
+              false,
             ]
           }
           testID={undefined}
@@ -5393,20 +4987,15 @@ exports[`Storyshots LibrarySearchScene with plane 1`] = `
             Array [
               Object {
                 "backgroundColor": "transparent",
+                "borderBottomColor": "#bbb",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
               },
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                  "borderBottomColor": "#bbb",
-                  "borderBottomWidth": 1,
-                  "paddingBottom": 10,
-                  "paddingRight": 10,
-                  "paddingTop": 10,
-                },
-                undefined,
-                false,
-                false,
-              ],
+              undefined,
+              false,
+              false,
             ]
           }
           testID={undefined}
@@ -5790,7 +5379,7 @@ exports[`Storyshots Main cycle 1`] = `
           pointerEvents="auto"
           style={
             Object {
-              "backgroundColor": "#E9E9EF",
+              "backgroundColor": "#EFEFF4",
               "bottom": 0,
               "left": 0,
               "opacity": 1,
@@ -5819,130 +5408,88 @@ exports[`Storyshots Main cycle 1`] = `
         </View>
       </View>
       <View
-        cardStyle={undefined}
         collapsable={undefined}
-        getScreenDetails={[Function]}
-        headerMode={undefined}
-        index={0}
-        layout={
+        onLayout={[Function]}
+        pointerEvents="box-none"
+        style={
           Object {
-            "height": 0,
-            "initHeight": 0,
-            "initWidth": 0,
-            "isMeasured": false,
-            "width": 0,
+            "backgroundColor": "#F7F7F7",
+            "borderBottomColor": "#A7A7AA",
+            "borderBottomWidth": 0.5,
+            "height": 64,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 20,
           }
         }
-        mode="float"
-        navigation={
-          Object {
-            "dispatch": [Function],
-            "goBack": [Function],
-            "navigate": [Function],
-            "setParams": [Function],
-            "state": Object {
-              "index": 0,
-              "routes": Array [
-                Object {
-                  "key": "Init-id-0-0",
-                  "routeName": "Loading",
-                },
-              ],
-            },
-          }
-        }
-        router={
-          Object {
-            "getActionForPathAndParams": [Function],
-            "getComponentForRouteName": [Function],
-            "getComponentForState": [Function],
-            "getPathAndParamsForState": [Function],
-            "getScreenConfig": [Function],
-            "getScreenOptions": [Function],
-            "getStateForAction": [Function],
-          }
-        }
-        transitionConfig={undefined}
       >
         <View
-          onLayout={[Function]}
           style={
             Object {
-              "backgroundColor": "#F7F7F7",
-              "borderBottomColor": "rgba(0, 0, 0, .3)",
-              "borderBottomWidth": 0.5,
-              "height": 64,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 20,
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "flex": 1,
             }
           }
         >
           <View
             style={
               Object {
-                "flex": 1,
+                "bottom": 0,
+                "flexDirection": "row",
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
               }
             }
           >
             <View
+              collapsable={undefined}
+              pointerEvents="box-none"
               style={
-                Array [
-                  Object {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  },
-                  Object {
-                    "flexDirection": "row",
-                  },
-                ]
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "bottom": 0,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "left": 0,
+                  "opacity": 1,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                }
               }
             >
-              <View
+              <Text
+                accessibilityTraits="header"
+                accessible={true}
+                allowFontScaling={true}
                 collapsable={undefined}
-                pointerEvents="box-none"
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                onLayout={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "backgroundColor": "transparent",
-                    "bottom": 0,
-                    "justifyContent": "center",
-                    "left": 0,
-                    "opacity": 1,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                    "transform": Array [
-                      Object {
-                        "translateX": 0,
-                      },
-                    ],
+                    "color": "rgba(0, 0, 0, .9)",
+                    "fontSize": 17,
+                    "fontWeight": "700",
+                    "marginHorizontal": 16,
+                    "textAlign": "center",
                   }
                 }
-              >
-                <Text
-                  accessibilityTraits="header"
-                  accessible={true}
-                  allowFontScaling={true}
-                  collapsable={undefined}
-                  ellipsizeMode="tail"
-                  numberOfLines={1}
-                  onLayout={[Function]}
-                  style={
-                    Object {
-                      "color": "rgba(0, 0, 0, .9)",
-                      "fontSize": 17,
-                      "fontWeight": "600",
-                      "marginHorizontal": 16,
-                      "textAlign": "center",
-                    }
-                  }
-                />
-              </View>
+              />
             </View>
           </View>
         </View>
@@ -6146,20 +5693,15 @@ exports[`Storyshots PrefSearchScene with plane 1`] = `
           Array [
             Object {
               "backgroundColor": "transparent",
+              "borderBottomColor": "#bbb",
+              "borderBottomWidth": 1,
+              "paddingBottom": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
             },
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderBottomColor": "#bbb",
-                "borderBottomWidth": 1,
-                "paddingBottom": 10,
-                "paddingRight": 10,
-                "paddingTop": 10,
-              },
-              undefined,
-              false,
-              false,
-            ],
+            undefined,
+            false,
+            false,
           ]
         }
         testID={undefined}
@@ -6391,20 +5933,15 @@ exports[`Storyshots PrefSearchScene with plane 1`] = `
           Array [
             Object {
               "backgroundColor": "transparent",
+              "borderBottomColor": "#bbb",
+              "borderBottomWidth": 1,
+              "paddingBottom": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
             },
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderBottomColor": "#bbb",
-                "borderBottomWidth": 1,
-                "paddingBottom": 10,
-                "paddingRight": 10,
-                "paddingTop": 10,
-              },
-              undefined,
-              false,
-              false,
-            ],
+            undefined,
+            false,
+            false,
           ]
         }
         testID={undefined}
@@ -6636,20 +6173,15 @@ exports[`Storyshots PrefSearchScene with plane 1`] = `
           Array [
             Object {
               "backgroundColor": "transparent",
+              "borderBottomColor": "#bbb",
+              "borderBottomWidth": 1,
+              "paddingBottom": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
             },
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderBottomColor": "#bbb",
-                "borderBottomWidth": 1,
-                "paddingBottom": 10,
-                "paddingRight": 10,
-                "paddingTop": 10,
-              },
-              undefined,
-              false,
-              false,
-            ],
+            undefined,
+            false,
+            false,
           ]
         }
         testID={undefined}
@@ -6881,20 +6413,15 @@ exports[`Storyshots PrefSearchScene with plane 1`] = `
           Array [
             Object {
               "backgroundColor": "transparent",
+              "borderBottomColor": "#bbb",
+              "borderBottomWidth": 1,
+              "paddingBottom": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
             },
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderBottomColor": "#bbb",
-                "borderBottomWidth": 1,
-                "paddingBottom": 10,
-                "paddingRight": 10,
-                "paddingTop": 10,
-              },
-              undefined,
-              false,
-              false,
-            ],
+            undefined,
+            false,
+            false,
           ]
         }
         testID={undefined}
@@ -7126,20 +6653,15 @@ exports[`Storyshots PrefSearchScene with plane 1`] = `
           Array [
             Object {
               "backgroundColor": "transparent",
+              "borderBottomColor": "#bbb",
+              "borderBottomWidth": 1,
+              "paddingBottom": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
             },
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderBottomColor": "#bbb",
-                "borderBottomWidth": 1,
-                "paddingBottom": 10,
-                "paddingRight": 10,
-                "paddingTop": 10,
-              },
-              undefined,
-              false,
-              false,
-            ],
+            undefined,
+            false,
+            false,
           ]
         }
         testID={undefined}
@@ -7371,20 +6893,15 @@ exports[`Storyshots PrefSearchScene with plane 1`] = `
           Array [
             Object {
               "backgroundColor": "transparent",
+              "borderBottomColor": "#bbb",
+              "borderBottomWidth": 1,
+              "paddingBottom": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
             },
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderBottomColor": "#bbb",
-                "borderBottomWidth": 1,
-                "paddingBottom": 10,
-                "paddingRight": 10,
-                "paddingTop": 10,
-              },
-              undefined,
-              false,
-              false,
-            ],
+            undefined,
+            false,
+            false,
           ]
         }
         testID={undefined}
@@ -7616,20 +7133,15 @@ exports[`Storyshots PrefSearchScene with plane 1`] = `
           Array [
             Object {
               "backgroundColor": "transparent",
+              "borderBottomColor": "#bbb",
+              "borderBottomWidth": 1,
+              "paddingBottom": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
             },
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderBottomColor": "#bbb",
-                "borderBottomWidth": 1,
-                "paddingBottom": 10,
-                "paddingRight": 10,
-                "paddingTop": 10,
-              },
-              undefined,
-              false,
-              false,
-            ],
+            undefined,
+            false,
+            false,
           ]
         }
         testID={undefined}
@@ -7861,20 +7373,15 @@ exports[`Storyshots PrefSearchScene with plane 1`] = `
           Array [
             Object {
               "backgroundColor": "transparent",
+              "borderBottomColor": "#bbb",
+              "borderBottomWidth": 1,
+              "paddingBottom": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
             },
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderBottomColor": "#bbb",
-                "borderBottomWidth": 1,
-                "paddingBottom": 10,
-                "paddingRight": 10,
-                "paddingTop": 10,
-              },
-              undefined,
-              false,
-              false,
-            ],
+            undefined,
+            false,
+            false,
           ]
         }
         testID={undefined}
@@ -8106,20 +7613,15 @@ exports[`Storyshots PrefSearchScene with plane 1`] = `
           Array [
             Object {
               "backgroundColor": "transparent",
+              "borderBottomColor": "#bbb",
+              "borderBottomWidth": 1,
+              "paddingBottom": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
             },
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderBottomColor": "#bbb",
-                "borderBottomWidth": 1,
-                "paddingBottom": 10,
-                "paddingRight": 10,
-                "paddingTop": 10,
-              },
-              undefined,
-              false,
-              false,
-            ],
+            undefined,
+            false,
+            false,
           ]
         }
         testID={undefined}
@@ -8351,20 +7853,15 @@ exports[`Storyshots PrefSearchScene with plane 1`] = `
           Array [
             Object {
               "backgroundColor": "transparent",
+              "borderBottomColor": "#bbb",
+              "borderBottomWidth": 1,
+              "paddingBottom": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
             },
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderBottomColor": "#bbb",
-                "borderBottomWidth": 1,
-                "paddingBottom": 10,
-                "paddingRight": 10,
-                "paddingTop": 10,
-              },
-              undefined,
-              false,
-              false,
-            ],
+            undefined,
+            false,
+            false,
           ]
         }
         testID={undefined}
@@ -8764,14 +8261,7 @@ exports[`Storyshots SearchHistory with plane 1`] = `
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-            },
-            undefined,
-          ]
-        }
+        style={null}
         testID={undefined}
         tvParallaxProperties={undefined}
       >
@@ -8793,28 +8283,9 @@ exports[`Storyshots SearchHistory with plane 1`] = `
         >
           <Text
             accessible={true}
-            allowFontScaling={false}
+            allowFontScaling={true}
             ellipsizeMode="tail"
-            style={
-              Array [
-                Object {
-                  "color": undefined,
-                  "fontSize": 16,
-                },
-                Object {
-                  "alignSelf": "center",
-                  "margin": 5,
-                },
-                Object {
-                  "fontFamily": "awesome",
-                  "fontStyle": "normal",
-                  "fontWeight": "normal",
-                },
-              ]
-            }
-          >
-            
-          </Text>
+          />
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -8851,14 +8322,7 @@ exports[`Storyshots SearchHistory with plane 1`] = `
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-            },
-            undefined,
-          ]
-        }
+        style={null}
         testID={undefined}
         tvParallaxProperties={undefined}
       >
@@ -8880,28 +8344,9 @@ exports[`Storyshots SearchHistory with plane 1`] = `
         >
           <Text
             accessible={true}
-            allowFontScaling={false}
+            allowFontScaling={true}
             ellipsizeMode="tail"
-            style={
-              Array [
-                Object {
-                  "color": undefined,
-                  "fontSize": 16,
-                },
-                Object {
-                  "alignSelf": "center",
-                  "margin": 5,
-                },
-                Object {
-                  "fontFamily": "awesome",
-                  "fontStyle": "normal",
-                  "fontWeight": "normal",
-                },
-              ]
-            }
-          >
-            
-          </Text>
+          />
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -9027,29 +8472,9 @@ exports[`Storyshots SearchScene with class 1`] = `
     </View>
     <Text
       accessible={true}
-      allowFontScaling={false}
+      allowFontScaling={true}
       ellipsizeMode="tail"
-      onPress={[Function]}
-      style={
-        Array [
-          Object {
-            "color": undefined,
-            "fontSize": 20,
-          },
-          Object {
-            "alignSelf": "center",
-            "padding": 10,
-          },
-          Object {
-            "fontFamily": "awesome",
-            "fontStyle": "normal",
-            "fontWeight": "normal",
-          },
-        ]
-      }
-    >
-      
-    </Text>
+    />
   </View>
   <View
     style={
@@ -9092,26 +8517,21 @@ exports[`Storyshots SearchScene with class 1`] = `
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
+            "flex": 1,
           },
-          Array [
-            Object {
-              "flex": 1,
-            },
-            Object {
-              "borderRightColor": "#bdc6cf",
-              "borderRightWidth": 0,
-            },
-            false,
-            false,
-            Object {
-              "borderBottomLeftRadius": 3,
-              "borderTopLeftRadius": 3,
-            },
-            Object {
-              "backgroundColor": "white",
-            },
-          ],
+          Object {
+            "borderRightColor": "#bdc6cf",
+            "borderRightWidth": 0,
+          },
+          false,
+          false,
+          Object {
+            "borderBottomLeftRadius": 3,
+            "borderTopLeftRadius": 3,
+          },
+          Object {
+            "backgroundColor": "white",
+          },
         ]
       }
       testID={undefined}
@@ -9183,24 +8603,19 @@ exports[`Storyshots SearchScene with class 1`] = `
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
+            "flex": 1,
           },
-          Array [
-            Object {
-              "flex": 1,
-            },
-            Object {
-              "borderRightColor": "#bdc6cf",
-              "borderRightWidth": 1,
-            },
-            Object {
-              "borderLeftColor": "#bdc6cf",
-              "borderLeftWidth": 1,
-            },
-            false,
-            false,
-            false,
-          ],
+          Object {
+            "borderRightColor": "#bdc6cf",
+            "borderRightWidth": 1,
+          },
+          Object {
+            "borderLeftColor": "#bdc6cf",
+            "borderLeftWidth": 1,
+          },
+          false,
+          false,
+          false,
         ]
       }
       testID={undefined}
@@ -9270,21 +8685,16 @@ exports[`Storyshots SearchScene with class 1`] = `
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
+            "flex": 1,
           },
-          Array [
-            Object {
-              "flex": 1,
-            },
-            false,
-            false,
-            Object {
-              "borderBottomRightRadius": 3,
-              "borderTopRightRadius": 3,
-            },
-            false,
-            false,
-          ],
+          false,
+          false,
+          Object {
+            "borderBottomRightRadius": 3,
+            "borderTopRightRadius": 3,
+          },
+          false,
+          false,
         ]
       }
       testID={undefined}
@@ -9421,14 +8831,7 @@ exports[`Storyshots SearchScene with class 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -9478,28 +8881,9 @@ exports[`Storyshots SearchScene with class 1`] = `
                 >
                   <Text
                     accessible={true}
-                    allowFontScaling={false}
+                    allowFontScaling={true}
                     ellipsizeMode="tail"
-                    style={
-                      Array [
-                        Object {
-                          "color": undefined,
-                          "fontSize": 20,
-                        },
-                        Object {
-                          "color": "#03a9f4",
-                          "marginRight": 10,
-                        },
-                        Object {
-                          "fontFamily": "awesome",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                      ]
-                    }
-                  >
-                    
-                  </Text>
+                  />
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -9670,29 +9054,9 @@ exports[`Storyshots SearchScene with many 1`] = `
     </View>
     <Text
       accessible={true}
-      allowFontScaling={false}
+      allowFontScaling={true}
       ellipsizeMode="tail"
-      onPress={[Function]}
-      style={
-        Array [
-          Object {
-            "color": undefined,
-            "fontSize": 20,
-          },
-          Object {
-            "alignSelf": "center",
-            "padding": 10,
-          },
-          Object {
-            "fontFamily": "awesome",
-            "fontStyle": "normal",
-            "fontWeight": "normal",
-          },
-        ]
-      }
-    >
-      
-    </Text>
+    />
   </View>
   <View
     style={
@@ -9735,26 +9099,21 @@ exports[`Storyshots SearchScene with many 1`] = `
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
+            "flex": 1,
           },
-          Array [
-            Object {
-              "flex": 1,
-            },
-            Object {
-              "borderRightColor": "#bdc6cf",
-              "borderRightWidth": 0,
-            },
-            false,
-            false,
-            Object {
-              "borderBottomLeftRadius": 3,
-              "borderTopLeftRadius": 3,
-            },
-            Object {
-              "backgroundColor": "white",
-            },
-          ],
+          Object {
+            "borderRightColor": "#bdc6cf",
+            "borderRightWidth": 0,
+          },
+          false,
+          false,
+          Object {
+            "borderBottomLeftRadius": 3,
+            "borderTopLeftRadius": 3,
+          },
+          Object {
+            "backgroundColor": "white",
+          },
         ]
       }
       testID={undefined}
@@ -9826,24 +9185,19 @@ exports[`Storyshots SearchScene with many 1`] = `
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
+            "flex": 1,
           },
-          Array [
-            Object {
-              "flex": 1,
-            },
-            Object {
-              "borderRightColor": "#bdc6cf",
-              "borderRightWidth": 1,
-            },
-            Object {
-              "borderLeftColor": "#bdc6cf",
-              "borderLeftWidth": 1,
-            },
-            false,
-            false,
-            false,
-          ],
+          Object {
+            "borderRightColor": "#bdc6cf",
+            "borderRightWidth": 1,
+          },
+          Object {
+            "borderLeftColor": "#bdc6cf",
+            "borderLeftWidth": 1,
+          },
+          false,
+          false,
+          false,
         ]
       }
       testID={undefined}
@@ -9913,21 +9267,16 @@ exports[`Storyshots SearchScene with many 1`] = `
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
+            "flex": 1,
           },
-          Array [
-            Object {
-              "flex": 1,
-            },
-            false,
-            false,
-            Object {
-              "borderBottomRightRadius": 3,
-              "borderTopRightRadius": 3,
-            },
-            false,
-            false,
-          ],
+          false,
+          false,
+          Object {
+            "borderBottomRightRadius": 3,
+            "borderTopRightRadius": 3,
+          },
+          false,
+          false,
         ]
       }
       testID={undefined}
@@ -10099,14 +9448,7 @@ exports[`Storyshots SearchScene with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -10156,28 +9498,9 @@ exports[`Storyshots SearchScene with many 1`] = `
                 >
                   <Text
                     accessible={true}
-                    allowFontScaling={false}
+                    allowFontScaling={true}
                     ellipsizeMode="tail"
-                    style={
-                      Array [
-                        Object {
-                          "color": undefined,
-                          "fontSize": 20,
-                        },
-                        Object {
-                          "color": "#03a9f4",
-                          "marginRight": 10,
-                        },
-                        Object {
-                          "fontFamily": "awesome",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                      ]
-                    }
-                  >
-                    
-                  </Text>
+                  />
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -10272,14 +9595,7 @@ exports[`Storyshots SearchScene with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -10329,28 +9645,9 @@ exports[`Storyshots SearchScene with many 1`] = `
                 >
                   <Text
                     accessible={true}
-                    allowFontScaling={false}
+                    allowFontScaling={true}
                     ellipsizeMode="tail"
-                    style={
-                      Array [
-                        Object {
-                          "color": undefined,
-                          "fontSize": 20,
-                        },
-                        Object {
-                          "color": "#ffc107",
-                          "marginRight": 10,
-                        },
-                        Object {
-                          "fontFamily": "awesome",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                      ]
-                    }
-                  >
-                    
-                  </Text>
+                  />
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -10445,14 +9742,7 @@ exports[`Storyshots SearchScene with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -10502,28 +9792,9 @@ exports[`Storyshots SearchScene with many 1`] = `
                 >
                   <Text
                     accessible={true}
-                    allowFontScaling={false}
+                    allowFontScaling={true}
                     ellipsizeMode="tail"
-                    style={
-                      Array [
-                        Object {
-                          "color": undefined,
-                          "fontSize": 20,
-                        },
-                        Object {
-                          "color": "#4caf50",
-                          "marginRight": 10,
-                        },
-                        Object {
-                          "fontFamily": "awesome",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                      ]
-                    }
-                  >
-                    
-                  </Text>
+                  />
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -10618,14 +9889,7 @@ exports[`Storyshots SearchScene with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -10675,28 +9939,9 @@ exports[`Storyshots SearchScene with many 1`] = `
                 >
                   <Text
                     accessible={true}
-                    allowFontScaling={false}
+                    allowFontScaling={true}
                     ellipsizeMode="tail"
-                    style={
-                      Array [
-                        Object {
-                          "color": undefined,
-                          "fontSize": 20,
-                        },
-                        Object {
-                          "color": undefined,
-                          "marginRight": 10,
-                        },
-                        Object {
-                          "fontFamily": "awesome",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                      ]
-                    }
-                  >
-                    
-                  </Text>
+                  />
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -10791,14 +10036,7 @@ exports[`Storyshots SearchScene with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -10940,14 +10178,7 @@ exports[`Storyshots SearchScene with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -11089,14 +10320,7 @@ exports[`Storyshots SearchScene with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -11238,14 +10462,7 @@ exports[`Storyshots SearchScene with many 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
@@ -11470,29 +10687,9 @@ exports[`Storyshots SearchScene with no items 1`] = `
     </View>
     <Text
       accessible={true}
-      allowFontScaling={false}
+      allowFontScaling={true}
       ellipsizeMode="tail"
-      onPress={[Function]}
-      style={
-        Array [
-          Object {
-            "color": undefined,
-            "fontSize": 20,
-          },
-          Object {
-            "alignSelf": "center",
-            "padding": 10,
-          },
-          Object {
-            "fontFamily": "awesome",
-            "fontStyle": "normal",
-            "fontWeight": "normal",
-          },
-        ]
-      }
-    >
-      
-    </Text>
+    />
   </View>
   <View
     style={
@@ -11535,24 +10732,19 @@ exports[`Storyshots SearchScene with no items 1`] = `
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
+            "flex": 1,
           },
-          Array [
-            Object {
-              "flex": 1,
-            },
-            Object {
-              "borderRightColor": "#bdc6cf",
-              "borderRightWidth": 0,
-            },
-            false,
-            false,
-            Object {
-              "borderBottomLeftRadius": 3,
-              "borderTopLeftRadius": 3,
-            },
-            false,
-          ],
+          Object {
+            "borderRightColor": "#bdc6cf",
+            "borderRightWidth": 0,
+          },
+          false,
+          false,
+          Object {
+            "borderBottomLeftRadius": 3,
+            "borderTopLeftRadius": 3,
+          },
+          false,
         ]
       }
       testID={undefined}
@@ -11622,26 +10814,21 @@ exports[`Storyshots SearchScene with no items 1`] = `
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
+            "flex": 1,
           },
-          Array [
-            Object {
-              "flex": 1,
-            },
-            Object {
-              "borderRightColor": "#bdc6cf",
-              "borderRightWidth": 1,
-            },
-            Object {
-              "borderLeftColor": "#bdc6cf",
-              "borderLeftWidth": 1,
-            },
-            false,
-            false,
-            Object {
-              "backgroundColor": "white",
-            },
-          ],
+          Object {
+            "borderRightColor": "#bdc6cf",
+            "borderRightWidth": 1,
+          },
+          Object {
+            "borderLeftColor": "#bdc6cf",
+            "borderLeftWidth": 1,
+          },
+          false,
+          false,
+          Object {
+            "backgroundColor": "white",
+          },
         ]
       }
       testID={undefined}
@@ -11713,21 +10900,16 @@ exports[`Storyshots SearchScene with no items 1`] = `
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
+            "flex": 1,
           },
-          Array [
-            Object {
-              "flex": 1,
-            },
-            false,
-            false,
-            Object {
-              "borderBottomRightRadius": 3,
-              "borderTopRightRadius": 3,
-            },
-            false,
-            false,
-          ],
+          false,
+          false,
+          Object {
+            "borderBottomRightRadius": 3,
+            "borderTopRightRadius": 3,
+          },
+          false,
+          false,
         ]
       }
       testID={undefined}
@@ -11854,14 +11036,7 @@ exports[`Storyshots SearchScene with no items 1`] = `
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-              },
-              undefined,
-            ]
-          }
+          style={null}
           testID={undefined}
           tvParallaxProperties={undefined}
         >
@@ -11883,28 +11058,9 @@ exports[`Storyshots SearchScene with no items 1`] = `
           >
             <Text
               accessible={true}
-              allowFontScaling={false}
+              allowFontScaling={true}
               ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": undefined,
-                    "fontSize": 16,
-                  },
-                  Object {
-                    "alignSelf": "center",
-                    "margin": 5,
-                  },
-                  Object {
-                    "fontFamily": "awesome",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                ]
-              }
-            >
-              
-            </Text>
+            />
             <Text
               accessible={true}
               allowFontScaling={true}
@@ -11941,14 +11097,7 @@ exports[`Storyshots SearchScene with no items 1`] = `
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-              },
-              undefined,
-            ]
-          }
+          style={null}
           testID={undefined}
           tvParallaxProperties={undefined}
         >
@@ -11970,28 +11119,9 @@ exports[`Storyshots SearchScene with no items 1`] = `
           >
             <Text
               accessible={true}
-              allowFontScaling={false}
+              allowFontScaling={true}
               ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": undefined,
-                    "fontSize": 16,
-                  },
-                  Object {
-                    "alignSelf": "center",
-                    "margin": 5,
-                  },
-                  Object {
-                    "fontFamily": "awesome",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                ]
-              }
-            >
-              
-            </Text>
+            />
             <Text
               accessible={true}
               allowFontScaling={true}
@@ -12162,26 +11292,21 @@ exports[`Storyshots SearchScene with plane 1`] = `
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
+            "flex": 1,
           },
-          Array [
-            Object {
-              "flex": 1,
-            },
-            Object {
-              "borderRightColor": "#bdc6cf",
-              "borderRightWidth": 0,
-            },
-            false,
-            false,
-            Object {
-              "borderBottomLeftRadius": 3,
-              "borderTopLeftRadius": 3,
-            },
-            Object {
-              "backgroundColor": "white",
-            },
-          ],
+          Object {
+            "borderRightColor": "#bdc6cf",
+            "borderRightWidth": 0,
+          },
+          false,
+          false,
+          Object {
+            "borderBottomLeftRadius": 3,
+            "borderTopLeftRadius": 3,
+          },
+          Object {
+            "backgroundColor": "white",
+          },
         ]
       }
       testID={undefined}
@@ -12253,24 +11378,19 @@ exports[`Storyshots SearchScene with plane 1`] = `
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
+            "flex": 1,
           },
-          Array [
-            Object {
-              "flex": 1,
-            },
-            Object {
-              "borderRightColor": "#bdc6cf",
-              "borderRightWidth": 1,
-            },
-            Object {
-              "borderLeftColor": "#bdc6cf",
-              "borderLeftWidth": 1,
-            },
-            false,
-            false,
-            false,
-          ],
+          Object {
+            "borderRightColor": "#bdc6cf",
+            "borderRightWidth": 1,
+          },
+          Object {
+            "borderLeftColor": "#bdc6cf",
+            "borderLeftWidth": 1,
+          },
+          false,
+          false,
+          false,
         ]
       }
       testID={undefined}
@@ -12340,21 +11460,16 @@ exports[`Storyshots SearchScene with plane 1`] = `
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
+            "flex": 1,
           },
-          Array [
-            Object {
-              "flex": 1,
-            },
-            false,
-            false,
-            Object {
-              "borderBottomRightRadius": 3,
-              "borderTopRightRadius": 3,
-            },
-            false,
-            false,
-          ],
+          false,
+          false,
+          Object {
+            "borderBottomRightRadius": 3,
+            "borderTopRightRadius": 3,
+          },
+          false,
+          false,
         ]
       }
       testID={undefined}
@@ -12474,14 +11589,7 @@ exports[`Storyshots SearchScene with plane 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                undefined,
-              ]
-            }
+            style={null}
             testID={undefined}
             tvParallaxProperties={undefined}
           >
