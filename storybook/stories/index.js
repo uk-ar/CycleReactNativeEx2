@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   Animated,
   Text,
-  View
+  View,
 } from "react-native";
 
 import { storiesOf } from "@storybook/react-native";
@@ -24,7 +24,7 @@ import {
   LibrarySearchScene,
   Library,
   LibraryList,
-  PrefSearchScene
+  PrefSearchScene,
 } from "../../components/LibrarySearchScene";
 
 import {
@@ -33,7 +33,7 @@ import {
   LibraryStatus,
   icons,
   Book,
-  libraryStatuses
+  libraryStatuses,
 } from "../../components/BookCell";
 import FAIcon from "react-native-vector-icons/FontAwesome";
 
@@ -141,7 +141,7 @@ storiesOf("FlatList", module)
       data={[
         { id: "a", title: "foo" },
         { id: "b", title: "bar" },
-        { id: "c", title: "baz" }
+        { id: "c", title: "baz" },
       ]}
     />
   ));
@@ -155,8 +155,8 @@ storiesOf("BookList", module)
           title: "guri & gura",
           author: "author foo",
           thumbnail:
-            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200"
-        }
+            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
+        },
       ]}
     />
   ))
@@ -168,15 +168,15 @@ storiesOf("BookList", module)
           title: "guri & gura",
           author: "author foo",
           thumbnail:
-            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200"
+            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
         },
         {
           title: "はじめてのABCえほん",
           author: "仲田利津子/黒田昌代",
           thumbnail:
             "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200",
-          isbn: "9784828867472"
-        }
+          isbn: "9784828867472",
+        },
       ]}
     />
   ))
@@ -184,17 +184,17 @@ storiesOf("BookList", module)
     <BookList
       extraData={{
         9784834032147: {
-          status: "rentable"
+          status: "rentable",
         },
         9784828867472: {
-          status: "onLoan"
+          status: "onLoan",
         },
         9784834000825: {
-          status: "noCollection"
+          status: "noCollection",
         },
         9784834014655: {
-          status: "Loading"
-        }
+          status: "Loading",
+        },
       }}
       data={[
         {
@@ -203,7 +203,7 @@ storiesOf("BookList", module)
           author: "author foo",
           thumbnail:
             "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
-          bucket: "liked"
+          bucket: "liked",
         },
         {
           isbn: "9784828867472",
@@ -211,7 +211,7 @@ storiesOf("BookList", module)
           author: "仲田利津子/黒田昌代",
           thumbnail:
             "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200",
-          bucket: "done"
+          bucket: "done",
         },
         {
           title: "ぐりとぐら(複数蔵書)",
@@ -221,7 +221,7 @@ storiesOf("BookList", module)
           isbn: "9784834000825",
           bucket: "borrowed",
           reserveUrl:
-            "http://api.calil.jp/reserve?id=af299d780fe86cf8b116dfda4725dc0f"
+            "http://api.calil.jp/reserve?id=af299d780fe86cf8b116dfda4725dc0f",
         },
         {
           title: "ぐりとぐらの1ねんかん(単一蔵書)",
@@ -230,36 +230,36 @@ storiesOf("BookList", module)
           thumbnail:
             "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4655/9784834014655.jpg?_ex=200x200",
           reserveUrl: "https://www.amazon.co.jp/dp/4834014657",
-          bucket: "search"
+          bucket: "search",
         },
         {
           title: "IA／UXプラクティス",
           author: "坂本貴史",
           isbn: "9784862463241",
           thumbnail:
-            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200"
+            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200",
         },
         {
           title: "IA／UXプラクティス",
           author: "坂本貴史",
           isbn: "9784862463242",
           thumbnail:
-            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200"
+            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200",
         },
         {
           title: "IA／UXプラクティス",
           author: "坂本貴史",
           isbn: "9784862463243",
           thumbnail:
-            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200"
+            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200",
         },
         {
           title: "IA／UXプラクティス",
           author: "坂本貴史",
           isbn: "9784862463244",
           thumbnail:
-            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200"
-        }
+            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200",
+        },
       ]}
     />
   ));
@@ -276,7 +276,6 @@ storiesOf("Browser", module).add("with full book", () => (
     thumbnail="http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0825/9784834000825.jpg?_ex=200x200"
     isbn="4834000826"
     reserveUrl="https://www.amazon.co.jp/dp/4834000826"
-    icon={icons["done"]}
   />
 ));
 
@@ -313,7 +312,7 @@ storiesOf("Closeable", module)
               <View
                 style={{
                   height: 50,
-                  backgroundColor: "red" //flex:1
+                  backgroundColor: "red", //flex:1
                 }}
               />
             </CloseableView>
@@ -327,7 +326,7 @@ class Filter extends React.Component {
   constructor() {
     super();
     this.state = {
-      selectedIndex: 2
+      selectedIndex: 2,
     };
     this.updateIndex = this.updateIndex.bind(this);
   }
@@ -371,17 +370,17 @@ storiesOf("Filter", module)
           <BookList
             extraData={{
               9784834032147: {
-                status: "rentable"
+                status: "rentable",
               },
               9784828867472: {
-                status: "onLoan"
+                status: "onLoan",
               },
               9784834000825: {
-                status: "noCollection"
+                status: "noCollection",
               },
               9784834014655: {
-                status: "Loading"
-              }
+                status: "Loading",
+              },
             }}
             rejects={[r[i % 3]]}
             data={[
@@ -392,7 +391,7 @@ storiesOf("Filter", module)
                 thumbnail:
                   "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
                 bucket: "liked",
-                status: "rentable"
+                status: "rentable",
               },
               {
                 isbn: "9784828867472",
@@ -401,7 +400,7 @@ storiesOf("Filter", module)
                 thumbnail:
                   "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200",
                 bucket: "done",
-                status: "onLoan"
+                status: "onLoan",
               },
               {
                 title: "ぐりとぐら(複数蔵書)",
@@ -412,7 +411,7 @@ storiesOf("Filter", module)
                 bucket: "borrowed",
                 reserveUrl:
                   "http://api.calil.jp/reserve?id=af299d780fe86cf8b116dfda4725dc0f",
-                status: "noCollection"
+                status: "noCollection",
               },
               {
                 title: "ぐりとぐらの1ねんかん(単一蔵書)",
@@ -422,15 +421,15 @@ storiesOf("Filter", module)
                   "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4655/9784834014655.jpg?_ex=200x200",
                 reserveUrl: "https://www.amazon.co.jp/dp/4834014657",
                 bucket: "search",
-                status: "Loading"
+                status: "Loading",
               },
               {
                 title: "IA／UXプラクティス",
                 author: "坂本貴史",
                 isbn: "9784862463241",
                 thumbnail:
-                  "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200"
-              }
+                  "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200",
+              },
             ]}
           />
         );
@@ -455,10 +454,10 @@ storiesOf("SearchScene", module)
     <View>
       <SearchBar
         containerStyle={{
-          backgroundColor: materialColor.grey["50"]
+          backgroundColor: materialColor.grey["50"],
         }}
         inputStyle={{
-          backgroundColor: materialColor.grey["200"]
+          backgroundColor: materialColor.grey["200"],
         }}
         lightTheme
         showLoadingIcon
@@ -481,8 +480,8 @@ storiesOf("SearchScene", module)
             title: "guri & gura",
             author: "author foo",
             thumbnail:
-              "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200"
-          }
+              "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
+          },
         ]}
       />
     </View>
@@ -516,17 +515,17 @@ storiesOf("SearchScene", module)
       defaultText={"foo"}
       searchedBooksStatus={{
         9784834032147: {
-          status: "rentable"
+          status: "rentable",
         },
         9784828867472: {
-          status: "onLoan"
+          status: "onLoan",
         },
         9784834000825: {
-          status: "noCollection"
+          status: "noCollection",
         },
         9784834014655: {
-          status: "Loading"
-        }
+          status: "Loading",
+        },
       }}
       searchedBooks={[
         {
@@ -535,8 +534,8 @@ storiesOf("SearchScene", module)
           author: "author foo",
           thumbnail:
             "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
-          bucket: "liked"
-        }
+          bucket: "liked",
+        },
       ]}
     />
   ))
@@ -559,7 +558,7 @@ storiesOf("SearchScene", module)
           author: "author foo",
           thumbnail:
             "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
-          bucket: "liked"
+          bucket: "liked",
         },
         {
           isbn: "9784828867472",
@@ -567,7 +566,7 @@ storiesOf("SearchScene", module)
           author: "仲田利津子/黒田昌代",
           thumbnail:
             "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200",
-          bucket: "done"
+          bucket: "done",
         },
         {
           title: "ぐりとぐら(複数蔵書)",
@@ -577,7 +576,7 @@ storiesOf("SearchScene", module)
           isbn: "9784834000825",
           bucket: "borrowed",
           reserveUrl:
-            "http://api.calil.jp/reserve?id=af299d780fe86cf8b116dfda4725dc0f"
+            "http://api.calil.jp/reserve?id=af299d780fe86cf8b116dfda4725dc0f",
         },
         {
           title: "ぐりとぐらの1ねんかん(単一蔵書)",
@@ -586,64 +585,64 @@ storiesOf("SearchScene", module)
           thumbnail:
             "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4655/9784834014655.jpg?_ex=200x200",
           reserveUrl: "https://www.amazon.co.jp/dp/4834014657",
-          bucket: "search"
+          bucket: "search",
         },
         {
           title: "IA／UXプラクティス",
           author: "坂本貴史",
           isbn: "9784862463241",
           thumbnail:
-            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200"
+            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200",
         },
         {
           title: "IA／UXプラクティス",
           author: "坂本貴史",
           isbn: "9784862463242",
           thumbnail:
-            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200"
+            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200",
         },
         {
           title: "IA／UXプラクティス",
           author: "坂本貴史",
           isbn: "9784862463243",
           thumbnail:
-            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200"
+            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200",
         },
         {
           title: "IA／UXプラクティス",
           author: "坂本貴史",
           isbn: "9784862463244",
           thumbnail:
-            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200"
-        }
+            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200",
+        },
       ]}
     />
   ));
 
 const styles = StyleSheet.create({
   row: {
-    flexDirection: "row"
+    flexDirection: "row",
   },
   rowCenter: {
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
   },
   cell: {
     flexDirection: "row",
-    backgroundColor: materialColor.grey["50"] //for TouchableElement
+    backgroundColor: materialColor.grey["50"], //for TouchableElement
   },
   border: {
     flex: 1,
     //marginRight:10,
     padding: 5,
     borderColor: "rgba(0, 0, 0, 0.1)",
-    borderBottomWidth: StyleSheet.hairlineWidth
+    borderBottomWidth: StyleSheet.hairlineWidth,
     //borderTopWidth: StyleSheet.hairlineWidth
   },
   title: {
     //bookTitle
     fontSize: 16,
-    fontWeight: "500"
+    fontWeight: "500",
     //flex:1,
     //marginBottom: 2,
   },
@@ -651,8 +650,8 @@ const styles = StyleSheet.create({
     //bookAuther
     // color: '#999999',
     color: "#9E9E9E", // grey
-    fontSize: 12
-  }
+    fontSize: 12,
+  },
 });
 
 storiesOf("Library", module).add("with plane", () => (
@@ -663,7 +662,7 @@ storiesOf("LibraryList", module).add("with plane", () => (
   <LibraryList
     data={[
       { title: "foo", subtitle: "bar" },
-      { title: "baz", subtitle: "bal" }
+      { title: "baz", subtitle: "bal" },
     ]}
   />
 ));
@@ -673,18 +672,18 @@ storiesOf("LibrarySearchScene", module).add("with plane", () => (
       {
         systemname: "埼玉県上尾市",
         description: "たちばな分館ほか",
-        systemid: "Saitama_Ageo"
+        systemid: "Saitama_Ageo",
       },
       {
         systemname: "埼玉県嵐山町",
         description: "嵐山町立図書館ほか",
-        systemid: "Saitama_Arashiyama"
+        systemid: "Saitama_Arashiyama",
       },
       {
         systemname: "埼玉県朝霞市",
         description: "内間木公民館ほか",
-        systemid: "Saitama_Asaka"
-      }
+        systemid: "Saitama_Asaka",
+      },
     ]}
     extraData={{ selectedLibrary: "Saitama_Asaka" }}
     onPress={action("onPress")}

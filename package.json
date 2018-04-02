@@ -29,7 +29,8 @@
     "test": "node node_modules/jest/bin/jest.js --watch",
     "test-ci": "node node_modules/jest/bin/jest.js",
     "deploy": "node node_modules/.bin/exp build:status; node node_modules/.bin/exp build:android",
-    "storybook": "storybook start -p 7007"
+    "storybook": "storybook start -p 7007",
+    "prettier": "prettier --trailing-comma es5 --write '{{components,storybook}/**/,./}*.js'"
   },
   "jest": {
     "preset": "jest-expo",

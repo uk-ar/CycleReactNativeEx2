@@ -7,14 +7,14 @@ import {
   Cycle,
   withCycle,
   makeReactNativeDriver,
-  CycleRoot
+  CycleRoot,
 } from "./cycle-react-native";
 
 //NavigationStateUtils is deprecated since 0.43
 //https://docs.expo.io/versions/latest/guides/routing-and-navigation.html
 class ChatScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: `Chat with ${navigation.state.params.user}`
+    title: `Chat with ${navigation.state.params.user}`,
   });
   render() {
     // The screen's current route is passed in to `props.navigation.state`:
@@ -29,7 +29,7 @@ class ChatScreen extends React.Component {
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: "Home"
+    title: "Home",
   };
 
   render() {
@@ -49,12 +49,12 @@ class HomeScreen extends React.Component {
 
 Stack = StackNavigator({
   Home: { screen: HomeScreen },
-  Chat: { screen: ChatScreen }
+  Chat: { screen: ChatScreen },
 });
 
 const AppNavigator = StackNavigator({
   Home: { screen: HomeScreen },
-  Chat: { screen: ChatScreen }
+  Chat: { screen: ChatScreen },
 });
 const initialState = AppNavigator.router.getStateForAction(
   AppNavigator.router.getActionForPathAndParams("Home")
@@ -88,7 +88,7 @@ class App extends React.Component {
             this.setState({ state: nextState || state });
           },
           //state: this.props.nav,//{index:0,routes:Array(1)}
-          state: this.state.state //{index:0,routes:Array(1)}
+          state: this.state.state, //{index:0,routes:Array(1)}
           //state:
         })}
         screenProps={this.props.screenProps}
@@ -111,12 +111,12 @@ function main({ RN }) {
           <Cycle.Text selector="button">Increment</Cycle.Text>
           <Text>You have clicked the button {i} times.</Text>
         </View>
-      )) /* <Stack/> */ //style={styles.button}
+      )) /* <Stack/> */, //style={styles.button}
   };
 }
 
 run(main, {
-  RN: makeReactNativeDriver()
+  RN: makeReactNativeDriver(),
 });
 
 export default CycleRoot;
@@ -126,6 +126,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });

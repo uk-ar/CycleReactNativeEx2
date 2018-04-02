@@ -9,7 +9,7 @@ import {
   FlatList,
   Button,
   AsyncStorage,
-  Platform
+  Platform,
 } from "react-native";
 import { makeHTTPDriver } from "@cycle/http";
 import StorybookUI from "./storybook";
@@ -19,7 +19,7 @@ import FAIcon from "react-native-vector-icons/FontAwesome";
 import { SearchScene } from "./components/SearchScene";
 import {
   LibrarySearchScene,
-  PrefSearchScene
+  PrefSearchScene,
 } from "./components/LibrarySearchScene";
 import { run } from "@cycle/rxjs-run";
 import { AppLoading, Constants, WebBrowser, Location, Permissions } from "expo";
@@ -31,13 +31,13 @@ import {
   withCycle,
   makeReactNativeDriver,
   CycleRoot,
-  makeAsyncStorageDriver
+  makeAsyncStorageDriver,
 } from "./cycle-react-native";
 
 import {
   StackNavigator,
   DrawerNavigator,
-  NavigationActions
+  NavigationActions,
 } from "react-navigation";
 
 import PropTypes from "prop-types";
@@ -46,14 +46,14 @@ import emptyFunction from "fbjs/lib/emptyFunction";
 @withCycle
 class LibraryLocation extends React.Component {
   static propTypes = {
-    onLocation: PropTypes.func
+    onLocation: PropTypes.func,
   };
   static defaultProps = {
-    onLocation: emptyFunction
+    onLocation: emptyFunction,
   };
   state = {
     location: null,
-    errorMessage: null
+    errorMessage: null,
   };
   componentWillMount() {
     //console.log("dn:",Constants.deviceName)
@@ -71,18 +71,18 @@ class LibraryLocation extends React.Component {
       locationServicesEnabled,
       gpsAvailable,
       networkAvailable,
-      passiveAvailable
+      passiveAvailable,
     } = await Expo.Location.getProviderStatusAsync();
     //console.log("st",{ locationServicesEnabled,gpsAvailable,networkAvailable,passiveAvailable })
     if (!locationServicesEnabled) {
       this.setState({
-        errorMessage: "Location Service is not enabled"
+        errorMessage: "Location Service is not enabled",
       });
     }
     const { status } = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== "granted") {
       this.setState({
-        errorMessage: "Permission to access location was denied"
+        errorMessage: "Permission to access location was denied",
       });
     }
     const location = await Location.getCurrentPositionAsync(
@@ -92,7 +92,7 @@ class LibraryLocation extends React.Component {
     ).catch(() => null); //{enableHighAccuracy:true}
     if (!location) {
       this.setState({
-        errorMessage: "Location request timed out"
+        errorMessage: "Location request timed out",
       });
       return;
     }
@@ -123,7 +123,7 @@ class LibraryLocation extends React.Component {
 
 const resetAction = NavigationActions.reset({
   index: 0,
-  actions: [NavigationActions.navigate({ routeName: "Home" })]
+  actions: [NavigationActions.navigate({ routeName: "Home" })],
 });
 
 class LibraryLocationScreen extends React.Component {
@@ -139,7 +139,7 @@ class LibraryLocationScreen extends React.Component {
             navigation.dispatch(resetAction)
           }
         />
-      )
+      ),
     };
   };
   render() {
@@ -172,7 +172,7 @@ class LibraryListScreen extends React.Component {
             navigation.dispatch(resetAction)
           }
         />
-      )
+      ),
     };
   };
   render() {
@@ -200,7 +200,7 @@ class LibraryListScreen extends React.Component {
 
 class PrefSelectScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: `都道府県から図書館を探す`
+    title: `都道府県から図書館を探す`,
   });
   render() {
     const { params } = this.props.navigation.state;
@@ -217,7 +217,7 @@ class PrefSelectScreen extends React.Component {
 
 class SelectLibraryScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: `図書館を探す`
+    title: `図書館を探す`,
   });
   render() {
     const { params } = this.props.navigation.state;
@@ -241,7 +241,7 @@ class SelectLibraryScreen extends React.Component {
 
 class LoadingScreen extends React.Component {
   state = {
-    isReady: false
+    isReady: false,
   };
   render() {
     const { navigation } = this.props;
@@ -261,8 +261,8 @@ class LoadingScreen extends React.Component {
               NavigationActions.reset({
                 index: 0,
                 actions: [
-                  NavigationActions.navigate({ routeName: "SelectLibrary" })
-                ]
+                  NavigationActions.navigate({ routeName: "SelectLibrary" }),
+                ],
               })
             );
           }
@@ -276,7 +276,7 @@ class LoadingScreen extends React.Component {
 class SearchScreen extends React.Component {
   static navigationOptions = {
     //title: 'Book Search'
-    title: "本を探す"
+    title: "本を探す",
   };
   render() {
     const { navigate } = this.props.navigation;
@@ -310,7 +310,7 @@ const Navigator = StackNavigator({
   SelectLibrary: { screen: SelectLibraryScreen },
   LibraryLocation: { screen: LibraryLocationScreen },
   PrefSelect: { screen: PrefSelectScreen },
-  LibraryList: { screen: LibraryListScreen }
+  LibraryList: { screen: LibraryListScreen },
 });
 
 function view(state$) {
@@ -343,14 +343,14 @@ function main({ RN, HTTP, AS }) {
   return {
     RN: view(state$.startWith("")), //view(model(intent(sources.DOM)))
     HTTP: actions.request$,
-    AS: actions.storage$
+    AS: actions.storage$,
   };
 }
 
 run(main, {
   RN: makeReactNativeDriver(),
   HTTP: makeHTTPDriver(),
-  AS: makeAsyncStorageDriver("CycleReactNativeEx")
+  AS: makeAsyncStorageDriver("CycleReactNativeEx"),
 });
 
 //module.exports = __DEV__ && typeof __TEST__ == 'undefined' ? StorybookUI : CycleRoot;
@@ -373,6 +373,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });

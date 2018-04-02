@@ -1,7 +1,7 @@
 import {
   Platform,
   TouchableHighlight,
-  TouchableNativeFeedback
+  TouchableNativeFeedback,
 } from "react-native";
 
 const MOCKED_MOVIES_DATA = [
@@ -13,10 +13,10 @@ const MOCKED_MOVIES_DATA = [
     libraryStatus: {
       exist: false,
       rentable: false,
-      reserveUrl: ""
+      reserveUrl: "",
     },
     isbn: "9784834032147",
-    active: true
+    active: true,
   },
   {
     title: "はじめてのABCえほん",
@@ -24,7 +24,7 @@ const MOCKED_MOVIES_DATA = [
     thumbnail:
       "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200",
     isbn: "9784828867472",
-    active: true
+    active: true,
   },
   {
     title: "ぐりとぐら(複数蔵書)",
@@ -36,9 +36,9 @@ const MOCKED_MOVIES_DATA = [
       exist: true,
       rentable: true,
       reserveUrl:
-        "http://api.calil.jp/reserve?id=af299d780fe86cf8b116dfda4725dc0f"
+        "http://api.calil.jp/reserve?id=af299d780fe86cf8b116dfda4725dc0f",
     },
-    active: true
+    active: true,
   },
   {
     title: "ぐりとぐらの1ねんかん(単一蔵書)",
@@ -48,11 +48,11 @@ const MOCKED_MOVIES_DATA = [
       exist: true,
       rentable: true,
       reserveUrl:
-        "https://library.city.fuchu.tokyo.jp/licsxp-opac/WOpacTifTilListToTifTilDetailAction.do?tilcod=1009710046217"
+        "https://library.city.fuchu.tokyo.jp/licsxp-opac/WOpacTifTilListToTifTilDetailAction.do?tilcod=1009710046217",
     },
     thumbnail:
       "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4655/9784834014655.jpg?_ex=200x200",
-    active: true
+    active: true,
   },
   {
     title: "IA／UXプラクティス",
@@ -61,12 +61,12 @@ const MOCKED_MOVIES_DATA = [
     libraryStatus: {
       exist: true,
       rentable: false,
-      reserveUrl: ""
+      reserveUrl: "",
     },
     thumbnail:
       "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200",
-    active: true
-  }
+    active: true,
+  },
   //size 200x200 largeImageUrl 64x64
 ];
 
@@ -75,23 +75,23 @@ import materialColor from "material-colors";
 const itemsInfo = {
   search: {
     icon: "search",
-    text: "検索"
+    text: "検索",
   },
   liked: {
     icon: "heart-o",
     backgroundColor: materialColor.lightBlue[500],
-    text: "読みたい"
+    text: "読みたい",
   },
   borrowed: {
     icon: "bookmark-o",
     backgroundColor: materialColor.green[500],
-    text: "借りてる"
+    text: "借りてる",
   },
   done: {
     icon: "check-square-o",
     backgroundColor: materialColor.amber[500],
-    text: "読んだ"
-  }
+    text: "読んだ",
+  },
 };
 
 let TouchableElement = TouchableHighlight;
@@ -102,5 +102,5 @@ const FAIcon = require("react-native-vector-icons/FontAwesome");
 
 module.exports = {
   itemsInfo,
-  TouchableElement
+  TouchableElement,
 };

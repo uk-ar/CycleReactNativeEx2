@@ -6,7 +6,7 @@ import {
   FlatList,
   StyleSheet,
   Keyboard,
-  ActivityIndicator
+  ActivityIndicator,
 } from "react-native";
 import { ButtonGroup, SearchBar } from "react-native-elements";
 import materialColor from "material-colors";
@@ -16,7 +16,7 @@ import {
   LibraryStatus,
   icons,
   Book,
-  libraryStatuses
+  libraryStatuses,
 } from "./BookCell";
 import { TouchableElement } from "./common";
 import FAIcon from "react-native-vector-icons/FontAwesome";
@@ -27,30 +27,30 @@ import { withCycle } from "../cycle-react-native";
 
 const styles = StyleSheet.create({
   row: {
-    flexDirection: "row"
+    flexDirection: "row",
   },
   rowCenter: {
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
   },
   cell: {
     flexDirection: "row",
-    backgroundColor: materialColor.grey["50"] //for TouchableElement
+    backgroundColor: materialColor.grey["50"], //for TouchableElement
   },
   border: {
     flex: 1,
     //marginRight:10,
     padding: 5,
     borderColor: "rgba(0, 0, 0, 0.1)",
-    borderBottomWidth: StyleSheet.hairlineWidth
+    borderBottomWidth: StyleSheet.hairlineWidth,
     //borderTopWidth: StyleSheet.hairlineWidth
-  }
+  },
 });
 
 class SearchHistory extends React.PureComponent {
   _keyExtractor = (item, index) => item.query;
   static defaultProps = {
-    onPress: emptyFunction
+    onPress: emptyFunction,
   };
   _renderItem = ({ item, index }) => {
     const { onPress } = this.props;
@@ -69,13 +69,13 @@ class SearchHistory extends React.PureComponent {
             size={16}
             style={{
               alignSelf: "center",
-              margin: 5
+              margin: 5,
             }}
           />
           <Text
             style={{
               alignSelf: "center",
-              margin: 5
+              margin: 5,
             }}
           >
             {item.query}
@@ -89,7 +89,7 @@ class SearchHistory extends React.PureComponent {
       <View>
         <Text
           style={{
-            margin: 5
+            margin: 5,
           }}
         >
           履歴
@@ -119,15 +119,15 @@ class SearchScene extends React.Component {
     onPress: PropTypes.func,
     onEndReached: PropTypes.func,
     onPressSetting: PropTypes.func,
-    onSubmitEditing: PropTypes.func
+    onSubmitEditing: PropTypes.func,
   };
   static defaultProps = {
-    onChangeText: emptyFunction
+    onChangeText: emptyFunction,
   };
   constructor(props) {
     super(props);
     this.state = {
-      text: this.props.defaultText
+      text: this.props.defaultText,
     };
   }
   _onChangeText = text => {
@@ -155,12 +155,12 @@ class SearchScene extends React.Component {
       selectedIndex,
       searchedBooksStatus,
       searchHistory,
-      defaultText
+      defaultText,
     } = this.props;
     rejects = [[], ["noCollection"], ["noCollection", "onLoan"]];
     extraData = {
       ...searchedBooksStatus,
-      rejects: rejects[selectedIndex]
+      rejects: rejects[selectedIndex],
     }; //学習漫画
     list = this.state.text ? (
       <BookList
@@ -180,10 +180,10 @@ class SearchScene extends React.Component {
           <SearchBar
             containerStyle={{
               backgroundColor: materialColor.grey["50"],
-              flex: 1
+              flex: 1,
             }}
             inputStyle={{
-              backgroundColor: materialColor.grey["200"]
+              backgroundColor: materialColor.grey["200"],
             }}
             value={this.state.text}
             lightTheme
