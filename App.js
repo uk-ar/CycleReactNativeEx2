@@ -16,7 +16,7 @@ import StorybookUI from "./storybook";
 import Expo from "expo";
 import Rx from "rxjs/Rx";
 import FAIcon from "react-native-vector-icons/FontAwesome";
-import { SearchScene } from "./components/SearchScene";
+import { SearchScene, SearchScreen } from "./components/SearchScene";
 import {
   LibrarySearchScene,
   PrefSearchScene,
@@ -88,7 +88,7 @@ class LibraryLocation extends React.Component {
     const location = await Location.getCurrentPositionAsync(
       Platform.OS === "android"
         ? { timeout: 1000, enableHighAccuracy: gpsAvailable }
-        : {}
+        : {},
     ).catch(() => null); //{enableHighAccuracy:true}
     if (!location) {
       this.setState({
@@ -263,39 +263,11 @@ class LoadingScreen extends React.Component {
                 actions: [
                   NavigationActions.navigate({ routeName: "SelectLibrary" }),
                 ],
-              })
+              }),
             );
           }
         }}
         onError={console.warn}
-      />
-    );
-  }
-}
-
-class SearchScreen extends React.Component {
-  static navigationOptions = {
-    //title: 'Book Search'
-    title: "本を探す",
-  };
-  render() {
-    const { navigate } = this.props.navigation;
-    const { searchedBooksStatus } = this.props.screenProps;
-    return (
-      <SearchScene
-        selector={"search"}
-        {...this.props.screenProps}
-        onPressSetting={
-          () => navigate("SelectLibrary")
-          //navigate('DrawerOpen')
-        }
-        onPress={async ({ item, index }) => {
-          const url = searchedBooksStatus[item.isbn].reserveUrl;
-          if (url) {
-            let result = await WebBrowser.openBrowserAsync(url);
-            console.log(result);
-          }
-        }}
       />
     );
   }

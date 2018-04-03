@@ -80,7 +80,87 @@ const icons = Object.keys(itemsInfo).reduce((acc, key) => {
   );
   return acc;
 }, {});
-
+class BookDetail extends React.PureComponent {
+  static defaultProps = {
+    onChangeText: emptyFunction,
+    onDetail: emptyFunction,
+  };
+  _onPress = () => {
+    this.props.onPress(this.props.isbn, this.props.reserveUrl);
+  };
+  _onDetail = () => {
+    this.props.onDetail(this.props);
+  };
+  render() {
+    const {
+      thumbnail,
+      title,
+      author,
+      onPress,
+      style,
+      icon,
+      status,
+      isbn,
+      reserveUrl,
+    } = this.props;
+    return (
+      <TouchableElement onPress={this._onDetail}>
+        <View style={styles.cell}>
+          {/* left */}
+          <Image
+            source={{ uri: thumbnail }}
+            resizeMode="contain"
+            style={styles.cellImage}
+          />
+          {/* middle */}
+          <View
+            style={{
+              flex: 1,
+              //border
+              justifyContent: "center",
+              borderColor: "rgba(0, 0, 0, 0.1)", //0.1
+              borderBottomWidth: StyleSheet.hairlineWidth,
+              borderTopWidth: StyleSheet.hairlineWidth,
+            }}
+          >
+            <Text style={styles.bookTitle} numberOfLines={2}>
+              詳細
+              {title}
+            </Text>
+            <Text style={styles.bookAuthor} numberOfLines={1}>
+              {author}
+            </Text>
+            {status}
+          </View>
+          {/* right */}
+          <View
+            style={{
+              //border
+              justifyContent: "center",
+              borderColor: "rgba(0, 0, 0, 0.1)", //0.1
+              borderBottomWidth: StyleSheet.hairlineWidth,
+              borderTopWidth: StyleSheet.hairlineWidth,
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: materialColor.grey["200"], //"black",
+                borderRadius: 20,
+                margin: 10,
+              }}
+            >
+              <Button
+                onPress={this._onPress}
+                title="借りる"
+                accessibilityLabel="借りる"
+              />
+            </View>
+          </View>
+        </View>
+      </TouchableElement>
+    );
+  }
+}
 class Book extends React.PureComponent {
   static defaultProps = {
     onChangeText: emptyFunction,
@@ -161,7 +241,6 @@ class Book extends React.PureComponent {
     );
   }
 }
-
 class CloseableBook extends React.PureComponent {
   render() {
     //console.log("re book")
@@ -179,11 +258,6 @@ class BookList extends React.PureComponent {
   static defaultProps = {
     onPress: emptyFunction,
   };
-  _onPress = async (isbn, url) => {
-    //https://docs.expo.io/versions/latest/sdk/webbrowser.html
-    let result = await WebBrowser.openBrowserAsync(url);
-    this.setState({ result });
-  };
   _renderItem = ({ item, index }) => {
     //closed = this.props.rejects && this.props.rejects.includes(item.status)
     extraData = this.props.extraData || {};
@@ -196,6 +270,7 @@ class BookList extends React.PureComponent {
     return (
       <CloseableBook
         onPress={(isbn, url) => this.props.onPress({ item, index })}
+        onDetail={this.props.onDetail}
         isbn={item.isbn}
         title={item.title}
         author={item.author}
@@ -274,4 +349,11 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = { LibraryStatus, Book, icons, libraryStatuses, BookList };
+module.exports = {
+  LibraryStatus,
+  Book,
+  icons,
+  libraryStatuses,
+  BookList,
+  BookDetail,
+};
