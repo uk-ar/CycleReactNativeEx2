@@ -234,9 +234,9 @@ class SearchScreen extends React.Component {
           () => navigate("SelectLibrary")
           //navigate('DrawerOpen')
         }
-        onDetail={() => {
-          console.log("foo");
-          navigate("Details");
+        onDetail={book => {
+          console.log("foo", book);
+          navigate("Details", book);
         }}
         onPress={async ({ item, index }) => {
           console.log(item, index, item.isbn, searchedBooksStatus[item.isbn]);
@@ -251,13 +251,23 @@ class SearchScreen extends React.Component {
   }
 }
 
+class DetailScreen extends React.Component {
+  render() {
+    console.log(this.props);
+    const { navigate } = this.props.navigation;
+    const { params } = this.props.navigation.state;
+    const book = params ? params : {};
+    return <BookDetail selector={"detail"} {...book} />;
+  }
+}
+
 const Stack = StackNavigator(
   {
     Home: {
       screen: SearchScreen,
     },
     Details: {
-      screen: BookDetail,
+      screen: DetailScreen,
     },
   },
   {

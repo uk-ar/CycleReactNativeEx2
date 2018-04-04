@@ -83,13 +83,9 @@ const icons = Object.keys(itemsInfo).reduce((acc, key) => {
 class BookDetail extends React.PureComponent {
   static defaultProps = {
     onChangeText: emptyFunction,
-    onDetail: emptyFunction,
   };
   _onPress = () => {
     this.props.onPress(this.props.isbn, this.props.reserveUrl);
-  };
-  _onDetail = () => {
-    this.props.onDetail(this.props);
   };
   render() {
     const {
@@ -103,61 +99,50 @@ class BookDetail extends React.PureComponent {
       isbn,
       reserveUrl,
     } = this.props;
+    console.log(this.props);
     return (
-      <TouchableElement onPress={this._onDetail}>
-        <View style={styles.cell}>
-          {/* left */}
-          <Image
-            source={{ uri: thumbnail }}
-            resizeMode="contain"
-            style={styles.cellImage}
-          />
-          {/* middle */}
+      <View style={{ alignItems: "flex-start" }}>
+        {/* middle */}
+        <Button
+          onPress={this._onPress}
+          title={author}
+          accessibilityLabel={author}
+        />
+        <Text style={styles.bookTitle} numberOfLines={2}>
+          {title}
+        </Text>
+        {/* left */}
+        <Image
+          source={{ uri: thumbnail }}
+          resizeMode="contain"
+          style={styles.cellImage}
+        />
+        {status}
+        {/* right */}
+        <View
+          style={{
+            //border
+            justifyContent: "center",
+            borderColor: "rgba(0, 0, 0, 0.1)", //0.1
+            borderBottomWidth: StyleSheet.hairlineWidth,
+            borderTopWidth: StyleSheet.hairlineWidth,
+          }}
+        >
           <View
             style={{
-              flex: 1,
-              //border
-              justifyContent: "center",
-              borderColor: "rgba(0, 0, 0, 0.1)", //0.1
-              borderBottomWidth: StyleSheet.hairlineWidth,
-              borderTopWidth: StyleSheet.hairlineWidth,
+              backgroundColor: materialColor.grey["200"], //"black",
+              borderRadius: 20,
+              margin: 10,
             }}
           >
-            <Text style={styles.bookTitle} numberOfLines={2}>
-              詳細
-              {title}
-            </Text>
-            <Text style={styles.bookAuthor} numberOfLines={1}>
-              {author}
-            </Text>
-            {status}
-          </View>
-          {/* right */}
-          <View
-            style={{
-              //border
-              justifyContent: "center",
-              borderColor: "rgba(0, 0, 0, 0.1)", //0.1
-              borderBottomWidth: StyleSheet.hairlineWidth,
-              borderTopWidth: StyleSheet.hairlineWidth,
-            }}
-          >
-            <View
-              style={{
-                backgroundColor: materialColor.grey["200"], //"black",
-                borderRadius: 20,
-                margin: 10,
-              }}
-            >
-              <Button
-                onPress={this._onPress}
-                title="借りる"
-                accessibilityLabel="借りる"
-              />
-            </View>
+            <Button
+              onPress={this._onPress}
+              title="借りる"
+              accessibilityLabel="借りる"
+            />
           </View>
         </View>
-      </TouchableElement>
+      </View>
     );
   }
 }
