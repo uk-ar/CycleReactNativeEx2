@@ -12,18 +12,18 @@ import {
   Platform,
 } from "react-native";
 import { makeHTTPDriver } from "@cycle/http";
-import StorybookUI from "./storybook";
+import StorybookUI from "./src/storybook";
 import Expo from "expo";
 import Rx from "rxjs/Rx";
 import FAIcon from "react-native-vector-icons/FontAwesome";
-import { SearchScene, SearchScreen } from "./components/SearchScene";
+import { SearchScene, SearchScreen } from "./src/components/SearchScene";
 import {
   LibrarySearchScene,
   PrefSearchScene,
-} from "./components/LibrarySearchScene";
+} from "./src/components/LibrarySearchScene";
 import { run } from "@cycle/rxjs-run";
 import { AppLoading, Constants, WebBrowser, Location, Permissions } from "expo";
-import { intent, model } from "./intent";
+import { intent, model } from "./src/intent";
 //const view = require('./view');
 
 import {
@@ -32,7 +32,7 @@ import {
   makeReactNativeDriver,
   CycleRoot,
   makeAsyncStorageDriver,
-} from "./cycle-react-native";
+} from "./src/cycle-react-native";
 
 import {
   StackNavigator,
@@ -325,20 +325,8 @@ run(main, {
   AS: makeAsyncStorageDriver("CycleReactNativeEx"),
 });
 
-//module.exports = __DEV__ && typeof __TEST__ == 'undefined' ? StorybookUI : CycleRoot;
-
-console.log(Expo.Constants.isDevice);
-//test:both OK
-//dev:storybook:
-//expo0:not storybook->testflight?
-//expo1:storybook
-//module.exports = StorybookUI
-//module.exports = Expo.Constants.manifest.extra.enableStoryBook || (__DEV__ && typeof __TEST__ == 'undefined') ? StorybookUI : CycleRoot;
-//module.exports = Expo.Constants.isDevice ? CycleRoot : StorybookUI
-//module.exports = Expo.Constants.isDevice ? App : StorybookUI
-
-//module.exports = CycleRoot;
-module.exports = StorybookUI;
+module.exports = CycleRoot;
+//module.exports = StorybookUI;
 
 const styles = StyleSheet.create({
   container: {
