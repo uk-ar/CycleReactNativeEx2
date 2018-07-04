@@ -35,9 +35,10 @@ import {
 } from "./src/cycle-react-native";
 
 import {
-  StackNavigator,
+  createStackNavigator,
   DrawerNavigator,
   NavigationActions,
+  StackActions,
 } from "react-navigation";
 
 import PropTypes from "prop-types";
@@ -121,7 +122,7 @@ class LibraryLocation extends React.Component {
   }
 }
 
-const resetAction = NavigationActions.reset({
+const resetAction = StackActions.reset({
   index: 0,
   actions: [NavigationActions.navigate({ routeName: "Home" })],
 });
@@ -258,7 +259,7 @@ class LoadingScreen extends React.Component {
             navigation.dispatch(resetAction);
           } else {
             navigation.dispatch(
-              NavigationActions.reset({
+              StackActions.reset({
                 index: 0,
                 actions: [
                   NavigationActions.navigate({ routeName: "SelectLibrary" }),
@@ -276,7 +277,7 @@ class LoadingScreen extends React.Component {
 // https://github.com/react-community/react-navigation/issues/1232
 // screenProps
 //const Navigator = DrawerNavigator({
-const Navigator = StackNavigator({
+const Navigator = createStackNavigator({
   Loading: { screen: LoadingScreen },
   Home: { screen: SearchScreen },
   SelectLibrary: { screen: SelectLibraryScreen },
