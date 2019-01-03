@@ -6,10 +6,18 @@
     "version": "1.0.0",
     "icon": "./assets/app-icon-l.png",
     "ios": {
-      "bundleIdentifier": "com.ukar.biblio"
+      "bundleIdentifier": "com.ukar.biblio",
+      "infoPlist": {
+        "NSLocationUsageDescription": "このアプリは近くの図書館を検索するために位置情報を使用します.",
+        "NSLocationAlwaysUsageDescription": "このアプリは近くの図書館を検索するために位置情報を使用します.",
+        "NSLocationWhenInUseUsageDescription": "このアプリは近くの図書館を検索するために位置情報を使用します."
+      },
+      "buildNumber":"1"
     },
     "android": {
-      "package": "com.ukar.biblio"
+      "package": "com.ukar.biblio",
+      "permissions": ["ACCESS_COARSE_LOCATION","ACCESS_FINE_LOCATION"],
+      "versionCode": 4
     }
   }
 }
