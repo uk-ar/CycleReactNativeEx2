@@ -43,36 +43,40 @@ class LibraryLocation extends React.Component {
     onLocation:emptyFunction
   }
   state = {
-    //location: null,
+    location: null,
     errorMessage: null,
   };
   componentWillMount() {
-    if (Platform.OS === 'android' && !Constants.isDevice) {
-      this.setState({
-        errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
-      });
-    } else {
+    //console.log("dn:",Constants.deviceName)
+
+    /* if (Platform.OS === 'android' && !Constants.isDevice) {
+     *   this.setState({
+     *     errorMessage: '??Oops, this will not work on Sketch in an Android emulator. Try it on your device!'+Constants.deviceName,
+     *   });
+     * } else {*/
       this._getLocationAsync();
-    }
+    /* }*/
   }
   _getLocationAsync = async () => {
-    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    const { status } = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== 'granted') {
       this.setState({
         errorMessage: 'Permission to access location was denied',
       });
     }
 
-    let location = await Location.getCurrentPositionAsync({});
-    //this.setState({ location });
+    const location = await Location.getCurrentPositionAsync({
+      enableHighAccuracy:true});
     this.props.onLocation(location);
+    this.setState({ location });
   };
   render() {
     let text = 'Waiting..';
     if (this.state.errorMessage) {
       text = this.state.errorMessage;
-    } else if (this.props.location) {
-      text = JSON.stringify(this.props.location);
+    } else if (this.state.location) {
+      text = ""
+      //text = JSON.stringify(this.state.location);
     }
 
     return (
@@ -104,7 +108,7 @@ class LibraryLocationScreen extends React.Component {
     }};
   render() {
     const { params } = this.props.navigation.state;
-    const { selectedLibrary , libraries } = this.props.screenProps;
+    const { selectedLibrary, libraries } = this.props.screenProps;
     console.log(selectedLibrary)
     return (
       <View>

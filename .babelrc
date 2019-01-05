@@ -3,8 +3,7 @@
   "env": {
     "development": {
       "plugins": [
-        "transform-react-jsx-source",
-        ["transform-remove-console", { "exclude": [ "error", "warn"] }]
+        "transform-react-jsx-source"
       ]
     }
   }

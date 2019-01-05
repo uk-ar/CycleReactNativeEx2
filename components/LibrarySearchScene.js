@@ -94,7 +94,8 @@ class LibraryList extends React.PureComponent {
         onPress={()=>
           // must be closure
           this.props.onPress(item.systemid)}
-        rightIcon={selected ? {name: "done",color:selectedColor} : <View /> }
+        rightIcon={{name: "done",
+                    color:selected ? selectedColor : "transparent"}}
         leftIcon={{name: "business"}}
       />
     );}
