@@ -7,8 +7,8 @@ import {
 } from 'react-native';
 import { ButtonGroup, SearchBar } from 'react-native-elements';
 import materialColor from 'material-colors';
-import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from './Book/BookCell';
-import { TouchableElement } from './Book/common';
+import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from './BookCell';
+import { TouchableElement } from './common';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import emptyFunction from 'fbjs/lib/emptyFunction'
 

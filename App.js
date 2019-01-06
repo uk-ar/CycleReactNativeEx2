@@ -347,7 +347,8 @@ console.log(Expo.Constants.isDevice)
 //module.exports = Expo.Constants.isDevice ? CycleRoot : StorybookUI
 //module.exports = Expo.Constants.isDevice ? App : StorybookUI
 
-module.exports = CycleRoot
+//module.exports = CycleRoot
+module.exports = StorybookUI
 
 const styles = StyleSheet.create({
   container: {

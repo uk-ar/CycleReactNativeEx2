@@ -147,7 +147,6 @@ function intent(RN, HTTP, AS) {
   // reset
   // https://stackoverflow.com/questions/31434606/rxjs-make-counter-with-reset-stateless
       .switchMap((query)=>{
-        //console.log(query)
         return RN.select('search')
                  .events('endReached')
                  .startWith(1)
@@ -158,6 +157,8 @@ function intent(RN, HTTP, AS) {
   const requestSearchedBooks$ =
     page$
       .skip(1)
+    /* changeQuery$
+     *   .map((query)=>({query,page:1}))*/
       .map(({query,page})=>{
         //console.log(query,page)
         return {
