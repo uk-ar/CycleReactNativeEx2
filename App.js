@@ -244,21 +244,21 @@ class SearchScreen extends React.Component {
     const { navigate } = this.props.navigation;
     const { searchedBooksStatus } = this.props.screenProps;
     return(
-      <SearchScene
-        selector={"search"}
-        {...this.props.screenProps}
-        onPressSetting={()=>
-          navigate('SelectLibrary')
-          //navigate('DrawerOpen')
-                       }
-        onPress={async ({item,index})=>{
-            const url = searchedBooksStatus[item.isbn].reserveUrl
-            if(url){
-              let result = await WebBrowser.openBrowserAsync(url);
-              console.log(result)
-            }
-          }}
-      />
+        <SearchScene
+          selector={"search"}
+          {...this.props.screenProps}
+          onPressSetting={()=>
+            navigate('SelectLibrary')
+            //navigate('DrawerOpen')
+                         }
+          onPress={async ({item,index})=>{
+              const url = searchedBooksStatus[item.isbn].reserveUrl
+              if(url){
+                let result = await WebBrowser.openBrowserAsync(url);
+                console.log(result)
+              }
+            }}
+        />
     )
   }
 }
@@ -279,9 +279,14 @@ function view(state$) {
   return state$
     .map((state) => {
       return(
-        <Navigator
+        <View style={{flex:1}}>
+          <View style={Platform.OS === 'android' ?
+                       { paddingTop: Constants.statusBarHeight }: {} } />
+          <Navigator
           screenProps={state}
-        />)
+          />
+        </View>
+      )
     })
 }
 
