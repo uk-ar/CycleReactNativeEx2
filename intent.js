@@ -199,13 +199,14 @@ function intent(RN, HTTP, AS) {
                     .map(body =>
                       itemsToBook(body.Items))
                     .do((e)=>console.log(e))
-                  // pagination
-                  // https://gitter.im/cyclejs/cyclejs/archives/2016/03/30
-                    .startWith([])
-                    .scan((currentBooks,newBooks) => (
-                      currentBooks.concat(newBooks)))
                 })
-                .share();
+
+  const searchedBooks$ =
+    searchedBooksResponse$
+      .startWith([])
+      .scan((currentBooks,newBooks) => (
+        currentBooks.concat(newBooks)))
+      .share()
 
   function createBooksStatusStream(books$, category) {
     const requestStatus$ =
@@ -291,7 +292,7 @@ function intent(RN, HTTP, AS) {
   const { booksStatus$: searchedBooksStatus$,
           requestStatus$: requestSearchedBooksStatus$ } =
             createBooksStatusStream(
-              searchedBooksResponse$,
+              searchedBooks$,
               'searchedBooksStatus');
 
   const request$ = Rx.Observable
@@ -308,9 +309,11 @@ function intent(RN, HTTP, AS) {
     screen$,
     pref$,
     library$,
+    changeQuery$,
     searchHistory$,
-    requestSearchedBooks$,
     searchedBooksResponse$,
+    requestSearchedBooks$,
+    searchedBooks$,
     searchedBooksStatus$,
     changeFilter$,
     request$,
@@ -319,16 +322,28 @@ function intent(RN, HTTP, AS) {
 
 function model(actions) {
   const searchedBooks$ =
-    actions.searchedBooksResponse$
+    actions.searchedBooks$
            //.merge(actions.requestSearchedBooks$.map(_=>[]))
            .distinctUntilChanged()
 
   const booksLoadingState$ =
-    actions.requestSearchedBooks$
+    actions.changeQuery$
            .map(_ => true)
-           .merge(actions.searchedBooksResponse$.map(_ => false))
+           .merge(actions.searchedBooks$.map(_ => false))
            .distinctUntilChanged()
            .shareReplay();
+
+  const booksPagingState$ =
+    actions.changeQuery$
+           .map(_ => true)
+           .merge(
+             actions
+               .searchedBooksResponse$
+               .do(e=>console.log("f",e))
+               .filter(books=>books.length === 0)
+               .do(e=>console.log(e))
+               .map(_ => false))
+           .do(e=>console.log(e))
 
   const state$ = Rx
     .Observable
@@ -344,11 +359,10 @@ function model(actions) {
       searchedBooks$.startWith([]),
       actions.searchedBooksStatus$.startWith({}),
       booksLoadingState$.startWith(false),
+      booksPagingState$.startWith(false),
       actions.changeFilter$.startWith(0),
-      (location,libraries,pref,screen,selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
-       selectedIndex ) =>
-         ({ location,libraries,pref,screen,selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
-            selectedIndex }));
+      (location,libraries,pref,screen,selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState, booksPagingState, selectedIndex ) =>
+        ({ location,libraries,pref,screen,selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,booksPagingState, selectedIndex }));
   return state$;
 }
 module.exports = { intent, model }
