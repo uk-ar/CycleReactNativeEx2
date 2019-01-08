@@ -11,7 +11,7 @@
     "babel-plugin-transform-inline-environment-variables": "^0.2.0",
     "babel-plugin-transform-remove-console": "^6.8.5",
     "concurrently": "^3.5.0",
-    "exp": "^47.3.10",
+    "exp": "^47.3.17",
     "jest-expo": "^24.0.0",
     "react-dom": "16.0.0",
     "react-native-scripts": "1.7.0",

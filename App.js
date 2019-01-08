@@ -237,8 +237,9 @@ class LoadingScreen extends React.Component {
     return (
       <AppLoading
         startAsync={()=> {
-            return AsyncStorage.getItem('CycleReactNativeEx')}}
-        onFinish={(e) => {
+            return AsyncStorage.getItem('CycleReactNativeEx')
+          }}
+        onFinish={() => {
             //console.log("fo")//undefined
             //this.setState({ isReady: true })
             if(this.props.screenProps.selectedLibrary){

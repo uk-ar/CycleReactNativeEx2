@@ -50,6 +50,7 @@ class CloseableViewAnim extends React.Component {
 
 class CloseableView extends React.Component {
   render() {
+    //console.log("re close")
     let { closed, style } = this.props
     return (
       <View
