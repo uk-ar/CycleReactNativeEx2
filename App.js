@@ -129,8 +129,7 @@ class LibraryLocationScreen extends React.Component {
   render() {
     const { params } = this.props.navigation.state;
     const { selectedLibrary, libraries, location } = this.props.screenProps;
-    console.log("st",selectedLibrary,libraries,location,(location && libraries.length === 0),
-                libraries.length)
+    console.log("st",selectedLibrary,libraries,location)//,libraries.lengt
     return (
       <View>
         <LibraryLocation

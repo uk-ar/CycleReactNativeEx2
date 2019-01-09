@@ -57,7 +57,7 @@ function intent(RN, HTTP, AS) {
 
   const library$ = AS
     .first()
-    .map(e => e.library || "")
+    .map(e => (e && e.library) || "")
     .merge(
       RN
         .select('libraries')
@@ -111,7 +111,7 @@ function intent(RN, HTTP, AS) {
 
   const searchHistory$ =
     AS.first()
-      .map(e => e.searchHistory || [] )
+      .map(e => (e && e.searchHistory) || [] )
       .merge(submitText$.map(query=>[query]))
       .scan((searchHistory,query) => (
         query.concat(
@@ -190,17 +190,17 @@ function intent(RN, HTTP, AS) {
       .map(stream=>
         stream.retryWhen(errors=>errors.delay(1000)))
       .switch()
-      //.mergeAll()
-      //.do(e=>console.log(e))
+  //TODO:switch is for not to append result to other query. possible to drop response?
+  //.mergeAll()
+  //.do(e=>console.log(e))
       .map(res => res.body)
       .map(body => itemsToBook(body.Items))
-      //.do((e)=>console.log(e))
+  //.do((e)=>console.log(e))
       .share()
   //Do not replay in order to cancel in SearchBooks$
 
   const searchedBooks$ =
     changeQuery$
-      .do((e)=>console.log("cq",e))
       .startWith("")
       .switchMap((e)=>{
         return searchedBooksResponse$

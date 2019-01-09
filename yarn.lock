@@ -2397,7 +2397,7 @@ combined-stream@^1.0.5, combined-stream@~1.0.5:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@2.12.x, commander@^2.12.2, commander@~2.12.1:
+commander@2.12.x, commander@^2.11.0, commander@^2.12.2, commander@~2.12.1:
   version "2.12.2"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.12.2.tgz#0f5946c427ed9ec0d91a46bb9def53e54650e555"
 
@@ -2405,7 +2405,7 @@ commander@2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.6.0.tgz#9df7e52fb2a0cb0fb89058ee80c3104225f37e1d"
 
-commander@^2.11.0, commander@^2.8.1, commander@^2.9.0:
+commander@^2.8.1, commander@^2.9.0:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.11.0.tgz#157152fd1e7a6c8d98a5b715cf376df928004563"
 
@@ -3392,7 +3392,7 @@ exit-hook@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/exit-hook/-/exit-hook-1.1.1.tgz#f05ca233b48c05d54fff07765df8507e95c02ff8"
 
-exp@^47.3.10:
+exp@47.3.10:
   version "47.3.10"
   resolved "https://registry.yarnpkg.com/exp/-/exp-47.3.10.tgz#39b63d902a83803aa3ab93185b6a12f91c541e5b"
   dependencies:
@@ -7347,9 +7347,9 @@ react-native-vector-icons@4.4.2:
     prop-types "^15.5.10"
     yargs "^8.0.2"
 
-react-native@^0.51.0:
+"react-native@https://github.com/expo/react-native/archive/sdk-24.0.0.tar.gz":
   version "0.51.0"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.51.0.tgz#fe25934b3030fd323f3ca1a70f034133465955ed"
+  resolved "https://github.com/expo/react-native/archive/sdk-24.0.0.tar.gz#aa7b9c20266b844bfc916aa2e4ddb51036d2b83c"
   dependencies:
     absolute-path "^0.0.0"
     art "^0.10.0"
