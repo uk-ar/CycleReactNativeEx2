@@ -38,12 +38,7 @@ exports[`Storyshots Book with full book 1`] = `
     tvParallaxProperties={undefined}
   >
     <View
-      style={
-        Object {
-          "backgroundColor": "#fafafa",
-          "flexDirection": "row",
-        }
-      }
+      style={undefined}
     >
       <Image
         resizeMode="contain"
@@ -160,12 +155,7 @@ exports[`Storyshots Book with short title 1`] = `
     tvParallaxProperties={undefined}
   >
     <View
-      style={
-        Object {
-          "backgroundColor": "#fafafa",
-          "flexDirection": "row",
-        }
-      }
+      style={undefined}
     >
       <Image
         resizeMode="contain"
@@ -322,12 +312,7 @@ exports[`Storyshots Book with thumbnail 1`] = `
     tvParallaxProperties={undefined}
   >
     <View
-      style={
-        Object {
-          "backgroundColor": "#fafafa",
-          "flexDirection": "row",
-        }
-      }
+      style={undefined}
     >
       <Image
         resizeMode="contain"
@@ -2377,12 +2362,7 @@ exports[`Storyshots Browser with full book 1`] = `
   tvParallaxProperties={undefined}
 >
   <View
-    style={
-      Object {
-        "backgroundColor": "#fafafa",
-        "flexDirection": "row",
-      }
-    }
+    style={undefined}
   >
     <Image
       resizeMode="contain"
