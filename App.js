@@ -25,7 +25,8 @@ import { run } from "@cycle/rxjs-run";
 import { AppLoading, Constants, WebBrowser, Location, Permissions } from "expo";
 import { intent, model } from "./src/intent";
 //const view = require('./view');
-
+//https://github.com/xotahal/react-native-motion
+//react-navigation-fluid-transitions
 import {
   Cycle,
   withCycle,
