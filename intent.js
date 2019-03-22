@@ -189,15 +189,24 @@ function intent(RN, HTTP, AS) {
   const searchedBooks$ = changeQuery$
     .startWith("")
     .switchMap(e => {
-      return searchedBooksResponse$
-        .startWith([])
-        .scan((currentBooks, newBooks) => currentBooks.concat(newBooks));
+      return (
+        searchedBooksResponse$
+          .startWith([])
+          //.startWith([])
+          .scan((currentBooks, newBooks) => {
+            isbns = currentBooks.map(book => book.isbn);
+            return currentBooks.concat(
+              newBooks.filter(newBook => isbns.indexOf(newBook.isbn) == -1)
+            );
+          })
+      );
     })
     .distinctUntilChanged()
     .share();
 
   const requestSearchedBooksStatus$ = searchedBooks$
     .map(books => books.map(book => book.isbn))
+    //.map([books,isbns] => books.map(book => book.isbn))
     .filter(isbns => isbns.length > 0)
     .combineLatest(library$, (isbn, library) => ({
       category: "searchedBooksStatus",
