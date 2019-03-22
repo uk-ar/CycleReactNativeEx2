@@ -1,25 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Rx from 'rxjs/Rx';
-import { AsyncStorage,TouchableOpacity, View, Text } from 'react-native';
+import React from "react";
+import PropTypes from "prop-types";
+import Rx from "rxjs/Rx";
+import { AsyncStorage, TouchableOpacity, View, Text } from "react-native";
 //import {adapt} from '@cycle/run/lib/adapt';
 //import RxJSAdapter from '@cycle/rxjs-adapter';
-import {adapt} from '@cycle/run/lib/adapt';
+import { adapt } from "@cycle/run/lib/adapt";
 
-let handlers = {}
+let handlers = {};
 
 //https://facebook.github.io/react/docs/higher-order-components.html
 function withCycle(WrappedComponent) {
-  if(!WrappedComponent.propTypes){
-    console.error("PropTypes is not set")
+  if (!WrappedComponent.propTypes) {
+    console.error("PropTypes is not set");
   }
 
   function findHandler(selector, evType) {
-    if (!selector || !handlers[selector]){
-      return null
+    if (!selector || !handlers[selector]) {
+      return null;
     }
     if (handlers[selector].hasOwnProperty(evType)) {
-      return handlers[selector][evType].send
+      return handlers[selector][evType].send;
     }
   }
 
@@ -27,31 +27,32 @@ function withCycle(WrappedComponent) {
     constructor(props) {
       super(props);
       const { selector, ...passThroughProps } = props;
-      if(!selector) {
-        console.error("The prop `selector` is not set")
+      if (!selector) {
+        console.error("The prop `selector` is not set");
       }
-      const functionNames =
-        Object.keys(WrappedComponent.propTypes)
-              .filter((func)=>func.startsWith("on"))
+      const functionNames = Object.keys(WrappedComponent.propTypes).filter(
+        func => func.startsWith("on")
+      );
       //["onLayout","onPress"]
       //console.log(WrappedComponent,functionNames)
 
       //used in render
-      this.injectedProp =
-        functionNames
-          .map(name => [name, findHandler(selector,name)])
-          .filter(([_, handler]) => !!handler)
-          .reduce((acc, [name, handler]) => {
-            //console.log(selector,name,this.props[name],this.props[name] ? true : false )
-            acc[name] = this.props[name] ? (...args) => {
-              handler(...args)
-              this.props[name](...args)
-            } : handler
-            /* acc[name] = this.props.payload === undefined ?
+      this.injectedProp = functionNames
+        .map(name => [name, findHandler(selector, name)])
+        .filter(([_, handler]) => !!handler)
+        .reduce((acc, [name, handler]) => {
+          //console.log(selector,name,this.props[name],this.props[name] ? true : false )
+          acc[name] = this.props[name]
+            ? (...args) => {
+                handler(...args);
+                this.props[name](...args);
+              }
+            : handler;
+          /* acc[name] = this.props.payload === undefined ?
              *             handler :
              *             (...args) => handler(this.props.payload)*/
-            return acc
-          }, {})//{"onPress":func}
+          return acc;
+        }, {}); //{"onPress":func}
     }
 
     render() {
@@ -60,46 +61,49 @@ function withCycle(WrappedComponent) {
     }
   }
   function getDisplayName(WrappedComponent) {
-    return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+    return WrappedComponent.displayName || WrappedComponent.name || "Component";
   }
-  CycleComponent.displayName = `CycleComponent(${getDisplayName(WrappedComponent)})`;
+  CycleComponent.displayName = `CycleComponent(${getDisplayName(
+    WrappedComponent
+  )})`;
   CycleComponent.propTypes = {
-    selector: PropTypes.string.isRequired,
+    selector: PropTypes.string.isRequired
     //payload:  PropTypes.any//for ListItem onPress
-  }
+  };
   return CycleComponent;
 }
 
-function makeReactNativeDriver(){
+function makeReactNativeDriver() {
   function createHandler() {
     const handler = new Rx.Subject();
     handler.send = function sendIntoSubject(args) {
-      handler.next(args)
-    }
+      handler.next(args);
+    };
     return handler;
   }
 
-  function reactNativeDriver(vtree$){
+  function reactNativeDriver(vtree$) {
     //console.log(vtree$)
     sink$ = Rx.Observable.from(vtree$).shareReplay();
     //sink$ = vtree$.shareReplay();
     sink$
       //.do(args => console.log('rn:', args))
-      .subscribe()
+      .subscribe();
     return {
-      select(selector){
+      select(selector) {
         return {
           observable: Rx.Observable.empty(),
           events: function events(ev) {
-            evType = "on" + ev.charAt(0).toUpperCase()+ev.slice(1);
+            evType = "on" + ev.charAt(0).toUpperCase() + ev.slice(1);
             handlers[selector] = handlers[selector] || {};
-            handlers[selector][evType] = handlers[selector][evType] || createHandler();
+            handlers[selector][evType] =
+              handlers[selector][evType] || createHandler();
             return adapt(handlers[selector][evType]);
             //return handlers[selector][evType];
-          },
-        }
+          }
+        };
       }
-    }
+    };
   }
   //reactNativeDriver.streamAdapter = RxJSAdapter;
   return reactNativeDriver;
@@ -107,43 +111,38 @@ function makeReactNativeDriver(){
 class CycleRoot extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {vtree: <View/>};
+    this.state = { vtree: <View /> };
   }
   componentWillMount() {
-    sink$.subscribe((vtree) => this.setState({vtree: vtree}))
+    sink$.subscribe(vtree => this.setState({ vtree: vtree }));
   }
   render() {
     //console.log(handlers)
-    return(
-      this.state.vtree
-    )
+    return this.state.vtree;
   }
 }
 
 Cycle = {
   Text: withCycle(Text),
   TouchableOpacity: withCycle(TouchableOpacity)
-}
+};
 
 function makeAsyncStorageDriver(key) {
   function AsyncStorageDriver(outgoing$) {
-    Rx.Observable
-      .from(outgoing$)
-      .flatMap((value)=>{
+    Rx.Observable.from(outgoing$)
+      .flatMap(value => {
         //console.log("setItem",JSON.stringify(value))
-        return AsyncStorage.setItem(key,
-                                    JSON.stringify(value))
+        return AsyncStorage.setItem(key, JSON.stringify(value));
       })
-      .subscribe()
+      .subscribe();
 
-    incoming$ = Rx.Observable
-                  .fromPromise(AsyncStorage.getItem(key))
-                  .map(e=>{
-                    //console.log("get",e)
-                    return JSON.parse(e)
-                  })
-                  .merge(outgoing$)
-                  .shareReplay();
+    incoming$ = Rx.Observable.fromPromise(AsyncStorage.getItem(key))
+      .map(e => {
+        //console.log("get",e)
+        return JSON.parse(e);
+      })
+      .merge(outgoing$)
+      .shareReplay();
 
     return adapt(incoming$);
   }
@@ -156,5 +155,5 @@ export {
   withCycle,
   makeReactNativeDriver,
   CycleRoot,
-  makeAsyncStorageDriver,
-}
+  makeAsyncStorageDriver
+};

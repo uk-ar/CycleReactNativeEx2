@@ -1,20 +1,29 @@
-import React from 'react';
+import React from "react";
 //GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest
 import {
-  StatusBar,TouchableOpacity,StyleSheet, Text, View,FlatList,Button,
-  AsyncStorage, Platform
-} from 'react-native';
-import { makeHTTPDriver } from '@cycle/http';
-import StorybookUI from './storybook';
-import Expo from 'expo'
-import Rx from 'rxjs/Rx';
-import FAIcon from 'react-native-vector-icons/FontAwesome';
-import { SearchScene } from './components/SearchScene';
-import { LibrarySearchScene,PrefSearchScene } from './components/LibrarySearchScene';
-import { run } from '@cycle/rxjs-run';
-import { AppLoading, Constants, WebBrowser,
-         Location, Permissions } from 'expo';
-import { intent,model } from './intent';
+  StatusBar,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Button,
+  AsyncStorage,
+  Platform
+} from "react-native";
+import { makeHTTPDriver } from "@cycle/http";
+import StorybookUI from "./storybook";
+import Expo from "expo";
+import Rx from "rxjs/Rx";
+import FAIcon from "react-native-vector-icons/FontAwesome";
+import { SearchScene } from "./components/SearchScene";
+import {
+  LibrarySearchScene,
+  PrefSearchScene
+} from "./components/LibrarySearchScene";
+import { run } from "@cycle/rxjs-run";
+import { AppLoading, Constants, WebBrowser, Location, Permissions } from "expo";
+import { intent, model } from "./intent";
 //const view = require('./view');
 
 import {
@@ -22,29 +31,29 @@ import {
   withCycle,
   makeReactNativeDriver,
   CycleRoot,
-  makeAsyncStorageDriver,
-} from './cycle-react-native';
+  makeAsyncStorageDriver
+} from "./cycle-react-native";
 
 import {
   StackNavigator,
   DrawerNavigator,
   NavigationActions
-} from 'react-navigation';
+} from "react-navigation";
 
-import PropTypes from 'prop-types';
-import emptyFunction from 'fbjs/lib/emptyFunction'
+import PropTypes from "prop-types";
+import emptyFunction from "fbjs/lib/emptyFunction";
 
 @withCycle
 class LibraryLocation extends React.Component {
   static propTypes = {
-    onLocation:PropTypes.func,
-  }
+    onLocation: PropTypes.func
+  };
   static defaultProps = {
-    onLocation:emptyFunction
-  }
+    onLocation: emptyFunction
+  };
   state = {
     location: null,
-    errorMessage: null,
+    errorMessage: null
   };
   componentWillMount() {
     //console.log("dn:",Constants.deviceName)
@@ -54,48 +63,53 @@ class LibraryLocation extends React.Component {
      *     errorMessage: '??Oops, this will not work on Sketch in an Android emulator. Try it on your device!'+Constants.deviceName,
      *   });
      * } else {*/
-      this._getLocationAsync();
+    this._getLocationAsync();
     /* }*/
   }
   _getLocationAsync = async () => {
-    const { locationServicesEnabled,gpsAvailable,networkAvailable,passiveAvailable } =
-      await Expo.Location.getProviderStatusAsync()
+    const {
+      locationServicesEnabled,
+      gpsAvailable,
+      networkAvailable,
+      passiveAvailable
+    } = await Expo.Location.getProviderStatusAsync();
     //console.log("st",{ locationServicesEnabled,gpsAvailable,networkAvailable,passiveAvailable })
     if (!locationServicesEnabled) {
       this.setState({
-        errorMessage: 'Location Service is not enabled',
+        errorMessage: "Location Service is not enabled"
       });
     }
     const { status } = await Permissions.askAsync(Permissions.LOCATION);
-    if (status !== 'granted') {
+    if (status !== "granted") {
       this.setState({
-        errorMessage: 'Permission to access location was denied',
+        errorMessage: "Permission to access location was denied"
       });
     }
     const location = await Location.getCurrentPositionAsync(
-      Platform.OS === 'android' ? {timeout:1000, enableHighAccuracy:gpsAvailable} : {}
-    )
-                                   .catch(()=> null);//{enableHighAccuracy:true}
-    if (!location){
+      Platform.OS === "android"
+        ? { timeout: 1000, enableHighAccuracy: gpsAvailable }
+        : {}
+    ).catch(() => null); //{enableHighAccuracy:true}
+    if (!location) {
       this.setState({
-        errorMessage: 'Location request timed out',
-      })
+        errorMessage: "Location request timed out"
+      });
       return;
     }
     this.props.onLocation(location);
     //this.setState({ location });
   };
   render() {
-    console.log("rend",this.props)
-    let text = 'Waiting..';
+    console.log("rend", this.props);
+    let text = "Waiting..";
     if (this.state.errorMessage) {
       text = this.state.errorMessage;
-    } else if (this.props.location && this.props.libraries.length === 0){
-      text = ""
+    } else if (this.props.location && this.props.libraries.length === 0) {
+      text = "";
       //text = "近くに図書館がありません"
       //TODO:FIX ME!!
     } else if (this.props.location && this.props.libraries.length !== 0) {
-      text = ""
+      text = "";
       //text = JSON.stringify(this.state.location);
     }
 
@@ -108,37 +122,36 @@ class LibraryLocation extends React.Component {
 }
 
 const resetAction = NavigationActions.reset({
-  index:0,
-  actions: [
-    NavigationActions.navigate({ routeName: 'Home'})
-  ]
-})
+  index: 0,
+  actions: [NavigationActions.navigate({ routeName: "Home" })]
+});
 
 class LibraryLocationScreen extends React.Component {
-  static navigationOptions = ({navigation, screenProps}) => {
+  static navigationOptions = ({ navigation, screenProps }) => {
     return {
-        title: '現在地から図書館を探す',
-        headerRight: <Button
-                       title="Done"
-                       disabled={screenProps.selectedLibrary == "" ? true : false }
-                       onPress={()=>
-                         //navigation.navigate("Home")
-                         navigation.dispatch(resetAction)
-                               }/>
-    }};
+      title: "現在地から図書館を探す",
+      headerRight: (
+        <Button
+          title="Done"
+          disabled={screenProps.selectedLibrary == "" ? true : false}
+          onPress={() =>
+            //navigation.navigate("Home")
+            navigation.dispatch(resetAction)
+          }
+        />
+      )
+    };
+  };
   render() {
     const { params } = this.props.navigation.state;
     const { selectedLibrary, libraries, location } = this.props.screenProps;
-    console.log("st",selectedLibrary,libraries,location)//,libraries.lengt
+    console.log("st", selectedLibrary, libraries, location); //,libraries.lengt
     return (
       <View>
-        <LibraryLocation
-          {...{location,libraries}}
-          selector="location"
-        />
+        <LibraryLocation {...{ location, libraries }} selector="location" />
         <LibrarySearchScene
           data={libraries}
-          extraData={{selectedLibrary}}
+          extraData={{ selectedLibrary }}
           selector="libraries"
         />
       </View>
@@ -147,21 +160,25 @@ class LibraryLocationScreen extends React.Component {
 }
 
 class LibraryListScreen extends React.Component {
-  static navigationOptions = ({navigation,screenProps}) => {
+  static navigationOptions = ({ navigation, screenProps }) => {
     return {
       title: `図書館を選択`,
-      headerRight: <Button
-                     title="Done"
-                     disabled={screenProps.selectedLibrary == "" ? true : false }
-                     onPress={()=>
-                       //navigation.navigate("Home")
-                       navigation.dispatch(resetAction)
-                             }/>
-    }};
+      headerRight: (
+        <Button
+          title="Done"
+          disabled={screenProps.selectedLibrary == "" ? true : false}
+          onPress={() =>
+            //navigation.navigate("Home")
+            navigation.dispatch(resetAction)
+          }
+        />
+      )
+    };
+  };
   render() {
     const { params } = this.props.navigation.state;
-    const { selectedLibrary , libraries } = this.props.screenProps;
-    console.log(selectedLibrary)
+    const { selectedLibrary, libraries } = this.props.screenProps;
+    console.log(selectedLibrary);
     /* data={[
      *   {systemname:"埼玉県上尾市",description:"たちばな分館ほか",
      *    systemid:"Saitama_Ageo"},
@@ -172,9 +189,9 @@ class LibraryListScreen extends React.Component {
      * ]}*/
     return (
       <LibrarySearchScene
-      data={libraries}
-      extraData={{selectedLibrary}}
-      selector="libraries"
+        data={libraries}
+        extraData={{ selectedLibrary }}
+        selector="libraries"
       />
       //        onPress={e=>console.log(e)}
     );
@@ -182,8 +199,8 @@ class LibraryListScreen extends React.Component {
 }
 
 class PrefSelectScreen extends React.Component {
-  static navigationOptions = ({navigation}) => ({
-    title: `都道府県から図書館を探す`,
+  static navigationOptions = ({ navigation }) => ({
+    title: `都道府県から図書館を探す`
   });
   render() {
     const { params } = this.props.navigation.state;
@@ -191,7 +208,7 @@ class PrefSelectScreen extends React.Component {
     //const screen = this.props.screenProps.screen;
     return (
       <PrefSearchScene
-        onPress={e=>navigate("LibraryList",{pref:e})}
+        onPress={e => navigate("LibraryList", { pref: e })}
         selector="pref"
       />
     );
@@ -199,8 +216,8 @@ class PrefSelectScreen extends React.Component {
 }
 
 class SelectLibraryScreen extends React.Component {
-  static navigationOptions = ({navigation}) => ({
-    title: `図書館を探す`,
+  static navigationOptions = ({ navigation }) => ({
+    title: `図書館を探す`
   });
   render() {
     const { params } = this.props.navigation.state;
@@ -211,15 +228,11 @@ class SelectLibraryScreen extends React.Component {
       <View>
         <Button
           title="現在地から図書館を探す"
-          onPress={()=>
-            navigate('LibraryLocation')
-                  }
+          onPress={() => navigate("LibraryLocation")}
         />
         <Button
           title="都道府県から図書館を探す"
-          onPress={()=>
-            navigate('PrefSelect')
-                  }
+          onPress={() => navigate("PrefSelect")}
         />
       </View>
     );
@@ -228,60 +241,63 @@ class SelectLibraryScreen extends React.Component {
 
 class LoadingScreen extends React.Component {
   state = {
-    isReady: false,
+    isReady: false
   };
   render() {
     const { navigation } = this.props;
     //'@MySuperStore:key'
     return (
       <AppLoading
-        startAsync={()=> {
-            return AsyncStorage.getItem('CycleReactNativeEx')
-          }}
+        startAsync={() => {
+          return AsyncStorage.getItem("CycleReactNativeEx");
+        }}
         onFinish={() => {
-            //console.log("fo")//undefined
-            //this.setState({ isReady: true })
-            if(this.props.screenProps.selectedLibrary){
-              navigation.dispatch(resetAction)
-            } else {
-              navigation.dispatch(NavigationActions.reset({
-                index:0,
+          //console.log("fo")//undefined
+          //this.setState({ isReady: true })
+          if (this.props.screenProps.selectedLibrary) {
+            navigation.dispatch(resetAction);
+          } else {
+            navigation.dispatch(
+              NavigationActions.reset({
+                index: 0,
                 actions: [
-                  NavigationActions.navigate({ routeName: 'SelectLibrary'})
+                  NavigationActions.navigate({ routeName: "SelectLibrary" })
                 ]
-              }))
-            }
-          }}
+              })
+            );
+          }
+        }}
         onError={console.warn}
-      />)
+      />
+    );
   }
 }
 
 class SearchScreen extends React.Component {
   static navigationOptions = {
     //title: 'Book Search'
-    title: '本を探す',
+    title: "本を探す"
   };
   render() {
     const { navigate } = this.props.navigation;
     const { searchedBooksStatus } = this.props.screenProps;
-    return(
-        <SearchScene
-          selector={"search"}
-          {...this.props.screenProps}
-          onPressSetting={()=>
-            navigate('SelectLibrary')
-            //navigate('DrawerOpen')
-                         }
-          onPress={async ({item,index})=>{
-              const url = searchedBooksStatus[item.isbn].reserveUrl
-              if(url){
-                let result = await WebBrowser.openBrowserAsync(url);
-                console.log(result)
-              }
-            }}
-        />
-    )
+    return (
+      <SearchScene
+        selector={"search"}
+        {...this.props.screenProps}
+        onPressSetting={
+          () => navigate("SelectLibrary")
+          //navigate('DrawerOpen')
+        }
+        onPress={async ({ item, index }) => {
+          const url = searchedBooksStatus[item.isbn].reserveUrl;
+          if (url) {
+            let result = await WebBrowser.openBrowserAsync(url);
+            console.log(result);
+          }
+        }}
+      />
+    );
   }
 }
 
@@ -290,26 +306,28 @@ class SearchScreen extends React.Component {
 //const Navigator = DrawerNavigator({
 const Navigator = StackNavigator({
   Loading: { screen: LoadingScreen },
-  Home: {  screen: SearchScreen },
-  SelectLibrary: {  screen: SelectLibraryScreen },
-  LibraryLocation: {  screen: LibraryLocationScreen },
-  PrefSelect: {  screen: PrefSelectScreen },
-  LibraryList: {  screen: LibraryListScreen },
+  Home: { screen: SearchScreen },
+  SelectLibrary: { screen: SelectLibraryScreen },
+  LibraryLocation: { screen: LibraryLocationScreen },
+  PrefSelect: { screen: PrefSelectScreen },
+  LibraryList: { screen: LibraryListScreen }
 });
 
 function view(state$) {
-  return state$
-    .map((state) => {
-      return(
-        <View style={{flex:1}}>
-          <View style={Platform.OS === 'android' ?
-                       { paddingTop: Constants.statusBarHeight }: {} } />
-          <Navigator
-          screenProps={state}
-          />
-        </View>
-      )
-    })
+  return state$.map(state => {
+    return (
+      <View style={{ flex: 1 }}>
+        <View
+          style={
+            Platform.OS === "android"
+              ? { paddingTop: Constants.statusBarHeight }
+              : {}
+          }
+        />
+        <Navigator screenProps={state} />
+      </View>
+    );
+  });
 }
 
 //TODO:change top level props name
@@ -318,26 +336,26 @@ function view(state$) {
 //TODO:change library while searching
 //https://docs.expo.io/versions/latest/guides/release-channels.html
 
-function main({RN, HTTP, AS}) {
+function main({ RN, HTTP, AS }) {
   const actions = intent(RN, HTTP, AS);
   const state$ = model(actions);
 
   return {
-    RN: view(state$.startWith("")),//view(model(intent(sources.DOM)))
+    RN: view(state$.startWith("")), //view(model(intent(sources.DOM)))
     HTTP: actions.request$,
-    AS: actions.storage$,
+    AS: actions.storage$
   };
 }
 
 run(main, {
   RN: makeReactNativeDriver(),
   HTTP: makeHTTPDriver(),
-  AS: makeAsyncStorageDriver('CycleReactNativeEx')
+  AS: makeAsyncStorageDriver("CycleReactNativeEx")
 });
 
 //module.exports = __DEV__ && typeof __TEST__ == 'undefined' ? StorybookUI : CycleRoot;
 
-console.log(Expo.Constants.isDevice)
+console.log(Expo.Constants.isDevice);
 //test:both OK
 //dev:storybook:
 //expo0:not storybook->testflight?
@@ -347,14 +365,14 @@ console.log(Expo.Constants.isDevice)
 //module.exports = Expo.Constants.isDevice ? CycleRoot : StorybookUI
 //module.exports = Expo.Constants.isDevice ? App : StorybookUI
 
-module.exports = CycleRoot
+module.exports = CycleRoot;
 //module.exports = StorybookUI
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });
