@@ -145,8 +145,10 @@ function intent(RN, HTTP, AS) {
           format: "json",
           applicationId: "1088506385229803383",
           keyword: query,
+          formatVersion: "2",
           outOfStockFlag: "1",
           field: "0",
+          //elements:["title", "author", "isbn", "largeImageUrl"]
           page
         },
         headers: { "Content-Type": "application/json; charset=utf-8" },
@@ -194,85 +196,73 @@ function intent(RN, HTTP, AS) {
     .distinctUntilChanged()
     .share();
 
-  function createBooksStatusStream(books$, category) {
-    const requestStatus$ = books$
-      .map(books => books.map(book => book.isbn))
-      .filter(isbns => isbns.length > 0)
-      .combineLatest(library$, (isbn, library) => ({
-        category,
-        //const CALIL_STATUS_API = `http://api.calil.jp/check?callback=no&appkey=bc3d19b6abbd0af9a59d97fe8b22660f&systemid=${LIBRARY_ID}&format=json&isbn=`;
-        url: "http://api.calil.jp/check?",
-        query: {
-          callback: "no",
-          appkey: "bc3d19b6abbd0af9a59d97fe8b22660f",
-          systemid: library,
-          format: "json",
-          //isbn //cannot handle array?
-          isbn: isbn.join()
-        }
-        //url: CALIL_STATUS_API + encodeURI(q)
-      }))
-      .shareReplay();
+  const requestSearchedBooksStatus$ = searchedBooks$
+    .map(books => books.map(book => book.isbn))
+    .filter(isbns => isbns.length > 0)
+    .combineLatest(library$, (isbn, library) => ({
+      category: "searchedBooksStatus",
+      //const CALIL_STATUS_API = `http://api.calil.jp/check?callback=no&appkey=bc3d19b6abbd0af9a59d97fe8b22660f&systemid=${LIBRARY_ID}&format=json&isbn=`;
+      url: "http://api.calil.jp/check?",
+      query: {
+        callback: "no",
+        appkey: "bc3d19b6abbd0af9a59d97fe8b22660f",
+        systemid: library,
+        format: "json",
+        //isbn //cannot handle array?
+        isbn: isbn.join()
+      }
+      //url: CALIL_STATUS_API + encodeURI(q)
+    }))
+    .shareReplay();
 
-    const booksStatusResponse$ = HTTP.select(category)
-      // should handle as meta stream because of retry
-      //switchMap?
-      .map(stream =>
-        stream
-          .map(res => res.body)
-          // ok to retry but not output stream
-          // .flatMap(result => result.continue === 1 ?
-          //                 [result, Observable.throw(error)] : [result])
-          .flatMap(result => [{ ...result, continue: 0 }, result])
-          .map(result => {
-            if (result.continue === 1) {
-              throw result;
-            }
-            return result;
-          })
-          .retryWhen(errors => errors.delay(2000))
-      )
-      .switch()
-      .map(result => result.books)
-      /* .do((e)=>console.log(Object.keys(e).map((isbn)=>
-     *   e[isbn][LIBRARY_ID].status)))*/
-      .map(bookStatuses =>
-        Object.keys(bookStatuses).reduce((acc, isbn) => {
-          let { libkey, reserveurl, status } = Object.values(
-            bookStatuses[isbn]
-          )[0];
-          libkey = libkey || {};
-          //{xxxx.Tokyo_Fuchu.{libkey,reserveUrl,status}}
-          if (status === "Running") {
-            s = "Loading";
-          } else if (Object.keys(libkey).length === 0) {
-            s = "noCollection";
-          } else if (_.values(libkey).some(i => i === "貸出可")) {
-            s = "rentable";
-          } else {
-            s = "onLoan";
+  const searchedBooksStatus$ = HTTP.select("searchedBooksStatus")
+    // should handle as meta stream because of retry
+    //switchMap?
+    .map(stream =>
+      stream
+        .map(res => res.body)
+        // ok to retry but not output stream
+        // .flatMap(result => result.continue === 1 ?
+        //                 [result, Observable.throw(error)] : [result])
+        .flatMap(result => [{ ...result, continue: 0 }, result])
+        .map(result => {
+          if (result.continue === 1) {
+            throw result;
           }
-          acc[isbn] = {
-            reserveUrl: reserveurl,
-            status: s
-          };
-          return acc;
-        }, {})
-      )
-      //.do(e=>console.log("st",e))
-      .distinctUntilChanged((i, j) => JSON.stringify(i) == JSON.stringify(j))
-      .shareReplay();
-
-    return {
-      booksStatus$: booksStatusResponse$,
-      requestStatus$
-    };
-  }
-
-  const {
-    booksStatus$: searchedBooksStatus$,
-    requestStatus$: requestSearchedBooksStatus$
-  } = createBooksStatusStream(searchedBooks$, "searchedBooksStatus");
+          return result;
+        })
+        .retryWhen(errors => errors.delay(2000))
+    )
+    .switch()
+    .map(result => result.books)
+    /* .do((e)=>console.log(Object.keys(e).map((isbn)=>
+     *   e[isbn][LIBRARY_ID].status)))*/
+    .map(bookStatuses =>
+      Object.keys(bookStatuses).reduce((acc, isbn) => {
+        let { libkey, reserveurl, status } = Object.values(
+          bookStatuses[isbn]
+        )[0];
+        libkey = libkey || {};
+        //{xxxx.Tokyo_Fuchu.{libkey,reserveUrl,status}}
+        if (status === "Running") {
+          s = "Loading";
+        } else if (Object.keys(libkey).length === 0) {
+          s = "noCollection";
+        } else if (_.values(libkey).some(i => i === "貸出可")) {
+          s = "rentable";
+        } else {
+          s = "onLoan";
+        }
+        acc[isbn] = {
+          reserveUrl: reserveurl,
+          status: s
+        };
+        return acc;
+      }, {})
+    )
+    //.do(e=>console.log("st",e))
+    .distinctUntilChanged((i, j) => JSON.stringify(i) == JSON.stringify(j))
+    .shareReplay();
 
   const request$ = Rx.Observable.merge(
     requestSearchedBooks$,
