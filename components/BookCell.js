@@ -105,8 +105,8 @@ class Book extends React.PureComponent {
       reserveUrl,
     } = this.props;
     return (
-      <TouchableElement onPress={this._onPress}>
-        <View style={style}>
+      <TouchableElement onPress={this._onDetail}>
+        <View style={styles.cell}>
           {/* left */}
           <Image
             source={{ uri: thumbnail }}
@@ -142,19 +142,19 @@ class Book extends React.PureComponent {
               borderTopWidth: StyleSheet.hairlineWidth,
             }}
           >
-            {/* <View
-                style={{
+            <View
+              style={{
                 backgroundColor: materialColor.grey["200"], //"black",
                 borderRadius: 20,
                 margin: 10,
-                }}
-                >
-                <Button
+              }}
+            >
+              <Button
                 onPress={this._onPress}
                 title="借りる"
                 accessibilityLabel="借りる"
-                />
-                </View> */}
+              />
+            </View>
           </View>
         </View>
       </TouchableElement>
@@ -168,7 +168,7 @@ class CloseableBook extends React.PureComponent {
     const { closed, ...rest } = this.props;
     return (
       <CloseableView closed={closed}>
-        <Book style={styles.cell} {...rest} />
+        <Book {...rest} />
       </CloseableView>
     );
   }
