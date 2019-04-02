@@ -67,7 +67,7 @@ function withCycle(WrappedComponent) {
     WrappedComponent
   )})`;
   CycleComponent.propTypes = {
-    selector: PropTypes.string.isRequired
+    selector: PropTypes.string.isRequired,
     //payload:  PropTypes.any//for ListItem onPress
   };
   return CycleComponent;
@@ -100,9 +100,9 @@ function makeReactNativeDriver() {
               handlers[selector][evType] || createHandler();
             return adapt(handlers[selector][evType]);
             //return handlers[selector][evType];
-          }
+          },
         };
-      }
+      },
     };
   }
   //reactNativeDriver.streamAdapter = RxJSAdapter;
@@ -124,7 +124,7 @@ class CycleRoot extends React.Component {
 
 Cycle = {
   Text: withCycle(Text),
-  TouchableOpacity: withCycle(TouchableOpacity)
+  TouchableOpacity: withCycle(TouchableOpacity),
 };
 
 function makeAsyncStorageDriver(key) {
@@ -155,5 +155,5 @@ export {
   withCycle,
   makeReactNativeDriver,
   CycleRoot,
-  makeAsyncStorageDriver
+  makeAsyncStorageDriver,
 };

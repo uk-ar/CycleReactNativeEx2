@@ -9,19 +9,19 @@ const CenterLeftView = props => (
 );
 
 CenterView.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 const styles = StyleSheet.create({
   main: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    backgroundColor: "#F5FCFF",
   },
   left: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "#F5FCFF"
-  }
+    backgroundColor: "#F5FCFF",
+  },
 });
 module.exports = { CenterView, CenterLeftView };

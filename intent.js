@@ -10,7 +10,7 @@ function intent(RN, HTTP, AS) {
     .map(({ coords, timestamp }) => ({
       geocode: coords.longitude + "," + coords.latitude,
       //geocode:136.7163027+","+35.390516,
-      limit: 10
+      limit: 10,
     }))
     .share();
 
@@ -32,8 +32,8 @@ function intent(RN, HTTP, AS) {
         query: {
           ...query,
           appkey: "bc3d19b6abbd0af9a59d97fe8b22660f",
-          format: "json"
-        }
+          format: "json",
+        },
       };
     })
     .do(e => console.log("req", e))
@@ -61,7 +61,7 @@ function intent(RN, HTTP, AS) {
           .map(({ systemid, systemname, formal }) => ({
             systemid,
             systemname,
-            formal
+            formal,
           }))
           .reduce((acc, { systemid, systemname, formal }) => {
             //console.log(acc[systemid])
@@ -149,10 +149,10 @@ function intent(RN, HTTP, AS) {
           outOfStockFlag: "1",
           field: "0",
           //elements:["title", "author", "isbn", "largeImageUrl"]
-          page
+          page,
         },
         headers: { "Content-Type": "application/json; charset=utf-8" },
-        accept: "Accept-Language:ja,en-US;q=0.8,en;q=0.6"
+        accept: "Accept-Language:ja,en-US;q=0.8,en;q=0.6",
       };
     })
     .share();
@@ -169,7 +169,7 @@ function intent(RN, HTTP, AS) {
           title: title.replace(/^【バーゲン本】/, ""),
           author,
           isbn,
-          thumbnail: largeImageUrl
+          thumbnail: largeImageUrl,
         }))
     );
   }
@@ -218,8 +218,8 @@ function intent(RN, HTTP, AS) {
         systemid: library,
         format: "json",
         //isbn //cannot handle array?
-        isbn: isbn.join()
-      }
+        isbn: isbn.join(),
+      },
       //url: CALIL_STATUS_API + encodeURI(q)
     }))
     .shareReplay();
@@ -264,7 +264,7 @@ function intent(RN, HTTP, AS) {
         }
         acc[isbn] = {
           reserveUrl: reserveurl,
-          status: s
+          status: s,
         };
         return acc;
       }, {})
@@ -295,7 +295,7 @@ function intent(RN, HTTP, AS) {
     changeFilter$,
     request$,
     changeText$,
-    submitText$
+    submitText$,
   };
 }
 
@@ -359,7 +359,7 @@ function model(actions) {
       searchedBooksStatus,
       booksLoadingState,
       booksPagingState,
-      selectedIndex
+      selectedIndex,
     })
   );
   return state$;

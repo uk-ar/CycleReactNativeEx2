@@ -12,7 +12,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   TouchableNativeFeedback,
-  FlatList
+  FlatList,
 } from "react-native";
 
 class CloseableViewAnim extends React.Component {
@@ -25,7 +25,7 @@ class CloseableViewAnim extends React.Component {
     let { closed, style } = this.props;
     Animated.timing(this._animated, {
       toValue: closed ? 0 : 1,
-      duration: 250
+      duration: 250,
     }).start();
     return (
       <Animated.View
@@ -35,11 +35,11 @@ class CloseableViewAnim extends React.Component {
             height: this._animated.interpolate({
               inputRange: [0, 1],
               outputRange: [0, 83],
-              extrapolate: "clamp"
+              extrapolate: "clamp",
             }),
-            overflow: "hidden"
+            overflow: "hidden",
           },
-          style
+          style,
         ]}
       >
         {this.props.children}
@@ -57,9 +57,9 @@ class CloseableView extends React.Component {
         style={[
           {
             height: closed ? 1 : 83,
-            overflow: "hidden"
+            overflow: "hidden",
           },
-          style
+          style,
         ]}
       >
         {this.props.children}
