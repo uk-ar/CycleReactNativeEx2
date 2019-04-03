@@ -17,13 +17,16 @@ import {
   icons,
   Book,
   libraryStatuses,
+  BookDetail,
 } from "./BookCell";
+import { WebBrowser } from "expo";
 import { TouchableElement } from "./common";
 import FAIcon from "react-native-vector-icons/FontAwesome";
 import emptyFunction from "fbjs/lib/emptyFunction";
 
 import PropTypes from "prop-types";
 import { withCycle } from "../cycle-react-native";
+import { createStackNavigator, StackNavigator } from "react-navigation";
 
 const styles = StyleSheet.create({
   row: {
@@ -149,6 +152,7 @@ class SearchScene extends React.Component {
       onEndReached,
       onPressSetting,
       onSubmitEditing,
+      onDetail,
       booksPagingState,
       booksLoadingState,
       searchedBooks,
@@ -166,6 +170,7 @@ class SearchScene extends React.Component {
       <BookList
         onPress={onPress}
         onEndReached={onEndReached}
+        onDetail={onDetail}
         data={searchedBooks}
         extraData={extraData}
         booksPagingState={booksPagingState}
@@ -211,4 +216,53 @@ class SearchScene extends React.Component {
   }
 }
 
-module.exports = { SearchScene, SearchHistory };
+//https://reactnavigation.org/docs/connecting-navigation-prop.html
+class SearchScreen extends React.Component {
+  static navigationOptions = {
+    //title: 'Book Search'
+    title: "本を探す",
+  };
+  render() {
+    console.log(this.props);
+    const { navigate } = this.props.navigation;
+    const { searchedBooksStatus } = this.props.screenProps;
+    return (
+      <SearchScene
+        selector={"search"}
+        {...this.props.screenProps}
+        onPressSetting={
+          () => navigate("SelectLibrary")
+          //navigate('DrawerOpen')
+        }
+        onDetail={() => {
+          console.log("foo");
+          navigate("Details");
+        }}
+        onPress={async ({ item, index }) => {
+          console.log(item, index, item.isbn, searchedBooksStatus[item.isbn]);
+          const url = searchedBooksStatus[item.isbn].reserveUrl;
+          if (url) {
+            let result = await WebBrowser.openBrowserAsync(url);
+            console.log(result);
+          }
+        }}
+      />
+    );
+  }
+}
+
+const Stack = StackNavigator(
+  {
+    Home: {
+      screen: SearchScreen,
+    },
+    Details: {
+      screen: BookDetail,
+    },
+  },
+  {
+    initialRouteName: "Home",
+  },
+);
+
+module.exports = { SearchScene, SearchHistory, Stack, SearchScreen };

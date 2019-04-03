@@ -19,7 +19,12 @@ import { CenterLeftView, CenterView } from "./CenterView";
 import { CloseableView } from "../../components/CloseableView";
 import { CycleRoot } from "../../cycle-react-native";
 import { itemsInfo, TouchableElement } from "../../components/common";
-import { SearchScene, SearchHistory } from "../../components/SearchScene";
+import {
+  Stack,
+  SearchScene,
+  SearchScreen,
+  SearchHistory,
+} from "../../components/SearchScene";
 import {
   LibrarySearchScene,
   Library,
@@ -271,6 +276,7 @@ storiesOf("Browser", module).add("with full book", () => (
       let result = await WebBrowser.openBrowserAsync(url);
       this.setState({ result });
     }}
+    onDetail={action("detail")}
     title="ぐりとぐら(複数蔵書)"
     author="中川李枝子/大村百合子"
     thumbnail="http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0825/9784834000825.jpg?_ex=200x200"
@@ -509,6 +515,7 @@ storiesOf("SearchScene", module)
       onClearText={action("text-clear")}
       onChangeFilter={action("filter-change")}
       onPress={action("book-press")}
+      onDetail={action("book-detail")}
       onPressSetting={action("book-press-setting")}
       showLoadingIcon={true}
       selectedIndex={0}
@@ -619,6 +626,61 @@ storiesOf("SearchScene", module)
     />
   ));
 
+storiesOf("SearchScreen", module).add("with class", () => (
+  <SearchScreen
+    navigation={{ navigate: () => {} }}
+    screenProps={{
+      onDetail: action("book-detail"),
+      selector: "main",
+      selectedIndex: 0,
+      defaultText: "foo",
+      searchedBooksStatus: {
+        9784834032147: {
+          status: "rentable",
+          reserveUrl: "https://www.amazon.co.jp/dp/4834014657",
+        },
+      },
+      searchedBooks: [
+        {
+          isbn: "9784834032147",
+          title: "guri & gura",
+          author: "author foo",
+          thumbnail:
+            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
+          bucket: "liked",
+        },
+      ],
+    }}
+  />
+));
+
+storiesOf("Stack", module).add("with plane", () => (
+  <Stack
+    screenProps={{
+      onDetail: action("book-detail"),
+      selector: "main",
+      selectedIndex: 0,
+      defaultText: "foo",
+      searchedBooksStatus: {
+        9784834032147: {
+          status: "rentable",
+          reserveUrl: "https://www.amazon.co.jp/dp/4834014657",
+        },
+      },
+      searchedBooks: [
+        {
+          isbn: "9784834032147",
+          title: "guri & gura",
+          author: "author foo",
+          thumbnail:
+            "http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200",
+          bucket: "liked",
+        },
+      ],
+    }}
+  />
+));
+
 const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
@@ -668,6 +730,7 @@ storiesOf("LibraryList", module).add("with plane", () => (
 ));
 storiesOf("LibrarySearchScene", module).add("with plane", () => (
   <LibrarySearchScene
+    selector={"main"}
     data={[
       {
         systemname: "埼玉県上尾市",
@@ -691,7 +754,7 @@ storiesOf("LibrarySearchScene", module).add("with plane", () => (
 ));
 
 storiesOf("PrefSearchScene", module).add("with plane", () => (
-  <PrefSearchScene onPress={action("onPress")} />
+  <PrefSearchScene selector={"main"} onPress={action("onPress")} />
 ));
 
 storiesOf("SearchHistory", module).add("with plane", () => (
