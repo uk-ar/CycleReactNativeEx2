@@ -14,4 +14,6 @@ it("renders without crashing", () => {
   //expect(rendered).toBeTruthy();
 });
 
-initStoryshots();
+initStoryshots({
+  configPath: "src/storybook",
+});
