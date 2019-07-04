@@ -216,6 +216,10 @@ class Book extends React.PureComponent {
             >
               <Button
                 onPress={this._onPress}
+                disabled={
+                  status != libraryStatuses["rentable"] &&
+                  status != libraryStatuses["onLoan"]
+                }
                 title="借りる"
                 accessibilityLabel="借りる"
               />
