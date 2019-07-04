@@ -26,7 +26,7 @@ import emptyFunction from "fbjs/lib/emptyFunction";
 
 import PropTypes from "prop-types";
 import { withCycle } from "../cycle-react-native";
-import { createStackNavigator, StackNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation";
 
 const styles = StyleSheet.create({
   row: {
@@ -261,7 +261,7 @@ class DetailScreen extends React.Component {
   }
 }
 
-const Stack = StackNavigator(
+const Stack = createStackNavigator(
   {
     Home: {
       screen: SearchScreen,
