@@ -4,28 +4,37 @@ import {
   StackNavigator,
 } from 'react-navigation';
 
+class ChatScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Chat with Lucy',
+  };
+  render() {
+    return (
+      <View>
+        <Text>Chat with Lucy</Text>
+      </View>
+    );
+  }
+}
+
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Home'
   };
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-        <Text onPress={this._handlePress}>HomeScreen!</Text>
+        <Text onPress={()=>navigate('Chat',{user:'Lucy'})}>HomeScreen?</Text>
       </View>
     )
-  }
-
-  _handlePress = () => {
-    this.props.navigation.navigate('Home');
   }
 }
 
 export default StackNavigator({
-  Home: {
-    screen: HomeScreen,
-  },
+  Home: {  screen: HomeScreen },
+  Chat: {  screen: ChatScreen },
 });
 
 const styles = StyleSheet.create({
