@@ -5,13 +5,15 @@ import {
 } from 'react-navigation';
 
 class ChatScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Chat with Lucy',
-  };
+  static navigationOptions = ({navigation}) => ({
+    title: `Chat with ${navigation.state.params.user}`,
+  });
   render() {
+    // The screen's current route is passed in to `props.navigation.state`:
+    const { params } = this.props.navigation.state;
     return (
       <View>
-        <Text>Chat with Lucy</Text>
+        <Text>Chat with {params.user}</Text>
       </View>
     );
   }
@@ -26,7 +28,7 @@ class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-        <Text onPress={()=>navigate('Chat',{user:'Lucy'})}>HomeScreen?</Text>
+        <Text onPress={()=>navigate('Chat',{user:'Aya'})}>HomeScreen?</Text>
       </View>
     )
   }
