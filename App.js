@@ -4,17 +4,29 @@ import {
   StackNavigator,
 } from 'react-navigation';
 
-export default class App extends React.Component {
+class HomeScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Home'
+  };
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your appaa</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+      <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
+        <Text onPress={this._handlePress}>HomeScreen!</Text>
       </View>
-    );
+    )
+  }
+
+  _handlePress = () => {
+    this.props.navigation.navigate('Home');
   }
 }
+
+export default StackNavigator({
+  Home: {
+    screen: HomeScreen,
+  },
+});
 
 const styles = StyleSheet.create({
   container: {
