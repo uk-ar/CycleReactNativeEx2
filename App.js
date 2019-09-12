@@ -37,25 +37,19 @@ class HomeScreen extends React.Component {
           //</CycleRoot>
   }
 }
-//import { run } from '@cycle/rx-run';
-//import makeReactNativeDriver from '@cycle/react-native/src/driver';
-//const RNDriver = makeReactNativeDriver('CycleReactNativeEx');
-//import RxAdapter from '@cycle/rx-adapter';
+
+Stack = StackNavigator({
+  Home: {  screen: HomeScreen },
+  Chat: {  screen: ChatScreen },
+});
+
 import run from '@cycle/rxjs-run'
 //import Touchable from '@cycle/react-native/src/Touchable';
 import PropTypes from 'prop-types';
 import Rx from 'rxjs/Rx';
-//import Rx from 'rx';
 
-/* app = StackNavigator({
- *   Home: {  screen: HomeScreen },
- *   Chat: {  screen: ChatScreen },
- * });*/
-//app = createCycleComponent(StackNavigator({
-//app = Touchable.createCycleComponent(StackNavigator({
 function makeReactNativeDriver(){
-  //sink$;
-  function reactNativeDriver(vtree$){
+  return function reactNativeDriver(vtree$){
     sink$ = Rx.Observable.from(vtree$).shareReplay();
     sink$.subscribe()
     return {
@@ -64,31 +58,21 @@ function makeReactNativeDriver(){
       }
     }
   }
-  class CycleRoot extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {vtree: <View/>};
-    }
-    componentWillMount() {
-      sink$.subscribe((vtree) => this.setState({vtree: vtree}))
-    }
-    render() {
-      return(
-        this.state.vtree
-      )
-    }
+}
+class CycleRoot extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {vtree: <View/>};
   }
-  return {
-    reactNativeDriver,
-    CycleRoot,
+  componentWillMount() {
+    sink$.subscribe((vtree) => this.setState({vtree: vtree}))
+  }
+  render() {
+    return(
+      this.state.vtree
+    )
   }
 }
-
-let { reactNativeDriver, CycleRoot } = makeReactNativeDriver();
-Stack = StackNavigator({
-  Home: {  screen: HomeScreen },
-  Chat: {  screen: ChatScreen },
-});
 
 function main({RN}) {
   return {
@@ -100,24 +84,14 @@ function main({RN}) {
           .map(i =>
             <Stack/>
           ),
-    /* <View>
-        <Text selector="button">Increment?</Text>
-        <Text>You have clicked the button {i} times.</Text>
-        </View>
-      */
   };
 }
 
 run(main, {
-  //RN: sink$ => reactNativeDriver(sink$, RxAdapter),
-  RN: sink$ => reactNativeDriver(sink$),
+  RN: makeReactNativeDriver()
 });
-/* run(main, {
- *   RN: sink$ => RNDriver(sink$, RxAdapter),
- * });*/
-//app = CycleRoot
-//export default Stack
-export default CycleRoot//app
+
+export default CycleRoot
 
 const styles = StyleSheet.create({
   container: {
