@@ -21,6 +21,64 @@ class ChatScreen extends React.Component {
   }
 }
 
+import run from '@cycle/rxjs-run'
+//import Touchable from '@cycle/react-native/src/Touchable';
+import PropTypes from 'prop-types';
+import Rx from 'rxjs/Rx';
+
+let handlers = {}
+
+//https://facebook.github.io/react/docs/higher-order-components.html
+function withCycle(WrappedComponent) {
+  //actionTypes={}//{onLayout:"layout"}
+  if(WrappedComponent.propTypes){
+    //Object.getOwnPropertyNames( WrappedComponent.prototype ))
+    functionNames = Object.keys(WrappedComponent.propTypes)
+                          .filter((func)=>func.startsWith("on"))
+    /* .forEach((key)=>
+     *   actionTypes[key]=`${key.charAt(2).toLowerCase()}${key.slice(3)}`);*/
+    //["onLayout","onPress"]
+  }
+  function findHandler(selector, evType) {
+    console.log(handlers,selector,evType)
+    if (handlers[selector].hasOwnProperty(evType)) {
+      return handlers[selector][evType].send
+    }
+  }
+
+  class CycleComponent extends React.Component {
+    constructor(props) {
+      super(props);
+      const { selector, ...passThroughProps } = props;
+      this.injectedProp =
+        functionNames.map(
+          name => [name, findHandler(selector,name)])
+                     .filter(([_, handler]) => !!handler)
+                     .reduce((map, [name, handler]) => {
+                       map[name] = handler
+                       return map
+                     }, {})//{}
+    }
+
+    render() {
+      const { selector, ...passThroughProps } = this.props;
+      return <WrappedComponent {...this.injectedProp} {...passThroughProps} />;
+    }
+  }
+  function getDisplayName(WrappedComponent) {
+    return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+  }
+  CycleComponent.displayName = `CycleComponent(${getDisplayName(WrappedComponent)})`;
+  CycleComponent.propTypes = {
+    selector: PropTypes.string.isRequired,
+    //payload: PropTypes.any
+  }
+  return CycleComponent;
+}
+Cycle = {
+  Text: withCycle(Text)
+}
+
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Home'
@@ -29,12 +87,12 @@ class HomeScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-        <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-          <Text onPress={()=>navigate('Chat',{user:'Aya'})}>HomeScreen?</Text>
-          <Text style={styles.button} selector="button">Increment</Text>
-        </View>
+      <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
+        <Text onPress={()=>navigate('Chat',{user:'Aya'})}>HomeScreen?</Text>
+        <Cycle.Text style={styles.button} selector="button">Increment</Cycle.Text>
+      </View>
     )
-          //</CycleRoot>
+    //</CycleRoot>
   }
 }
 
@@ -43,18 +101,29 @@ Stack = StackNavigator({
   Chat: {  screen: ChatScreen },
 });
 
-import run from '@cycle/rxjs-run'
-//import Touchable from '@cycle/react-native/src/Touchable';
-import PropTypes from 'prop-types';
-import Rx from 'rxjs/Rx';
-
 function makeReactNativeDriver(){
+  function createHandler() {
+    const handler = new Rx.Subject();
+    handler.send = function sendIntoSubject(args) {
+      handler.next(args)
+    }
+    return handler;
+  }
+
   return function reactNativeDriver(vtree$){
     sink$ = Rx.Observable.from(vtree$).shareReplay();
     sink$.subscribe()
     return {
-      select(){
-        return Rx.Observable.empty();
+      select(selector){
+        return {
+          observable: Rx.Observable.empty(),
+          events: function events(ev) {
+            evType = "on" + ev.charAt(0).toUpperCase()+ev.slice(1);
+            handlers[selector] = handlers[selector] || {};
+            handlers[selector][evType] = handlers[selector][evType] || createHandler();
+            return handlers[selector][evType];
+          },
+        }
       }
     }
   }
@@ -68,6 +137,7 @@ class CycleRoot extends React.Component {
     sink$.subscribe((vtree) => this.setState({vtree: vtree}))
   }
   render() {
+    //console.log(handlers)
     return(
       this.state.vtree
     )
@@ -76,7 +146,7 @@ class CycleRoot extends React.Component {
 
 function main({RN}) {
   return {
-    RN: RN.select('button')//.events('press')
+    RN: RN.select('button').events('press')
           .do(args => console.log('foo0:', args))
           .map(ev => +1)
           .startWith(0)
