@@ -1,8 +1,5 @@
 import React from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-native';
-import {
-  StackNavigator,
-} from 'react-navigation';
+import { TouchableOpacity,StyleSheet, Text, View,FlatList } from 'react-native';
 import run from '@cycle/rxjs-run'
 
 import {
@@ -12,47 +9,6 @@ import {
   CycleRoot,
 } from './cycle-react-native';
 
-
-//NavigationStateUtils is deprecated since 0.43
-//https://docs.expo.io/versions/latest/guides/routing-and-navigation.html
-class ChatScreen extends React.Component {
-  static navigationOptions = ({navigation}) => ({
-    title: `Chat with ${navigation.state.params.user}`,
-  });
-  render() {
-    // The screen's current route is passed in to `props.navigation.state`:
-    const { params } = this.props.navigation.state;
-    return (
-      <View>
-        <Text>Chat with {params.user}</Text>
-      </View>
-    );
-  }
-}
-
-class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Home'
-  };
-
-  render() {
-    const { navigate } = this.props.navigation;
-    return (
-      <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-        <Text onPress={()=>navigate('Chat',{user:'Aya'})}>HomeScreen?</Text>
-        <Cycle.Text style={styles.button} selector="button">Increment</Cycle.Text>
-      </View>
-    )
-    //</CycleRoot>
-    //payload="me!"
-  }
-}
-
-Stack = StackNavigator({
-  Home: {  screen: HomeScreen },
-  Chat: {  screen: ChatScreen },
-});
-
 function main({RN}) {
   return {
     RN: RN.select('button').events('press')
@@ -61,12 +17,21 @@ function main({RN}) {
           .startWith(0)
           .scan((x,y) => x+y)
           .map(i =>
-            <View>
-              <Text>offset</Text>
-              <Cycle.Text selector="button">Increment</Cycle.Text>
-              <Text>You have clicked the button {i} times.</Text>
-            </View>
-          ),            /* <Stack/> *///style={styles.button}
+            <FlatList
+            data={[{key: 'a'}, {key: 'b'},{key: 'c'}]}
+              renderItem={({item}) =>
+                <Cycle.TouchableOpacity selector="button" payload={item}>
+                  <View>
+                    <Text style={{  }}>
+                                {//this.props.title
+                                 //onPress={()=>console.log("press")}
+                      }
+                      {item.key}
+                    </Text>
+                  </View>
+                </Cycle.TouchableOpacity>}
+            />
+          ),
   };
 }
 
