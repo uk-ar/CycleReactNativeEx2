@@ -8,7 +8,7 @@ import { linkTo } from '@storybook/addon-links';
 import Button from './Button';
 import { CenterLeftView, CenterView } from './CenterView';
 
-import { BookCell,LibraryStatus,icons,Book,libraryStatuses} from '../../Book/BookCell';
+import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from '../../Book/BookCell';
 
 storiesOf('LibraryStatus', module)
   .add('with text and color', () => (
@@ -18,7 +18,6 @@ storiesOf('LibraryStatus', module)
     <LibraryStatus text="bar" style={{color:"blue"}} loading={true}/>
   ))
 
-//const { thumbnail, title, author, onPress, style, icon, status} =
 storiesOf('Book', module)
   .add('with thumbnail', () => (
     <Book
@@ -31,6 +30,7 @@ storiesOf('Book', module)
       onPress={action('clicked-bookcell')}
       title='guri & gura & can I handle long long long title?'
       author='author foo'
+      isbn='9784834032147'
       icon={icons["done"]}
       thumbnail={'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200'}
     />
@@ -44,6 +44,33 @@ storiesOf('Book', module)
       thumbnail={'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200'}
       icon={icons["liked"]}
       status={libraryStatuses["rentable"]}
+    />
+  ))
+
+storiesOf('BookList', module)
+  .add('with one', () => (
+    <BookList
+      data={[{
+          isbn:'9784834032147',
+          title:'guri & gura',
+          author:'author foo',
+          thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200'}]}
+    />
+  ))
+  .add('with two', () => (
+    <BookList
+      data={[{
+          isbn:'9784834032147',
+          title:'guri & gura',
+          author:'author foo',
+          thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200'
+        },{
+          title: 'はじめてのABCえほん',
+          author: '仲田利津子/黒田昌代',
+          thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7472/9784828867472.jpg?_ex=200x200',
+          isbn: '9784828867472',
+          }
+        ]}
     />
   ))
 
