@@ -35,4 +35,4 @@ jobs:
       # run tests!
       - run: yarn test-ci
 
-      - run: exp publish
+      - run: yarn publish
