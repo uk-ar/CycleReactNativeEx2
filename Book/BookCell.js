@@ -35,16 +35,6 @@ const LibraryStatusInfo = {
     indicator:true,
   }
 }
-const LibraryStatuses = {
-  rentable: <LibraryStatus
-              text='貸出可' style={{ color: '#4CAF50' /* green */ }} />,
-  onLoan: <LibraryStatus
-            text='貸出中' style={{ color: '#FFC107' /* amber */}} />,
-  noCollection:<LibraryStatus
-                 text='蔵書なし' style={{ color: '#F44336' /*red*/}} />,
-  Loading:<LibraryStatus
-            text='蔵書確認中' indicator={true} />,
-}
 
 class LibraryStatus extends React.PureComponent {
   render() {
@@ -64,67 +54,31 @@ class LibraryStatus extends React.PureComponent {
   }
 }
 //<LibraryStatus {...conv(libraryStatus)}/>
+const libraryStatuses = {
+  rentable: <LibraryStatus
+              text='貸出可' style={{ color: '#4CAF50' /* green */ }} />,
+  onLoan: <LibraryStatus
+            text='貸出中' style={{ color: '#FFC107' /* amber */}} />,
+  noCollection: <LibraryStatus
+                  text='蔵書なし' style={{ color: '#F44336' /*red*/}} />,
+  Loading: <LibraryStatus
+             text='蔵書確認中' indicator={true} />,
+}
 
 function conv(libraryStatus){
   if (libraryStatus.rentable) {
-    LibraryStatus.rentable
+    LibraryStatusComp.rentable
   } else if (libraryStatus.exist) {
-    LibraryStatus.onLoan
+    LibraryStatusComp.onLoan
   } else if (libraryStatus.exist !== undefined) {
-    LibraryStatus.noCollection
+    LibraryStatusComp.noCollection
   } else {
-    LibraryStatus.loading
+    LibraryStatusComp.loading
   }
 }
 
 function genTempThumbnail(isbn) {
   return `http://www.hanmoto.com/bd/img/${isbn}.jpg`;
-}
-
-class Book extends React.PureComponent {
-  render() {
-    const { thumbnail, title, author, onPress, style } = this.props
-    return (
-      <TouchableElement
-        onPress={onPress}
-        style={style}
-      >
-        <View
-          style={{flexDirection:"row",//backgroundColor:"red"
-          }}
-        >
-          {/* left */}
-          <Image
-            source={{ uri: thumbnail }}
-            resizeMode="contain"
-            style={ styles.cellImage }
-          />
-          {/* right */}
-          <View
-            style={{
-              flex:1,
-              borderBottomColor: 'rgba(0, 0, 0, 0.1)',
-              borderBottomWidth: StyleSheet.hairlineWidth,
-            }}>
-            {/* right high */}
-            <View style={{flex:1}}>
-              <Text numberOfLines={1} ellipsizeMode={'middle'}
-                style={{flexDirection: 'row'}}>
-                {icon}
-                <Text style={styles.bookTitle} numberOfLines={1} >
-                  {title}
-                </Text>
-              </Text>
-              <Text style={styles.bookAuthor} numberOfLines={1}>
-                {author}
-              </Text>
-              { children }
-            </View>
-          </View>
-        </View>
-      </TouchableElement>
-    );
-  }
 }
 
 const icons = Object.keys(itemsInfo).reduce((acc,key)=> {
@@ -138,6 +92,45 @@ const icons = Object.keys(itemsInfo).reduce((acc,key)=> {
     />)
   return acc;
 },{});
+
+class Book extends React.PureComponent {
+  render() {
+    const { thumbnail, title, author, onPress, style, icon, status} =
+      this.props
+    return (
+      <TouchableElement
+        onPress={onPress}
+        style={style}
+      >
+        <View
+          style={styles.row}
+        >
+          {/* left */}
+          <Image
+            source={{ uri: thumbnail }}
+            resizeMode="contain"
+            style={ styles.cellImage }
+          />
+          {/* right */}
+          <View
+            style={styles.border}>
+            <View style={styles.rowCenter}>
+              { icon }
+              <Text style={styles.bookTitle} numberOfLines={2}>
+                {title}
+              </Text>
+            </View>
+            <Text style={styles.bookAuthor} numberOfLines={1}>
+              {author}
+            </Text>
+            { status }
+          </View>
+        </View>
+      </TouchableElement>
+    );
+  }
+}
+
 
 function BookCell({ book, style, onPress, children, ...props }) {
   //title,author,thumbnail
@@ -164,7 +157,7 @@ function BookCell({ book, style, onPress, children, ...props }) {
         <View
           style={styles.border}>
           <View style={styles.rowCenter}>
-            {icon}
+            { icon }
             <Text style={styles.bookTitle} numberOfLines={2}>
               {book.title}
             </Text>
@@ -214,4 +207,4 @@ const styles = StyleSheet.create({
   },
 })
 
-module.exports = { LibraryStatus, BookCell };
+module.exports = { LibraryStatus, BookCell, icons,Book,libraryStatuses };
