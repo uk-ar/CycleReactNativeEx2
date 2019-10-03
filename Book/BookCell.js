@@ -16,26 +16,6 @@ import {
 
 import { itemsInfo, TouchableElement } from './common';
 
-const LibraryStatusInfo = {
-  rentable: {
-    text:'貸出可',// 利用可
-    style:{ color: '#4CAF50' }// Green
-  },
-  onLoan:{
-    text:'貸出中',
-    style:{ color: '#FFC107' } // amber
-  },
-  noCollection:{
-    text:'蔵書なし',
-    style:{ color: '#F44336' } // red
-  },
-  Loading:{
-    text:'蔵書確認中',
-    style:{}, // default
-    indicator:true,
-  }
-}
-
 class LibraryStatus extends React.PureComponent {
   render() {
     const { loading, style, text } = this.props
@@ -53,7 +33,7 @@ class LibraryStatus extends React.PureComponent {
       </View>);
   }
 }
-//<LibraryStatus {...conv(libraryStatus)}/>
+
 const libraryStatuses = {
   rentable: <LibraryStatus
               text='貸出可' style={{ color: '#4CAF50' /* green */ }} />,
@@ -131,47 +111,6 @@ class Book extends React.PureComponent {
   }
 }
 
-
-function BookCell({ book, style, onPress, children, ...props }) {
-  //title,author,thumbnail
-  book.thumbnail = book.thumbnail || genTempThumbnail(book.isbn) || undefined
-  // Image source cannot accept null
-  const icon = book.bucket ?
-               icons[book.bucket] : null
-  return (
-    <TouchableElement
-      onPress={onPress}
-      style={style}
-    >
-      <View
-        {...props}
-        style={styles.row}
-      >
-        {/* left */}
-        <Image
-          source={{ uri: book.thumbnail }}
-          resizeMode="contain"
-          style={ styles.cellImage }
-        />
-        {/* right */}
-        <View
-          style={styles.border}>
-          <View style={styles.rowCenter}>
-            { icon }
-            <Text style={styles.bookTitle} numberOfLines={2}>
-              {book.title}
-            </Text>
-          </View>
-          <Text style={styles.bookAuthor} numberOfLines={1}>
-            {book.author}
-          </Text>
-          { children }
-        </View>
-      </View>
-    </TouchableElement>
-  );
-}
-
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
@@ -207,4 +146,4 @@ const styles = StyleSheet.create({
   },
 })
 
-module.exports = { LibraryStatus, BookCell, icons,Book,libraryStatuses };
+module.exports = { LibraryStatus, Book, icons, libraryStatuses };
