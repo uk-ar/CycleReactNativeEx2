@@ -127,19 +127,24 @@ class Book extends React.PureComponent {
   }
 }
 
+const icons = Object.keys(itemsInfo).reduce((acc,key)=> {
+  acc[key] = (
+    <FAIcon
+      name={itemsInfo[key].icon} size={20}
+      style={{
+        marginRight: 10,
+        //letterSpacing: 5,
+        color: itemsInfo[key].backgroundColor }}
+    />)
+  return acc;
+},{});
+
 function BookCell({ book, style, onPress, children, ...props }) {
   //title,author,thumbnail
   book.thumbnail = book.thumbnail || genTempThumbnail(book.isbn) || undefined
   // Image source cannot accept null
   const icon = book.bucket ?
-               <FAIcon
-                 name={itemsInfo[book.bucket].icon} size={20}
-                 style={{
-                   // marginRight: 5,
-                   letterSpacing: 5,
-                   color: itemsInfo[book.bucket].backgroundColor }}
-               /> : null
-  //console.log(book.thumbnail)
+               icons[book.bucket] : null
   return (
     <TouchableElement
       onPress={onPress}
@@ -156,26 +161,11 @@ function BookCell({ book, style, onPress, children, ...props }) {
           style={ styles.cellImage }
         />
         {/* right */}
-        {/* right high */}
         <View
-          style={{
-            flex:1,
-            marginRight:10,
-            borderBottomColor: 'rgba(0, 0, 0, 0.1)',
-            borderBottomWidth: StyleSheet.hairlineWidth,
-            backgroundColor:"red",
-          }}>
-          <View style={{backgroundColor:"blue",width:190,
-                        flexDirection:"row",alignItems:"center",//flex:1,
-          }}>
-            <View style={{backgroundColor:"yellow",height:40,width:100}}/>
-            {/* <View style={{backgroundColor:"green",height:20,width:50}}/> */}
-            <Text>foo</Text>
-          </View>
-          <View style={{flexDirection:"row",alignItems:"center"}}>
+          style={styles.border}>
+          <View style={styles.rowCenter}>
             {icon}
-            <Text numberOfLines={2} ellipsizeMode={'middle'}
-              style={[styles.bookTitle]}>
+            <Text style={styles.bookTitle} numberOfLines={2}>
               {book.title}
             </Text>
           </View>
@@ -183,16 +173,6 @@ function BookCell({ book, style, onPress, children, ...props }) {
             {book.author}
           </Text>
           { children }
-          {/* <View style={{backgroundColor:"yellow",height:40,width:100}}/>
-              <View style={{backgroundColor:"green",height:20,width:50}}/>
-            */}
-          {/* <View>
-              <Text numberOfLines={1} ellipsizeMode={'middle'}
-              style={[styles.bookTitle,{alignItems:"center"}]}>
-              {icon}
-              {book.title}
-              </Text>
-               */}
         </View>
       </View>
     </TouchableElement>
@@ -203,6 +183,18 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
   },
+  rowCenter: {
+    flexDirection: 'row',
+    alignItems: "center"
+  },
+  border:{
+    flex:1,
+    marginRight:10,
+    padding:5,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderTopWidth: StyleSheet.hairlineWidth
+  },
   cellImage: {
     backgroundColor: '#dddddd', // grey
     height: 64, // PixelRatio 2
@@ -212,7 +204,7 @@ const styles = StyleSheet.create({
   bookTitle: {
     fontSize: 16,
     fontWeight: '500',
-    flexDirection: 'row',
+    flex:1,
     //marginBottom: 2,
   },
   bookAuthor: {
