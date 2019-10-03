@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text,View } from 'react-native';
 
 import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
@@ -8,10 +8,17 @@ import { linkTo } from '@storybook/addon-links';
 import Button from './Button';
 import { CenterLeftView, CenterView } from './CenterView';
 
-import { BookCell } from '../../Book';
+import { BookCell,LibraryStatus } from '../../Book';
+
+storiesOf('LibraryStatus', module)
+  .add('with text and color', () => (
+    <LibraryStatus text="foo" style={{color:"red"}} />
+  ))
+  .add('with loading', () => (
+    <LibraryStatus text="bar" style={{color:"blue"}} loading={true}/>
+  ))
 
 storiesOf('Book', module)
-  .addDecorator(getStory => <CenterLeftView>{getStory()}</CenterLeftView>)
   .add('with isbn', () => (
     <BookCell
       onPress={action('clicked-bookcell')}
@@ -21,7 +28,7 @@ storiesOf('Book', module)
       }}
     />
   ))
- .add('with thumbnail', () => (
+  .add('with thumbnail', () => (
     <BookCell
       onPress={action('clicked-bookcell')}
       book={{
@@ -35,6 +42,20 @@ storiesOf('Book', module)
       book={{
         title: 'guri & gura & can I handle long long long title?', author: '',
         thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200',
+        author: 'author foo',
+        isbn: '9784834032147',
+        active: true,
+      }}
+    />
+  ))
+  .add('with library status', () => (
+    <BookCell
+      onPress={action('clicked-bookcell')}
+      book={{
+        title: 'guri & gura & can I handle long long long title?', author: '',
+        thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200',
+        author: 'author foo',
+        bucket: 'liked',
         libraryStatus: {
           exist: false,
           rentable: false,
@@ -43,7 +64,10 @@ storiesOf('Book', module)
         isbn: '9784834032147',
         active: true,
       }}
-    />
+    >
+      {/* <LibraryStatus text="bar" style={{color:"blue"}} loading={true}/> */}
+      <LibraryStatus text="bar" style={{color:"blue"}} loading={false}/>
+    </BookCell>
   ))
 
 storiesOf('Button', module)
