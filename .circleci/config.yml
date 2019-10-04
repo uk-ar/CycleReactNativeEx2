@@ -34,5 +34,5 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       # run tests!
       - run: yarn test-ci
-
-      - run: yarn exp
+      - run: ./node_modules/.bin/exp login -u "uk-ar" -p "$EXPO_PASSWORD"
+      - run: yarn deploy

@@ -76,7 +76,7 @@ const icons = Object.keys(itemsInfo).reduce((acc,key)=> {
 
 class Book extends React.PureComponent {
   _onPress = () => {
-    this.props.onPress(this.props.isbn);
+    this.props.onPress(this.props.isbn,this.props.reserveUrl);
   };
   render() {
     const { thumbnail, title, author, onPress, style, icon, status, isbn } =
@@ -124,6 +124,7 @@ class BookList extends React.PureComponent {
       title={item.title}
       author={item.author}
       thumbnail={item.thumbnail}
+      reserveUrl={item.reserveUrl}
       icon={icons["liked"]}
       status={libraryStatuses["rentable"]}
     />
