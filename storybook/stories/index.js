@@ -4,6 +4,7 @@ import { Text,View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
+import { Constants, WebBrowser } from 'expo';
 
 import { CenterLeftView, CenterView } from './CenterView';
 
@@ -22,7 +23,6 @@ storiesOf('Book', module)
   .addDecorator(getStory => <CenterLeftView>{getStory()}</CenterLeftView>)
   .add('with thumbnail', () => (
     <Book
-      onPress={action('clicked-bookcell')}
       thumbnail={'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200'}
     />
   ))
@@ -32,6 +32,7 @@ storiesOf('Book', module)
       title='guri & gura & can I handle long long long title?'
       author='author foo'
       isbn='9784834032147'
+      reserveUrl='http://api.calil.jp/reserve?id=af299d780fe86cf8b116dfda4725dc0f'
       icon={icons["done"]}
       thumbnail={'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200'}
     />
@@ -98,12 +99,29 @@ storiesOf('BookList', module)
           author: '中川李枝子/山脇百合子（絵本作家）',
           isbn: '9784834014655',
           thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/4655/9784834014655.jpg?_ex=200x200',
-          reserveUrl: 'https://library.city.fuchu.tokyo.jp/licsxp-opac/WOpacTifTilListToTifTilDetailAction.do?tilcod=1009710046217'
+          reserveUrl: 'https://www.amazon.co.jp/dp/4834014657'
         },{
           title: 'IA／UXプラクティス',
           author: '坂本貴史',
           isbn: '9784862463241',
           thumbnail: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3241/9784862463241.jpg?_ex=200x200',
         }]}
+    />
+  ))
+
+storiesOf('Browser', module)
+  .add('with full book', () => (
+    <Book
+      onPress={async (isbn,url)=>{
+          //https://docs.expo.io/versions/latest/sdk/webbrowser.html
+          let result = await WebBrowser.openBrowserAsync(url);
+          this.setState({ result });
+        }}
+      title='ぐりとぐら(複数蔵書)'
+      author='中川李枝子/大村百合子'
+      thumbnail='http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0825/9784834000825.jpg?_ex=200x200'
+      isbn='4834000826'
+      reserveUrl='https://www.amazon.co.jp/dp/4834000826'
+      icon={icons["done"]}
     />
   ))

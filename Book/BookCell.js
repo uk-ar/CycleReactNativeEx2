@@ -1,6 +1,9 @@
 
 import React from 'react';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
+import materialColor from 'material-colors';
+import { Constants, WebBrowser } from 'expo';
+
 import {
   ActivityIndicator,
   Text,
@@ -76,25 +79,21 @@ const icons = Object.keys(itemsInfo).reduce((acc,key)=> {
 
 class Book extends React.PureComponent {
   _onPress = () => {
-    this.props.onPress(this.props.isbn,this.props.reserveUrl);
+    this.props.onPress && this.props.onPress(this.props.isbn,this.props.reserveUrl);
   };
   render() {
-    const { thumbnail, title, author, onPress, style, icon, status, isbn } =
+    const { thumbnail, title, author, onPress, style, icon, status, isbn,reserveUrl } =
       this.props
     return (
       <TouchableElement
         onPress={this._onPress}
-        style={style}
-      >
-        <View
-          style={styles.row}
-        >
+        style={style}>
+        <View style={styles.cell}>
           {/* left */}
           <Image
             source={{ uri: thumbnail }}
             resizeMode="contain"
-            style={ styles.cellImage }
-          />
+            style={ styles.cellImage }/>
           {/* right */}
           <View
             style={styles.border}>
@@ -117,17 +116,23 @@ class Book extends React.PureComponent {
 
 class BookList extends React.PureComponent {
   _keyExtractor = (book, index) => book.isbn;
+  _onPress = async (isbn,url) =>{
+    //https://docs.expo.io/versions/latest/sdk/webbrowser.html
+    let result = await WebBrowser.openBrowserAsync(url);
+    this.setState({ result });
+  }
   _renderItem = ({item,index}) => {
     return (
-    <Book
-      isbn={item.isbn}
-      title={item.title}
-      author={item.author}
-      thumbnail={item.thumbnail}
-      reserveUrl={item.reserveUrl}
-      icon={icons["liked"]}
-      status={libraryStatuses["rentable"]}
-    />
+      <Book
+        onPress={this._onPress}
+        isbn={item.isbn}
+        title={item.title}
+        author={item.author}
+        thumbnail={item.thumbnail}
+        reserveUrl={item.reserveUrl}
+        icon={icons["liked"]}
+        status={libraryStatuses["rentable"]}
+      />
   );}
   render() {
     return (
@@ -148,6 +153,10 @@ const styles = StyleSheet.create({
   rowCenter: {
     flexDirection: 'row',
     alignItems: "center"
+  },
+  cell: {
+    flexDirection: 'row',
+    backgroundColor: materialColor.grey['50'],//for TouchableElement
   },
   border:{
     flex:1,
