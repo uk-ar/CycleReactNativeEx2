@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   left: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'flex-start',
     backgroundColor: '#F5FCFF',
   }
 })
