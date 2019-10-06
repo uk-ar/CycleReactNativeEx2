@@ -154,26 +154,29 @@ class Counter extends React.Component {
 }
 
 class FadeInView extends React.Component {
-  state = {
-    fadeAnim: new Animated.Value(0),  // Initial value for opacity: 0
+  constructor(props) {
+    super(props);
+    this._animated = new Animated.Value(0);
   }
 
   render() {
     let { i } = this.props
-    let { fadeAnim } = this.state;
     Animated.timing(
-      this.state.fadeAnim,            // The animated value to drive
-      {
+      this._animated,{
         toValue: i,                   // Animate to opacity: 1 (opaque)
-        duration: 1000,              // Make it take a while
+        duration: 250,              // Make it take a while
       }
     ).start();                        // Starts the animation
-
     return (
       <Animated.View
         style={{
-          width: 250, height: 50, backgroundColor: 'powderblue',
-          opacity: fadeAnim,         // Bind opacity to animated value
+          width: 250, backgroundColor: 'powderblue',
+          opacity: this._animated,
+          height: this._animated.interpolate({
+            inputRange:[0,1],
+            outputRange:[0,50],
+            extrapolate:'clamp'
+          }),
         }}
       >
         {this.props.children}
@@ -183,7 +186,7 @@ class FadeInView extends React.Component {
 }
 
 storiesOf('Closable', module)
-  .addDecorator(getStory => <CenterLeftView>{getStory(10)}</CenterLeftView>)
+  //.addDecorator(getStory => <CenterLeftView>{getStory(10)}</CenterLeftView>)
   .add('open0', () => (
     <Counter>
       {(i)=>{
@@ -208,12 +211,3 @@ storiesOf('Closable', module)
        }}
     </Counter>
   ))
-/* .add('open', () => (
- *   <Counter>
- *     {(i)=>{
- *        return(
- *          <FadeInView i={i} />
- *        )
- *      }}
- *   </Counter>
- * ))*/
