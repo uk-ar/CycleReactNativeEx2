@@ -100,7 +100,7 @@ class Book extends React.PureComponent {
             <View style={styles.rowCenter}>
               { icon }
               <Text style={styles.bookTitle} numberOfLines={2}>
-                {title}
+                { title }
               </Text>
             </View>
             <Text style={styles.bookAuthor} numberOfLines={1}>
