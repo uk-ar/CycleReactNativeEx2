@@ -1898,7 +1898,7 @@ exports[`Storyshots Browser with full book 1`] = `
 </View>
 `;
 
-exports[`Storyshots Closeable close 1`] = `
+exports[`Storyshots Closeable with open and close 1`] = `
 <View>
   <Text
     accessible={true}
@@ -1929,81 +1929,6 @@ exports[`Storyshots Closeable close 1`] = `
         }
       />
     </View>
-  </View>
-</View>
-`;
-
-exports[`Storyshots Closeable close2 1`] = `
-<View
-  style={
-    Object {
-      "backgroundColor": "red",
-      "height": 50,
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Closeable open 1`] = `
-<View>
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    disabled={false}
-    ellipsizeMode="tail"
-    onPress={[Function]}
-  >
-    pressMe
-  </Text>
-  <View
-    collapsable={undefined}
-    style={
-      Object {
-        "backgroundColor": "powderblue",
-        "height": 0,
-        "opacity": 0,
-        "width": 250,
-      }
-    }
-  />
-</View>
-`;
-
-exports[`Storyshots Closeable open0 1`] = `
-<View>
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    disabled={false}
-    ellipsizeMode="tail"
-    onPress={[Function]}
-  >
-    pressMe
-  </Text>
-  <View>
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      disabled={false}
-      ellipsizeMode="tail"
-    >
-      count 
-      0
-    </Text>
-    <View
-      style={
-        Array [
-          Object {
-            "height": 50,
-            "width": 50,
-          },
-          Object {
-            "backgroundColor": "red",
-            "opacity": 1,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;
