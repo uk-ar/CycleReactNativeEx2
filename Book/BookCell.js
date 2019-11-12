@@ -19,6 +19,7 @@ import {
 } from 'react-native';
 
 import { itemsInfo, TouchableElement } from './common';
+import { CloseableView } from '../CloseableView';
 
 class LibraryStatus extends React.PureComponent {
   render() {
@@ -122,21 +123,21 @@ class BookList extends React.PureComponent {
     this.setState({ result });
   }
   _renderItem = ({item,index}) => {
+    //closed = this.props.selects[items.status] ? this.props.selects[items.status] :
     return (
-      <Book
-        onPress={this._onPress}
-        isbn={item.isbn}
-        title={item.title}
-        author={item.author}
-        thumbnail={item.thumbnail}
-        reserveUrl={item.reserveUrl}
-        icon={icons[item.bucket]}
-        status={libraryStatuses[item.status]}
-      />
+      <CloseableView closed={false}>
+        <Book
+          onPress={this._onPress}
+          isbn={item.isbn}
+          title={item.title}
+          author={item.author}
+          thumbnail={item.thumbnail}
+          reserveUrl={item.reserveUrl}
+          icon={icons[item.bucket]}
+          status={libraryStatuses[item.status]}
+        />
+      </CloseableView>
     );}
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       //        extraData={this.state}
