@@ -222,7 +222,7 @@ exports[`Storyshots Book with short title 1`] = `
                   "marginRight": 10,
                 },
                 Object {
-                  "fontFamily": "ExponentFont-mock-awesome",
+                  "fontFamily": "awesome",
                   "fontStyle": "normal",
                   "fontWeight": "normal",
                 },
@@ -575,7 +575,7 @@ exports[`Storyshots BookList with many 1`] = `
                         "marginRight": 10,
                       },
                       Object {
-                        "fontFamily": "ExponentFont-mock-awesome",
+                        "fontFamily": "awesome",
                         "fontStyle": "normal",
                         "fontWeight": "normal",
                       },
@@ -733,7 +733,7 @@ exports[`Storyshots BookList with many 1`] = `
                         "marginRight": 10,
                       },
                       Object {
-                        "fontFamily": "ExponentFont-mock-awesome",
+                        "fontFamily": "awesome",
                         "fontStyle": "normal",
                         "fontWeight": "normal",
                       },
@@ -891,7 +891,7 @@ exports[`Storyshots BookList with many 1`] = `
                         "marginRight": 10,
                       },
                       Object {
-                        "fontFamily": "ExponentFont-mock-awesome",
+                        "fontFamily": "awesome",
                         "fontStyle": "normal",
                         "fontWeight": "normal",
                       },
@@ -1049,7 +1049,7 @@ exports[`Storyshots BookList with many 1`] = `
                         "marginRight": 10,
                       },
                       Object {
-                        "fontFamily": "ExponentFont-mock-awesome",
+                        "fontFamily": "awesome",
                         "fontStyle": "normal",
                         "fontWeight": "normal",
                       },
@@ -1764,7 +1764,7 @@ exports[`Storyshots Browser with full book 1`] = `
                 "marginRight": 10,
               },
               Object {
-                "fontFamily": "ExponentFont-mock-awesome",
+                "fontFamily": "awesome",
                 "fontStyle": "normal",
                 "fontWeight": "normal",
               },
@@ -1810,7 +1810,7 @@ exports[`Storyshots Browser with full book 1`] = `
 </View>
 `;
 
-exports[`Storyshots Closable open 1`] = `
+exports[`Storyshots Closeable close 1`] = `
 <View>
   <Text
     accessible={true}
@@ -1819,66 +1819,103 @@ exports[`Storyshots Closable open 1`] = `
     ellipsizeMode="tail"
     onPress={[Function]}
   >
-    press me 
-    0
+    pressMe
+  </Text>
+  <View>
+    <View
+      collapsable={undefined}
+      style={
+        Object {
+          "height": 0,
+          "opacity": 0,
+          "overflow": "hidden",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "red",
+            "height": 50,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Storyshots Closeable close2 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "red",
+      "height": 50,
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Closeable open 1`] = `
+<View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    disabled={false}
+    ellipsizeMode="tail"
+    onPress={[Function]}
+  >
+    pressMe
   </Text>
   <View
+    collapsable={undefined}
     style={
       Object {
-        "backgroundColor": "red",
-        "height": 50,
-        "width": 50,
+        "backgroundColor": "powderblue",
+        "height": 0,
+        "opacity": 0,
+        "width": 250,
       }
     }
   />
 </View>
 `;
 
-exports[`Storyshots Closable open0 1`] = `
-<View
-  style={
-    Object {
-      "backgroundColor": "#F5FCFF",
-      "flex": 1,
-      "justifyContent": "center",
-    }
-  }
->
+exports[`Storyshots Closeable open0 1`] = `
+<View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    disabled={false}
+    ellipsizeMode="tail"
+    onPress={[Function]}
+  >
+    pressMe
+  </Text>
   <View>
     <Text
       accessible={true}
       allowFontScaling={true}
       disabled={false}
       ellipsizeMode="tail"
-      onPress={[Function]}
     >
-      pressMe
+      count 
+      0
     </Text>
-    <View>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        disabled={false}
-        ellipsizeMode="tail"
-      >
-        count 
-        0
-      </Text>
-      <View
-        style={
-          Array [
-            Object {
-              "height": 50,
-              "width": 50,
-            },
-            Object {
-              "backgroundColor": "red",
-              "opacity": 1,
-            },
-          ]
-        }
-      />
-    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "height": 50,
+            "width": 50,
+          },
+          Object {
+            "backgroundColor": "red",
+            "opacity": 1,
+          },
+        ]
+      }
+    />
   </View>
 </View>
 `;
