@@ -123,9 +123,9 @@ class BookList extends React.PureComponent {
     this.setState({ result });
   }
   _renderItem = ({item,index}) => {
-    //closed = this.props.selects[items.status] ? this.props.selects[items.status] :
+    closed = this.props.rejects && this.props.rejects.includes(item.status)
     return (
-      <CloseableView closed={false}>
+      <CloseableView closed={closed}>
         <Book
           onPress={this._onPress}
           isbn={item.isbn}
