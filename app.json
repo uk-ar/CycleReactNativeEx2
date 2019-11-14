@@ -2,6 +2,9 @@
   "expo": {
     "sdkVersion": "22.0.0",
     "slug": "CycleReactNativeEx2",
-    "name": "CycleReactNativeEx2"
+    "name": "CycleReactNativeEx2",
+    "extra": {
+      "enableStoryBook":false
+    }
   }
 }
