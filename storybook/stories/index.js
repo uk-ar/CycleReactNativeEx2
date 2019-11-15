@@ -299,11 +299,13 @@ storiesOf('SearchScene', module)
         onClearText={action('text-clear')}
         placeholder='Type Here...' />
       <ButtonGroup
+        onPress={action('filter-change')}
         selectedIndex={0}
         buttons={['全て', '蔵書あり', '貸出可']}
         containerStyle={{height: 30}}/>
       <BookList
         rejects={[]}
+        onPress={action('book-press')}
         data={[{
             isbn:'9784834032147',
             title:'guri & gura',
