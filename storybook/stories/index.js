@@ -5,9 +5,12 @@ import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import { Constants, WebBrowser } from 'expo';
+import { ButtonGroup, SearchBar } from 'react-native-elements';
+import materialColor from 'material-colors';
 
 import { CenterLeftView, CenterView } from './CenterView';
 import { CloseableView } from '../../CloseableView';
+import { CycleRoot } from '../../cycle-react-native';
 
 import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from '../../Book/BookCell';
 
@@ -143,10 +146,10 @@ class Counter extends React.Component {
   render(){
     return (
       <View>
-        <Text onPress={()=>{
+        <Text style={{alignSelf:"center"}} onPress={()=>{
             this.setState({index:this.state.index + 1})
           }}>
-          pressMe
+            pressMe
         </Text>
         {this.props.children(this.state.index)}
       </View>
@@ -173,7 +176,6 @@ storiesOf('Closeable', module)
   ))
 
 
-import { ButtonGroup } from 'react-native-elements';
 
 class Filter extends React.Component {
   constructor () {
@@ -264,4 +266,52 @@ storiesOf('Filter', module)
          )
        }}
     </Counter>
+  ))
+
+storiesOf('Main', module)
+  .add('cycle', () => (
+    <CycleRoot/>
+  ))
+
+storiesOf('SearchBar', module)
+  .add('with loading', () => (
+    <SearchBar
+      lightTheme
+      showLoadingIcon
+      onChangeText={action('text-change')}
+      onClearText={action('text-clear')}
+      placeholder='Type Here...' />
+  ))
+
+storiesOf('SearchScene', module)
+  .add('with all', () => (
+    <View>
+      <SearchBar
+        containerStyle={{
+          backgroundColor: materialColor.grey['50']
+        }}
+        inputStyle={{
+          backgroundColor: materialColor.grey['200']
+        }}
+        lightTheme
+        showLoadingIcon
+        onChangeText={action('text-change')}
+        onClearText={action('text-clear')}
+        placeholder='Type Here...' />
+      <ButtonGroup
+        selectedIndex={0}
+        buttons={['全て', '蔵書あり', '貸出可']}
+        containerStyle={{height: 30}}/>
+      <BookList
+        rejects={[]}
+        data={[{
+            isbn:'9784834032147',
+            title:'guri & gura',
+            author:'author foo',
+            thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200',
+            bucket:"liked",
+            status:"rentable",
+          }]}
+      />
+    </View>
   ))
