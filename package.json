@@ -33,6 +33,7 @@
     }
   },
   "dependencies": {
+    "@cycle/http": "^14.8.0",
     "@cycle/rxjs-run": "^7.1.0",
     "expo": "^22.0.2",
     "material-colors": "^1.2.5",

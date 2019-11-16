@@ -1,8 +1,12 @@
 import React from 'react';
 import { TouchableOpacity,StyleSheet, Text, View,FlatList } from 'react-native';
 import run from '@cycle/rxjs-run'
+import { makeHTTPDriver } from '@cycle/http';
 import StorybookUI from './storybook';
 import Expo from 'expo'
+
+import { SearchScene } from './components/SearchScene';
+
 
 import {
   Cycle,
@@ -66,7 +70,7 @@ class MultiSelectList extends React.PureComponent {
     );
   }
 }
-function main({RN}) {
+function main({RN, HTTP}) {
   return {
     RN: RN.select('button').events('press')
           .do(args => console.log('foo0:', args))
@@ -74,17 +78,26 @@ function main({RN}) {
           .startWith(0)
           .scan((x,y) => x+y)
           .map(i =>
-            <MultiSelectList
-              data={[{id: 'a',title:"foo"},
-                     {id: 'b',title:"bar"},
-                     {id: 'c',title:"baz"}]}
+            <SearchScene
+              showLoadingIcon={true}
+              selectedIndex={1}
+              rejects={[]}
+              data={[{
+                  isbn:'9784834032147',
+                  title:'guri & gura',
+                  author:'author foo',
+                  thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200',
+                  bucket:"liked",
+                  status:"rentable",
+                }]}
             />
           ),
   };
 }
 
 run(main, {
-  RN: makeReactNativeDriver()
+  RN: makeReactNativeDriver(),
+  HTTP: makeHTTPDriver()
 });
 
 //module.exports = __DEV__ && typeof __TEST__ == 'undefined' ? StorybookUI : CycleRoot;
