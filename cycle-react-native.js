@@ -14,7 +14,9 @@ function withCycle(WrappedComponent) {
     //["onLayout","onPress"]
   }
   function findHandler(selector, evType) {
-    console.log(handlers,selector,evType)
+    if (!selector || !handlers[selector]){
+      return null
+    }
     if (handlers[selector].hasOwnProperty(evType)) {
       return handlers[selector][evType].send
     }
@@ -24,6 +26,9 @@ function withCycle(WrappedComponent) {
     constructor(props) {
       super(props);
       const { selector, ...passThroughProps } = props;
+      if(!selector) {
+        console.warn("The prop `selector` is not set")
+      }
       this.injectedProp =
         functionNames.map(
           name => [name, findHandler(selector,name)])

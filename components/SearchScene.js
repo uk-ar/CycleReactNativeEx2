@@ -4,6 +4,9 @@ import { ButtonGroup, SearchBar } from 'react-native-elements';
 import materialColor from 'material-colors';
 import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from './Book/BookCell';
 
+import { withCycle } from '../cycle-react-native';
+
+@withCycle
 class SearchScene extends React.Component {
   render () {
     let { onChangeText,onClearText,onChangeFilter,onPress,

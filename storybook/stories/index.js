@@ -1,5 +1,5 @@
 import React from 'react';
-import { Animated,Text,View } from 'react-native';
+import { FlatList,TouchableOpacity,Animated,Text,View } from 'react-native';
 
 import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
@@ -54,6 +54,70 @@ storiesOf('Book', module)
     />
   ))
 
+
+class MyListItem extends React.PureComponent {
+  _onPress = () => {
+    this.props.onPressItem(this.props.id);
+  };
+
+  render() {
+    const textColor = this.props.selected ? "red" : "black";
+    //this._onPress avoid changeing props in TouchableOpacity
+    return (
+      <TouchableOpacity onPress={this._onPress}>
+        <View>
+          <Text style={{ color: textColor }}>
+            {this.props.title}
+          </Text>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+}
+class MultiSelectList extends React.PureComponent {
+  state = {selected: (new Map(): Map<string, boolean>)};
+
+  _keyExtractor = (item, index) => item.id;
+
+  _onPressItem = (id: string) => {
+    // updater functions are preferred for transactional updates
+    this.setState((state) => {
+      // copy the map rather than modifying state.
+      const selected = new Map(state.selected);
+      selected.set(id, !selected.get(id)); // toggle
+      return {selected};
+    });
+  };
+
+  _renderItem = ({item}) => (
+    <MyListItem
+      id={item.id}
+      onPressItem={this._onPressItem}
+      selected={!!this.state.selected.get(item.id)}
+      title={item.title}
+    />
+  );
+
+  render() {
+    return (
+      <FlatList
+        data={this.props.data}
+        extraData={this.state}
+        keyExtractor={this._keyExtractor}
+        renderItem={this._renderItem}
+      />
+    );
+  }
+}
+storiesOf('FlatList', module)
+  .addDecorator(getStory => <CenterLeftView>{getStory()}</CenterLeftView>)
+  .add('with three', () => (
+    <MultiSelectList
+      data={[{id: 'a',title:"foo"},
+             {id: 'b',title:"bar"},
+             {id: 'c',title:"baz"}]}
+    />
+  ))
 storiesOf('BookList', module)
   .addDecorator(getStory => <CenterLeftView>{getStory()}</CenterLeftView>)
   .add('with one', () => (
@@ -320,6 +384,7 @@ storiesOf('SearchScene', module)
   ))
   .add('with class', () => (
     <SearchScene
+      selector={"main"}
       onChangeText={action('text-change')}
       onClearText={action('text-clear')}
       onChangeFilter={action('filter-change')}
