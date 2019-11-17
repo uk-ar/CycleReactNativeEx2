@@ -1,4 +1,4 @@
-import Rx from 'rx';
+import Rx from 'rxjs/Rx';
 import _ from 'lodash';
 import { StackNavigator } from 'react-navigation';
 
