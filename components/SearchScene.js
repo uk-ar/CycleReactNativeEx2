@@ -4,10 +4,17 @@ import { ButtonGroup, SearchBar } from 'react-native-elements';
 import materialColor from 'material-colors';
 import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from './Book/BookCell';
 
+import PropTypes from 'prop-types';
 import { withCycle } from '../cycle-react-native';
 
 @withCycle
 class SearchScene extends React.Component {
+  static propTypes = {
+    onChangeText:PropTypes.func,
+    onClearText:PropTypes.func,
+    onChangeFilter:PropTypes.func,
+    onPress:PropTypes.func,
+  }
   render () {
     let { onChangeText,onClearText,onChangeFilter,onPress,
           showLoadingIcon,selectedIndex,rejects,data

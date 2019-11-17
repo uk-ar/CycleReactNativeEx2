@@ -15,9 +15,16 @@ import {
 function intent(RN, HTTP) {
   // Actions
   const changeQuery$ = RN
-    .select('main')
+    .select('search')
     .events('changeText')
-    .map(([text]) => text);
+    .map(([text]) => text)
+    .startWith("foo")
+    .do((e)=>console.log(e))
+
+  const press$ = RN
+    .select('search')
+    .events('press')
+    //.events('changeText')
 
   const requestSearchedBooks$ =
     changeQuery$.debounce(500)
@@ -162,6 +169,8 @@ function intent(RN, HTTP) {
     booksLoadingState$,
     searchedBooksStatus$,
     request$,
+    press$,
+    changeQuery$,
     goToBookView$: RN.select('main').events('selectCell')
                      .do(i => console.log('cell press:%O', i))
                      .map(([book]) => book)
