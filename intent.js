@@ -17,17 +17,13 @@ function intent(RN, HTTP) {
   const changeQuery$ = RN
     .select('search')
     .events('changeText')
-    .map(([text]) => text)
-    .startWith("foo")
-    .do((e)=>console.log(e))
 
   const press$ = RN
     .select('search')
     .events('press')
-    //.events('changeText')
 
   const requestSearchedBooks$ =
-    changeQuery$.debounce(500)
+    changeQuery$.debounceTime(500)
                 .filter(query => query.length > 1)
                 .map(q => ({
                   category: 'search',
@@ -35,11 +31,15 @@ function intent(RN, HTTP) {
                   headers: { 'Content-Type':
                              'application/json; charset=utf-8' },
                   accept: 'Accept-Language:ja,en-US;q=0.8,en;q=0.6'
-                }));
+                }))
+                .do((e)=>console.log(e));
 
+  requestSearchedBooks$.subscribe();
+  console.log(HTTP.select('search'))
   const searchedBooksResponse$ =
     HTTP.select('search')
         .switch()
+        .do((e)=>console.log(e))
         .map(res => res.text)
         .map(res => JSON.parse(res))
         .map(body =>
@@ -55,7 +55,8 @@ function intent(RN, HTTP) {
                 thumbnail: largeImageUrl,
               }))
         )
-      .share();
+        //.share();
+  searchedBooksResponse$.subscribe()
 
   function createBooksStatusStream(books$, category) {
     function mergeBooksStatus(books, booksStatus) {
@@ -96,7 +97,7 @@ function intent(RN, HTTP) {
           category,
           url: CALIL_STATUS_API + encodeURI(q)
         }))
-        .shareReplay();
+        //.shareReplay();
 
     const booksStatusResponse$ =
       HTTP.select(category)
@@ -119,7 +120,7 @@ function intent(RN, HTTP) {
                   )
                   .distinctUntilChanged(i => JSON.stringify(i))
                   .map(result => result.books))
-          .switch();
+          //.switch();
 
     const booksStatus$ =
       Rx.Observable
@@ -164,10 +165,11 @@ function intent(RN, HTTP) {
       .merge(searchedBooksResponse$.map(_ => false))
       .startWith(false)
       .shareReplay();
-
+  booksLoadingState$.subscribe();
   return {
-    booksLoadingState$,
+    //booksLoadingState$,
     searchedBooksStatus$,
+    requestSearchedBooks$,
     request$,
     press$,
     changeQuery$,
