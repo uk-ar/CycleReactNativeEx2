@@ -7,8 +7,7 @@ import Rx from 'rxjs/Rx';
 import { SearchScene } from './components/SearchScene';
 import { run } from '@cycle/rxjs-run';
 
-const intent = require('./intent');
-const model = require('./model');
+import { intent,model } from './intent';
 //const view = require('./view');
 
 import {
@@ -41,19 +40,14 @@ function main({RN, HTTP}) {
   console.log(HTTP)
   const actions = intent(RN, HTTP);
   const state$ = model(actions);
-  //state$.map((e)=>console.log(e))//.subscribe()
-  //view(state$.startWith("")).subscribe()
   return {
-    //view(state$.startWith("")).subscribe()
     RN: view(state$.startWith("")),//view(model(intent(sources.DOM)))
-    HTTP: actions.requestSearchedBooks$//request$
+    HTTP: actions.request$
   };
 }
 
-//const RNDriver = makeReactNativeDriver('CycleReactNativeEx');
 run(main, {
   RN: makeReactNativeDriver('CycleReactNativeEx'),
-  //sink$ => RNDriver(sink$, RxJSAdapter),
   HTTP: makeHTTPDriver()
 });
 
