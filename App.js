@@ -18,26 +18,21 @@ import {
 } from './cycle-react-native';
 
 function view(state$) {
-  return state$.map(({weight, height, bmi}) =>
-    <SearchScene
-      selector={"search"}
-      showLoadingIcon={true}
-      selectedIndex={1}
-      rejects={[]}
-      data={[{
-          isbn:'9784834032147',
-          title:'guri & gura',
-          author:'author foo',
-          thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200',
-          bucket:"liked",
-          status:"rentable",
-        }]}
-    />
-  );
+  return state$.map(({searchedBooks, searchedBooksStatus, booksLoadingState}) =>{
+    console.log({searchedBooks, searchedBooksStatus, booksLoadingState})
+    return (
+      <SearchScene
+        selector={"search"}
+        showLoadingIcon={ booksLoadingState}
+        selectedIndex={1}
+        rejects={[]}
+        extraData={searchedBooksStatus}
+        data={searchedBooks}
+      />)
+  });
 }
 
 function main({RN, HTTP}) {
-  console.log(HTTP)
   const actions = intent(RN, HTTP);
   const state$ = model(actions);
   return {
