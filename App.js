@@ -19,7 +19,7 @@ import {
 
 function view(state$) {
   return state$.map(({searchedBooks, searchedBooksStatus, booksLoadingState}) =>{
-    console.log({searchedBooks, searchedBooksStatus, booksLoadingState})
+    //console.log({searchedBooks, searchedBooksStatus, booksLoadingState})
     return (
       <SearchScene
         selector={"search"}

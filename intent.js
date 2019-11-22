@@ -135,27 +135,32 @@ function intent(RN, HTTP) {
                      .merge(requestSearchedBooks$,
                             requestSearchedBooksStatus$);
 
-  const booksLoadingState$ =
-    requestSearchedBooks$
-      .map(_ => true)
-      .merge(searchedBooksResponse$.map(_ => false))
-      .distinctUntilChanged()
-      .shareReplay();
-
   return {
+    requestSearchedBooks$,
     searchedBooksResponse$,
     searchedBooksStatus$,
-    booksLoadingState$,
     request$,
   };
 }
 function model(actions) {
+  const searchedBooks$ =
+    actions.searchedBooksResponse$
+           .merge(actions.requestSearchedBooks$.map(_=>[]))
+           .distinctUntilChanged()
+
+  const booksLoadingState$ =
+    actions.requestSearchedBooks$
+           .map(_ => true)
+           .merge(actions.searchedBooksResponse$.map(_ => false))
+           .distinctUntilChanged()
+           .shareReplay();
+
   const state$ = Rx
     .Observable
     .combineLatest(
-      actions.searchedBooksResponse$.startWith([]),
+      searchedBooks$.startWith([]),
       actions.searchedBooksStatus$.startWith({}),
-      actions.booksLoadingState$.startWith(false),
+      booksLoadingState$.startWith(false),
       (searchedBooks, searchedBooksStatus, booksLoadingState ) =>
         ({ searchedBooks, searchedBooksStatus, booksLoadingState }));
   return state$;
