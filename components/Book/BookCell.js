@@ -128,7 +128,6 @@ class BookList extends React.PureComponent {
     library = extraData && extraData[item.isbn] ? extraData[item.isbn] :
               extraData ? { status:"Loading" } : {}
     return (
-      <CloseableView closed={closed}>
         <Book
           onPress={(isbn,url)=>
             this.props.onPress && this.props.onPress({item, index})}
@@ -140,7 +139,6 @@ class BookList extends React.PureComponent {
           reserveUrl={library.reserveUrl}
           status={libraryStatuses[library.status]}
         />
-      </CloseableView>
     );}
   render() {
     return (
@@ -150,6 +148,8 @@ class BookList extends React.PureComponent {
         extraData={this.props.extraData}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
+        onEndReached={this.props.onEndReached}
+        onEndReachedThreshold={0}
       />
     );
   }
