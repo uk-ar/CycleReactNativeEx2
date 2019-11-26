@@ -18,13 +18,14 @@ import {
 } from './cycle-react-native';
 
 function view(state$) {
-  return state$.map(({searchedBooks, searchedBooksStatus, booksLoadingState}) =>{
+  return state$.map(({ searchedBooks, searchedBooksStatus,
+                       booksLoadingState, selectedIndex }) =>{
     //console.log({searchedBooks, searchedBooksStatus, booksLoadingState})
     return (
       <SearchScene
         selector={"search"}
         showLoadingIcon={ booksLoadingState}
-        selectedIndex={1}
+        selectedIndex={selectedIndex}
         rejects={[]}
         extraData={searchedBooksStatus}
         data={searchedBooks}
