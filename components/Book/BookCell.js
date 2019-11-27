@@ -123,11 +123,14 @@ class BookList extends React.PureComponent {
     this.setState({ result });
   }
   _renderItem = ({item,index}) => {
-    closed = this.props.rejects && this.props.rejects.includes(item.status)
-    extraData = this.props.extraData
+    //closed = this.props.rejects && this.props.rejects.includes(item.status)
+    extraData = this.props.extraData || {}
     library = extraData && extraData[item.isbn] ? extraData[item.isbn] :
               extraData ? { status:"Loading" } : {}
+    rejects = extraData.rejects || []
+    closed  = rejects.includes(library.status)
     return (
+      <CloseableView closed={closed}>
         <Book
           onPress={(isbn,url)=>
             this.props.onPress && this.props.onPress({item, index})}
@@ -139,6 +142,7 @@ class BookList extends React.PureComponent {
           reserveUrl={library.reserveUrl}
           status={libraryStatuses[library.status]}
         />
+      </CloseableView>
     );}
   render() {
     return (

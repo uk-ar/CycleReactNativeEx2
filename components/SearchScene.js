@@ -18,8 +18,13 @@ class SearchScene extends React.Component {
   }
   render () {
     let { onChangeText,onClearText,onChangeFilter,onPress,onEndReached,
-          showLoadingIcon,selectedIndex,rejects,data,extraData
+          showLoadingIcon,selectedIndex,data,searchedBooksStatus,
     } = this.props
+    rejects = [[],["noCollection"],["noCollection","onLoan"]]
+    extraData = {
+      ...searchedBooksStatus,
+      rejects:rejects[selectedIndex]
+    }//学習漫画
     return (
       <View>
         <SearchBar
@@ -40,7 +45,6 @@ class SearchScene extends React.Component {
           buttons={['全て', '蔵書あり', '貸出可']}
           containerStyle={{height: 30}}/>
         <BookList
-          rejects={rejects}
           onPress={onPress}
           onEndReached={onEndReached}
           data={data}

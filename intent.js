@@ -30,6 +30,7 @@ function intent(RN, HTTP) {
   const changeFilter$ = RN
     .select('search')
     .events('changeFilter')
+    .distinctUntilChanged()
     //.do(e=>console.log(e))
     //.subscribe()
 
