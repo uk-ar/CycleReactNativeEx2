@@ -50,6 +50,7 @@ function intent(RN, HTTP) {
 
   const requestSearchedBooks$ =
     page$
+      .skip(1)
       .map(({query,page})=>{
         //console.log(query,page)
         return {
@@ -61,7 +62,6 @@ function intent(RN, HTTP) {
           accept: 'Accept-Language:ja,en-US;q=0.8,en;q=0.6'
         }
       })
-      .do(e=>console.log(e))
       .share()
 
   function itemsToBook(items){
@@ -84,6 +84,7 @@ function intent(RN, HTTP) {
                 .switchMap((e)=>{
                   return HTTP
                     .select('search')
+                    .map(stream=>stream.retryWhen(errors=>errors.delay(1000)))
                     .mergeAll()
                     .do(e=>console.log(e))
                     .map(res => res.body)

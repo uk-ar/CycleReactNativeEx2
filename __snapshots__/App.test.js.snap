@@ -3933,9 +3933,7 @@ exports[`Storyshots Main cycle 1`] = `
             "backgroundColor": "#eeeeee",
           },
           undefined,
-          Object {
-            "paddingRight": 30,
-          },
+          false,
         ]
       }
       underlineColorAndroid="transparent"
@@ -3972,24 +3970,6 @@ exports[`Storyshots Main cycle 1`] = `
     >
       
     </Text>
-    <ActivityIndicator
-      animating={true}
-      color="#86939e"
-      hidesWhenStopped={true}
-      size="small"
-      style={
-        Array [
-          Object {
-            "backgroundColor": "transparent",
-            "position": "absolute",
-            "right": 16,
-            "top": 13,
-          },
-          undefined,
-          undefined,
-        ]
-      }
-    />
   </View>
   <View
     style={
