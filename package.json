@@ -23,7 +23,7 @@
     "ios": "rm -rf .expo; concurrently --kill-others 'storybook start -p 7007' 'react-native-scripts ios'",
     "test": "node node_modules/jest/bin/jest.js --watch",
     "test-ci": "node node_modules/jest/bin/jest.js",
-    "deploy": "node node_modules/.bin/exp publish && node node_modules/.bin/exp publish --config storybook/app.json",
+    "deploy": "node node_modules/.bin/exp publish && node node_modules/.bin/exp publish --release-channel staging",
     "storybook": "storybook start -p 7007"
   },
   "jest": {
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@cycle/http": "^14.8.0",
-    "expo": "^23.0.0",
+    "expo": "^23.0.4",
     "material-colors": "^1.2.5",
     "prop-types": "^15.6.0",
     "react": "16.0.0",

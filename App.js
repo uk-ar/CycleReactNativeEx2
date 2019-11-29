@@ -57,14 +57,15 @@ run(main, {
 
 //module.exports = __DEV__ && typeof __TEST__ == 'undefined' ? StorybookUI : CycleRoot;
 
-//console.log(Expo.Constants)
-//test:not storybook:__DEV__
+console.log(Expo.Constants.isDevice)
+//test:both OK
 //dev:storybook:
 //expo0:not storybook->testflight?
 //expo1:storybook
 //module.exports = CycleRoot
 //module.exports = StorybookUI
-module.exports = Expo.Constants.manifest.extra.enableStoryBook || (__DEV__ && typeof __TEST__ == 'undefined') ? StorybookUI : CycleRoot;
+//module.exports = Expo.Constants.manifest.extra.enableStoryBook || (__DEV__ && typeof __TEST__ == 'undefined') ? StorybookUI : CycleRoot;
+module.exports = Expo.Constants.isDevice ? CycleRoot : StorybookUI
 
 const styles = StyleSheet.create({
   container: {
