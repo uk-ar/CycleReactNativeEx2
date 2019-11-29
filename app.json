@@ -5,6 +5,9 @@
     "name": "CycleReactNativeEx2",
     "extra": {
       "enableStoryBook":false
-    }
+    },
+    "ios": {
+      "bundleIdentifier": "com.ukar.biblio"
+    },
   }
 }
