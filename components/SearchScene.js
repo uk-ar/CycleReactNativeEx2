@@ -3,6 +3,7 @@ import { Animated,Text,View } from 'react-native';
 import { ButtonGroup, SearchBar } from 'react-native-elements';
 import materialColor from 'material-colors';
 import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from './Book/BookCell';
+import FAIcon from 'react-native-vector-icons/FontAwesome';
 
 import PropTypes from 'prop-types';
 import { withCycle } from '../cycle-react-native';
@@ -14,10 +15,12 @@ class SearchScene extends React.Component {
     onClearText:PropTypes.func,
     onChangeFilter:PropTypes.func,
     onPress:PropTypes.func,
-    onEndReached:PropTypes.func
+    onEndReached:PropTypes.func,
+    onPressSetting:PropTypes.func
   }
   render () {
     let { onChangeText,onClearText,onChangeFilter,onPress,onEndReached,
+          onPressSetting,
           showLoadingIcon,selectedIndex,data,searchedBooksStatus,
     } = this.props
     rejects = [[],["noCollection"],["noCollection","onLoan"]]
