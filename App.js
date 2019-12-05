@@ -79,22 +79,6 @@ const AppNavigator = StackNavigator({
   Chat: {  screen: ChatScreen },
 });
 const initialState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Home'));
-reducer = (state=initialState,action)=>{
-  const nextState = AppNavigator.router.getStateForAction(action, state);
-  return nextState || state;
-}
-const navReducer = (state = initialState, action) => {
-  const nextState = AppNavigator.router.getStateForAction(action, state);
-
-  console.log(nextState,state,action)
-  //{index:0,routes:Array(1)},{index:0,routes:Array(1)},{type:"@@redux/INIT"}
-  //{index:1,routes:Array(2)},{index:0,routes:Array(1)},{type:"Navigation/NAVIGATE",routeName:"Chat",params:{...}}
-  // Simply return the original `state` if `nextState` is null or undefined.
-  return nextState || state;
-};
-const appReducer = combineReducers({
-  nav: navReducer,
-});
 //redux
 class App extends React.Component {
   constructor(props) {
@@ -116,12 +100,16 @@ class App extends React.Component {
               const nextState = AppNavigator
                 .router.getStateForAction(action, state);
               console.log(nextState,state,action)
+              //{index:0,routes:Array(1)},{index:0,routes:Array(1)},{type:"@@redux/INIT"}
+              //{index:1,routes:Array(2)},{index:0,routes:Array(1)},{type:"Navigation/NAVIGATE",routeName:"Chat",params:{...}}
+              // Simply return the original `state` if `nextState` is null or undefined.
               this.setState({state:nextState || state})
             },
             //state: this.props.nav,//{index:0,routes:Array(1)}
             state: this.state.state,//{index:0,routes:Array(1)}
             //state:
-        })}
+          })}
+          screenProps={this.props.screenProps}
       />
     )
   }
@@ -178,11 +166,17 @@ const My = StackNavigator({
   //Home: {  screen: HomeScreen },
   Home: {  screen: (props)=>
     {
-      screenProps=JSON.parse(props.screenProps)
+      console.log(props)
+      //screenProps=JSON.parse(props.screenProps)
+      let { searchedBooks, searchedBooksStatus,
+            booksLoadingState, selectedIndex } = props.screenProps
       return(
         <SearchScene
           selector={"search"}
-          {...screenProps}
+          showLoadingIcon={ booksLoadingState}
+          selectedIndex={ selectedIndex }
+          searchedBooksStatus={searchedBooksStatus}
+          data={searchedBooks}
         />)
     }
   },
@@ -213,11 +207,13 @@ function view(state$) {
     //return(<Stack />)
     // https://github.com/react-community/react-navigation/issues/740#issuecomment-288231202
     console.log("v:",searchedBooks)
-    return(<App/>)
+    //return(<App/>)
     //return(<Nav/>)
     //return(<App1/>)
     screenProps = JSON.stringify({searchedBooks,searchedBooksStatus,
                                   booksLoadingState, selectedIndex})
+    screenProps = {searchedBooks,searchedBooksStatus,
+                   booksLoadingState, selectedIndex}
     return(<My
              screenProps={screenProps}
            />)
@@ -283,10 +279,10 @@ console.log(Expo.Constants.isDevice)
 //dev:storybook:
 //expo0:not storybook->testflight?
 //expo1:storybook
-//module.exports = CycleRoot
+module.exports = CycleRoot
 //module.exports = Navigator
 //module.exports = Root
-module.exports = App
+//module.exports = App
 //module.exports = StorybookUI
 //module.exports = Expo.Constants.manifest.extra.enableStoryBook || (__DEV__ && typeof __TEST__ == 'undefined') ? StorybookUI : CycleRoot;
 //module.exports = Expo.Constants.isDevice ? CycleRoot : StorybookUI
