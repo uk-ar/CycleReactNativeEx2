@@ -9,12 +9,10 @@ import Rx from 'rxjs/Rx';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import { SearchScene } from './components/SearchScene';
 import { run } from '@cycle/rxjs-run';
+import { Constants, WebBrowser } from 'expo';
 
 import { intent,model } from './intent';
 //const view = require('./view');
-
-import { createStore,combineReducers } from 'redux';
-import { Provider,connect } from 'react-redux';
 
 import {
   Cycle,
@@ -33,67 +31,51 @@ import {
 
 class ChatScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
-    title: `Chat with ${navigation.state.params.user}`,
+    title: `Setting`,
   });
   render() {
-    // The screen's current route is passed in to `props.navigation.state`:
     const { params } = this.props.navigation.state;
     return (
       <View>
-        <Text>Chat with {params.user}</Text>
+        <Text>Hello world</Text>
       </View>
     );
   }
 }
 
-class HomeScreen extends React.Component {
+class SearchScreen extends React.Component {
   static navigationOptions = {
-    title: 'Home'
+    title: 'Search'
   };
   render() {
     const { navigate } = this.props.navigation;
-    console.log(this.props)
-    return (
-      <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-        <Text onPress={()=>navigate('Chat',{user:'Aya'})}>HomeScreen?</Text>
-        <Cycle.Text style={styles.button} selector="button">Increment</Cycle.Text>
-      </View>
+    const { searchedBooks, searchedBooksStatus,
+            booksLoadingState, selectedIndex } = this.props.screenProps
+
+    return(
+      <SearchScene
+        selector={"search"}
+        showLoadingIcon={ booksLoadingState}
+        selectedIndex={ selectedIndex }
+        searchedBooksStatus={searchedBooksStatus}
+        onPressSetting={()=>navigate('Chat',{user:'Aya'})}
+        onPress={async ({item,index})=>{
+            const url = searchedBooksStatus[item.isbn].reserveUrl
+            if(url){
+              let result = await WebBrowser.openBrowserAsync(url);
+              console.log(result)
+            }
+          }}
+        data={searchedBooks}
+      />
     )
   }
 }
 
-const Navigator = StackNavigator({
-  Home: {  screen: CycleRoot },
-  Chat: {  screen: CycleRoot },
-});
-
 // https://github.com/react-community/react-navigation/issues/1232
 // screenProps
-const My = StackNavigator({
-  Home: {  screen: (props)=>
-    {
-      console.log(props)
-      let { searchedBooks, searchedBooksStatus,
-            booksLoadingState, selectedIndex } = props.screenProps
-      const { navigate } = props.navigation;
-      return(
-        <View>
-          <FAIcon
-            name={"gear"} size={20}
-            style={{alignSelf:"center"}}
-            onPress={()=>navigate('Chat',{user:'Aya'})}
-          />
-          <SearchScene
-            selector={"search"}
-            showLoadingIcon={ booksLoadingState}
-            selectedIndex={ selectedIndex }
-            searchedBooksStatus={searchedBooksStatus}
-            data={searchedBooks}
-          />
-        </View>
-      )
-    }
-  },
+const Navigator = StackNavigator({
+  Home: {  screen: SearchScreen },
   Chat: {  screen: ChatScreen },
 });
 
@@ -105,13 +87,14 @@ function view(state$) {
     console.log("v:",searchedBooks)
     screenProps = {searchedBooks,searchedBooksStatus,
                    booksLoadingState, selectedIndex}
-    return(<My
+    return(<Navigator
              screenProps={screenProps}
            />)
   })
 }
 //TODO:change top level props name
-//TODO:set library
+//TODO:set library_id
+//TODO:clear search field
 //TODO:set expo release-channel
 //https://docs.expo.io/versions/latest/guides/release-channels.html
 

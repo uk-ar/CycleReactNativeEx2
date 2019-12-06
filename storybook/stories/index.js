@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList,TouchableOpacity,Animated,Text,View } from 'react-native';
+import { StyleSheet,FlatList,TouchableOpacity,Animated,Text,View } from 'react-native';
 
 import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
@@ -11,9 +11,11 @@ import materialColor from 'material-colors';
 import { CenterLeftView, CenterView } from './CenterView';
 import { CloseableView } from '../../components/CloseableView';
 import { CycleRoot } from '../../cycle-react-native';
+import { itemsInfo, TouchableElement } from '../../components/Book/common';
 import { SearchScene } from '../../components/SearchScene';
 
 import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from '../../components/Book/BookCell';
+import FAIcon from 'react-native-vector-icons/FontAwesome';
 
 storiesOf('LibraryStatus', module)
   .addDecorator(getStory => <CenterLeftView>{getStory()}</CenterLeftView>)
@@ -423,5 +425,126 @@ storiesOf('SearchScene', module)
           thumbnail:'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2147/9784834032147.jpg?_ex=200x200',
           bucket:"liked",
         }]}
+    />
+  ))
+
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+  },
+  rowCenter: {
+    flexDirection: 'row',
+    alignItems: "center"
+  },
+  cell: {
+    flexDirection: 'row',
+    backgroundColor: materialColor.grey['50'],//for TouchableElement
+  },
+  border:{
+    flex:1,
+    marginRight:10,
+    padding:5,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderTopWidth: StyleSheet.hairlineWidth
+  },
+  title: {//bookTitle
+    fontSize: 16,
+    fontWeight: '500',
+    //flex:1,
+    //marginBottom: 2,
+  },
+  subtitle: {//bookAuther
+    // color: '#999999',
+    color: '#9E9E9E', // grey
+    fontSize: 12,
+  },
+})
+
+import emptyFunction from 'fbjs/lib/emptyFunction'
+class Library extends React.PureComponent {
+  static defaultProps = {
+    onPress:emptyFunction
+  }
+  render() {
+    const { thumbnail, title, subtitle, onPress, style, icon, status, isbn,reserveUrl } =
+      this.props
+    return (
+      <TouchableElement
+        onPress={onPress}
+        style={style}>
+        <View style={styles.cell}>
+          {/* left */}
+          <FAIcon
+            name={"building-o"} size={20}
+            style={{
+              alignSelf:"center",
+              margin: 10,
+            }}
+          />
+          {/* right */}
+          <View style={styles.border}>
+            <Text style={styles.title} numberOfLines={2}>
+              { title }
+            </Text>
+            <Text style={styles.subtitle} numberOfLines={1}>
+              { subtitle }
+            </Text>
+          </View>
+        </View>
+      </TouchableElement>
+    );
+  }
+}
+
+class LibraryList extends React.PureComponent {
+  _keyExtractor = (book, index) => book.isbn;
+  _onPress = async (isbn,url) =>{
+    //https://docs.expo.io/versions/latest/sdk/webbrowser.html
+    let result = await WebBrowser.openBrowserAsync(url);
+    this.setState({ result });
+  }
+  _renderItem = ({item,index}) => {
+    //closed = this.props.rejects && this.props.rejects.includes(item.status)
+    extraData = this.props.extraData || {}
+    library = extraData && extraData[item.isbn] ? extraData[item.isbn] :
+              extraData ? { status:"Loading" } : {}
+    rejects = extraData.rejects || []
+    closed  = rejects.includes(library.status)
+    return (
+      <CloseableView closed={closed}>
+        <Book
+          onPress={(isbn,url)=>
+            this.props.onPress && this.props.onPress({item, index})}
+          isbn={item.isbn}
+          title={item.title}
+          author={item.author}
+          thumbnail={item.thumbnail}
+          icon={icons[item.bucket]}
+          reserveUrl={library.reserveUrl}
+          status={libraryStatuses[library.status]}
+        />
+      </CloseableView>
+    );}
+  render() {
+    return (
+      //        extraData={this.state}
+      <FlatList
+        data={this.props.data}
+        extraData={this.props.extraData}
+        keyExtractor={this._keyExtractor}
+        renderItem={this._renderItem}
+        onEndReached={this.props.onEndReached}
+      />
+    );
+  }
+}
+
+storiesOf('Library', module)
+  .add('with plane', () => (
+    <Library
+      title="foo"
+      subtitle="bar"
     />
   ))

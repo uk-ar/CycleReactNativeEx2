@@ -3732,6 +3732,111 @@ exports[`Storyshots FlatList with three 1`] = `
 </View>
 `;
 
+exports[`Storyshots Library with plane 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  hasTVPreferredFocus={undefined}
+  hitSlop={undefined}
+  isTVSelectable={true}
+  nativeID={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+      },
+      undefined,
+    ]
+  }
+  testID={undefined}
+  tvParallaxProperties={undefined}
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#fafafa",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={false}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "color": undefined,
+            "fontSize": 20,
+          },
+          Object {
+            "alignSelf": "center",
+            "margin": 10,
+          },
+          Object {
+            "fontFamily": "awesome",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+        ]
+      }
+    >
+      
+    </Text>
+    <View
+      style={
+        Object {
+          "borderBottomWidth": 0.5,
+          "borderColor": "rgba(0, 0, 0, 0.1)",
+          "borderTopWidth": 0.5,
+          "flex": 1,
+          "marginRight": 10,
+          "padding": 5,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        numberOfLines={2}
+        style={
+          Object {
+            "fontSize": 16,
+            "fontWeight": "500",
+          }
+        }
+      >
+        foo
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        numberOfLines={1}
+        style={
+          Object {
+            "color": "#9E9E9E",
+            "fontSize": 12,
+          }
+        }
+      >
+        bar
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`Storyshots LibraryStatus with loading 1`] = `
 <View
   style={
@@ -3813,416 +3918,649 @@ exports[`Storyshots LibraryStatus with text and color 1`] = `
 
 exports[`Storyshots Main cycle 1`] = `
 <View
+  onLayout={[Function]}
   style={
-    Object {
-      "paddingTop": 44,
-    }
+    Array [
+      Object {
+        "flex": 1,
+      },
+    ]
   }
 >
-  <View>
-    <View
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#393e42",
-            "borderBottomColor": "#000",
-            "borderBottomWidth": 1,
-            "borderTopColor": "#000",
-            "borderTopWidth": 1,
-          },
-          Object {
-            "backgroundColor": "#e1e8ee",
-            "borderBottomColor": "#e1e1e1",
-            "borderTopColor": "#e1e1e1",
-          },
-          Object {
-            "backgroundColor": "#fafafa",
-          },
-        ]
-      }
-    >
-      <TextInput
-        allowFontScaling={true}
-        onChangeText={[Function]}
-        onClearText={undefined}
-        placeholder="Type Here..."
-        placeholderTextColor="#86939e"
-        style={
-          Array [
-            Object {
-              "backgroundColor": "#303337",
-              "borderRadius": 3,
-              "color": "#86939e",
-              "fontSize": 17.5,
-              "height": 30,
-              "margin": 8,
-              "overflow": "hidden",
-              "paddingLeft": 26,
-              "paddingRight": 19,
-            },
-            Object {
-              "backgroundColor": "#bdc6cf",
-            },
-            false,
-            false,
-            Object {
-              "backgroundColor": "#eeeeee",
-            },
-            undefined,
-            false,
-          ]
-        }
-        underlineColorAndroid="transparent"
-      />
-      <Text
-        accessible={true}
-        allowFontScaling={false}
-        ellipsizeMode="tail"
-        style={
-          Array [
-            Object {
-              "color": "#86939e",
-              "fontSize": 16,
-            },
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "position": "absolute",
-                "top": 15.5,
-              },
-              Object {
-                "left": 16,
-              },
-              undefined,
-            ],
-            Object {
-              "fontFamily": "Material Icons",
-              "fontStyle": "normal",
-              "fontWeight": "normal",
-            },
-          ]
-        }
-      >
-        
-      </Text>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#f5f5f5",
-            "borderColor": "#e3e3e3",
-            "borderRadius": 3,
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "height": 40,
-            "marginBottom": 5,
-            "marginLeft": 10,
-            "marginRight": 10,
-            "marginTop": 5,
-            "overflow": "hidden",
-          },
-          Object {
-            "height": 30,
-          },
-        ]
-      }
-    >
-      <View
-        accessibilityComponentType={undefined}
-        accessibilityLabel={undefined}
-        accessibilityTraits={undefined}
-        accessible={true}
-        hasTVPreferredFocus={undefined}
-        hitSlop={undefined}
-        isTVSelectable={true}
-        nativeID={undefined}
-        onLayout={undefined}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-            },
-            Array [
-              Object {
-                "flex": 1,
-              },
-              Object {
-                "borderRightColor": "#bdc6cf",
-                "borderRightWidth": 0,
-              },
-              false,
-              false,
-              Object {
-                "borderBottomLeftRadius": 3,
-                "borderTopLeftRadius": 3,
-              },
-              Object {
-                "backgroundColor": "white",
-              },
-            ],
-          ]
-        }
-        testID={undefined}
-        tvParallaxProperties={undefined}
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flex": 1,
-                "justifyContent": "center",
-              },
-              undefined,
-            ]
-          }
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Array [
-                Object {},
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                Array [
-                  Object {
-                    "color": "#5e6977",
-                    "fontSize": 16.25,
-                    "fontWeight": "500",
-                  },
-                  undefined,
-                  Object {
-                    "color": "#43484d",
-                  },
-                  undefined,
-                ],
-              ]
-            }
-          >
-            全て
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityComponentType={undefined}
-        accessibilityLabel={undefined}
-        accessibilityTraits={undefined}
-        accessible={true}
-        hasTVPreferredFocus={undefined}
-        hitSlop={undefined}
-        isTVSelectable={true}
-        nativeID={undefined}
-        onLayout={undefined}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-            },
-            Array [
-              Object {
-                "flex": 1,
-              },
-              Object {
-                "borderRightColor": "#bdc6cf",
-                "borderRightWidth": 1,
-              },
-              Object {
-                "borderLeftColor": "#bdc6cf",
-                "borderLeftWidth": 1,
-              },
-              false,
-              false,
-              false,
-            ],
-          ]
-        }
-        testID={undefined}
-        tvParallaxProperties={undefined}
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flex": 1,
-                "justifyContent": "center",
-              },
-              undefined,
-            ]
-          }
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Array [
-                Object {},
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                Array [
-                  Object {
-                    "color": "#5e6977",
-                    "fontSize": 16.25,
-                    "fontWeight": "500",
-                  },
-                  undefined,
-                  false,
-                  false,
-                ],
-              ]
-            }
-          >
-            蔵書あり
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityComponentType={undefined}
-        accessibilityLabel={undefined}
-        accessibilityTraits={undefined}
-        accessible={true}
-        hasTVPreferredFocus={undefined}
-        hitSlop={undefined}
-        isTVSelectable={true}
-        nativeID={undefined}
-        onLayout={undefined}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-            },
-            Array [
-              Object {
-                "flex": 1,
-              },
-              false,
-              false,
-              Object {
-                "borderBottomRightRadius": 3,
-                "borderTopRightRadius": 3,
-              },
-              false,
-              false,
-            ],
-          ]
-        }
-        testID={undefined}
-        tvParallaxProperties={undefined}
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flex": 1,
-                "justifyContent": "center",
-              },
-              undefined,
-            ]
-          }
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Array [
-                Object {},
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                Array [
-                  Object {
-                    "color": "#5e6977",
-                    "fontSize": 16.25,
-                    "fontWeight": "500",
-                  },
-                  undefined,
-                  false,
-                  false,
-                ],
-              ]
-            }
-          >
-            貸出可
-          </Text>
-        </View>
-      </View>
-    </View>
-    <RCTScrollView
-      data={Array []}
-      disableVirtualization={false}
-      extraData={
+  <View
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    style={
+      Array [
         Object {
-          "rejects": Array [],
+          "flex": 1,
+          "flexDirection": "column-reverse",
+        },
+        Object {
+          "backgroundColor": "#000",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Object {
+          "flex": 1,
         }
       }
-      getItem={[Function]}
-      getItemCount={[Function]}
-      horizontal={false}
-      initialNumToRender={10}
-      keyExtractor={[Function]}
-      maxToRenderPerBatch={10}
-      numColumns={1}
-      onContentSizeChange={[Function]}
-      onEndReached={[Function]}
-      onEndReachedThreshold={2}
-      onLayout={[Function]}
-      onMomentumScrollEnd={[Function]}
-      onScroll={[Function]}
-      onScrollBeginDrag={[Function]}
-      onScrollEndDrag={[Function]}
-      renderItem={[Function]}
-      scrollEventThrottle={50}
-      stickyHeaderIndices={Array []}
-      updateCellsBatchingPeriod={50}
-      viewabilityConfigCallbackPairs={Array []}
-      windowSize={21}
     >
-      <View />
-    </RCTScrollView>
+      <View
+        collapsable={undefined}
+        pointerEvents="auto"
+        style={
+          Object {
+            "backgroundColor": "#E9E9EF",
+            "bottom": 0,
+            "left": 0,
+            "opacity": 1,
+            "position": "absolute",
+            "right": 0,
+            "shadowColor": "black",
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0.2,
+            "shadowRadius": 5,
+            "top": 0,
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+              Object {
+                "translateY": 0,
+              },
+            ],
+          }
+        }
+      >
+        <View>
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#393e42",
+                    "borderBottomColor": "#000",
+                    "borderBottomWidth": 1,
+                    "borderTopColor": "#000",
+                    "borderTopWidth": 1,
+                  },
+                  Object {
+                    "backgroundColor": "#e1e8ee",
+                    "borderBottomColor": "#e1e1e1",
+                    "borderTopColor": "#e1e1e1",
+                  },
+                  Object {
+                    "backgroundColor": "#fafafa",
+                    "flex": 1,
+                  },
+                ]
+              }
+            >
+              <TextInput
+                allowFontScaling={true}
+                onChangeText={[Function]}
+                onClearText={undefined}
+                placeholder="Type Here..."
+                placeholderTextColor="#86939e"
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#303337",
+                      "borderRadius": 3,
+                      "color": "#86939e",
+                      "fontSize": 17.5,
+                      "height": 30,
+                      "margin": 8,
+                      "overflow": "hidden",
+                      "paddingLeft": 26,
+                      "paddingRight": 19,
+                    },
+                    Object {
+                      "backgroundColor": "#bdc6cf",
+                    },
+                    false,
+                    false,
+                    Object {
+                      "backgroundColor": "#eeeeee",
+                    },
+                    undefined,
+                    false,
+                  ]
+                }
+                underlineColorAndroid="transparent"
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={false}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#86939e",
+                      "fontSize": 16,
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                        "position": "absolute",
+                        "top": 15.5,
+                      },
+                      Object {
+                        "left": 16,
+                      },
+                      undefined,
+                    ],
+                    Object {
+                      "fontFamily": "Material Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+            <Text
+              accessible={true}
+              allowFontScaling={false}
+              ellipsizeMode="tail"
+              onPress={[Function]}
+              style={
+                Array [
+                  Object {
+                    "color": undefined,
+                    "fontSize": 20,
+                  },
+                  Object {
+                    "alignSelf": "center",
+                    "padding": 10,
+                  },
+                  Object {
+                    "fontFamily": "awesome",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                ]
+              }
+            >
+              
+            </Text>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#f5f5f5",
+                  "borderColor": "#e3e3e3",
+                  "borderRadius": 3,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "marginBottom": 5,
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 5,
+                  "overflow": "hidden",
+                },
+                Object {
+                  "height": 30,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityComponentType={undefined}
+              accessibilityLabel={undefined}
+              accessibilityTraits={undefined}
+              accessible={true}
+              hasTVPreferredFocus={undefined}
+              hitSlop={undefined}
+              isTVSelectable={true}
+              nativeID={undefined}
+              onLayout={undefined}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                  },
+                  Array [
+                    Object {
+                      "flex": 1,
+                    },
+                    Object {
+                      "borderRightColor": "#bdc6cf",
+                      "borderRightWidth": 0,
+                    },
+                    false,
+                    false,
+                    Object {
+                      "borderBottomLeftRadius": 3,
+                      "borderTopLeftRadius": 3,
+                    },
+                    Object {
+                      "backgroundColor": "white",
+                    },
+                  ],
+                ]
+              }
+              testID={undefined}
+              tvParallaxProperties={undefined}
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flex": 1,
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {},
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      Array [
+                        Object {
+                          "color": "#5e6977",
+                          "fontSize": 16.25,
+                          "fontWeight": "500",
+                        },
+                        undefined,
+                        Object {
+                          "color": "#43484d",
+                        },
+                        undefined,
+                      ],
+                    ]
+                  }
+                >
+                  全て
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityComponentType={undefined}
+              accessibilityLabel={undefined}
+              accessibilityTraits={undefined}
+              accessible={true}
+              hasTVPreferredFocus={undefined}
+              hitSlop={undefined}
+              isTVSelectable={true}
+              nativeID={undefined}
+              onLayout={undefined}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                  },
+                  Array [
+                    Object {
+                      "flex": 1,
+                    },
+                    Object {
+                      "borderRightColor": "#bdc6cf",
+                      "borderRightWidth": 1,
+                    },
+                    Object {
+                      "borderLeftColor": "#bdc6cf",
+                      "borderLeftWidth": 1,
+                    },
+                    false,
+                    false,
+                    false,
+                  ],
+                ]
+              }
+              testID={undefined}
+              tvParallaxProperties={undefined}
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flex": 1,
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {},
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      Array [
+                        Object {
+                          "color": "#5e6977",
+                          "fontSize": 16.25,
+                          "fontWeight": "500",
+                        },
+                        undefined,
+                        false,
+                        false,
+                      ],
+                    ]
+                  }
+                >
+                  蔵書あり
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityComponentType={undefined}
+              accessibilityLabel={undefined}
+              accessibilityTraits={undefined}
+              accessible={true}
+              hasTVPreferredFocus={undefined}
+              hitSlop={undefined}
+              isTVSelectable={true}
+              nativeID={undefined}
+              onLayout={undefined}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                  },
+                  Array [
+                    Object {
+                      "flex": 1,
+                    },
+                    false,
+                    false,
+                    Object {
+                      "borderBottomRightRadius": 3,
+                      "borderTopRightRadius": 3,
+                    },
+                    false,
+                    false,
+                  ],
+                ]
+              }
+              testID={undefined}
+              tvParallaxProperties={undefined}
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flex": 1,
+                      "justifyContent": "center",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {},
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      Array [
+                        Object {
+                          "color": "#5e6977",
+                          "fontSize": 16.25,
+                          "fontWeight": "500",
+                        },
+                        undefined,
+                        false,
+                        false,
+                      ],
+                    ]
+                  }
+                >
+                  貸出可
+                </Text>
+              </View>
+            </View>
+          </View>
+          <RCTScrollView
+            data={Array []}
+            disableVirtualization={false}
+            extraData={
+              Object {
+                "rejects": Array [],
+              }
+            }
+            getItem={[Function]}
+            getItemCount={[Function]}
+            horizontal={false}
+            initialNumToRender={10}
+            keyExtractor={[Function]}
+            maxToRenderPerBatch={10}
+            numColumns={1}
+            onContentSizeChange={[Function]}
+            onEndReached={[Function]}
+            onEndReachedThreshold={2}
+            onLayout={[Function]}
+            onMomentumScrollEnd={[Function]}
+            onScroll={[Function]}
+            onScrollBeginDrag={[Function]}
+            onScrollEndDrag={[Function]}
+            renderItem={[Function]}
+            scrollEventThrottle={50}
+            stickyHeaderIndices={Array []}
+            updateCellsBatchingPeriod={50}
+            viewabilityConfigCallbackPairs={Array []}
+            windowSize={21}
+          >
+            <View />
+          </RCTScrollView>
+        </View>
+      </View>
+    </View>
+    <View
+      cardStyle={undefined}
+      collapsable={undefined}
+      getScreenDetails={[Function]}
+      headerMode={undefined}
+      index={0}
+      layout={
+        Object {
+          "height": 0,
+          "initHeight": 0,
+          "initWidth": 0,
+          "isMeasured": false,
+          "width": 0,
+        }
+      }
+      mode="float"
+      navigation={
+        Object {
+          "dispatch": [Function],
+          "goBack": [Function],
+          "navigate": [Function],
+          "setParams": [Function],
+          "state": Object {
+            "index": 0,
+            "routes": Array [
+              Object {
+                "key": "Init-id-1512597209648-0",
+                "routeName": "Home",
+              },
+            ],
+          },
+        }
+      }
+      router={
+        Object {
+          "getActionForPathAndParams": [Function],
+          "getComponentForRouteName": [Function],
+          "getComponentForState": [Function],
+          "getPathAndParamsForState": [Function],
+          "getScreenConfig": [Function],
+          "getScreenOptions": [Function],
+          "getStateForAction": [Function],
+        }
+      }
+      transitionConfig={undefined}
+    >
+      <View
+        onLayout={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#F7F7F7",
+            "borderBottomColor": "rgba(0, 0, 0, .3)",
+            "borderBottomWidth": 0.5,
+            "height": 64,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 20,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flex": 1,
+            }
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                Object {
+                  "flexDirection": "row",
+                },
+              ]
+            }
+          >
+            <View
+              collapsable={undefined}
+              pointerEvents="box-none"
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "bottom": 0,
+                  "justifyContent": "center",
+                  "left": 0,
+                  "opacity": 1,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "transform": Array [
+                    Object {
+                      "translateX": 0,
+                    },
+                  ],
+                }
+              }
+            >
+              <Text
+                accessibilityTraits="header"
+                accessible={true}
+                allowFontScaling={true}
+                collapsable={undefined}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                onLayout={[Function]}
+                style={
+                  Object {
+                    "color": "rgba(0, 0, 0, .9)",
+                    "fontSize": 17,
+                    "fontWeight": "600",
+                    "marginHorizontal": 16,
+                    "textAlign": "center",
+                  }
+                }
+              >
+                Search
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
   </View>
 </View>
 `;
@@ -4336,109 +4674,143 @@ exports[`Storyshots SearchScene with class 1`] = `
 <View>
   <View
     style={
-      Array [
-        Object {
-          "backgroundColor": "#393e42",
-          "borderBottomColor": "#000",
-          "borderBottomWidth": 1,
-          "borderTopColor": "#000",
-          "borderTopWidth": 1,
-        },
-        Object {
-          "backgroundColor": "#e1e8ee",
-          "borderBottomColor": "#e1e1e1",
-          "borderTopColor": "#e1e1e1",
-        },
-        Object {
-          "backgroundColor": "#fafafa",
-        },
-      ]
+      Object {
+        "flexDirection": "row",
+      }
     }
   >
-    <TextInput
-      allowFontScaling={true}
-      onChangeText={[Function]}
-      onClearText={[Function]}
-      placeholder="Type Here..."
-      placeholderTextColor="#86939e"
+    <View
       style={
         Array [
           Object {
-            "backgroundColor": "#303337",
-            "borderRadius": 3,
-            "color": "#86939e",
-            "fontSize": 17.5,
-            "height": 30,
-            "margin": 8,
-            "overflow": "hidden",
-            "paddingLeft": 26,
-            "paddingRight": 19,
+            "backgroundColor": "#393e42",
+            "borderBottomColor": "#000",
+            "borderBottomWidth": 1,
+            "borderTopColor": "#000",
+            "borderTopWidth": 1,
           },
           Object {
-            "backgroundColor": "#bdc6cf",
+            "backgroundColor": "#e1e8ee",
+            "borderBottomColor": "#e1e1e1",
+            "borderTopColor": "#e1e1e1",
           },
-          false,
-          false,
           Object {
-            "backgroundColor": "#eeeeee",
-          },
-          undefined,
-          Object {
-            "paddingRight": 30,
+            "backgroundColor": "#fafafa",
+            "flex": 1,
           },
         ]
       }
-      underlineColorAndroid="transparent"
-    />
-    <Text
-      accessible={true}
-      allowFontScaling={false}
-      ellipsizeMode="tail"
-      style={
-        Array [
-          Object {
-            "color": "#86939e",
-            "fontSize": 16,
-          },
+    >
+      <TextInput
+        allowFontScaling={true}
+        onChangeText={[Function]}
+        onClearText={[Function]}
+        placeholder="Type Here..."
+        placeholderTextColor="#86939e"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#303337",
+              "borderRadius": 3,
+              "color": "#86939e",
+              "fontSize": 17.5,
+              "height": 30,
+              "margin": 8,
+              "overflow": "hidden",
+              "paddingLeft": 26,
+              "paddingRight": 19,
+            },
+            Object {
+              "backgroundColor": "#bdc6cf",
+            },
+            false,
+            false,
+            Object {
+              "backgroundColor": "#eeeeee",
+            },
+            undefined,
+            Object {
+              "paddingRight": 30,
+            },
+          ]
+        }
+        underlineColorAndroid="transparent"
+      />
+      <Text
+        accessible={true}
+        allowFontScaling={false}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "#86939e",
+              "fontSize": 16,
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "position": "absolute",
+                "top": 15.5,
+              },
+              Object {
+                "left": 16,
+              },
+              undefined,
+            ],
+            Object {
+              "fontFamily": "Material Icons",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+          ]
+        }
+      >
+        
+      </Text>
+      <ActivityIndicator
+        animating={true}
+        color="#86939e"
+        hidesWhenStopped={true}
+        size="small"
+        style={
           Array [
             Object {
               "backgroundColor": "transparent",
               "position": "absolute",
-              "top": 15.5,
-            },
-            Object {
-              "left": 16,
+              "right": 16,
+              "top": 13,
             },
             undefined,
-          ],
+            undefined,
+          ]
+        }
+      />
+    </View>
+    <Text
+      accessible={true}
+      allowFontScaling={false}
+      ellipsizeMode="tail"
+      onPress={[Function]}
+      style={
+        Array [
           Object {
-            "fontFamily": "Material Icons",
+            "color": undefined,
+            "fontSize": 20,
+          },
+          Object {
+            "alignSelf": "center",
+            "padding": 10,
+          },
+          Object {
+            "fontFamily": "awesome",
             "fontStyle": "normal",
             "fontWeight": "normal",
           },
         ]
       }
     >
-      
+      
     </Text>
-    <ActivityIndicator
-      animating={true}
-      color="#86939e"
-      hidesWhenStopped={true}
-      size="small"
-      style={
-        Array [
-          Object {
-            "backgroundColor": "transparent",
-            "position": "absolute",
-            "right": 16,
-            "top": 13,
-          },
-          undefined,
-          undefined,
-        ]
-      }
-    />
   </View>
   <View
     style={
