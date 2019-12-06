@@ -19,7 +19,7 @@ import {
   libraryStatuses,
   BookDetail,
 } from "./BookCell";
-import { WebBrowser } from "expo";
+import * as WebBrowser from "expo-web-browser";
 import { TouchableElement } from "./common";
 import FAIcon from "react-native-vector-icons/FontAwesome";
 import emptyFunction from "fbjs/lib/emptyFunction";

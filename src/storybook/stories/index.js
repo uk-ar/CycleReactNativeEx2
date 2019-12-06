@@ -11,7 +11,7 @@ import {
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
-import { WebBrowser } from "expo";
+import * as WebBrowser from "expo-web-browser";
 import { ButtonGroup, SearchBar } from "react-native-elements";
 import materialColor from "material-colors";
 

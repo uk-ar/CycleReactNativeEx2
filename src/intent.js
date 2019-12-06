@@ -7,6 +7,7 @@ function intent(RN, HTTP, AS) {
   // Actions
   const location$ = RN.select("location")
     .events("location")
+    .do(e => console.log("loc", e))
     .map(({ coords, timestamp }) => ({
       geocode: coords.longitude + "," + coords.latitude,
       //geocode:136.7163027+","+35.390516,
@@ -71,8 +72,8 @@ function intent(RN, HTTP, AS) {
               acc[systemid].formal.push(formal);
             }
             return acc;
-          }, {})
-      )
+          }, {}),
+      ),
     );
 
   const changeText$ = RN.select("search")
@@ -99,14 +100,14 @@ function intent(RN, HTTP, AS) {
     .map(e => (e && e.searchHistory) || [])
     .merge(submitText$.map(query => [query]))
     .scan((searchHistory, query) =>
-      query.concat(searchHistory.filter(e => e !== query[0]))
+      query.concat(searchHistory.filter(e => e !== query[0])),
     )
     .shareReplay();
 
   const storage$ = Rx.Observable.combineLatest(
     searchHistory$,
     library$,
-    (searchHistory, library) => ({ searchHistory, library })
+    (searchHistory, library) => ({ searchHistory, library }),
   ).do(e => console.log("strage", e));
 
   const press$ = RN.select("search").events("press");
@@ -163,7 +164,7 @@ function intent(RN, HTTP, AS) {
         .filter(book => book.isbn)
         // reject non book
         .filter(
-          book => book.isbn.startsWith("978") || book.isbn.startsWith("979")
+          book => book.isbn.startsWith("978") || book.isbn.startsWith("979"),
         )
         .map(({ title, author, isbn, largeImageUrl }) => ({
           title: title.replace(/^【バーゲン本】/, ""),
@@ -196,7 +197,7 @@ function intent(RN, HTTP, AS) {
           .scan((currentBooks, newBooks) => {
             isbns = currentBooks.map(book => book.isbn);
             return currentBooks.concat(
-              newBooks.filter(newBook => isbns.indexOf(newBook.isbn) == -1)
+              newBooks.filter(newBook => isbns.indexOf(newBook.isbn) == -1),
             );
           })
       );
@@ -240,7 +241,7 @@ function intent(RN, HTTP, AS) {
           }
           return result;
         })
-        .retryWhen(errors => errors.delay(2000))
+        .retryWhen(errors => errors.delay(2000)),
     )
     .switch()
     .map(result => result.books)
@@ -249,7 +250,7 @@ function intent(RN, HTTP, AS) {
     .map(bookStatuses =>
       Object.keys(bookStatuses).reduce((acc, isbn) => {
         let { libkey, reserveurl, status } = Object.values(
-          bookStatuses[isbn]
+          bookStatuses[isbn],
         )[0];
         libkey = libkey || {};
         //{xxxx.Tokyo_Fuchu.{libkey,reserveUrl,status}}
@@ -267,7 +268,7 @@ function intent(RN, HTTP, AS) {
           status: s,
         };
         return acc;
-      }, {})
+      }, {}),
     )
     //.do(e=>console.log("st",e))
     .distinctUntilChanged((i, j) => JSON.stringify(i) == JSON.stringify(j))
@@ -276,7 +277,7 @@ function intent(RN, HTTP, AS) {
   const request$ = Rx.Observable.merge(
     requestSearchedBooks$,
     requestSearchedBooksStatus$,
-    requestLibrary$
+    requestLibrary$,
   );
 
   return {
@@ -302,7 +303,7 @@ function intent(RN, HTTP, AS) {
 function model(actions) {
   const searchedBooks$ = actions.searchedBooks$.merge(
     actions.changeText$.map(_ => []),
-    actions.submitText$.map(_ => [])
+    actions.submitText$.map(_ => []),
   );
 
   const booksLoadingState$ = actions.changeQuery$
@@ -318,7 +319,7 @@ function model(actions) {
         .do(e => console.log("f", e.length))
         .filter(books => books.length === 0)
         .do(e => console.log(e))
-        .map(_ => false)
+        .map(_ => false),
     )
     .do(e => console.log(e));
 
@@ -329,7 +330,7 @@ function model(actions) {
     actions.screen$.startWith(["Home"]),
     actions.library$.startWith(""),
     actions.searchHistory$.map(searchHistory =>
-      searchHistory.map(e => ({ query: e }))
+      searchHistory.map(e => ({ query: e })),
     ),
     searchedBooks$.startWith([]),
     actions.searchedBooksStatus$.startWith({}),
@@ -347,7 +348,7 @@ function model(actions) {
       searchedBooksStatus,
       booksLoadingState,
       booksPagingState,
-      selectedIndex
+      selectedIndex,
     ) => ({
       location,
       libraries,
@@ -360,7 +361,7 @@ function model(actions) {
       booksLoadingState,
       booksPagingState,
       selectedIndex,
-    })
+    }),
   );
   return state$;
 }

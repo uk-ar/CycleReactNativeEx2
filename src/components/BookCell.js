@@ -1,7 +1,6 @@
 import React from "react";
 import FAIcon from "react-native-vector-icons/FontAwesome";
 import materialColor from "material-colors";
-import { WebBrowser } from "expo";
 import emptyFunction from "fbjs/lib/emptyFunction";
 
 import {
