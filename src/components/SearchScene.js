@@ -26,7 +26,7 @@ import emptyFunction from "fbjs/lib/emptyFunction";
 
 import PropTypes from "prop-types";
 import { withCycle } from "../cycle-react-native";
-import { createStackNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 
 const styles = StyleSheet.create({
   row: {
