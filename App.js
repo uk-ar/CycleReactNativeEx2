@@ -92,6 +92,7 @@ function view(state$) {
            />)
   })
 }
+//TODO:search history
 //TODO:change top level props name
 //TODO:set library_id
 //TODO:clear search field
