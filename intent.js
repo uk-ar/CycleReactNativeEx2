@@ -17,11 +17,26 @@ function intent(RN, HTTP) {
   const changeQuery$ = RN
     .select('search')
     .events('changeText')
-    .debounceTime(500)
     .filter(query => query.length > 1)
     .distinctUntilChanged()
-    //.do(e=>console.log(e))
+    .debounceTime(500)
     .share()
+
+  const searchHistory$ = RN
+    .select('search')
+    .events('submitEditing')
+    .debounceTime(600)//for auto correct delay
+    .withLatestFrom(
+      changeQuery$//.startWith("")
+    ).map(([first,second])=>second)
+    .do(e=>console.log("su",e))
+    .startWith([])
+    .scan((searchHistory,query) => (
+      [query].concat(
+          searchHistory.filter(e=> e !== query )
+      )))
+    .map(searchHistory=>
+      searchHistory.map(e=>({query:e})))
 
   const press$ = RN
     .select('search')
@@ -84,7 +99,8 @@ function intent(RN, HTTP) {
                 .switchMap((e)=>{
                   return HTTP
                     .select('search')
-                    .map(stream=>stream.retryWhen(errors=>errors.delay(1000)))
+                    .map(stream=>
+                      stream.retryWhen(errors=>errors.delay(1000)))
                     .mergeAll()
                     .do(e=>console.log(e))
                     .map(res => res.body)
@@ -179,6 +195,7 @@ function intent(RN, HTTP) {
                             requestSearchedBooksStatus$);
 
   return {
+    searchHistory$,
     requestSearchedBooks$,
     searchedBooksResponse$,
     searchedBooksStatus$,
@@ -202,13 +219,14 @@ function model(actions) {
   const state$ = Rx
     .Observable
     .combineLatest(
+      actions.searchHistory$.do(e=>console.log(e)),
       searchedBooks$.startWith([]),
       actions.searchedBooksStatus$.startWith({}),
       booksLoadingState$.startWith(false),
       actions.changeFilter$.startWith(0),
-      (searchedBooks, searchedBooksStatus, booksLoadingState,
+      (searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
        selectedIndex ) =>
-         ({ searchedBooks, searchedBooksStatus, booksLoadingState,
+         ({ searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
             selectedIndex }));
   return state$;
 }

@@ -375,20 +375,6 @@ storiesOf('SearchBar', module)
   ))
 
 storiesOf('SearchScene', module)
-  .add('with no items', () => (
-    <SearchScene
-      selector={"main"}
-      onChangeText={action('text-change')}
-      onClearText={action('text-clear')}
-      onChangeFilter={action('filter-change')}
-      onPress={action('book-press')}
-      onPressSetting={action('book-press-setting')}
-      showLoadingIcon={true}
-      selectedIndex={1}
-      rejects={[]}
-      data={null}
-    />
-  ))
   .add('with plane', () => (
     <View>
       <SearchBar
@@ -420,6 +406,25 @@ storiesOf('SearchScene', module)
           }]}
       />
     </View>
+  ))
+  .add('with no items', () => (
+    <SearchScene
+      selector={"main"}
+      onChangeText={action('text-change')}
+      onClearText={action('text-clear')}
+      onChangeFilter={action('filter-change')}
+      onPress={action('book-press')}
+      onPressSetting={action('book-press-setting')}
+      onSubmitEditing={()=>console.log("su")}
+      showLoadingIcon={true}
+      selectedIndex={1}
+      rejects={[]}
+      searchHistory={[
+        {query:"foo"},
+        {query:"bar"},
+      ]}
+      data={null}
+    />
   ))
   .add('with class', () => (
     <SearchScene

@@ -74,19 +74,12 @@ class SearchHistory extends React.PureComponent {
     );}
   render() {
     return (
-      <View>
-        <TouchableElement
-          onPress={()=>console.log("pre")}
-        >
-          <Text>foo</Text>
-        </TouchableElement>
-        <FlatList
-          keyboardShouldPersistTaps={'handled'}
-          data={this.props.data}
-          keyExtractor={this._keyExtractor}
-          renderItem={this._renderItem}
-        />
-      </View>
+      <FlatList
+        keyboardShouldPersistTaps={'handled'}
+        data={this.props.data}
+        keyExtractor={this._keyExtractor}
+        renderItem={this._renderItem}
+      />
     );
   }
 }
@@ -99,7 +92,8 @@ class SearchScene extends React.Component {
     onChangeFilter:PropTypes.func,
     onPress:PropTypes.func,
     onEndReached:PropTypes.func,
-    onPressSetting:PropTypes.func
+    onPressSetting:PropTypes.func,
+    onSubmitEditing:PropTypes.func
   }
   static defaultProps = {
     onChangeText:emptyFunction
@@ -112,13 +106,15 @@ class SearchScene extends React.Component {
     this.setState({text})
   }
   _onPressHistory = ({query}) => {
+    this.props.onChangeText(query)
+    this.props.onSubmitEditing()
     this.setState({text:query})
   }
   render () {
-    console.log(this.state.text)
     const { onChangeText,onClearText,onChangeFilter,onPress,onEndReached,
-            onPressSetting,
-            showLoadingIcon,selectedIndex,data,searchedBooksStatus,
+            onPressSetting,onSubmitEditing,
+            booksLoadingState,searchedBooks,selectedIndex,
+            searchedBooksStatus,searchHistory,
     } = this.props
     rejects = [[],["noCollection"],["noCollection","onLoan"]]
     extraData = {
@@ -129,15 +125,12 @@ class SearchScene extends React.Component {
       <BookList
         onPress={onPress}
         onEndReached={onEndReached}
-        data={data}
+        data={searchedBooks}
         extraData={extraData}
       />) : (
         <SearchHistory
           onPress={this._onPressHistory}
-          data={[
-            {query:"foo"},
-            {query:"bar"},
-          ]}
+          data={searchHistory}
         />
       )
     //Change TextInput value
@@ -154,8 +147,9 @@ class SearchScene extends React.Component {
             }}
             value={this.state.text}
             lightTheme
-            showLoadingIcon={showLoadingIcon}
+            showLoadingIcon={booksLoadingState}
             onChangeText={this._onChangeText}
+            onSubmitEditing={onSubmitEditing}
             placeholder='Type Here...' />
           <FAIcon
             name={"gear"} size={20}
