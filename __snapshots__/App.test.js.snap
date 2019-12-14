@@ -3605,6 +3605,7 @@ exports[`Storyshots FlatList with three 1`] = `
           accessibilityTraits={undefined}
           accessible={true}
           collapsable={undefined}
+          hasTVPreferredFocus={undefined}
           hitSlop={undefined}
           isTVSelectable={true}
           nativeID={undefined}
@@ -3649,6 +3650,7 @@ exports[`Storyshots FlatList with three 1`] = `
           accessibilityTraits={undefined}
           accessible={true}
           collapsable={undefined}
+          hasTVPreferredFocus={undefined}
           hitSlop={undefined}
           isTVSelectable={true}
           nativeID={undefined}
@@ -3693,6 +3695,7 @@ exports[`Storyshots FlatList with three 1`] = `
           accessibilityTraits={undefined}
           accessible={true}
           collapsable={undefined}
+          hasTVPreferredFocus={undefined}
           hitSlop={undefined}
           isTVSelectable={true}
           nativeID={undefined}
@@ -5149,7 +5152,7 @@ exports[`Storyshots Main cycle 1`] = `
             "index": 0,
             "routes": Array [
               Object {
-                "key": "Init-id-1513276169582-0",
+                "key": "Init-id-0-0",
                 "routeName": "Home",
               },
             ],
