@@ -5149,7 +5149,7 @@ exports[`Storyshots Main cycle 1`] = `
             "index": 0,
             "routes": Array [
               Object {
-                "key": "Init-id-1513191185808-0",
+                "key": "Init-id-1513276169582-0",
                 "routeName": "Home",
               },
             ],
