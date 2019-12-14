@@ -1,11 +1,8 @@
 {
   "expo": {
-    "sdkVersion": "23.0.0",
+    "sdkVersion": "24.0.0",
     "slug": "CycleReactNativeEx2",
     "name": "CycleReactNativeEx2",
-    "extra": {
-      "enableStoryBook":false
-    },
     "ios": {
       "bundleIdentifier": "com.ukar.biblio"
     },
