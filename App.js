@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  StatusBar,TouchableOpacity,StyleSheet, Text, View,FlatList,Button
+  StatusBar,TouchableOpacity,StyleSheet, Text, View,FlatList,Button,
+  AsyncStorage,
 } from 'react-native';
 import { makeHTTPDriver } from '@cycle/http';
 import StorybookUI from './storybook';
@@ -88,18 +89,64 @@ function view(state$) {
 //TODO:set expo release-channel
 //https://docs.expo.io/versions/latest/guides/release-channels.html
 
-function main({RN, HTTP}) {
-  const actions = intent(RN, HTTP);
+import {adapt} from '@cycle/run/lib/adapt';
+
+/* Rx
+ *   .Observable
+ *   .fromPromise(AsyncStorage.getItem('@MySuperStore:key'))
+ *   .map(text=>JSON.parse(text))
+ *   .do(e=>console.log("sa",e))*/
+
+function makeScrollDriver(key) {
+  //function makeScrollDriver(options) {
+  //const {element, duration}: {element: HTMLElement, duration: number} = options;
+  //const source$ = new Subject();
+  //source$.getItem
+  //AsyncStorage.getItem(key)
+  function ScrollDriver(outgoing$) {
+    Rx.Observable
+      .from(outgoing$)
+      .flatMap((value)=>
+        AsyncStorage.setItem(key,
+                             JSON.stringify(value)))
+      .subscribe()
+    /* .subscribe(
+     *   //(key) => AsyncStorage.getItem(key)
+     *   (value) => {
+     *     AsyncStorage.setItem(key,value);
+     *     source$.next(AsyncStorage.getItem(key));
+     *   }
+       //(offsetTop) => window.scrollTo(0, offsetTop)
+     * );*/
+    incoming$ = Rx.Observable
+                  .fromPromise(AsyncStorage.getItem(key))
+                  .map(e=>JSON.parse(e))
+                  .merge(outgoing$);
+
+    //return Observable.from(outgoing$);
+    return adapt(incoming$);
+  }
+
+  return ScrollDriver;
+}
+
+function main({RN, HTTP, AS}) {
+  const actions = intent(RN, HTTP, AS);
   const state$ = model(actions);
+  /* AS.do(e=>console.log("e1",e))
+   *   .subscribe()*/
+
   return {
     RN: view(state$.startWith("")),//view(model(intent(sources.DOM)))
-    HTTP: actions.request$
+    HTTP: actions.request$,
+    AS: actions.searchHistory$.skip(1),
   };
 }
 
 run(main, {
   RN: makeReactNativeDriver('CycleReactNativeEx'),
-  HTTP: makeHTTPDriver()
+  HTTP: makeHTTPDriver(),
+  AS: makeScrollDriver('foo3')
 });
 
 //module.exports = __DEV__ && typeof __TEST__ == 'undefined' ? StorybookUI : CycleRoot;

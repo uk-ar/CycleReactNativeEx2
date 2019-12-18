@@ -10,9 +10,10 @@ import {
 
 import {
   InteractionManager,
+  AsyncStorage,
 } from 'react-native';
 
-function intent(RN, HTTP) {
+function intent(RN, HTTP, AS) {
   // Actions
   const changeQuery$ = RN
     .select('search')
@@ -22,21 +23,39 @@ function intent(RN, HTTP) {
     .debounceTime(500)
     .share()
 
-  const searchHistory$ = RN
-    .select('search')
-    .events('submitEditing')
-    .debounceTime(600)//for auto correct delay
-    .withLatestFrom(
-      changeQuery$//.startWith("")
-    ).map(([first,second])=>second)
-    .do(e=>console.log("su",e))
-    .startWith([])
-    .scan((searchHistory,query) => (
-      [query].concat(
-          searchHistory.filter(e=> e !== query )
-      )))
-    .map(searchHistory=>
-      searchHistory.map(e=>({query:e})))
+  /* Rx.Observable
+   *   .fromPromise(AsyncStorage.getItem('@MySuperStore:key'))
+   *   .map(text=>JSON.parse(text))
+   *   .do(e=>console.log("sa",e))
+   *   .subscribe()*/
+
+  /* Rx
+   *   .Observable
+   *   .fromPromise(AsyncStorage.getItem('@MySuperStore:key'))
+   *   .map(text=>JSON.parse(text))
+   *   .do(e=>console.log("sa",e))*/
+  const searchHistory$ =
+    AS.first()
+      .map(e => e ? e : [])
+      .merge(
+        RN
+          .select('search')
+          .events('submitEditing')
+          .debounceTime(600)//for auto correct delay
+          .withLatestFrom(
+            changeQuery$//.startWith("")
+          ).map(([first,second])=>[second])
+          .do(e=>console.log("su",e))
+      )
+      .do(e=>console.log("su2",e))
+      .startWith([])
+      .scan((searchHistory,query) => (
+        query.concat(
+          searchHistory
+            .filter(e=> e !== query[0] )
+        )))
+      .do(e=>console.log("su3",e))
+      .shareReplay()
 
   const press$ = RN
     .select('search')
@@ -203,6 +222,23 @@ function intent(RN, HTTP) {
     request$,
   };
 }
+
+async function sample() {
+  try {
+    const value = await AsyncStorage.getItem('@MySuperStore:key');
+    if (value !== null){
+      // We have data!!
+      console.log(value);
+    }
+  } catch (error) {
+    // Error retrieving data
+    console.log("err");
+  }
+}
+sample().then(result => {
+  console.log(result); // => 15
+});
+
 function model(actions) {
   const searchedBooks$ =
     actions.searchedBooksResponse$
@@ -216,10 +252,28 @@ function model(actions) {
            .distinctUntilChanged()
            .shareReplay();
 
+  AsyncStorage.setItem('@MySuperStore:key',
+                       JSON.stringify(["foo"]))
+
+  actions.searchHistory$
+         .do(e=>console.log(e))
+         .flatMap( searchHistory =>
+           AsyncStorage.setItem('@MySuperStore:key',
+                                JSON.stringify(searchHistory))
+           //AsyncStorage.setItem('@MySuperStore:key',searchHistory)
+         )
+         .do(e=>console.log(e))
+         //.subscribe()
+  //
+
+
   const state$ = Rx
     .Observable
     .combineLatest(
-      actions.searchHistory$.do(e=>console.log(e)),
+      actions.searchHistory$
+             .map( searchHistory=>
+               searchHistory.map(e=>({query:e})))
+             .do(e=>console.log(e)),
       searchedBooks$.startWith([]),
       actions.searchedBooksStatus$.startWith({}),
       booksLoadingState$.startWith(false),
