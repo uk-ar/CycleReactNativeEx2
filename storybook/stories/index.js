@@ -13,6 +13,7 @@ import { CloseableView } from '../../components/CloseableView';
 import { CycleRoot } from '../../cycle-react-native';
 import { itemsInfo, TouchableElement } from '../../components/Book/common';
 import { SearchScene,SearchHistory } from '../../components/SearchScene';
+import { LibrarySearchScene, Library, LibraryList,PrefSearchScene } from '../../components/LibrarySearchScene';
 
 import { BookList, BookCell,LibraryStatus,icons,Book,libraryStatuses} from '../../components/Book/BookCell';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
@@ -480,90 +481,6 @@ const styles = StyleSheet.create({
   },
 })
 
-import emptyFunction from 'fbjs/lib/emptyFunction'
-class Library extends React.PureComponent {
-  static defaultProps = {
-    onPress:emptyFunction
-  }
-  render() {
-    const { title, subtitle, onPress, style } =
-      this.props
-    return (
-      <TouchableElement
-        onPress={onPress}
-        style={style}>
-        <View style={styles.cell}>
-          {/* left */}
-          <FAIcon
-            name={"building-o"} size={20}
-            style={{
-              alignSelf:"center",
-              margin: 10,
-            }}
-          />
-          {/* right */}
-          <View style={styles.border}>
-            <Text style={styles.title} numberOfLines={2}>
-              { title }
-            </Text>
-            <Text style={styles.subtitle} numberOfLines={1}>
-              { subtitle }
-            </Text>
-          </View>
-        </View>
-      </TouchableElement>
-    );
-  }
-}
-
-class LibraryList extends React.PureComponent {
-  //_keyExtractor = (item, index) => book.isbn;
-  _renderItem = ({item,index}) => {
-    return (
-      <Library
-        onPress={(isbn,url)=>
-          // must be closure
-          this.props.onPress && this.props.onPress({item, index})
-        }
-        title={item.title}
-        subtitle={item.subtitle}
-      />
-    );}
-  render() {
-    return (
-      <FlatList
-        data={this.props.data}
-        keyExtractor={this._keyExtractor}
-        renderItem={this._renderItem}
-      />
-    );
-  }
-}
-
-class LibrarySearchScene extends React.Component {
-  render() {
-    const {onChangeText,data} = this.props
-    return (
-      <View>
-        <SearchBar
-          containerStyle={{
-            backgroundColor: materialColor.grey['50'],
-            flex:1
-          }}
-          inputStyle={{
-            backgroundColor: materialColor.grey['200']
-          }}
-          lightTheme
-          onChangeText={onChangeText}
-          placeholder='Type Here...' />
-        <LibraryList
-          data={data}
-        />
-      </View>
-    )
-  }
-}
-
 storiesOf('Library', module)
   .add('with plane', () => (
     <Library
@@ -585,12 +502,23 @@ storiesOf('LibrarySearchScene', module)
   .add('with plane', () => (
     <LibrarySearchScene
       data={[
-        {title:"foo",subtitle:"bar"},
-        {title:"baz",subtitle:"bal"},
-        {title:"aa",subtitle:"bb"},
+        {systemname:"埼玉県上尾市",description:"たちばな分館ほか",
+         systemid:"Saitama_Ageo"},
+        {systemname:"埼玉県嵐山町",description:"嵐山町立図書館ほか",
+         systemid:"Saitama_Arashiyama"},
+        {systemname:"埼玉県朝霞市",description:"内間木公民館ほか",
+         systemid:"Saitama_Asaka"},
       ]}
+      extraData={{selectedLibrary:"Saitama_Asaka"}}
     />
   ))
+
+storiesOf('PrefSearchScene', module)
+                         .add('with plane', () => (
+                           <PrefSearchScene
+                           onPress={action('onPress')}
+                           />
+                         ))
 
 storiesOf('SearchHistory', module)
   .add('with plane', () => (
