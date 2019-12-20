@@ -112,11 +112,10 @@ class LibraryList extends React.PureComponent {
 
 class LibrarySearchScene extends React.Component {
   render() {
-    const {onChangeText,data} = this.props
     return (
       <View>
         <LibraryList
-          onPress={(e)=>console.log("hello",e)}
+          onPress={this.props.onPress}
           data={this.props.data}
           extraData={this.props.extraData}
         />
