@@ -15,6 +15,10 @@ import {
 
 function intent(RN, HTTP, AS) {
   // Actions
+  const library$ = RN
+    .select('libraries')
+    .events('press')
+
   const changeQuery$ = RN
     .select('search')
     .events('changeText')
@@ -200,6 +204,7 @@ function intent(RN, HTTP, AS) {
                             requestSearchedBooksStatus$);
 
   return {
+    library$,
     searchHistory$,
     requestSearchedBooks$,
     searchedBooksResponse$,
@@ -225,6 +230,7 @@ function model(actions) {
   const state$ = Rx
     .Observable
     .combineLatest(
+      actions.library$.startWith(""),
       actions.searchHistory$
              .map( searchHistory=>
                searchHistory.map(e=>({query:e}))),
@@ -232,9 +238,9 @@ function model(actions) {
       actions.searchedBooksStatus$.startWith({}),
       booksLoadingState$.startWith(false),
       actions.changeFilter$.startWith(0),
-      (searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
+      (selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
        selectedIndex ) =>
-         ({ searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
+         ({ selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
             selectedIndex }));
   return state$;
 }
