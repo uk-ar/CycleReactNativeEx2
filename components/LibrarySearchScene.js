@@ -110,7 +110,11 @@ class LibraryList extends React.PureComponent {
   }
 }
 
+@withCycle
 class LibrarySearchScene extends React.Component {
+  static propTypes = {
+    onPress:PropTypes.func,
+  }
   render() {
     return (
       <View>
