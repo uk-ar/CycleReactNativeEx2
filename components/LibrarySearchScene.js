@@ -128,8 +128,12 @@ class LibrarySearchScene extends React.Component {
   }
 }
 
+@withCycle
 class PrefSearchScene extends React.PureComponent {
   _keyExtractor = (item, index) => item.title;
+  static propTypes = {
+    onPress:PropTypes.func,
+  }
   static defaultProps = {
     onPress: emptyFunction
   }
