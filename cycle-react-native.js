@@ -30,7 +30,6 @@ function withCycle(WrappedComponent) {
       if(!selector) {
         console.error("The prop `selector` is not set")
       }
-
       const functionNames =
         Object.keys(WrappedComponent.propTypes)
               .filter((func)=>func.startsWith("on"))
@@ -39,21 +38,25 @@ function withCycle(WrappedComponent) {
 
       //used in render
       this.injectedProp =
-        functionNames.map(
-          name => [name, findHandler(selector,name)])
-                     .filter(([_, handler]) => !!handler)
-                     .reduce((map, [name, handler]) => {
-                       //console.log(WrappedComponent,selector,name)
-                       map[name] = this.props.payload === undefined ?
-                                   handler :
-                                   (...args) => handler(this.props.payload)
-                       return map
-                     }, {})//{"onPress":func}
+        functionNames
+          .map(name => [name, findHandler(selector,name)])
+          .filter(([_, handler]) => !!handler)
+          .reduce((acc, [name, handler]) => {
+            //console.log(selector,name,this.props[name],this.props[name] ? true : false )
+            acc[name] = this.props[name] ? (...args) => {
+              handler(...args)
+              this.props[name](...args)
+            } : handler
+            /* acc[name] = this.props.payload === undefined ?
+             *             handler :
+             *             (...args) => handler(this.props.payload)*/
+            return acc
+          }, {})//{"onPress":func}
     }
 
     render() {
       const { selector, ...passThroughProps } = this.props;
-      return <WrappedComponent {...this.injectedProp} {...passThroughProps} />;
+      return <WrappedComponent {...passThroughProps} {...this.injectedProp} />;
     }
   }
   function getDisplayName(WrappedComponent) {
@@ -62,7 +65,7 @@ function withCycle(WrappedComponent) {
   CycleComponent.displayName = `CycleComponent(${getDisplayName(WrappedComponent)})`;
   CycleComponent.propTypes = {
     selector: PropTypes.string.isRequired,
-    payload:  PropTypes.any//for ListItem onPress
+    //payload:  PropTypes.any//for ListItem onPress
   }
   return CycleComponent;
 }
