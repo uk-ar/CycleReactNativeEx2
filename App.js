@@ -1,4 +1,5 @@
 import React from 'react';
+//GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest
 import {
   StatusBar,TouchableOpacity,StyleSheet, Text, View,FlatList,Button,
   AsyncStorage,
@@ -38,18 +39,19 @@ class LibrarySelectScreen extends React.Component {
   });
   render() {
     const { params } = this.props.navigation.state;
-    const selectedLibrary = this.props.screenProps.selectedLibrary;
+    const { selectedLibrary , libraries } = this.props.screenProps;
     console.log(selectedLibrary)
+    /* data={[
+     *   {systemname:"埼玉県上尾市",description:"たちばな分館ほか",
+     *    systemid:"Saitama_Ageo"},
+     *   {systemname:"埼玉県嵐山町",description:"嵐山町立図書館ほか",
+     *    systemid:"Saitama_Arashiyama"},
+     *   {systemname:"埼玉県朝霞市",description:"内間木公民館ほか",
+     *    systemid:"Saitama_Asaka"},
+     * ]}*/
     return (
       <LibrarySearchScene
-        data={[
-          {systemname:"埼玉県上尾市",description:"たちばな分館ほか",
-           systemid:"Saitama_Ageo"},
-          {systemname:"埼玉県嵐山町",description:"嵐山町立図書館ほか",
-           systemid:"Saitama_Arashiyama"},
-          {systemname:"埼玉県朝霞市",description:"内間木公民館ほか",
-           systemid:"Saitama_Asaka"},
-        ]}
+      data={libraries}
       extraData={{selectedLibrary}}
       selector="libraries"
       />

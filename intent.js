@@ -21,14 +21,50 @@ function intent(RN, HTTP, AS) {
     .do(e=>console.log("pref",e))
     .share()
 
+  const requestLibrary$ =
+    pref$
+      .map((pref)=>{
+        //console.log(query,page)
+        return {
+          category: 'libraries',
+          //https://github.com/visionmedia/superagent/issues/675
+          //url: "http://api.calil.jp/library?callback=no&appkey=bc3d19b6abbd0af9a59d97fe8b22660f&format=json&pref=" + encodeURI(pref),
+          //CALIL_STATUS_API=`http://api.calil.jp/check?callback=no&appkey=bc3d19b6abbd0af9a59d97fe8b22660f&systemid=${LIBRARY_ID}&format=json&isbn=`;
+          url: "http://api.calil.jp/library?appkey=bc3d19b6abbd0af9a59d97fe8b22660f&format=json&pref=" + encodeURI(pref),
+        }
+      })
+      .do(e=>console.log("req",e))
+      .shareReplay()
+
   const screen$ = pref$
     .map(e=>["LibrarySelect"])
     .do(e=>console.log("screen",e))
   //onPress={e=>navigate("LibrarySelect",{pref:e})}
 
   const library$ = RN
-    .select('libraries')
+    .select('library')
     .events('press')
+
+  const libraries$ = HTTP
+    .select('libraries')
+    .switch()
+    .map(res=>res.text)
+    .map(e=>e.slice(9,-2))//callback(body);
+    .map(e=>JSON.parse(e))
+    .map(a=>
+      Object.values(
+        a.map(({systemid,systemname,formal})=>
+          ({systemid,systemname,formal}))
+         .reduce((acc,{systemid,systemname,formal})=>{
+           //console.log(acc[systemid])
+           if(!acc[systemid]){
+             acc[systemid] = {systemid,systemname,formal:[formal]}
+           }else{
+             acc[systemid].formal.push(formal)
+           }
+           return acc
+         },{}))
+    )
 
   const changeQuery$ = RN
     .select('search')
@@ -211,10 +247,14 @@ function intent(RN, HTTP, AS) {
               'searchedBooksStatus');
 
   const request$ = Rx.Observable
-                     .merge(requestSearchedBooks$,
-                            requestSearchedBooksStatus$);
+                     .merge(
+                       requestSearchedBooks$,
+                       requestSearchedBooksStatus$,
+                       requestLibrary$
+                     );
 
   return {
+    libraries$,
     screen$,
     pref$,
     library$,
@@ -243,6 +283,7 @@ function model(actions) {
   const state$ = Rx
     .Observable
     .combineLatest(
+      actions.libraries$.startWith([]),
       actions.pref$.startWith(""),
       actions.screen$.startWith(["Home"]),
       actions.library$.startWith(""),
@@ -253,9 +294,9 @@ function model(actions) {
       actions.searchedBooksStatus$.startWith({}),
       booksLoadingState$.startWith(false),
       actions.changeFilter$.startWith(0),
-      (pref,screen,selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
+      (libraries,pref,screen,selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
        selectedIndex ) =>
-         ({ pref,screen,selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
+         ({ libraries,pref,screen,selectedLibrary, searchHistory, searchedBooks, searchedBooksStatus, booksLoadingState,
             selectedIndex }));
   return state$;
 }
