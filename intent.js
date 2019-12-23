@@ -42,8 +42,9 @@ function intent(RN, HTTP, AS) {
   //onPress={e=>navigate("LibrarySelect",{pref:e})}
 
   const library$ = RN
-    .select('library')
+    .select('libraries')
     .events('press')
+    .do(e=>console.log("lib",e))
 
   const libraries$ = HTTP
     .select('libraries')
