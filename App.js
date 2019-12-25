@@ -26,16 +26,84 @@ import {
 } from './cycle-react-native';
 
 import {
-  Card,
-  CardStack,
-  StackRouter,
   StackNavigator,
-  addNavigationHelpers,
+  DrawerNavigator,
+  NavigationActions
 } from 'react-navigation';
+
+class LibraryLocationScreen extends React.Component {
+  static navigationOptions = ({navigation}) => ({
+    title: '現在地から図書館を探す',
+    //title: `Select library`,
+  });
+  state = {
+    location: null,
+    errorMessage: null,
+  };
+  componentWillMount() {
+    if (Platform.OS === 'android' && !Constants.isDevice) {
+      this.setState({
+        errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
+      });
+    } else {
+      this._getLocationAsync();
+    }
+  }
+  _getLocationAsync = async () => {
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== 'granted') {
+      this.setState({
+        errorMessage: 'Permission to access location was denied',
+      });
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    this.setState({ location });
+  };
+  render() {
+    let text = 'Waiting..';
+    if (this.state.errorMessage) {
+      text = this.state.errorMessage;
+    } else if (this.state.location) {
+      text = JSON.stringify(this.state.location);
+    }
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.paragraph}>{text}</Text>
+      </View>
+    );
+  }
+  /* render() {
+   *   const { params } = this.props.navigation.state;
+   *   const { selectedLibrary , libraries } = this.props.screenProps;
+   *   console.log(selectedLibrary)
+   *   return (
+   *     <View>
+   *       <LibrarySearchScene
+   *         data={libraries}
+   *         extraData={{selectedLibrary}}
+   *         selector="libraries"
+   *       />
+   *     </View>
+   *   );
+   * }*/
+}
 
 class LibrarySelectScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: `Library Select`,
+    headerRight: <Button
+                   title="Done"
+                   onPress={()=>
+                     //navigation.navigate("Home")
+                     navigation.dispatch(NavigationActions.reset({
+                       index:0,
+                       actions: [
+                         NavigationActions.navigate({ routeName: 'Home'})
+                       ]
+                     }))
+                           }/>
   });
   render() {
     const { params } = this.props.navigation.state;
@@ -62,7 +130,7 @@ class LibrarySelectScreen extends React.Component {
 
 class PrefSelectScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
-    title: `Setting`,
+    title: `都道府県から図書館を探す`,
   });
   render() {
     const { params } = this.props.navigation.state;
@@ -77,9 +145,38 @@ class PrefSelectScreen extends React.Component {
   }
 }
 
+class SelectLibraryScreen extends React.Component {
+  static navigationOptions = ({navigation}) => ({
+    title: `図書館を探す`,
+  });
+  render() {
+    const { params } = this.props.navigation.state;
+    const { navigate } = this.props.navigation;
+    //const screen = this.props.screenProps.screen;
+    // https://github.com/react-community/react-navigation/blob/fafe68b8cba06b64e5cd63f48b0490856edd34b7/src/views/Header/HeaderBackButton.js#L34
+    return (
+      <View>
+        <Button
+          title="現在地から図書館を探す"
+          onPress={()=>
+            navigate('LibraryLocationScreen')
+                  }
+        />
+        <Button
+          title="都道府県から図書館を探す"
+          onPress={()=>
+            navigate('PrefSelect')
+                  }
+        />
+      </View>
+    );
+  }
+}
+
 class SearchScreen extends React.Component {
   static navigationOptions = {
-    title: 'Book Search'
+    //title: 'Book Search'
+    title: '本を探す',
   };
   render() {
     const { navigate } = this.props.navigation;
@@ -87,7 +184,10 @@ class SearchScreen extends React.Component {
       <SearchScene
         selector={"search"}
         {...this.props.screenProps}
-        onPressSetting={()=>navigate('Chat',{user:'Aya'})}
+        onPressSetting={()=>
+          navigate('SelectLibraryScreen')
+          //navigate('DrawerOpen')
+                       }
         onPress={async ({item,index})=>{
             const url = searchedBooksStatus[item.isbn].reserveUrl
             if(url){
@@ -102,9 +202,12 @@ class SearchScreen extends React.Component {
 
 // https://github.com/react-community/react-navigation/issues/1232
 // screenProps
+//const Navigator = DrawerNavigator({
 const Navigator = StackNavigator({
   Home: {  screen: SearchScreen },
-  Chat: {  screen: PrefSelectScreen },
+  SelectLibraryScreen: {  screen: SelectLibraryScreen },
+  LibraryLocation: {  screen: LibraryLocationScreen },
+  PrefSelect: {  screen: PrefSelectScreen },
   LibrarySelect: {  screen: LibrarySelectScreen },
 });
 
