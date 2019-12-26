@@ -15,24 +15,38 @@ import {
 
 function intent(RN, HTTP, AS) {
   // Actions
+  const location$ = RN
+    .select('location')
+    .events('location')
+    .map(({coords,timestamp})=>({
+      geocode:coords.longitude+","+coords.latitude,
+      //geocode:136.7163027+","+35.390516,
+      limit:10
+    }))
+    .share()
+
   const pref$ = RN
     .select('pref')
     .events('press')
-    .do(e=>console.log("pref",e))
+    .map(e=>({pref:e}))
     .share()
 
   const requestLibrary$ =
     pref$
-      .map((pref)=>{
+      .merge(location$)
+      .map((query)=>{
         //console.log(query,page)
         return {
           category: 'libraries',
           //https://github.com/visionmedia/superagent/issues/675
           //url: "http://api.calil.jp/library?callback=no&appkey=bc3d19b6abbd0af9a59d97fe8b22660f&format=json&pref=" + encodeURI(pref),
           //CALIL_STATUS_API=`http://api.calil.jp/check?callback=no&appkey=bc3d19b6abbd0af9a59d97fe8b22660f&systemid=${LIBRARY_ID}&format=json&isbn=`;
-          url: "http://api.calil.jp/library?appkey=bc3d19b6abbd0af9a59d97fe8b22660f&format=json&pref=" + encodeURI(pref),
-        }
-      })
+          url: "http://api.calil.jp/library?",
+          query:{...query,
+                 appkey:"bc3d19b6abbd0af9a59d97fe8b22660f",
+                 format:"json"
+          }
+      }})
       .do(e=>console.log("req",e))
       .shareReplay()
 
