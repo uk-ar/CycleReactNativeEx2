@@ -12,8 +12,8 @@ import FAIcon from 'react-native-vector-icons/FontAwesome';
 import { SearchScene } from './components/SearchScene';
 import { LibrarySearchScene,PrefSearchScene } from './components/LibrarySearchScene';
 import { run } from '@cycle/rxjs-run';
-import { Constants, WebBrowser,Location,Permissions } from 'expo';
-
+import { AppLoading, Constants, WebBrowser,
+         Location, Permissions } from 'expo';
 import { intent,model } from './intent';
 //const view = require('./view');
 
@@ -81,6 +81,13 @@ class LibraryLocation extends React.Component {
   }
 }
 
+const resetAction = NavigationActions.reset({
+  index:0,
+  actions: [
+    NavigationActions.navigate({ routeName: 'Home'})
+  ]
+})
+
 class LibraryLocationScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: '現在地から図書館を探す',
@@ -88,12 +95,7 @@ class LibraryLocationScreen extends React.Component {
     title="Done"
     onPress={()=>
       //navigation.navigate("Home")
-      navigation.dispatch(NavigationActions.reset({
-        index:0,
-        actions: [
-          NavigationActions.navigate({ routeName: 'Home'})
-        ]
-      }))
+      navigation.dispatch(resetAction)
     }/>
   });
 
@@ -116,19 +118,14 @@ class LibraryLocationScreen extends React.Component {
   }
 }
 
-class LibrarySelectScreen extends React.Component {
+class LibraryListScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: `Library Select`,
     headerRight: <Button
                    title="Done"
                    onPress={()=>
                      //navigation.navigate("Home")
-                     navigation.dispatch(NavigationActions.reset({
-                       index:0,
-                       actions: [
-                         NavigationActions.navigate({ routeName: 'Home'})
-                       ]
-                     }))
+                     navigation.dispatch(resetAction)
                    }/>
   });
   render() {
@@ -164,7 +161,7 @@ class PrefSelectScreen extends React.Component {
     //const screen = this.props.screenProps.screen;
     return (
       <PrefSearchScene
-        onPress={e=>navigate("LibrarySelect",{pref:e})}
+        onPress={e=>navigate("LibraryList",{pref:e})}
         selector="pref"
       />
     );
@@ -199,6 +196,36 @@ class SelectLibraryScreen extends React.Component {
   }
 }
 
+class LoadingScreen extends React.Component {
+  state = {
+    isReady: false,
+  };
+  render() {
+    const { navigation } = this.props;
+    //'@MySuperStore:key'
+    return (
+      <AppLoading
+        startAsync={()=> {
+            return AsyncStorage.getItem('CycleReactNativeEx')}}
+        onFinish={(e) => {
+            //console.log("fo")//undefined
+            //this.setState({ isReady: true })
+            if(this.props.screenProps.selectedLibrary){
+              navigation.dispatch(resetAction)
+            } else {
+              navigation.dispatch(NavigationActions.reset({
+                index:0,
+                actions: [
+                  NavigationActions.navigate({ routeName: 'SelectLibrary'})
+                ]
+              }))
+            }
+          }}
+        onError={console.warn}
+      />)
+  }
+}
+
 class SearchScreen extends React.Component {
   static navigationOptions = {
     //title: 'Book Search'
@@ -206,6 +233,7 @@ class SearchScreen extends React.Component {
   };
   render() {
     const { navigate } = this.props.navigation;
+    const { searchedBooksStatus } = this.props.screenProps;
     return(
       <SearchScene
         selector={"search"}
@@ -230,27 +258,28 @@ class SearchScreen extends React.Component {
 // screenProps
 //const Navigator = DrawerNavigator({
 const Navigator = StackNavigator({
+  Loading: { screen: LoadingScreen },
   Home: {  screen: SearchScreen },
   SelectLibrary: {  screen: SelectLibraryScreen },
   LibraryLocation: {  screen: LibraryLocationScreen },
   PrefSelect: {  screen: PrefSelectScreen },
-  LibrarySelect: {  screen: LibrarySelectScreen },
+  LibraryList: {  screen: LibraryListScreen },
 });
 
 function view(state$) {
-  return state$.map((state) =>
-  {
-    return(
-      <Navigator
-        screenProps={state}
-      />)
-  })
+  return state$
+    .map((state) => {
+      return(
+        <Navigator
+          screenProps={state}
+        />)
+    })
 }
-//TODO:search history
+
 //TODO:change top level props name
-//TODO:set library_id
 //TODO:clear search field
 //TODO:set expo release-channel
+//TODO:change library while searching
 //https://docs.expo.io/versions/latest/guides/release-channels.html
 
 function main({RN, HTTP, AS}) {
@@ -260,7 +289,7 @@ function main({RN, HTTP, AS}) {
   return {
     RN: view(state$.startWith("")),//view(model(intent(sources.DOM)))
     HTTP: actions.request$,
-    AS: actions.searchHistory$.skip(1),
+    AS: actions.storage$,
   };
 }
 
@@ -277,11 +306,12 @@ console.log(Expo.Constants.isDevice)
 //dev:storybook:
 //expo0:not storybook->testflight?
 //expo1:storybook
-module.exports = CycleRoot
 //module.exports = StorybookUI
 //module.exports = Expo.Constants.manifest.extra.enableStoryBook || (__DEV__ && typeof __TEST__ == 'undefined') ? StorybookUI : CycleRoot;
 //module.exports = Expo.Constants.isDevice ? CycleRoot : StorybookUI
 //module.exports = Expo.Constants.isDevice ? App : StorybookUI
+
+module.exports = CycleRoot
 
 const styles = StyleSheet.create({
   container: {

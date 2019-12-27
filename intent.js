@@ -5,7 +5,7 @@ import {
   STORAGE_KEY,
   RAKUTEN_SEARCH_API,
   CALIL_STATUS_API,
-  LIBRARY_ID,
+  //LIBRARY_ID,
 } from './constants';
 
 import {
@@ -55,10 +55,16 @@ function intent(RN, HTTP, AS) {
     .do(e=>console.log("screen",e))
   //onPress={e=>navigate("LibrarySelect",{pref:e})}
 
-  const library$ = RN
-    .select('libraries')
-    .events('press')
+  const library$ = AS
+    .first()
+    .map(({library})=>library)
+    .merge(
+      RN
+        .select('libraries')
+        .events('press')
+    )
     .do(e=>console.log("lib",e))
+    .shareReplay()
 
   const libraries$ = HTTP
     .select('libraries')
@@ -87,10 +93,12 @@ function intent(RN, HTTP, AS) {
     .filter(query => query.length > 1)
     .distinctUntilChanged()
     .debounceTime(500)
+    .do(e=>console.log("e",e))
     .share()
 
   const searchHistory$ =
     AS.first()
+      .map(({searchHistory})=>searchHistory)
       .map(e => e ? e : [])
       .merge(
         RN
@@ -109,6 +117,16 @@ function intent(RN, HTTP, AS) {
             .filter(e=> e !== query[0] )
         )))
       .shareReplay()
+
+  const storage$ = Rx
+    .Observable
+    .combineLatest(
+      searchHistory$.skip(1),
+      library$.skip(1),
+      ((searchHistory,library)=>
+        ({searchHistory,library}))
+    )
+    .do(e=>console.log("st",e))
 
   const press$ = RN
     .select('search')
@@ -191,11 +209,22 @@ function intent(RN, HTTP, AS) {
       books$
         .map(books => books.map(book => book.isbn))
         .filter(isbns => isbns.length > 0)
-        //.do((e)=>console.log(e))
-        .map(q => ({
-          category,
-          url: CALIL_STATUS_API + encodeURI(q)
-        }))
+        .combineLatest(
+          library$,
+          (isbn,library)=>({
+            category,
+            //const CALIL_STATUS_API = `http://api.calil.jp/check?callback=no&appkey=bc3d19b6abbd0af9a59d97fe8b22660f&systemid=${LIBRARY_ID}&format=json&isbn=`;
+            url: "http://api.calil.jp/check?",
+            query:{callback:"no",
+                   appkey:"bc3d19b6abbd0af9a59d97fe8b22660f",
+                   systemid:library,
+                   format:"json",
+                   //isbn //cannot handle array?
+                   isbn:isbn.join(),
+            }
+            //url: CALIL_STATUS_API + encodeURI(q)
+          })
+        )
         .shareReplay();
 
     const booksStatusResponse$ =
@@ -226,7 +255,7 @@ function intent(RN, HTTP, AS) {
             Object.keys(bookStatuses)
                   .reduce((acc,isbn)=>{
                     let {libkey, reserveurl, status} =
-                      bookStatuses[isbn][LIBRARY_ID]
+                      Object.values(bookStatuses[isbn])[0]
                     libkey = libkey || {}
                     //{xxxx.Tokyo_Fuchu.{libkey,reserveUrl,status}}
                     if(status === "Running"){
@@ -246,6 +275,7 @@ function intent(RN, HTTP, AS) {
                     return acc
                   },{})
           )
+          //.do(e=>console.log("st",e))
           .distinctUntilChanged((i,j) =>
             JSON.stringify(i)==JSON.stringify(j))
           .shareReplay();
@@ -269,6 +299,7 @@ function intent(RN, HTTP, AS) {
                      );
 
   return {
+    storage$,
     libraries$,
     screen$,
     pref$,
