@@ -3,7 +3,7 @@
     "sdkVersion": "35.0.0",
     "slug": "CycleReactNativeEx2",
     "name": "Biblio",
-    "version": "1.0.0",
+    "version": "1.3.0",
     "icon": "./assets/app-icon-l.png",
     "ios": {
       "bundleIdentifier": "com.ukar.biblio",
@@ -15,12 +15,12 @@
       "buildNumber": "1"
     },
     "android": {
-      "package": "com.ukar.biblio2",
+      "package": "com.ukar.biblio",
       "permissions": [
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION"
       ],
-      "versionCode": 5
+      "versionCode": 8
     },
     "platforms": [
       "android",
