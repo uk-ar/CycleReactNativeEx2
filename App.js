@@ -23,7 +23,7 @@ import {
 } from "./src/components/LibrarySearchScene";
 import { setup } from "@cycle/rxjs-run";
 import { AppLoading } from "expo";
-import * as WebBrowser from "expo-web-browser";
+
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import Constants from "expo-constants";
@@ -31,6 +31,16 @@ import { intent, model } from "./src/intent";
 //const view = require('./view');
 //https://github.com/xotahal/react-native-motion
 //react-navigation-fluid-transitions
+
+/* import { createStackNavigator } from "@react-navigation/stack";
+ * import {
+ *   NavigationActions,
+ *   StackActions,
+ *   createCompatNavigatorFactory,
+ *   //createAppContainer,
+ * } from "@react-navigation/compat";
+ * import { CommonActions } from "@react-navigation/native";
+ * */
 import {
   Cycle,
   withCycle,
@@ -114,6 +124,11 @@ const resetAction = StackActions.reset({
   index: 0,
   actions: [NavigationActions.navigate({ routeName: "Home" })],
 });
+
+/* const resetAction = CommonActions.reset({
+ *   index: 0,
+ *   routes: [{ name: "Home" }],
+ * });*/
 
 class LibraryLocationScreen extends React.Component {
   static navigationOptions = ({ navigation, screenProps }) => {
@@ -253,6 +268,10 @@ class LoadingScreen extends React.Component {
                   NavigationActions.navigate({ routeName: "SelectLibrary" }),
                 ],
               }),
+              /* CommonActions.reset({
+                 index: 0,
+                 routes: [{ name: "Home" }],
+                 }), */
             );
           }
         }}
@@ -266,6 +285,7 @@ class LoadingScreen extends React.Component {
 // screenProps
 //const Navigator = DrawerNavigator({
 const Navigator = createStackNavigator({
+  /* const Navigator = createCompatNavigatorFactory(createStackNavigator)({*/
   Loading: { screen: LoadingScreen },
   Home: { screen: SearchScreen },
   SelectLibrary: { screen: SelectLibraryScreen },
@@ -287,6 +307,9 @@ function view(state$) {
           }
         />
         <AppContainer screenProps={state} />
+        {/* <NavigationContainer screenProps={state}>
+            <MainNavigator />
+            </NavigationContainer> */}
       </View>
     );
   });

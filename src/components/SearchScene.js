@@ -23,6 +23,8 @@ import * as WebBrowser from "expo-web-browser";
 import { TouchableElement } from "./common";
 import FAIcon from "react-native-vector-icons/FontAwesome";
 import emptyFunction from "fbjs/lib/emptyFunction";
+/* import { createStackNavigator } from "@react-navigation/stack";
+ * import { createCompatNavigatorFactory } from "@react-navigation/compat";*/
 
 import PropTypes from "prop-types";
 import { withCycle } from "../cycle-react-native";
@@ -260,6 +262,8 @@ class DetailScreen extends React.Component {
     return <BookDetail selector={"detail"} {...book} />;
   }
 }
+
+//const Stack = createCompatNavigatorFactory(createStackNavigator)(
 
 const Stack = createStackNavigator(
   {

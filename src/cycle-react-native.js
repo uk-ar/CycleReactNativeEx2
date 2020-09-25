@@ -10,9 +10,9 @@ let handlers = {};
 
 //https://facebook.github.io/react/docs/higher-order-components.html
 function withCycle(WrappedComponent) {
-  if (!WrappedComponent.propTypes) {
-    console.error("PropTypes is not set");
-  }
+  /* if (!WrappedComponent.propTypes) {
+   *   console.error("PropTypes is not set");
+   * }*/
 
   function findHandler(selector, evType) {
     if (!selector || !handlers[selector]) {
