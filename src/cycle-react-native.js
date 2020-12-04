@@ -31,7 +31,7 @@ function withCycle(WrappedComponent) {
         console.error("The prop `selector` is not set");
       }
       const functionNames = Object.keys(WrappedComponent.propTypes).filter(
-        func => func.startsWith("on")
+        func => func.startsWith("on"),
       );
       //["onLayout","onPress"]
       //console.log(WrappedComponent,functionNames)
@@ -64,7 +64,7 @@ function withCycle(WrappedComponent) {
     return WrappedComponent.displayName || WrappedComponent.name || "Component";
   }
   CycleComponent.displayName = `CycleComponent(${getDisplayName(
-    WrappedComponent
+    WrappedComponent,
   )})`;
   CycleComponent.propTypes = {
     selector: PropTypes.string.isRequired,
@@ -113,12 +113,13 @@ class CycleRoot extends React.Component {
     super(props);
     this.state = { vtree: <View /> };
   }
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     sink$.subscribe(vtree => this.setState({ vtree: vtree }));
   }
   render() {
     //console.log(handlers)
     return this.state.vtree;
+    //return <View />;
   }
 }
 
@@ -151,7 +152,7 @@ function makeAsyncStorageDriver(key) {
 }
 
 export {
-  Cycle,
+  //Cycle,
   withCycle,
   makeReactNativeDriver,
   CycleRoot,
