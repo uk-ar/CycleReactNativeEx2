@@ -113,7 +113,7 @@ class CycleRoot extends React.Component {
     super(props);
     this.state = { vtree: <View /> };
   }
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     sink$.subscribe(vtree => this.setState({ vtree: vtree }));
   }
   render() {
