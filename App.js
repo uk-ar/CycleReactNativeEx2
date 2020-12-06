@@ -22,7 +22,10 @@ import {
   PrefSearchScene,
 } from "./src/components/LibrarySearchScene";
 import { setup } from "@cycle/rxjs-run";
-import { AppLoading, WebBrowser, Location, Permissions } from "expo";
+import { AppLoading } from "expo";
+import * as WebBrowser from "expo-web-browser";
+import * as Location from "expo-location";
+import * as Permissions from "expo-permissions";
 import Constants from "expo-constants";
 import { intent, model } from "./src/intent";
 //const view = require('./view');
@@ -69,39 +72,22 @@ class LibraryLocation extends React.Component {
     this._getLocationAsync();
     /* }*/
   }
+
   _getLocationAsync = async () => {
-    const {
-      locationServicesEnabled,
-      gpsAvailable,
-      networkAvailable,
-      passiveAvailable,
-    } = await Expo.Location.getProviderStatusAsync();
-    //console.log("st",{ locationServicesEnabled,gpsAvailable,networkAvailable,passiveAvailable })
-    if (!locationServicesEnabled) {
-      this.setState({
-        errorMessage: "Location Service is not enabled",
-      });
-    }
-    const { status } = await Permissions.askAsync(Permissions.LOCATION);
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== "granted") {
       this.setState({
         errorMessage: "Permission to access location was denied",
       });
     }
-    const location = await Location.getCurrentPositionAsync(
-      Platform.OS === "android"
-        ? { timeout: 1000, enableHighAccuracy: gpsAvailable }
-        : {},
-    ).catch(() => null); //{enableHighAccuracy:true}
-    if (!location) {
-      this.setState({
-        errorMessage: "Location request timed out",
-      });
-      return;
-    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    this.setState({ location });
+
+    // custom code!!
     this.props.onLocation(location);
-    //this.setState({ location });
   };
+
   render() {
     console.log("rend", this.props);
     let text = "Waiting..";
