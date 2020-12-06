@@ -21,8 +21,9 @@ import {
   LibrarySearchScene,
   PrefSearchScene,
 } from "./src/components/LibrarySearchScene";
-import { run } from "@cycle/rxjs-run";
-import { AppLoading, Constants, WebBrowser, Location, Permissions } from "expo";
+import { setup } from "@cycle/rxjs-run";
+import { AppLoading, WebBrowser, Location, Permissions } from "expo";
+import Constants from "expo-constants";
 import { intent, model } from "./src/intent";
 //const view = require('./view');
 //https://github.com/xotahal/react-native-motion
@@ -36,11 +37,11 @@ import {
 } from "./src/cycle-react-native";
 
 import {
-  createStackNavigator,
-  DrawerNavigator,
   NavigationActions,
   StackActions,
+  createAppContainer,
 } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 
 import PropTypes from "prop-types";
 import emptyFunction from "fbjs/lib/emptyFunction";
@@ -286,6 +287,7 @@ const Navigator = createStackNavigator({
   PrefSelect: { screen: PrefSelectScreen },
   LibraryList: { screen: LibraryListScreen },
 });
+const AppContainer = createAppContainer(Navigator);
 
 function view(state$) {
   return state$.map(state => {
@@ -298,7 +300,7 @@ function view(state$) {
               : {}
           }
         />
-        <Navigator screenProps={state} />
+        <AppContainer screenProps={state} />
       </View>
     );
   });
@@ -321,7 +323,7 @@ function main({ RN, HTTP, AS }) {
   };
 }
 
-run(main, {
+const { sources, sinks, run } = setup(main, {
   RN: makeReactNativeDriver(),
   HTTP: makeHTTPDriver(),
   AS: makeAsyncStorageDriver("CycleReactNativeEx"),
@@ -329,6 +331,7 @@ run(main, {
 
 module.exports = CycleRoot;
 //module.exports = StorybookUI;
+const dispose = run();
 
 const styles = StyleSheet.create({
   container: {
