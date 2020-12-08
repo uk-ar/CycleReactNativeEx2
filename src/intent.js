@@ -7,7 +7,6 @@ function intent(RN, HTTP, AS) {
   // Actions
   const location$ = RN.select("location")
     .events("location")
-    .do(e => console.log("loc", e))
     .map(({ coords, timestamp }) => ({
       geocode: coords.longitude + "," + coords.latitude,
       //geocode:136.7163027+","+35.390516,
