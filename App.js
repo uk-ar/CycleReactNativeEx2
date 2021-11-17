@@ -22,7 +22,7 @@ import {
   PrefSearchScene,
 } from "./src/components/LibrarySearchScene";
 import { setup } from "@cycle/rxjs-run";
-import { AppLoading } from "expo";
+import AppLoading from 'expo-app-loading'
 
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
