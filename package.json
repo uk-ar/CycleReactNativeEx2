@@ -20,7 +20,7 @@
   "main": "./node_modules/expo/AppEntry.js",
   "scripts": {
     "eject": "expo eject",
-    "start": "rm -rf .expo; expo start",
+    "start": "expo start",
     "android": "rm -rf .expo; expo start --android",
     "ios": "rm -rf .expo; expo start --ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
