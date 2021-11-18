@@ -5,11 +5,14 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.11.2",
-    "@storybook/addon-actions": "^3.3.15",
-    "@storybook/addon-links": "^3.3.15",
-    "@storybook/addon-storyshots": "^3.3.15",
-    "@storybook/addons": "^3.3.15",
-    "@storybook/react-native": "^3.3.15",
+    "@storybook/addon-actions": "^5.3",
+    "@storybook/addon-knobs": "^5.3",
+    "@storybook/addon-links": "^5.3",
+    "@storybook/addon-ondevice-actions": "^5.3.23",
+    "@storybook/addon-ondevice-knobs": "^5.3.25",
+    "@storybook/react-native": "^5.3.25",
+    "@storybook/react-native-server": "^5.3.23",
+    "babel-loader": "^8.2.3",
     "concurrently": "^3.5.0",
     "identity-obj-proxy": "^3.0.0",
     "jest-expo": "^43.0.0",
@@ -26,9 +29,10 @@
     "test": "node node_modules/jest/bin/jest.js --watch",
     "test-ci": "node node_modules/jest/bin/jest.js",
     "deploy": "node node_modules/.bin/exp build:status; node node_modules/.bin/exp build:android",
-    "storybook": "storybook start -p 7007",
+    "storybook": "start-storybook -p 7007",
     "clean": "rm -rf node_modules; rm yarn.lock; yarn; rm -rf $TMPDIR/metro-bundler-cache-*; expo start -c",
-    "prettier": "prettier --trailing-comma es5 --write '{{components,storybook}/**/,./}*.js'"
+    "prettier": "prettier --trailing-comma es5 --write '{{components,storybook}/**/,./}*.js'",
+    "build-storybook": "build-storybook"
   },
   "jest": {
     "preset": "jest-expo",
